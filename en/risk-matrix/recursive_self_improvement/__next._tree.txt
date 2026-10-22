@@ -1,0 +1,7 @@
+:HL["/_next/static/chunks/1fpzc50yr4jk6.css","style"]
+:HC["/",""]
+4:[["children",{"s":"__PAGE__","h":160}]]
+3:[["children",{"s":{"n":"category","t":"d","k":"recursive_self_improvement","s":[]},"h":65632,"c":"$Q4"}]]
+2:[["children",{"s":"risk-matrix","h":131168,"c":"$Q3"}]]
+1:[["children",{"s":{"n":"lang","t":"d","k":"en","s":["api","workspace"]},"h":196720,"c":"$Q2"}]]
+0:{"b":"Z6hSFt_zKoYZiEPelRsoZ","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}

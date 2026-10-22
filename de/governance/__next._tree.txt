@@ -1,0 +1,6 @@
+:HL["/_next/static/chunks/1fpzc50yr4jk6.css","style"]
+:HC["/",""]
+3:[["children",{"s":"__PAGE__","h":160}]]
+2:[["children",{"s":"governance","h":96,"c":"$Q3"}]]
+1:[["children",{"s":{"n":"lang","t":"d","k":"de","s":["api","workspace"]},"h":65648,"c":"$Q2"}]]
+0:{"b":"Z6hSFt_zKoYZiEPelRsoZ","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}
