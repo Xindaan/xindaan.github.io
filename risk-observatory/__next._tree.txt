@@ -1,0 +1,5 @@
+:HL["/risk-observatory/_next/static/chunks/1fpzc50yr4jk6.css","style"]
+:HC["/",""]
+2:[["children",{"s":"__PAGE__","h":160}]]
+1:[["children",{"s":"(entry)","h":112,"c":"$Q2"}]]
+0:{"b":"zNxXFVDbN07ve7vjVFncv","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
