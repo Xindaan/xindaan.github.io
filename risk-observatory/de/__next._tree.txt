@@ -1,5 +1,5 @@
-:HL["/risk-observatory/_next/static/chunks/1fpzc50yr4jk6.css","style"]
+:HL["/risk-observatory/_next/static/chunks/297a287fxerlv.css","style"]
 :HC["/",""]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":{"n":"lang","t":"d","k":"de","s":["api","workspace"]},"h":65648,"c":"$Q2"}]]
-0:{"b":"zNxXFVDbN07ve7vjVFncv","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}
+0:{"b":"jo9fXhWnGdHh8oGjdm5-0","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}
