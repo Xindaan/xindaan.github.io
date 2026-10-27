@@ -1,6 +1,6 @@
-:HL["/risk-observatory/_next/static/chunks/20kjkpfktjili.css","style"]
+:HL["/risk-observatory/_next/static/chunks/3soy_60-d36k6.css","style"]
 :HC["/",""]
 3:[["children",{"s":"__PAGE__","h":160}]]
 2:[["children",{"s":"governance","h":96,"c":"$Q3"}]]
 1:[["children",{"s":{"n":"lang","t":"d","k":"de","s":["api","workspace"]},"h":65648,"c":"$Q2"}]]
-0:{"b":"r84PMshVck3wr93c8UNuK","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}
+0:{"b":"asXne-0S2AYQeTzuMHeIg","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}

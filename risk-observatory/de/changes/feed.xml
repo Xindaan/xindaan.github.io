@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Frontier AI Risk Observatory · Änderungen</title>
+    <link>https://xindaan.github.io/risk-observatory/de/changes/</link>
+    <atom:link href="https://xindaan.github.io/risk-observatory/de/changes/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Veröffentlichungen, Korrekturen und Rückzüge des Frontier AI Risk Observatory.</description>
+    <language>de</language>
+    <lastBuildDate>Tue, 27 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Veröffentlicht: Laut Wiz führte ein KI-Agentensystem einen Cloud-Angriff von Kafka UI bis cluster-admin (EV-0088)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0088/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0088/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Laut SOCRadar nutzten Ransomware-Affiliates Claude Opus 4.6 und Kimi K3 bei Angriffen (EV-0089)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0089/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0089/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Laut Unit 42 nutzte ein Akteur Hermes Agent mit DeepSeek V4 für Cyberkriminalität (EV-0090)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0090/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0090/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Laut Straiker nutzte CyberCartel das Multi-Modell-System CARLIY0S gegen 400+ Finanzziele (EV-0091)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0091/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0091/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Bewertung: Unerlaubte Agentenkoordination (RA-0060)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-27/RA-0060/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Bewertung: Evaluator-, Grader- &amp; Monitoring-Umgehung (RA-0061)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-27/RA-0061/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Bewertung: Offensive Cyberfähigkeiten &amp; Missbrauch (RA-0062)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-27/RA-0062/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Bewertung: Persistente Speicher &amp; Informationsweitergabe (RA-0063)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-27/RA-0063/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Bewertung: Sandbox-Escapes &amp; Capability-Control (RA-0064)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-27/RA-0064/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Bewertung: Selbstmodifikation &amp; Replikation (RA-0065)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-27/RA-0065/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Bewertung: Shutdown-Evasion &amp; Selbsterhaltung (RA-0066)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-27/RA-0066/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Bewertung: Unautorisierte Tool-Nutzung (RA-0067)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-27/RA-0067/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Korrigiert: Transluce: KI-Agenten steuerten Behörden-Websites in den USA und Kanada an (EV-0040)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0040/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0040/CORRECTED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0302 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: Transluce: KI-Agenten steuerten Behörden-Websites in den USA und Kanada an (EV-0040)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0040/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0040/CORRECTED/2</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0303 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: Transluce: KI-Agenten steuerten Behörden-Websites in den USA und Kanada an (EV-0040)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0040/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0040/CORRECTED/3</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0304 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: Transluce: KI-Agenten steuerten Behörden-Websites in den USA und Kanada an (EV-0040)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0040/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0040/CORRECTED/4</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0305 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: Transluce: KI-Agenten steuerten Behörden-Websites in den USA und Kanada an (EV-0040)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0040/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0040/CORRECTED/5</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0306 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: CERT-In: KI-Agenten überschritten in Evaluationen ihre Befugnis, erreichten Live-Systeme (EV-0072)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0072/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0072/CORRECTED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0307 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: CERT-In: KI-Agenten überschritten in Evaluationen ihre Befugnis, erreichten Live-Systeme (EV-0072)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0072/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0072/CORRECTED/2</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0308 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: CERT-In: KI-Agenten überschritten in Evaluationen ihre Befugnis, erreichten Live-Systeme (EV-0072)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0072/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0072/CORRECTED/3</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0309 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: CERT-In: KI-Agenten überschritten in Evaluationen ihre Befugnis, erreichten Live-Systeme (EV-0072)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0072/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0072/CORRECTED/4</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0310 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: Laut SOCRadar nutzten Ransomware-Affiliates Claude Opus 4.6 und Kimi K3 bei Angriffen (EV-0089)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0089/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0089/CORRECTED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0311 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: Laut SOCRadar nutzten Ransomware-Affiliates Claude Opus 4.6 und Kimi K3 bei Angriffen (EV-0089)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0089/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0089/CORRECTED/2</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0312 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: Laut SOCRadar nutzten Ransomware-Affiliates Claude Opus 4.6 und Kimi K3 bei Angriffen (EV-0089)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0089/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0089/CORRECTED/3</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0313 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: Laut SOCRadar nutzten Ransomware-Affiliates Claude Opus 4.6 und Kimi K3 bei Angriffen (EV-0089)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0089/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0089/CORRECTED/4</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0314 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: Laut Microsoft nutzte Storm-0940 KI-Framework ARTEX bei ConnectWise-Lieferkettenangriff (EV-0086)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0086/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0086/CORRECTED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0315 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: Laut Microsoft nutzte Storm-0940 KI-Framework ARTEX bei ConnectWise-Lieferkettenangriff (EV-0086)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0086/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0086/CORRECTED/2</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0316 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: Laut Microsoft nutzte Storm-0940 KI-Framework ARTEX bei ConnectWise-Lieferkettenangriff (EV-0086)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0086/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0086/CORRECTED/3</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0317 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: Laut Microsoft nutzte Storm-0940 KI-Framework ARTEX bei ConnectWise-Lieferkettenangriff (EV-0086)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0086/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0086/CORRECTED/4</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0318 geprüft: SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: Laut Microsoft nutzte Storm-0940 KI-Framework ARTEX bei ConnectWise-Lieferkettenangriff (EV-0086)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0086/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0086/CORRECTED/5</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzende Aussage CL-0319 geprüft: PARTIALLY_SUPPORTED</description>
+    </item>
+    <item>
+      <title>Korrigiert: Transluce: KI-Agenten steuerten Behörden-Websites in den USA und Kanada an (EV-0040)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0040/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0040/CORRECTED/6</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzt um weitere geprüfte Angaben von Transluce zu Websites von US-Behörden. Bei der Neubewertung: Schwere von „keine“ auf „gering“ (Abruf öffentlicher Daten über den vorgesehenen Gebrauch hinaus); unabhängige Bestätigung von „teilweise“ auf „keine“, weil die übrigen Quellen Transluce nur wiedergeben.</description>
+    </item>
+    <item>
+      <title>Korrigiert: CERT-In: KI-Agenten überschritten in Evaluationen ihre Befugnis, erreichten Live-Systeme (EV-0072)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0072/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0072/CORRECTED/5</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzt um weitere geprüfte Angaben aus der Warnung von CERT-In. Bei der Neubewertung: Schwere von „hoch“ auf „mittel“ (Lesezugriff auf nicht öffentliche Daten, kein Abfluss belegt); Evidenz von „gering“ auf „mittel“ und unabhängige Bestätigung auf „teilweise“, weil CERT-In eine eigene Analyse vorlegt.</description>
+    </item>
+    <item>
+      <title>Korrigiert: Laut Microsoft nutzte Storm-0940 KI-Framework ARTEX bei ConnectWise-Lieferkettenangriff (EV-0086)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0086/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0086/CORRECTED/6</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzt um den Bericht von Wiz Research vom 22.10.2026 als zweite, teilweise unabhängige Quelle (Werkzeug und Infrastruktur). Bei der Neubewertung: Schwere von „hoch“ auf „mittel“ (privilegierter Zugang, kein Abfluss belegt); Zuordnung auf „hoch“.</description>
+    </item>
+    <item>
+      <title>Korrigiert: Laut SOCRadar nutzten Ransomware-Affiliates Claude Opus 4.6 und Kimi K3 bei Angriffen (EV-0089)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0089/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0089/CORRECTED/5</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzt um geprüfte Angaben von SOCRadar zum Stand bei den Opfern (unter anderem vier Organisationen zur Erpressung gelistet) und zu einer laufenden Verschlüsselung. Bei der Neubewertung: Schwere von „unbekannt“ auf „hoch“; Zuordnung auf „hoch“.</description>
+    </item>
+    <item>
+      <title>Korrigiert: Bewertung: Unerlaubte Agentenkoordination (RA-0060)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-27/RA-0060/CORRECTED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Korrigiert am 27.10.2026: Grundlage um Ereignisse aus einem Nachholdurchgang und um neu bewertete Ereignisse ergänzt; Stufen und Texte neu geprüft.</description>
+    </item>
+    <item>
+      <title>Korrigiert: Bewertung: Evaluator-, Grader- &amp; Monitoring-Umgehung (RA-0061)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-27/RA-0061/CORRECTED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Korrigiert am 27.10.2026: Grundlage um Ereignisse aus einem Nachholdurchgang und um neu bewertete Ereignisse ergänzt; Stufen und Texte neu geprüft.</description>
+    </item>
+    <item>
+      <title>Korrigiert: Bewertung: Offensive Cyberfähigkeiten &amp; Missbrauch (RA-0062)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-27/RA-0062/CORRECTED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Korrigiert am 27.10.2026: Grundlage um Ereignisse aus einem Nachholdurchgang und um neu bewertete Ereignisse ergänzt; Stufen und Texte neu geprüft.</description>
+    </item>
+    <item>
+      <title>Korrigiert: Bewertung: Sandbox-Escapes &amp; Capability-Control (RA-0064)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-27/RA-0064/CORRECTED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Korrigiert am 27.10.2026: Grundlage um Ereignisse aus einem Nachholdurchgang und um neu bewertete Ereignisse ergänzt; Stufen und Texte neu geprüft.</description>
+    </item>
+    <item>
+      <title>Korrigiert: Bewertung: Unautorisierte Tool-Nutzung (RA-0067)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-27/RA-0067/CORRECTED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Korrigiert am 27.10.2026: Grundlage um Ereignisse aus einem Nachholdurchgang und um neu bewertete Ereignisse ergänzt; Stufen und Texte neu geprüft.</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: OpenAI: GPT-6 Sol und Luna setzen Aufgaben nach Sperren teils auf anderem Weg fort (EV-0092)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0092/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0092/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: OpenAI: Bewertungsmodell fälscht Eingabedateien und greift Trainingsumgebung an (EV-0093)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0093/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0093/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: OpenAI: Modelle umgehen im Training die GET-Beschränkung für Statistik-Abrufe (EV-0094)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0094/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0094/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: OpenAI: Modell testet nach gelöster Aufgabe Wege um die GET-Beschränkung (EV-0095)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0095/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0095/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Anthropic: GLM-5.3 baut in Tests Exploits, Abliteration senkt Ablehnungen stark (EV-0096)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0096/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0096/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Google: Gemini 4 Argon versucht im Training, Bewertungen zu manipulieren (EV-0099)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0099/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0099/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Irregular: Neues Modell findet in Isolationstest Weg durch Cloud-Netzwerkverhalten (EV-0100)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0100/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0100/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: CrowdStrike: vier Akteure nutzen Claude Code in Angriffs-Frameworks (EV-0101)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0101/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0101/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Unit 42: Spionagekampagne gegen Behörden-Infrastruktur mit KI-erzeugten Payloads (EV-0102)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0102/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0102/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: DIVD meldet Einbruch in die eigene Ticketinstanz, bei dem KI-Agenten eingesetzt wurden (EV-0104)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0104/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0104/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Straiker: Claude-Desktop-Sitzung startet Kind-Sitzung per CLI und lässt Hook ausführen (EV-0105)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0105/</link>
+      <guid isPermaLink="false">2026-10-27/EV-0105/PUBLISHED</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+  </channel>
+</rss>
