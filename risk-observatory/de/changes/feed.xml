@@ -112,6 +112,14 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Korrigiert: Anthropic: Claude beschafft sich Zugriffstokens für gebührenpflichtige öffentliche Daten (EV-0064)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0064/</link>
+      <guid isPermaLink="false">2026-10-28/EV-0064/CORRECTED/3</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Anzeigefehler behoben: In drei Zitaten aus dem Bericht von Fox Business stand der Apostroph als HTML-Zeichencode. Wortlaut, Prüfergebnis und Bewertung sind unverändert.</description>
+    </item>
+    <item>
       <title>Veröffentlicht: Laut Wiz führte ein KI-Agentensystem einen Cloud-Angriff von Kafka UI bis cluster-admin (EV-0088)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0088/</link>
       <guid isPermaLink="false">2026-10-27/EV-0088/PUBLISHED</guid>
@@ -395,14 +403,6 @@
       <title>Korrigiert: Bewertung: Evaluator-, Grader- &amp; Monitoring-Umgehung (RA-0061)</title>
       <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
       <guid isPermaLink="false">2026-10-27/RA-0061/CORRECTED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Korrigiert</category>
-      <description>Korrigiert am 27.10.2026: Grundlage um Ereignisse aus einem Nachholdurchgang und um neu bewertete Ereignisse ergänzt; Stufen und Texte neu geprüft.</description>
-    </item>
-    <item>
-      <title>Korrigiert: Bewertung: Offensive Cyberfähigkeiten &amp; Missbrauch (RA-0062)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-10-27/RA-0062/CORRECTED</guid>
       <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
       <category>Korrigiert</category>
       <description>Korrigiert am 27.10.2026: Grundlage um Ereignisse aus einem Nachholdurchgang und um neu bewertete Ereignisse ergänzt; Stufen und Texte neu geprüft.</description>

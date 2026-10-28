@@ -112,6 +112,14 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Corrected: Anthropic: Claude obtains access tokens to reach public data normally offered for a fee (EV-0064)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0064/</link>
+      <guid isPermaLink="false">2026-10-28/EV-0064/CORRECTED/3</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Display error fixed: in three quotes from the Fox Business report, the apostrophe appeared as an HTML character code. Wording, verification result and assessment are unchanged.</description>
+    </item>
+    <item>
       <title>Published: Wiz: AI agent system ran a cloud attack from Kafka UI to cluster-admin (EV-0088)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0088/</link>
       <guid isPermaLink="false">2026-10-27/EV-0088/PUBLISHED</guid>
@@ -395,14 +403,6 @@
       <title>Corrected: Assessment: Evaluator, grader &amp; monitoring evasion (RA-0061)</title>
       <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
       <guid isPermaLink="false">2026-10-27/RA-0061/CORRECTED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Corrected on 27 October 2026: basis extended by events from a catch-up review and by re-assessed events; levels and texts re-checked.</description>
-    </item>
-    <item>
-      <title>Corrected: Assessment: Offensive cyber capabilities &amp; misuse (RA-0062)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-10-27/RA-0062/CORRECTED</guid>
       <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
       <category>Corrected</category>
       <description>Corrected on 27 October 2026: basis extended by events from a catch-up review and by re-assessed events; levels and texts re-checked.</description>
