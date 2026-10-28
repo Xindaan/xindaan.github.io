@@ -6,7 +6,111 @@
     <atom:link href="https://xindaan.github.io/risk-observatory/en/changes/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Publications, corrections and retractions of the Frontier AI Risk Observatory.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 27 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Corrected: PHP2Shell: frontier models helped find critical PHP flaws, according to Wiz and OpenAI (EV-0087)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0087/</link>
+      <guid isPermaLink="false">2026-10-28/EV-0087/CORRECTED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Supplemented with 3 newly checked claims (3 supported).</description>
+    </item>
+    <item>
+      <title>Corrected: Anthropic: Claude obtains access tokens to reach public data normally offered for a fee (EV-0064)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0064/</link>
+      <guid isPermaLink="false">2026-10-28/EV-0064/CORRECTED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Supplemented with 3 newly checked claims (3 supported).</description>
+    </item>
+    <item>
+      <title>Corrected: Anthropic: Claude obtains access tokens to reach public data normally offered for a fee (EV-0064)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0064/</link>
+      <guid isPermaLink="false">2026-10-28/EV-0064/CORRECTED/2</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Supplemented with a Fox Business report of 25 October 2026: Anthropic and officials of the US state of Georgia confirm that a Claude model retrieved publicly available voter data through Georgia&apos;s data hub, according to Anthropic only aggregate counts and without access to the voter registration system. Severity lowered from &quot;moderate&quot; to &quot;low&quot; because the retrieved data was publicly available, otherwise behind a fee; evidence raised to &quot;moderate&quot; and independent confirmation to &quot;partial&quot; because the state office confirms the data access.</description>
+    </item>
+    <item>
+      <title>Corrected: PHP2Shell: frontier models helped find critical PHP flaws, according to Wiz and OpenAI (EV-0087)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0087/</link>
+      <guid isPermaLink="false">2026-10-28/EV-0087/CORRECTED/2</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Supplemented with a Wiz report of 27 October 2026: a limited number of exploitation attempts since disclosure, no successful end-to-end exploitation in Wiz&apos;s own telemetry, one honeypot successfully exploited, and inclusion in CISA&apos;s KEV list. Severity raised from &quot;none&quot; to &quot;low&quot; because the documented consequences (government websites taken offline as a precaution, attack traffic) go beyond &quot;none&quot;, while successful exploitation of real targets is not documented.</description>
+    </item>
+    <item>
+      <title>Published: Anthropic: research model builds exploit chains for browsers and operating systems (EV-0112)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0112/</link>
+      <guid isPermaLink="false">2026-10-28/EV-0112/PUBLISHED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: Assessment: Unauthorized agent coordination (RA-0068)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-28/RA-0068/PUBLISHED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Assessment: Evaluator, grader &amp; monitoring evasion (RA-0069)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-28/RA-0069/PUBLISHED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Assessment: Offensive cyber capabilities &amp; misuse (RA-0070)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-28/RA-0070/PUBLISHED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Assessment: Persistent memory &amp; information transfer (RA-0071)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-28/RA-0071/PUBLISHED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Assessment: Sandbox escapes &amp; capability control (RA-0072)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-28/RA-0072/PUBLISHED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Assessment: Self-modification &amp; replication (RA-0073)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-28/RA-0073/PUBLISHED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Assessment: Shutdown evasion &amp; self-preservation (RA-0074)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-28/RA-0074/PUBLISHED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Assessment: Unauthorized tool use (RA-0075)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-28/RA-0075/PUBLISHED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
     <item>
       <title>Published: Wiz: AI agent system ran a cloud attack from Kafka UI to cluster-admin (EV-0088)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0088/</link>
@@ -302,110 +406,6 @@
       <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
       <category>Corrected</category>
       <description>Corrected on 27 October 2026: basis extended by events from a catch-up review and by re-assessed events; levels and texts re-checked.</description>
-    </item>
-    <item>
-      <title>Corrected: Assessment: Sandbox escapes &amp; capability control (RA-0064)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-10-27/RA-0064/CORRECTED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Corrected on 27 October 2026: basis extended by events from a catch-up review and by re-assessed events; levels and texts re-checked.</description>
-    </item>
-    <item>
-      <title>Corrected: Assessment: Unauthorized tool use (RA-0067)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-10-27/RA-0067/CORRECTED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Corrected on 27 October 2026: basis extended by events from a catch-up review and by re-assessed events; levels and texts re-checked.</description>
-    </item>
-    <item>
-      <title>Published: OpenAI: GPT-6 Sol and Luna sometimes continue tasks by another route after a block (EV-0092)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0092/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0092/PUBLISHED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: OpenAI: grading model fabricates input files and attacks its training environment (EV-0093)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0093/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0093/PUBLISHED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: OpenAI: models bypass GET-only restriction in training to obtain public statistics (EV-0094)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0094/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0094/PUBLISHED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: OpenAI: model tests ways around GET-only restriction after solving the task (EV-0095)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0095/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0095/PUBLISHED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Anthropic: GLM-5.3 builds exploits in tests, abliteration sharply cuts refusals (EV-0096)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0096/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0096/PUBLISHED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Google: Gemini 4 Argon attempts to game grading during training (EV-0099)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0099/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0099/PUBLISHED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Irregular: new model finds route past network isolation via cloud networking behavior (EV-0100)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0100/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0100/PUBLISHED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: CrowdStrike: four threat actors use Claude Code in attack frameworks (EV-0101)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0101/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0101/PUBLISHED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Unit 42: espionage campaign against government infrastructure using AI-generated payloads (EV-0102)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0102/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0102/PUBLISHED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: DIVD reports breach of its own ticketing instance in which AI agents were used (EV-0104)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0104/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0104/PUBLISHED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Straiker: Claude Desktop session spawns child session via CLI and runs a hook (EV-0105)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0105/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0105/PUBLISHED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
     </item>
   </channel>
 </rss>
