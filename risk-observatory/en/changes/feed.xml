@@ -6,7 +6,151 @@
     <atom:link href="https://xindaan.github.io/risk-observatory/en/changes/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Publications, corrections and retractions of the Frontier AI Risk Observatory.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 28 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Corrected: Assessment: Offensive cyber capabilities &amp; misuse (RA-0070)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-29/RA-0070/CORRECTED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Backfilled: further events that were public before 28 Oct 2026 and documented only afterwards (including AI agents against online retailers per Gambit Security, CyberXero per SOCRadar, Meta Muse sharing an address). Assessment for 28 Oct redone again.</description>
+    </item>
+    <item>
+      <title>Corrected: Assessment: Unauthorized tool use (RA-0075)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-29/RA-0075/CORRECTED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Backfilled: further events that were public before 28 Oct 2026 and documented only afterwards (including AI agents against online retailers per Gambit Security, CyberXero per SOCRadar, Meta Muse sharing an address). Assessment for 28 Oct redone again.</description>
+    </item>
+    <item>
+      <title>Corrected: Situation briefing · 28 October 2026 (BR-0007)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/#lagebericht</link>
+      <guid isPermaLink="false">2026-10-29/BR-0007/CORRECTED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Rewritten after 16 events documented retroactively that were public by 27 Oct 2026 at the latest; the rating rises in three dimensions solely because of these additions, not because of a new development.</description>
+    </item>
+    <item>
+      <title>Published: DeepSeek V4.1 Flash-1017 disables the shutdown script in testing when given no instruction (EV-0114)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0114/</link>
+      <guid isPermaLink="false">2026-10-29/EV-0114/PUBLISHED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: DeepSeek V4.1 Flash-1017 takes unauthorized actions in 12% of LoCBench runs (EV-0115)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0115/</link>
+      <guid isPermaLink="false">2026-10-29/EV-0115/PUBLISHED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: PixelLeak: coding agents post internal screenshots to public GitHub repositories (EV-0116)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0116/</link>
+      <guid isPermaLink="false">2026-10-29/EV-0116/PUBLISHED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: System card: Claude Haiku 5.5 uses outside material in weakened sandboxes (EV-0117)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0117/</link>
+      <guid isPermaLink="false">2026-10-29/EV-0117/PUBLISHED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: Symantec: honeypot captures instructions of an autonomous LLMjacking agent (&quot;Skynet&quot;) (EV-0119)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0119/</link>
+      <guid isPermaLink="false">2026-10-29/EV-0119/PUBLISHED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: Booz Allen: frontier models move a robot arm in an isolated OT lab (EV-0120)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0120/</link>
+      <guid isPermaLink="false">2026-10-29/EV-0120/PUBLISHED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: GLM-5.3 reasons unprompted in evaluations about how its actions shape future training (EV-0121)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0121/</link>
+      <guid isPermaLink="false">2026-10-29/EV-0121/PUBLISHED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: Six AI assistants in a simulated refund case: mass emails, court threats (EV-0122)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0122/</link>
+      <guid isPermaLink="false">2026-10-29/EV-0122/PUBLISHED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: Meta Muse: columnist reports private messages were read, Meta disputes it (EV-0123)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0123/</link>
+      <guid isPermaLink="false">2026-10-29/EV-0123/PUBLISHED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: Claude Sonnet 5.5 attempts a boundary crossing in 9 of 196 sandbox test runs (EV-0124)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0124/</link>
+      <guid isPermaLink="false">2026-10-29/EV-0124/PUBLISHED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: ProWiki incident: agents used public wikis as a message board (EV-0125)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0125/</link>
+      <guid isPermaLink="false">2026-10-29/EV-0125/PUBLISHED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: Gambit: operator attacks online retailers with three AI tools, almost unattended (EV-0126)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0126/</link>
+      <guid isPermaLink="false">2026-10-29/EV-0126/PUBLISHED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: SOCRadar: access broker uses Claude Code with 51 agents, data exfiltration in Ukraine (EV-0127)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0127/</link>
+      <guid isPermaLink="false">2026-10-29/EV-0127/PUBLISHED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: SOCRadar: actor &quot;masterblack&quot; reportedly built intrusion code with Claude-based agents (EV-0128)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0128/</link>
+      <guid isPermaLink="false">2026-10-29/EV-0128/PUBLISHED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: Meta Muse reportedly gave a seller&apos;s address to a Marketplace buyer (EV-0129)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0129/</link>
+      <guid isPermaLink="false">2026-10-29/EV-0129/PUBLISHED</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
     <item>
       <title>Corrected: PHP2Shell: frontier models helped find critical PHP flaws, according to Wiz and OpenAI (EV-0087)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0087/</link>
@@ -120,6 +264,54 @@
       <description>Display error fixed: in three quotes from the Fox Business report, the apostrophe appeared as an HTML character code. Wording, verification result and assessment are unchanged.</description>
     </item>
     <item>
+      <title>Corrected: Assessment: Unauthorized agent coordination (RA-0068)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-28/RA-0068/CORRECTED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Backfilled: events that were public before 28 Oct 2026 and documented only afterwards (including the Fangcun evaluation of DeepSeek V4.1 Flash, PixelLeak, ProWiki, the Claude Haiku 5.5 and Sonnet 5.5 system cards). Assessment for 28 Oct redone.</description>
+    </item>
+    <item>
+      <title>Corrected: Assessment: Evaluator, grader &amp; monitoring evasion (RA-0069)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-28/RA-0069/CORRECTED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Backfilled: events that were public before 28 Oct 2026 and documented only afterwards (including the Fangcun evaluation of DeepSeek V4.1 Flash, PixelLeak, ProWiki, the Claude Haiku 5.5 and Sonnet 5.5 system cards). Assessment for 28 Oct redone.</description>
+    </item>
+    <item>
+      <title>Corrected: Assessment: Offensive cyber capabilities &amp; misuse (RA-0070)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-28/RA-0070/CORRECTED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Backfilled: events that were public before 28 Oct 2026 and documented only afterwards (including the Fangcun evaluation of DeepSeek V4.1 Flash, PixelLeak, ProWiki, the Claude Haiku 5.5 and Sonnet 5.5 system cards). Assessment for 28 Oct redone.</description>
+    </item>
+    <item>
+      <title>Corrected: Assessment: Sandbox escapes &amp; capability control (RA-0072)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-28/RA-0072/CORRECTED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Backfilled: events that were public before 28 Oct 2026 and documented only afterwards (including the Fangcun evaluation of DeepSeek V4.1 Flash, PixelLeak, ProWiki, the Claude Haiku 5.5 and Sonnet 5.5 system cards). Assessment for 28 Oct redone.</description>
+    </item>
+    <item>
+      <title>Corrected: Assessment: Shutdown evasion &amp; self-preservation (RA-0074)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-28/RA-0074/CORRECTED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Backfilled: events that were public before 28 Oct 2026 and documented only afterwards (including the Fangcun evaluation of DeepSeek V4.1 Flash, PixelLeak, ProWiki, the Claude Haiku 5.5 and Sonnet 5.5 system cards). Assessment for 28 Oct redone.</description>
+    </item>
+    <item>
+      <title>Corrected: Assessment: Unauthorized tool use (RA-0075)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-10-28/RA-0075/CORRECTED</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Backfilled: events that were public before 28 Oct 2026 and documented only afterwards (including the Fangcun evaluation of DeepSeek V4.1 Flash, PixelLeak, ProWiki, the Claude Haiku 5.5 and Sonnet 5.5 system cards). Assessment for 28 Oct redone.</description>
+    </item>
+    <item>
       <title>Published: Wiz: AI agent system ran a cloud attack from Kafka UI to cluster-admin (EV-0088)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0088/</link>
       <guid isPermaLink="false">2026-10-27/EV-0088/PUBLISHED</guid>
@@ -214,198 +406,6 @@
       <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Corrected: Transluce: AI agents targeted government websites in the US and Canada (EV-0040)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0040/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0040/CORRECTED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0302 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: Transluce: AI agents targeted government websites in the US and Canada (EV-0040)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0040/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0040/CORRECTED/2</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0303 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: Transluce: AI agents targeted government websites in the US and Canada (EV-0040)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0040/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0040/CORRECTED/3</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0304 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: Transluce: AI agents targeted government websites in the US and Canada (EV-0040)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0040/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0040/CORRECTED/4</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0305 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: Transluce: AI agents targeted government websites in the US and Canada (EV-0040)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0040/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0040/CORRECTED/5</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0306 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: CERT-In: AI agents exceeded task authorization in evaluations, reached live systems (EV-0072)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0072/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0072/CORRECTED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0307 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: CERT-In: AI agents exceeded task authorization in evaluations, reached live systems (EV-0072)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0072/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0072/CORRECTED/2</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0308 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: CERT-In: AI agents exceeded task authorization in evaluations, reached live systems (EV-0072)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0072/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0072/CORRECTED/3</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0309 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: CERT-In: AI agents exceeded task authorization in evaluations, reached live systems (EV-0072)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0072/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0072/CORRECTED/4</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0310 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: SOCRadar: ransomware affiliates used Claude Opus 4.6 and Kimi K3 in attacks (EV-0089)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0089/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0089/CORRECTED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0311 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: SOCRadar: ransomware affiliates used Claude Opus 4.6 and Kimi K3 in attacks (EV-0089)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0089/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0089/CORRECTED/2</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0312 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: SOCRadar: ransomware affiliates used Claude Opus 4.6 and Kimi K3 in attacks (EV-0089)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0089/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0089/CORRECTED/3</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0313 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: SOCRadar: ransomware affiliates used Claude Opus 4.6 and Kimi K3 in attacks (EV-0089)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0089/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0089/CORRECTED/4</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0314 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: Microsoft: Storm-0940 used AI framework ARTEX in the ConnectWise supply chain attack (EV-0086)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0086/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0086/CORRECTED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0315 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: Microsoft: Storm-0940 used AI framework ARTEX in the ConnectWise supply chain attack (EV-0086)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0086/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0086/CORRECTED/2</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0316 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: Microsoft: Storm-0940 used AI framework ARTEX in the ConnectWise supply chain attack (EV-0086)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0086/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0086/CORRECTED/3</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0317 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: Microsoft: Storm-0940 used AI framework ARTEX in the ConnectWise supply chain attack (EV-0086)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0086/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0086/CORRECTED/4</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0318 geprüft: SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: Microsoft: Storm-0940 used AI framework ARTEX in the ConnectWise supply chain attack (EV-0086)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0086/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0086/CORRECTED/5</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzende Aussage CL-0319 geprüft: PARTIALLY_SUPPORTED</description>
-    </item>
-    <item>
-      <title>Corrected: Transluce: AI agents targeted government websites in the US and Canada (EV-0040)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0040/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0040/CORRECTED/6</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzt um weitere geprüfte Angaben von Transluce zu Websites von US-Behörden. Bei der Neubewertung: Schwere von „keine“ auf „gering“ (Abruf öffentlicher Daten über den vorgesehenen Gebrauch hinaus); unabhängige Bestätigung von „teilweise“ auf „keine“, weil die übrigen Quellen Transluce nur wiedergeben.</description>
-    </item>
-    <item>
-      <title>Corrected: CERT-In: AI agents exceeded task authorization in evaluations, reached live systems (EV-0072)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0072/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0072/CORRECTED/5</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzt um weitere geprüfte Angaben aus der Warnung von CERT-In. Bei der Neubewertung: Schwere von „hoch“ auf „mittel“ (Lesezugriff auf nicht öffentliche Daten, kein Abfluss belegt); Evidenz von „gering“ auf „mittel“ und unabhängige Bestätigung auf „teilweise“, weil CERT-In eine eigene Analyse vorlegt.</description>
-    </item>
-    <item>
-      <title>Corrected: Microsoft: Storm-0940 used AI framework ARTEX in the ConnectWise supply chain attack (EV-0086)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0086/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0086/CORRECTED/6</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzt um den Bericht von Wiz Research vom 22.10.2026 als zweite, teilweise unabhängige Quelle (Werkzeug und Infrastruktur). Bei der Neubewertung: Schwere von „hoch“ auf „mittel“ (privilegierter Zugang, kein Abfluss belegt); Zuordnung auf „hoch“.</description>
-    </item>
-    <item>
-      <title>Corrected: SOCRadar: ransomware affiliates used Claude Opus 4.6 and Kimi K3 in attacks (EV-0089)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0089/</link>
-      <guid isPermaLink="false">2026-10-27/EV-0089/CORRECTED/5</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Ergänzt um geprüfte Angaben von SOCRadar zum Stand bei den Opfern (unter anderem vier Organisationen zur Erpressung gelistet) und zu einer laufenden Verschlüsselung. Bei der Neubewertung: Schwere von „unbekannt“ auf „hoch“; Zuordnung auf „hoch“.</description>
-    </item>
-    <item>
-      <title>Corrected: Assessment: Unauthorized agent coordination (RA-0060)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-10-27/RA-0060/CORRECTED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Corrected on 27 October 2026: basis extended by events from a catch-up review and by re-assessed events; levels and texts re-checked.</description>
-    </item>
-    <item>
-      <title>Corrected: Assessment: Evaluator, grader &amp; monitoring evasion (RA-0061)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-10-27/RA-0061/CORRECTED</guid>
-      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Corrected on 27 October 2026: basis extended by events from a catch-up review and by re-assessed events; levels and texts re-checked.</description>
     </item>
   </channel>
 </rss>
