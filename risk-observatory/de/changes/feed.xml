@@ -104,6 +104,22 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Korrigiert: Externe Prüfung findet Lücken in OpenAIs interner Agentenüberwachung (EV-0083)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0083/</link>
+      <guid isPermaLink="false">2026-10-31/EV-0083/CORRECTED</guid>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzt um 2 neu geprüfte Aussagen (2 belegt).</description>
+    </item>
+    <item>
+      <title>Korrigiert: Externe Prüfung findet Lücken in OpenAIs interner Agentenüberwachung (EV-0083)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0083/</link>
+      <guid isPermaLink="false">2026-10-31/EV-0083/CORRECTED/2</guid>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzt um die berichtigte Fassung des METR-Beitrags vom 29. Oktober 2026: Laut OpenAI sind die meisten der gefundenen Schwachstellen behoben, eine Behebung läuft noch; zuvor hieß es, alle seien behoben. Bewertung unverändert.</description>
+    </item>
+    <item>
       <title>Korrigiert: Bewertung: Offensive Cyberfähigkeiten &amp; Missbrauch (RA-0070)</title>
       <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
       <guid isPermaLink="false">2026-10-29/RA-0070/CORRECTED</guid>
@@ -387,22 +403,6 @@
       <title>Korrigiert: Bewertung: Sandbox-Escapes &amp; Capability-Control (RA-0072)</title>
       <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
       <guid isPermaLink="false">2026-10-28/RA-0072/CORRECTED</guid>
-      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Korrigiert</category>
-      <description>Nachgetragen: Ereignisse, die vor dem 28.10.2026 öffentlich bekannt waren und erst nachträglich dokumentiert wurden (u. a. Fangcun-Evaluation von DeepSeek V4.1 Flash, PixelLeak, ProWiki, Systemkarten Claude Haiku 5.5 und Sonnet 5.5). Bewertung zum 28.10. neu erstellt.</description>
-    </item>
-    <item>
-      <title>Korrigiert: Bewertung: Shutdown-Evasion &amp; Selbsterhaltung (RA-0074)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-10-28/RA-0074/CORRECTED</guid>
-      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Korrigiert</category>
-      <description>Nachgetragen: Ereignisse, die vor dem 28.10.2026 öffentlich bekannt waren und erst nachträglich dokumentiert wurden (u. a. Fangcun-Evaluation von DeepSeek V4.1 Flash, PixelLeak, ProWiki, Systemkarten Claude Haiku 5.5 und Sonnet 5.5). Bewertung zum 28.10. neu erstellt.</description>
-    </item>
-    <item>
-      <title>Korrigiert: Bewertung: Unautorisierte Tool-Nutzung (RA-0075)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-10-28/RA-0075/CORRECTED</guid>
       <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
       <category>Korrigiert</category>
       <description>Nachgetragen: Ereignisse, die vor dem 28.10.2026 öffentlich bekannt waren und erst nachträglich dokumentiert wurden (u. a. Fangcun-Evaluation von DeepSeek V4.1 Flash, PixelLeak, ProWiki, Systemkarten Claude Haiku 5.5 und Sonnet 5.5). Bewertung zum 28.10. neu erstellt.</description>
