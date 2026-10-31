@@ -3,4 +3,4 @@
 :HL["/risk-observatory/_next/static/chunks/2oj0pq4eaxoga.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":{"n":"lang","t":"d","k":"de","s":["api","workspace"]},"h":65648,"c":"$Q2"}]]
-0:{"b":"1qJJSBgg8Zlqv7x6GxynK","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}
+0:{"b":"e6rn1Hzf5pUWJdF_4Qpgz","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}
