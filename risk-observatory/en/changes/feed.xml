@@ -216,6 +216,14 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Corrected: CrowdStrike: prompt injection taxonomy now covers 222 techniques, including agent planning (ST-0014)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0014</link>
+      <guid isPermaLink="false">2026-11-01/ST-0014/CORRECTED</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Result reworded and limited to the verified claims; study type (survey instead of evaluation report) and evidence quality (moderate instead of low) adjusted after re-review.</description>
+    </item>
+    <item>
       <title>Published: GLM-5.3 refuses no offensive task and completes 3 of 13 attack scenarios (EV-0130)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0130/</link>
       <guid isPermaLink="false">2026-10-31/EV-0130/PUBLISHED</guid>
@@ -395,14 +403,6 @@
       <title>Published: Booz Allen: frontier models move a robot arm in an isolated OT lab (EV-0120)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0120/</link>
       <guid isPermaLink="false">2026-10-29/EV-0120/PUBLISHED</guid>
-      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: GLM-5.3 reasons unprompted in evaluations about how its actions shape future training (EV-0121)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0121/</link>
-      <guid isPermaLink="false">2026-10-29/EV-0121/PUBLISHED</guid>
       <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>

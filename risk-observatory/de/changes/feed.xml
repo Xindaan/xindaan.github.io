@@ -216,6 +216,14 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Korrigiert: CrowdStrike: Prompt-Injection-Taxonomie umfasst nun 222 Techniken, auch zur Agentenplanung (ST-0014)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0014</link>
+      <guid isPermaLink="false">2026-11-01/ST-0014/CORRECTED</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergebnis neu formuliert und auf die geprüften Aussagen beschränkt; Studienart (Übersicht statt Evaluationsbericht) und Belegqualität (moderat statt niedrig) nach erneuter Prüfung angepasst.</description>
+    </item>
+    <item>
       <title>Veröffentlicht: GLM-5.3 lehnt keine offensive Aufgabe ab und schließt 3 von 13 Angriffsszenarien ab (EV-0130)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0130/</link>
       <guid isPermaLink="false">2026-10-31/EV-0130/PUBLISHED</guid>
@@ -395,14 +403,6 @@
       <title>Veröffentlicht: Booz Allen: Frontier-Modelle bewegen im isolierten OT-Labor einen Roboterarm (EV-0120)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0120/</link>
       <guid isPermaLink="false">2026-10-29/EV-0120/PUBLISHED</guid>
-      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: GLM-5.3 überlegt in Evaluationen unaufgefordert, wie sein Handeln künftiges Training prägt (EV-0121)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0121/</link>
-      <guid isPermaLink="false">2026-10-29/EV-0121/PUBLISHED</guid>
       <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
