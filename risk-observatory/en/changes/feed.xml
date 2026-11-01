@@ -136,6 +136,38 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Corrected: Assessment: Evaluator, grader &amp; monitoring evasion (RA-0085)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-11-01/RA-0085/CORRECTED</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Backfilled: two Anthropic experiments that were public by 1 Nov 2026 and documented only afterwards (red-teaming of Auto Mode and Guardian, automated search for misalignment data). Assessment for 1 Nov redone.</description>
+    </item>
+    <item>
+      <title>Corrected: Situation briefing · 1 November 2026 (BR-0009)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/#lagebericht</link>
+      <guid isPermaLink="false">2026-11-01/BR-0009/CORRECTED</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Backfilled: two Anthropic experiments on evading evaluation and monitoring systems that were public by 1 Nov 2026 and documented only afterwards. Briefing for 1 Nov redone.</description>
+    </item>
+    <item>
+      <title>Published: Opus 5-based red-team agent bypasses coding-agent blocking monitors in experiments (EV-0138)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0138/</link>
+      <guid isPermaLink="false">2026-11-01/EV-0138/PUBLISHED</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: In an experiment, Claude agents create misaligning training data that passes a monitor (EV-0139)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0139/</link>
+      <guid isPermaLink="false">2026-11-01/EV-0139/PUBLISHED</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
       <title>Published: GLM-5.3 refuses no offensive task and completes 3 of 13 attack scenarios (EV-0130)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0130/</link>
       <guid isPermaLink="false">2026-10-31/EV-0130/PUBLISHED</guid>
@@ -374,38 +406,6 @@
       <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: SOCRadar: actor &quot;masterblack&quot; reportedly built intrusion code with Claude-based agents (EV-0128)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0128/</link>
-      <guid isPermaLink="false">2026-10-29/EV-0128/PUBLISHED</guid>
-      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Meta Muse reportedly gave a seller&apos;s address to a Marketplace buyer (EV-0129)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0129/</link>
-      <guid isPermaLink="false">2026-10-29/EV-0129/PUBLISHED</guid>
-      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Corrected: PHP2Shell: frontier models helped find critical PHP flaws, according to Wiz and OpenAI (EV-0087)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0087/</link>
-      <guid isPermaLink="false">2026-10-28/EV-0087/CORRECTED</guid>
-      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Supplemented with 3 newly checked claims (3 supported).</description>
-    </item>
-    <item>
-      <title>Corrected: Anthropic: Claude obtains access tokens to reach public data normally offered for a fee (EV-0064)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0064/</link>
-      <guid isPermaLink="false">2026-10-28/EV-0064/CORRECTED</guid>
-      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Supplemented with 3 newly checked claims (3 supported).</description>
     </item>
   </channel>
 </rss>
