@@ -168,6 +168,54 @@
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
     </item>
     <item>
+      <title>Veröffentlicht: Anthropic-Studie: Analyst:innen folgen meist der Neigung ihres KI-Agenten (ST-0011)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0011</link>
+      <guid isPermaLink="false">2026-11-01/ST-0011/PUBLISHED</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Das et al.: Fehlausrichtung breitet sich über den Agentenspeicher selbst weiter aus (ST-0012)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0012</link>
+      <guid isPermaLink="false">2026-11-01/ST-0012/PUBLISHED</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Tyagi und Heimersheim: Aktivierungssonden bei wenigen positiven Trainingsbeispielen (ST-0013)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0013</link>
+      <guid isPermaLink="false">2026-11-01/ST-0013/PUBLISHED</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: CrowdStrike: Prompt-Injection-Taxonomie umfasst nun 222 Techniken, auch zur Agentenplanung (ST-0014)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0014</link>
+      <guid isPermaLink="false">2026-11-01/ST-0014/PUBLISHED</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: CrowdStrike: Ablehnungen eines KI-Modells weisen auf Schwachstellen im Code hin (ST-0015)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0015</link>
+      <guid isPermaLink="false">2026-11-01/ST-0015/PUBLISHED</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: OpenAI aktualisiert die Model Spec mit fünf Grundwerten (GV-0016)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/governance/#GV-0016</link>
+      <guid isPermaLink="false">2026-11-01/GV-0016/PUBLISHED</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
       <title>Veröffentlicht: GLM-5.3 lehnt keine offensive Aufgabe ab und schließt 3 von 13 Angriffsszenarien ab (EV-0130)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0130/</link>
       <guid isPermaLink="false">2026-10-31/EV-0130/PUBLISHED</guid>
@@ -355,54 +403,6 @@
       <title>Veröffentlicht: GLM-5.3 überlegt in Evaluationen unaufgefordert, wie sein Handeln künftiges Training prägt (EV-0121)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0121/</link>
       <guid isPermaLink="false">2026-10-29/EV-0121/PUBLISHED</guid>
-      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Sechs KI-Assistenten im simulierten Erstattungsfall: Massenmails, Klagedrohungen (EV-0122)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0122/</link>
-      <guid isPermaLink="false">2026-10-29/EV-0122/PUBLISHED</guid>
-      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Meta Muse: Kolumnist berichtet vom Lesen privater Nachrichten, Meta bestreitet (EV-0123)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0123/</link>
-      <guid isPermaLink="false">2026-10-29/EV-0123/PUBLISHED</guid>
-      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Claude Sonnet 5.5 versucht in 9 von 196 Sandbox-Testläufen eine Grenzüberschreitung (EV-0124)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0124/</link>
-      <guid isPermaLink="false">2026-10-29/EV-0124/PUBLISHED</guid>
-      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: ProWiki-Vorfall: Agenten nutzten öffentliche Wikis als Nachrichtenbrett (EV-0125)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0125/</link>
-      <guid isPermaLink="false">2026-10-29/EV-0125/PUBLISHED</guid>
-      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Gambit: Akteur greift mit drei KI-Werkzeugen fast unbeaufsichtigt Onlinehändler an (EV-0126)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0126/</link>
-      <guid isPermaLink="false">2026-10-29/EV-0126/PUBLISHED</guid>
-      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: SOCRadar: Zugangshändler nutzt Claude Code mit 51 Agenten, Datenabfluss in der Ukraine (EV-0127)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0127/</link>
-      <guid isPermaLink="false">2026-10-29/EV-0127/PUBLISHED</guid>
       <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
