@@ -9,8 +9,8 @@
     />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>Bahn & Bus · Alle Wege</title>
-    <link rel="stylesheet" href="style.css?v=20261103-7" />
-    <link rel="stylesheet" href="bahn.css?v=5" />
+    <link rel="stylesheet" href="style.css?v=20261103-8" />
+    <link rel="stylesheet" href="bahn.css?v=6" />
   </head>
   <body class="bahn-seite">
     <header>
@@ -76,34 +76,40 @@
             </select>
           </div>
           <div id="zentren-felder" hidden>
-            <label for="zentren">WELCHE ZENTREN VERGLEICHEN?</label>
-            <textarea id="zentren" rows="5">
-Berlin
-Hamburg
-München
-Köln
-Frankfurt am Main</textarea
-            >
+            <label for="zentren-ort">WELCHE ZENTREN VERGLEICHEN?</label>
+            <div class="searchbox">
+              <span>+</span
+              ><input
+                id="zentren-ort"
+                list="bahn-orte"
+                placeholder="Zentrum hinzufügen …"
+                autocomplete="off"
+              /><button
+                type="button"
+                data-ort-add="zentren"
+                aria-label="Zentrum hinzufügen"
+              >
+                ↵
+              </button>
+            </div>
+            <input
+              type="hidden"
+              id="zentren"
+              value="Berlin&#10;Hamburg&#10;München&#10;Köln&#10;Frankfurt am Main"
+            />
+            <div
+              id="zentren-liste"
+              class="ortsliste"
+              aria-label="Ausgewählte Orte"
+            ></div>
+            <p
+              class="hint ortsliste-fehler"
+              id="zentren-fehler"
+              role="status"
+            ></p>
             <p class="hint">
-              2–8 Orte, einer pro Zeile. Jede Haltestelle gehört zum zeitlich
-              nächsten Zentrum bei gleicher Ankunftsfrist.
-            </p>
-          </div>
-          <div id="horizont-feld">
-            <label for="horizont">MAXIMALE REISEZEIT</label
-            ><select id="horizont">
-              <option value="30">30 Minuten</option>
-              <option value="60">1 Stunde</option>
-              <option value="120" selected>2 Stunden</option>
-              <option value="180">3 Stunden</option>
-              <option value="240">4 Stunden</option>
-              <option value="360">6 Stunden</option>
-              <option value="480">8 Stunden</option>
-            </select>
-            <p class="hint" id="atlas-hinweis">
-              Erreichbare Haltestellen laut Fahrplan, einschließlich Wartezeit
-              ab Wunschabfahrt. Fußzugang bis 15 Minuten; keine flächige
-              Erreichbarkeitsgarantie.
+              2–8 Zentren einzeln hinzufügen. Jede Haltestelle gehört zum
+              zeitlich nächsten Zentrum bei gleicher Ankunftsfrist.
             </p>
           </div>
           <div id="route-felder" hidden>
@@ -155,13 +161,35 @@ Frankfurt am Main</textarea
             </div>
           </div>
           <div id="treffen-felder" hidden>
-            <label for="personen">WO STARTET IHR?</label
-            ><textarea id="personen" rows="3">
-Berlin
-Hamburg</textarea
-            >
+            <label for="personen-ort">WO STARTET IHR?</label>
+            <div class="searchbox">
+              <span>+</span
+              ><input
+                id="personen-ort"
+                list="bahn-orte"
+                placeholder="Startort hinzufügen …"
+                autocomplete="off"
+              /><button
+                type="button"
+                data-ort-add="personen"
+                aria-label="Startort hinzufügen"
+              >
+                ↵
+              </button>
+            </div>
+            <input type="hidden" id="personen" value="Berlin&#10;Hamburg" />
+            <div
+              id="personen-liste"
+              class="ortsliste"
+              aria-label="Ausgewählte Orte"
+            ></div>
+            <p
+              class="hint ortsliste-fehler"
+              id="personen-fehler"
+              role="status"
+            ></p>
             <p class="hint">
-              2–8 Orte aus dem Ortsverzeichnis, ein Ort pro Zeile.
+              2–8 Startorte. Suche einen Ort und füge ihn mit ↵ hinzu.
             </p>
             <label for="treff-art">TREFFPUNKTWAHL</label
             ><select id="treff-art">
@@ -169,18 +197,64 @@ Hamburg</textarea
               <option value="eigen">Eigene Orte vergleichen</option>
             </select>
             <div id="eigene-kandidaten" hidden>
-              <label for="kandidaten">WELCHE TREFFPUNKTE VERGLEICHEN?</label
-              ><textarea id="kandidaten" rows="3">
-Erfurt
-Fulda
-Kassel</textarea
+              <label for="kandidaten-ort"
+                >WELCHE TREFFPUNKTE VERGLEICHEN?</label
               >
+              <div class="searchbox">
+                <span>+</span
+                ><input
+                  id="kandidaten-ort"
+                  list="bahn-orte"
+                  placeholder="Treffpunkt hinzufügen …"
+                  autocomplete="off"
+                /><button
+                  type="button"
+                  data-ort-add="kandidaten"
+                  aria-label="Treffpunkt hinzufügen"
+                >
+                  ↵
+                </button>
+              </div>
+              <input
+                type="hidden"
+                id="kandidaten"
+                value="Erfurt&#10;Fulda&#10;Kassel"
+              />
+              <div
+                id="kandidaten-liste"
+                class="ortsliste"
+                aria-label="Ausgewählte Orte"
+              ></div>
+              <p
+                class="hint ortsliste-fehler"
+                id="kandidaten-fehler"
+                role="status"
+              ></p>
               <p class="hint">
                 1–3 Orte. Verglichen wird die Zeit ab der gemeinsamen
                 Wunschabfahrt bis zur Ankunft, einschließlich Wartezeit vor der
                 ersten Fahrt. Keine deutschlandweite Optimierung.
               </p>
             </div>
+          </div>
+          <div id="horizont-feld">
+            <label for="horizont">MAXIMALE REISEZEIT</label
+            ><select id="horizont">
+              <option value="30">30 Minuten</option>
+              <option value="60">1 Stunde</option>
+              <option value="120" selected>2 Stunden</option>
+              <option value="180">3 Stunden</option>
+              <option value="240">4 Stunden</option>
+              <option value="300">5 Stunden</option>
+              <option value="360">6 Stunden</option>
+              <option value="420">7 Stunden</option>
+              <option value="480">8 Stunden</option>
+            </select>
+            <p class="hint" id="atlas-hinweis">
+              Erreichbare Haltestellen laut Fahrplan, einschließlich Wartezeit
+              ab Wunschabfahrt. Fußzugang bis 15 Minuten; keine flächige
+              Erreichbarkeitsgarantie.
+            </p>
           </div>
           <section class="reisezeit">
             <div>
@@ -276,7 +350,8 @@ Kassel</textarea
           <div id="bahn-karten"></div>
           <section id="atlas-ergebnis" hidden>
             <div id="atlas-zahlen" class="atlas-zahlen"></div>
-            <div class="atlas-raster">
+            <div id="atlas-leer" class="atlas-leer" hidden></div>
+            <div class="atlas-raster" id="atlas-raster">
               <div>
                 <div class="atlas-navigation">
                   <button
@@ -454,6 +529,6 @@ Kassel</textarea
       </main>
     </div>
     <datalist id="bahn-orte"></datalist>
-    <script type="module" src="bahn.js?v=6"></script>
+    <script type="module" src="bahn.js?v=7"></script>
   </body>
 </html>

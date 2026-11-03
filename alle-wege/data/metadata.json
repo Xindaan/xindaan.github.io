@@ -1,11 +1,11 @@
 {
   "osmTimestamp": "2026-11-02T21:21:26Z",
   "retrieved": "2026-11-03",
-  "nodes": 276432,
-  "edges": 368641,
-  "excludedNodes": 15734,
-  "components": 14793,
-  "cities": 970,
+  "nodes": 276861,
+  "edges": 369135,
+  "excludedNodes": 15752,
+  "components": 14795,
+  "cities": 971,
   "excludedCities": [],
   "source": "OpenStreetMap contributors / Overpass Europe (dresel.systems)",
   "license": "ODbL-1.0",
@@ -60,6 +60,7 @@
     "Schleiz/Zollgrün/Tanna/Burgk",
     "Lehnitz bei Oranienburg",
     "Sylt/Niebüll/Rømø/Danish access corridor",
-    "Pfakofen"
+    "Pfakofen",
+    "Heidesee (Friedersdorf)"
   ]
 }

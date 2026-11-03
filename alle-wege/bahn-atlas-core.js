@@ -127,3 +127,20 @@ export function atlasEffekt(mit, ohne) {
     vorteil: m.has(s.id) ? Math.max(0, m.get(s.id).dauer - s.dauer) : null,
   }));
 }
+
+export function atlasLeerHinweis(r) {
+  const ohne = r.personen.filter((p, i) => !r.anzahlen[i]).map((p) => p.name);
+  const stunden = `${r.opt.horizont / 60}`.replace(".", ",");
+  return {
+    titel:
+      r.typ === "finden"
+        ? `Kein gemeinsamer Treffpunkt im Sollfahrplan innerhalb von ${stunden} Stunden`
+        : "Keine erreichbaren Haltestellen mit dieser Auswahl",
+    text: ohne.length
+      ? `Für ${ohne.join(", ")} liefert die Fahrplanauskunft innerhalb des Zeitlimits keine erreichbaren Haltestellen. Bitte Startort, Uhrzeit oder Umstiege ändern. Das kann auch an fehlenden Fahrplandaten liegen.`
+      : `Für alle ${r.personen.length} Startorte wurden Verbindungen gefunden. Im Sollfahrplan ergibt sich jedoch keine gemeinsame Haltestelle innerhalb von ${stunden} Stunden. Das Zeitlimit gilt je Person, einschließlich Warten ab Wunschabfahrt. Aktuelle Verspätungen oder Ausfälle können die erreichbaren Anschlüsse verändern.`,
+    naechsterHorizont:
+      [60, 120, 180, 240, 300, 360, 420, 480].find((h) => h > r.opt.horizont) ??
+      null,
+  };
+}

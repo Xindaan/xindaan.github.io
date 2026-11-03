@@ -16,8 +16,13 @@ Dann http://localhost:8765/ oeffnen. Alle Dateien sind statisch, ohne Build oder
 
 - Strasse: Ort, Richtung und Zeitbudget waehlen. **Fahrzeit** beantwortet, wie weit man kommt; **Hauptaeste** zeigt, welche Routen sich buendeln. Beide gehoeren zur Ansicht **Erreichbarkeit**.
 - Bahn & Bus: Datum, Uhrzeit, Richtung und Umstiege festlegen, dann berechnen. Graue Linien sind ein vereinfachtes Orientierungsnetz. Auswahl einer Haltestelle zeichnet die vom Fahrplandienst gelieferten Fahrtabschnitte ein; gestrichelt sind Fusswege.
+- Ortsauswahl bei Bahn wie bei Strasse: Orte einzeln suchen, mit Enter/Pfeil hinzufuegen und ueber × entfernen. Das gilt auch fuer Zentren und eigene Treffpunkte.
 - Bahn-Treffpunkte: bester gemeinsamer Haltepunkt und bis zu vier Alternativen mit mindestens 20 km Abstand. Nummern entsprechen der Liste; Linienfarben den Startorten. Die Anreisen zum besten Vorschlag werden automatisch nach der Suche geladen.
 - Die Treffpunkt-Rangfolge minimiert die laengste Anreise, danach die Summe. Sie garantiert keine gleich langen Fahrten oder praktische Eignung des Ortes.
+
+Wenn im Sollfahrplan kein gemeinsamer Treffpunkt innerhalb des Zeitlimits liegt, wird dies mit einer Erklaerung angezeigt. Die naechste Zeitstufe kann direkt neu berechnet werden; das urspruengliche Limit wird nicht still erweitert.
+
+Heidesee nutzt Friedersdorf als Bezugspunkt und den dortigen Bahnhof. Weitere Ortsteile lassen sich im Strassenatlas auf der Karte waehlen. Persoenliche Katalogergaenzungen bleiben aus Standardvorschlaegen heraus.
 
 ## Daten, Lizenzen und Grenzen
 
@@ -29,7 +34,7 @@ Der Anwendungscode steht unter [MIT](LICENSE.txt). Keine fremden App-Quelltexte 
 - Bahn und Bus: [Transitous](https://transitous.org/), [Datenquellen und Lizenzen](https://transitous.org/sources/). Atlas und Treffpunktrangfolge verwenden den Sollfahrplan, Details verfuegbare Echtzeitdaten. [API-Regeln](https://transitous.org/api/): nichtkommerziell, Open Source, ressourcenschonende Nutzung. Breite oder automatisierte Nutzung vorher mit dem Betreiber abstimmen. Die Anwendung begrenzt neue Fahrplanabfragen auf 40 pro Browser und Tag; dies ist keine dienstweite Lastbegrenzung.
 - Fonts: DM Sans und Libre Caslon Display, SIL Open Font License; Lizenztexte unter `fonts/`.
 
-Strassenzeiten sind Modellwerte ohne Liveverkehr, Ampelwartezeit, Abbiegeverbote und vollstaendige lokale Strassen. Autobahnen: 130 km/h, begrenzt durch niedrigere erfasste Limits. Sylt-Autozug: 35 Minuten Fahrt + 45 Minuten Terminalpuffer. Sylt-Faehre: 40 + 30 Minuten, inklusive Strassenanschluss ueber Daenemark. Ueberfahrten ohne Fahrplan-, Kapazitaets- oder Nachtbetriebsmodell; zusaetzliche Wartezeit ist einstellbar. Quellen dazu in `metadata.json`.
+Strassenzeiten sind Modellwerte ohne Liveverkehr, Ampelwartezeit, Abbiegeverbote und vollstaendige lokale Strassen. Autobahnen: 130 km/h, begrenzt durch niedrigere erfasste Limits. Sylt-Autozug: 35 Minuten Fahrt + 45 Minuten Terminalpuffer. Sylt-Faehre: 40 + 30 Minuten, inklusive Strassenanschluss ueber Daenemark. Ueberfahrten ohne Fahrplan-, Kapazitaets- oder Nachtbetriebsmodell; Fahrzeiten und feste Terminalpuffer werden automatisch eingerechnet, ohne eigene Insel-Einstellungen. Quellen dazu in `metadata.json`.
 
 Strassenrouting rechnet lokal. Explizite Bahnsuchen uebertragen Orte und Reiseparameter an Transitous. Keine Tracker, keine Standortabfrage; nur der Kontingentzaehler wird lokal gespeichert. Ansichtslinks enthalten die gewaehlten Eingaben und starten keine Bahnsuche beim Oeffnen.
 

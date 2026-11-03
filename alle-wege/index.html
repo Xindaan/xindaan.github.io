@@ -13,7 +13,7 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23263832'/%3E%3Cpath d='M8 6L20 20M32 6L20 20M6 32L20 20M34 32L20 20' stroke='%23d4ae6f' stroke-width='3'/%3E%3C/svg%3E"
     />
-    <link rel="stylesheet" href="style.css?v=20261103-7" />
+    <link rel="stylesheet" href="style.css?v=20261103-8" />
   </head>
   <body>
     <header>
@@ -25,7 +25,7 @@
       ><span class="edition"
         >Ein Atlas der Verbindungen <span>—</span> 01 / Deutschland</span
       ><button id="about-open" class="plain">
-        Über den Atlas <span>↗</span>
+        Daten &amp; Modell <span>↗</span>
       </button>
     </header>
     <div class="workspace">
@@ -184,35 +184,6 @@
             <p class="hint">
               Aus dem geladenen Ortsverzeichnis. Der Weg zwischen Ortsmitte und
               Netzknoten fehlt in der Modellzeit.
-            </p>
-          </section>
-          <section id="sylt-controls">
-            <label for="sylt-mode">SYLT-ANBINDUNG</label>
-            <select id="sylt-mode">
-              <option value="both">Autozug &amp; Fähre</option>
-              <option value="autozug">Nur Autozug</option>
-              <option value="faehre">Nur Autofähre</option>
-              <option value="none">Ohne Überfahrt</option>
-            </select>
-            <p class="hint">
-              Autozug: 35 Min. Fahrt + 45 Min. Terminalpuffer. Fähre: 40 + 30
-              Min., über Dänemark. Geplante Überfahrten; kein Fahrplan, keine
-              Auslastung oder Ausfälle.
-            </p>
-            <label for="transfer-wait"
-              >ZUSÄTZLICHE WARTEZEIT JE ÜBERFAHRT</label
-            >
-            <select id="transfer-wait">
-              <option value="0">Ohne Zusatz</option>
-              <option value="30">+ 30 Minuten</option>
-              <option value="60">+ 60 Minuten</option>
-              <option value="120">+ 120 Minuten</option>
-              <option value="180">+ 180 Minuten</option>
-            </select>
-            <p class="hint">
-              Ohne passende Reservierung kann die Wartezeit erheblich länger
-              sein, besonders bei der saisonabhängigen Fähre. Gestrichelte
-              Linien kennzeichnen die Überfahrten.
             </p>
           </section>
           <section id="branch-controls">
@@ -456,6 +427,6 @@
         ausgewählten Orte beziehungsweise Kartenkoordinaten.
       </p>
     </dialog>
-    <script type="module" src="app.js?v=20261103-7"></script>
+    <script type="module" src="app.js?v=20261103-8"></script>
   </body>
 </html>

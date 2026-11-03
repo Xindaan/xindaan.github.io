@@ -177,16 +177,16 @@ function readHash() {
     if (["nodes", "cities"].includes(s.weight)) state.weight = s.weight;
     if (["paper", "night", "ink"].includes(s.theme)) state.theme = s.theme;
     if (["fair", "total"].includes(s.objective)) state.objective = s.objective;
-    if (["both", "autozug", "faehre", "none"].includes(s.sylt))
-      state.sylt = s.sylt;
+    // Alte Sonderoptionen normalisieren: alle hinterlegten Ueberfahrten automatisch.
+    state.sylt = "both";
+    state.transferWait = 0;
     for (const [k, lo, hi] of [
       ["limit", 0, 8],
       ["branches", 3, 10],
     ])
       if (Number.isInteger(s[k]) && s[k] >= lo && s[k] <= hi) state[k] = s[k];
     if ([5, 10, 20].includes(s.basinCount)) state.basinCount = s.basinCount;
-    if ([0, 30, 60, 120, 180].includes(s.transferWait))
-      state.transferWait = s.transferWait;
+
     if (Array.isArray(s.travelers))
       state.travelers = [
         ...new Set(s.travelers.filter((id) => city(id))),
@@ -215,8 +215,7 @@ function sync() {
   $("reach-results").hidden = state.mode !== "reach";
   $("reach").min = state.mode === "reach" ? "1" : "0";
   $("reach-min").textContent = state.mode === "reach" ? "1 Stunde" : "Gesamt";
-  $("sylt-mode").value = state.sylt;
-  $("transfer-wait").value = state.transferWait;
+
   document.body.dataset.theme = state.theme;
   document
     .querySelectorAll("[data-mode]")
@@ -294,7 +293,9 @@ function sync() {
   const ortHinweis = $("ort-hinweis");
   ortHinweis.hidden = !city(state.destination)?.source;
   ortHinweis.textContent = city(state.destination)?.island
-    ? "Westerland auf Sylt: Autozug über Niebüll und Autofähre über List–Havneby mit Straßenanschluss durch Dänemark. Überfahrten unter „Sylt-Anbindung“ wählen."
+    ? "Westerland ist einschließlich der hinterlegten Überfahrten angebunden."
+    : state.destination === "osm-240120548"
+      ? "Heidesee in Brandenburg. Bezugspunkt: Ortsteil Friedersdorf; weitere Ortsteile über die Karte wählen."
     : state.destination === "osm-240065786"
       ? "Lehnitz bei Oranienburg. Ortsstraßen sind erfasst."
       : state.destination === "osm-1502917951"
@@ -421,7 +422,7 @@ function heading() {
       $("meeting-results").innerHTML =
         state.travelers.length < 2
           ? '<p class="hint">Füge mindestens zwei verschiedene Startorte hinzu.</p>'
-          : '<p class="hint">Kein gemeinsamer Treffpunkt mit diesen Einstellungen. Für Sylt mindestens eine Überfahrt unter „Sylt-Anbindung“ zulassen.</p>';
+          : '<p class="hint">Kein gemeinsamer Treffpunkt mit diesen Einstellungen. Startorte und Zeitlimit prüfen.</p>';
       stats = [
         [
           "STARTORTE",
@@ -449,7 +450,7 @@ function heading() {
       [
         "STRAßENNETZ",
         nf.format(data.meta.nodes) + " Knoten",
-        "Mit Autozug und Autofähre nach Sylt",
+        "Mit erfassten Fähren und Autozügen",
       ],
     ];
   }
@@ -928,16 +929,6 @@ function wire() {
     update();
   };
   $("reach-filter").oninput = zeigeReichweite;
-  $("sylt-mode").onchange = (e) => {
-    state.sylt = e.target.value;
-    state.meeting = null;
-    update();
-  };
-  $("transfer-wait").onchange = (e) => {
-    state.transferWait = Number(e.target.value);
-    state.meeting = null;
-    update();
-  };
   $("reach").oninput = (e) => {
     state.limit = Number(e.target.value);
     update();
@@ -1108,7 +1099,7 @@ function wire() {
 async function init() {
   try {
     const responses = await Promise.all([
-      fetch("data/roads.json.gz?v=4"),
+      fetch("data/roads.json.gz?v=5"),
       fetch("data/borders.json"),
     ]);
     for (const r of responses)

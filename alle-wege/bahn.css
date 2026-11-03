@@ -1,6 +1,36 @@
 .bahn-seite {
   --bahngruen: #376c5a;
 }
+.ortsliste {
+  margin: 10px 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.ortsliste-fehler:empty {
+  display: none;
+}
+.ortsliste-fehler {
+  color: var(--accent);
+}
+.atlas-leer {
+  margin: 24px 0;
+  padding: 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  line-height: 1.6;
+}
+.atlas-leer h3 {
+  margin-top: 0;
+  font-size: 24px;
+}
+.atlas-leer .primaer {
+  width: auto;
+}
+.atlas-raster[hidden] {
+  display: none;
+}
 .bahn-seite .workspace {
   min-height: 0;
 }

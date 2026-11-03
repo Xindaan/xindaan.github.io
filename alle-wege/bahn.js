@@ -1,6 +1,7 @@
 import { STANDARDORTE } from "./standardorte.js";
-import { atlasURL, verdichteAtlas } from "./bahn-atlas-core.js";
-import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js";
+import { atlasURL, verdichteAtlas } from "./bahn-atlas-core.js?v=20261103-8";
+import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261103-8";
+import { ortsnamen, ergaenzeOrt } from "./ortslisten.js";
 import {
   API,
   lokal,
@@ -253,10 +254,7 @@ function optionen() {
   };
 }
 function liste(id, min, max) {
-  const namen = $(id)
-    .value.split("\n")
-    .map((s) => s.trim())
-    .filter(Boolean);
+  const namen = ortsnamen($(id).value);
   if (namen.length < min || namen.length > max)
     throw new Error(
       `Bitte ${min}–${max} Orte bei „${id === "personen" ? "Wo startet ihr?" : "Treffpunkte"}“ eintragen.`,
@@ -272,6 +270,36 @@ function liste(id, min, max) {
   if (new Set(result.map((c) => c.key)).size !== result.length)
     throw new Error("Bitte verschiedene Orte auswählen.");
   return result;
+}
+function ortslistenAnzeigen() {
+  for (const feld of ["personen", "zentren", "kandidaten"]) {
+    $(feld + "-liste").innerHTML = ortsnamen($(feld).value)
+      .map(
+        (name, i) =>
+          `<div class="traveler"><i style="background:${farben[i % farben.length]}"></i><span>${esc(name)}</span><button type="button" data-ort-remove="${feld}" data-index="${i}" aria-label="${esc(name)} entfernen">×</button></div>`,
+      )
+      .join("");
+  }
+}
+function ortHinzufuegen(feld, name = $(feld + "-ort").value) {
+  try {
+    const p = finde(name);
+    if (!p)
+      throw new Error("Bitte einen Ort aus den Suchvorschlägen auswählen.");
+    const label = orte.find((c) => c.id === p.key).label;
+    const wert = ergaenzeOrt(
+      $(feld).value,
+      label,
+      feld === "kandidaten" ? 3 : 8,
+    );
+    leeren();
+    $(feld).value = wert;
+    $(feld + "-ort").value = "";
+    $(feld + "-fehler").textContent = "";
+    ortslistenAnzeigen();
+  } catch (e) {
+    $(feld + "-fehler").textContent = e.message;
+  }
 }
 async function suchen(event) {
   event.preventDefault();
@@ -464,7 +492,11 @@ async function sucheAtlas(opt, signal, id) {
   r.orte = orte;
   r.bahnnetz = bahnnetz;
   ergebnis = r;
-  atlasAnzeigen(r, atlasDetails);
+  atlasAnzeigen(r, atlasDetails, (horizont) => {
+    $("horizont").value = String(horizont);
+    leeren();
+    $("bahn-form").requestSubmit();
+  });
   status(
     r.punkte.length
       ? `${r.punkte.length.toLocaleString("de-DE")} ${typ === "finden" ? "gemeinsame" : "berechnete"} Haltestellen in Deutschland · ${datumText(opt.zeit)} ${opt.arriveBy ? "Ankunft bis" : "ab"} ${uhr(opt.zeit)} · Fahrplan ohne Echtzeit. ${typ === "finden" ? "Automatische Rangfolge innerhalb des gewählten Zeitlimits." : "Haltestelle wählen, um die Verbindung aktuell zu prüfen."}`
@@ -860,7 +892,7 @@ function leseLink() {
 async function init() {
   try {
     const [o, g, b] = await Promise.all([
-      fetch("data/places.json?v=2"),
+      fetch("data/places.json?v=3"),
       fetch("data/borders.json"),
       fetch("data/rail-network.json"),
     ]);
@@ -889,6 +921,7 @@ async function init() {
     $("suchen").disabled = false;
     modus(art);
     leseLink();
+    ortslistenAnzeigen();
     ["von", "nach", "atlas-ort"].forEach(ortHinweis);
     $("bahn-schnell").innerHTML = STANDARDORTE.map((name) =>
       orte.find((c) => c.name === name),
@@ -905,6 +938,27 @@ async function init() {
     document
       .querySelectorAll("[data-suche]")
       .forEach((b) => (b.onclick = () => haltestellen(b.dataset.suche)));
+    document.querySelectorAll("[data-ort-add]").forEach((b) => {
+      b.onclick = () => ortHinzufuegen(b.dataset.ortAdd);
+    });
+    for (const feld of ["personen", "zentren", "kandidaten"]) {
+      $(feld + "-ort").onkeydown = (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          ortHinzufuegen(feld);
+        }
+      };
+      $(feld + "-liste").onclick = (e) => {
+        const b = e.target.closest("[data-ort-remove]");
+        if (!b) return;
+        leeren();
+        $(feld).value = ortsnamen($(feld).value)
+          .filter((_, i) => i !== Number(b.dataset.index))
+          .join("\n");
+        $(feld + "-fehler").textContent = "";
+        ortslistenAnzeigen();
+      };
+    }
     document.querySelectorAll("[data-fuer]").forEach(
       (b) =>
         (b.onclick = () => {
@@ -919,19 +973,8 @@ async function init() {
       if (!b) return;
       const c = orte.find((c) => c.id === b.dataset.ort);
       if (["treffen", "finden", "gebiete"].includes(art)) {
-        leeren();
         const feld = art === "gebiete" ? "zentren" : "personen";
-        const zeilen = $(feld).value.trim().split("\n");
-        if (!zeilen.some((z) => norm(z) === norm(c.name))) {
-          if (zeilen.length >= 8) {
-            status(
-              "Höchstens acht Startorte. Bitte einen vorhandenen Ort ersetzen.",
-              true,
-            );
-            return;
-          }
-          $(feld).value += "\n" + c.name;
-        }
+        ortHinzufuegen(feld, c.label);
       } else {
         leeren();
         const feld = ["reichweite", "effekt"].includes(art)
@@ -944,6 +987,10 @@ async function init() {
     };
     $("bahn-form").onsubmit = suchen;
     $("bahn-form").oninput = (e) => {
+      if (
+        ["personen-ort", "zentren-ort", "kandidaten-ort"].includes(e.target.id)
+      )
+        return;
       leeren();
       if (["von", "nach", "atlas-ort"].includes(e.target.id)) {
         delete auswahl[e.target.id];
@@ -990,6 +1037,7 @@ async function init() {
     window.onhashchange = () => {
       leeren();
       leseLink();
+      ortslistenAnzeigen();
     };
     $("bahn-eingaben").inert = false;
     $("bahn-eingaben").setAttribute("aria-busy", "false");

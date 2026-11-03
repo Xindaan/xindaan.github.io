@@ -5,7 +5,8 @@ import {
   atlasGebiete,
   atlasEffekt,
   inGebiet,
-} from "./bahn-atlas-core.js";
+  atlasLeerHinweis,
+} from "./bahn-atlas-core.js?v=20261103-8";
 const farben = [
   "#a9674c",
   "#517a78",
@@ -79,7 +80,7 @@ export async function atlasBerechnen({
     anzahlen: listen.map((l) => l.length),
   };
 }
-export function atlasAnzeigen(r, onDetails) {
+export function atlasAnzeigen(r, onDetails, onErweitern) {
   $("atlas-ergebnis").hidden = false;
   const punkte = r.punkte;
   let auswahl = null,
@@ -103,6 +104,17 @@ export function atlasAnzeigen(r, onDetails) {
   }).format(new Date(r.opt.zeit));
   $("atlas-zahlen").innerHTML =
     `<div><span>${r.typ === "finden" ? "TREFFPUNKTVORSCHLÄGE" : "HALTEPUNKTE IM ERGEBNIS"}</span><strong>${r.typ === "finden" ? vorschlaege.length : punkte.length.toLocaleString("de-DE")}</strong></div><div><span>SUCHHORIZONT</span><strong>${zeit(r.opt.horizont)}</strong></div><div><span>${r.opt.arriveBy ? "ANKUNFT BIS" : "ABFAHRT AB"}</span><strong>${uhrzeit}</strong></div>`;
+  $("atlas-raster").hidden = !punkte.length;
+  $("atlas-leer").hidden = !!punkte.length;
+  if (!punkte.length) {
+    const hinweis = atlasLeerHinweis(r);
+    $("atlas-leer").innerHTML =
+      `<h3>${esc(hinweis.titel)}</h3><p>${esc(hinweis.text)}</p>${hinweis.naechsterHorizont ? `<button type="button" class="primaer" id="atlas-erweitern">Mit ${zeit(hinweis.naechsterHorizont)} neu suchen →</button>` : "<p>Wähle eine andere Abfahrtszeit oder mehr erlaubte Umstiege.</p>"}`;
+    if (hinweis.naechsterHorizont)
+      $("atlas-erweitern").onclick = () =>
+        onErweitern?.(hinweis.naechsterHorizont);
+    return;
+  }
   $("atlas-legende").textContent =
     r.typ === "finden"
       ? "Nummern: bester Treffpunkt und bis zu vier räumlich getrennte Alternativen (mindestens 20 km Abstand). Farbige Linien: tatsächliche Anreisen zur Auswahl."
@@ -146,7 +158,7 @@ export function atlasAnzeigen(r, onDetails) {
     $("atlas-routenstatus").textContent = "Verbindung wird geladen …";
     $("bahn-detailbereich").hidden = true;
     $("atlas-auswahl").innerHTML =
-      `<h3>${esc(s.name)}</h3><p>${esc(info(s))}</p>${r.typ === "finden" ? `<p>${r.personen.map((p, i) => `${esc(p.name)}: ${zeit(s.zeiten[i])}`).join("<br>")}</p>` : ""}<button class="primaer" id="atlas-details">${r.typ === "finden" ? "Anreisen" : "Verbindung"} aktuell prüfen →</button><p class="hint">Karte und Rangfolge beruhen auf dem Fahrplan ohne Echtzeit. Die Detailprüfung kann abweichen.</p>`;
+      `<h3>${esc(s.name)}</h3><p><strong>Sollfahrplan:</strong> ${esc(info(s))}</p>${r.typ === "finden" ? `<p>${r.personen.map((p, i) => `${esc(p.name)}: ${zeit(s.zeiten[i])}`).join("<br>")}</p>` : ""}<button class="primaer" id="atlas-details">${r.typ === "finden" ? "Anreisen" : "Verbindung"} aktuell prüfen →</button><p id="atlas-aktuell" class="hint"></p><p class="hint">Karte und Rangfolge beruhen auf dem Fahrplan ohne Echtzeit. Die Detailprüfung kann abweichen.</p>`;
     $("atlas-details").onclick = () => onDetails(s, r);
     zeichnen();
     if (laden) onDetails(s, r);
@@ -463,6 +475,12 @@ export function atlasAnzeigen(r, onDetails) {
   r.neuzeichnen = zeichnen;
   r.zeigeStrecken = (reisen, id, gebiet = null) => {
     if (id !== r.auswahlId) return;
+    if (r.typ === "finden") {
+      $("atlas-aktuell").innerHTML =
+        "<strong>Aktuell geprüft (ab Wunschabfahrt):</strong><br>" +
+        r.personen.map((p, i) => `${esc(p.name)}: ${reisen[i] ? zeit((Date.parse(reisen[i].endTime) - Date.parse(r.opt.zeit)) / 60000) : "keine Verbindung"}`).join("<br>") +
+        "<br>Verspätungen können andere Anschlüsse ermöglichen oder verhindern. Die Rangfolge oben bleibt die des Sollfahrplans.";
+    }
     r.strecken = reiseStrecken(reisen);
     if (gebiet !== null) r.strecken.forEach((s) => (s.person = gebiet));
     $("atlas-routenstatus").textContent = r.strecken.length
