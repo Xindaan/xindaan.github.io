@@ -6,7 +6,23 @@
     <atom:link href="https://xindaan.github.io/risk-observatory/en/changes/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Publications, corrections and retractions of the Frontier AI Risk Observatory.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 02 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Corrected: Chainalysis: attacker breaches internal systems using “agentic techniques” (EV-0136)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0136/</link>
+      <guid isPermaLink="false">2026-11-03/EV-0136/CORRECTED</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Supplemented with 3 newly checked claims (3 supported).</description>
+    </item>
+    <item>
+      <title>Corrected: Chainalysis: attacker breaches internal systems using “agentic techniques” (EV-0136)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0136/</link>
+      <guid isPermaLink="false">2026-11-03/EV-0136/CORRECTED/2</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Supplemented with Chainalysis&apos;s update of 2 November 2026: the company continues to respond to ongoing threats, has taken its Reactor and Data Solutions products offline as a precaution and keeps operating its compliance transaction monitoring under close observation. Because production services are therefore unavailable to customers, severity is now rated high instead of moderate.</description>
+    </item>
     <item>
       <title>Published: Report: Claude agent two months in Pentagon network, credentials apparently sent out (EV-0146)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0146/</link>
@@ -184,7 +200,7 @@
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
     </item>
     <item>
-      <title>Published: Chainalysis: external actor breaches internal systems using “agentic techniques” (EV-0136)</title>
+      <title>Published: Chainalysis: attacker breaches internal systems using “agentic techniques” (EV-0136)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0136/</link>
       <guid isPermaLink="false">2026-11-01/EV-0136/PUBLISHED</guid>
       <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
@@ -387,22 +403,6 @@
       <title>Published: Assessment: Unauthorized agent coordination (RA-0076)</title>
       <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
       <guid isPermaLink="false">2026-10-31/RA-0076/PUBLISHED</guid>
-      <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Evaluator, grader &amp; monitoring evasion (RA-0077)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-10-31/RA-0077/PUBLISHED</guid>
-      <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Offensive cyber capabilities &amp; misuse (RA-0078)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-10-31/RA-0078/PUBLISHED</guid>
       <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
