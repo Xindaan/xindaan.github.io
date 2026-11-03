@@ -37,7 +37,7 @@
         </div>
         <div class="verkehrswahl">
           <a href="./" aria-current="page">Straße</a
-          ><a href="bahn.html">Bahn &amp; Bus</a>
+          ><a href="bahn.html" data-wechsel-bahn>Bahn &amp; Bus</a>
         </div>
         <nav aria-label="Kartenansicht" class="modes">
           <button data-mode="reach" aria-pressed="true">
@@ -97,6 +97,7 @@
               <option value="5">5 größte Orte im Datensatz</option>
               <option value="10" selected>10 größte Orte im Datensatz</option>
               <option value="20">20 größte Orte im Datensatz</option>
+              <option id="basin-custom" value="custom" hidden>Übernommene Zentren</option>
             </select>
             <p class="hint">
               Jeder Netzknoten gehört zur Stadt, die er am schnellsten erreicht.
@@ -132,8 +133,8 @@
             <p class="hint">
               Farbe = Fahrzeit auf dem schnellsten Weg. Farbige Straßen liegen
               innerhalb deines Zeitbudgets; das graue Netz dient der
-              Orientierung. Autobahnen: 130 km/h oder niedrigeres erfasstes
-              Tempolimit.
+              Orientierung. Autobahnen berücksichtigen das gewählte Wunschtempo,
+              das Tagesverkehr-Szenario und erfasste Tempolimits.
             </p>
           </section>
           <section id="routing-controls">
@@ -144,14 +145,14 @@
                 Entfernung
               </button>
             </div>
-            <div class="fieldrow">
+            <div class="fieldrow" id="linienstaerke-feld">
               <label for="weight">LINIENSTÄRKE</label
               ><select id="weight">
                 <option value="nodes">Netzknoten</option>
                 <option value="cities">Orte</option>
               </select>
             </div>
-            <p class="hint">
+            <p class="hint" id="linienstaerke-hinweis">
               Dicker heißt: mehr kürzeste Wege nutzen diese Straße. Kein
               gemessenes Verkehrsaufkommen.
             </p>
@@ -172,6 +173,15 @@
               <span id="reach-min">Gesamt</span
               ><span id="reach-unit">8 Stunden</span>
             </div>
+          </section>
+          <section id="autobahn-controls">
+            <div class="fieldrow">
+              <label for="autobahn-tempo">WUNSCHTEMPO AUTOBAHN</label>
+              <output id="autobahn-tempo-wert">130 km/h</output>
+            </div>
+            <input id="autobahn-tempo" type="range" min="100" max="200" step="10" value="130" />
+            <div class="range-labels"><span>100 km/h</span><span>200 km/h</span></div>
+            <p class="hint" id="autobahn-tempo-hinweis"></p>
           </section>
           <section id="reach-results" hidden>
             <label for="reach-filter">ERREICHBARE ORTE DURCHSUCHEN</label>
@@ -347,8 +357,9 @@
         Einbahnrichtungen werden berücksichtigt.
       </p>
       <p>
-        Auf Autobahnen rechnen wir mit 130 km/h oder einem niedrigeren erfassten
-        Tempolimit. Für Schnell-, Haupt- und Landesstraßen gelten 85 / 65 / 55
+        Auf Autobahnen verwenden wir das Wunschtempo im unten beschriebenen
+        Tagesverkehr-Szenario, begrenzt durch erfasste Tempolimits.
+        Für Schnell-, Haupt- und Landesstraßen gelten 85 / 65 / 55
         km/h, für Zubringer 40 km/h; dort begrenzen erkannte Tempolimits die
         Geschwindigkeit auf 85 % des Limits. Kreisverkehre sind auf 25 km/h
         begrenzt. Das sind Modellannahmen, keine kalibrierten Fahrzeitprognosen.
@@ -357,7 +368,7 @@
       <p>
         Kein Liveverkehr, keine Ampelwartezeiten oder Abbiegebeschränkungen,
         Wohn- und Nebenstraßen nur in Gärtringen, Schleiz/Zollgrün/Tanna/Burgk,
-        Lehnitz, Pfakofen und auf Sylt, keine durchgehenden Auslandsrouten außer
+        Lehnitz, Pfakofen, Heidesee/Friedersdorf und auf Sylt, keine durchgehenden Auslandsrouten außer
         dem dänischen Zugang zur Syltfähre. Westerland ist durch Autozug
         Niebüll–Westerland und Autofähre Havneby–List angebunden. Die
         Überfahrten rechnen mit 35 + 45 beziehungsweise 40 + 30 Minuten für
@@ -378,6 +389,24 @@
         Tanna, Pfakofen und Burgk. Die fünf besten Kandidaten kannst du
         vergleichen.
       </p>
+      <h3>Wunschtempo und Tagesverkehr</h3>
+      <p>Der Regler setzt ein Wunschtempo, keinen garantierten Reisedurchschnitt.
+        Unser vereinfachtes Tagesverkehr-Szenario nimmt 65 % der Autobahnstrecke
+        mit Wunschtempo und 35 % mit höchstens 100 km/h an. Auf beiden Anteilen
+        gilt zusätzlich das erfasste Tempolimit. Daraus ergeben sich ohne
+        Tempolimit bei 130 / 160 / 200 km/h rund 118 / 132 / 148 km/h im Modell.
+        Zeitanteile werden über die Strecke addiert, Geschwindigkeiten nicht
+        arithmetisch gemittelt. Zubringer, andere Straßen und Überfahrten behalten
+        ihre eigenen Zeiten; Routen werden mit den neuen Kosten gesucht.</p>
+      <p>Die 65/35-Verteilung ist eine transparente Modellannahme. Die
+        <a href="https://www.bmv.de/SharedDocs/DE/Publikationen/StV/studie-tempolimit-auswirkungen.pdf?__blob=publicationFile" target="_blank" rel="noopener">BASt-Studie 2025 (Tabelle 7, S. 35)</a>
+        nennt 112,0 km/h bei Limit 120 und 99,7 bei Limit 100 als Messwerte sowie
+        117,3 für ein modelliertes Limit 130. Diese Flottenwerte dienen als
+        Plausibilitätsvergleich; sie bestätigen keinen persönlichen Reiseschnitt
+        bei 160 oder 200. Stau, Berufsverkehrsspitzen, Wetter und aktuelle
+        Baustellen sind nicht prognostiziert. Über 130 wird nur auf ausdrücklich
+        unbeschränkten oder entsprechend höher limitierten Abschnitten gerechnet.
+        Fehlende oder unlesbare OSM-Limits werden konservativ auf 130 begrenzt.</p>
       <h3>Datengrundlage & Quellen</h3>
       <p id="data-details"></p>
       <p>
@@ -420,13 +449,13 @@
       <h3>Privatsphäre</h3>
       <p>
         Der Straßenatlas rechnet nach dem Laden lokal. Der
-        <a href="bahn.html">Bahnmodus</a>
+        <a href="bahn.html" data-wechsel-bahn>Bahnmodus</a>
         fragt nach einem ausdrücklichen Suchauftrag Transitous ab und
         übermittelt dafür Orte und Reisezeit. Keine Analyse-Tracker und keine
         Abfrage deines Standorts. Ein kopierter Ansichtslink enthält die
         ausgewählten Orte beziehungsweise Kartenkoordinaten.
       </p>
     </dialog>
-    <script type="module" src="app.js?v=20261103-8"></script>
+    <script type="module" src="app.js?v=20261103-9"></script>
   </body>
 </html>

@@ -89,7 +89,7 @@ export function inGebiet(p, geometrie) {
     (poly) => ringEnthaelt(poly[0]) && !poly.slice(1).some(ringEnthaelt),
   );
 }
-export function atlasTreffpunkte(listen) {
+export function atlasTreffpunkte(listen, objective = "fair") {
   if (listen.length < 2) return [];
   const maps = listen.map((l) => new Map(l.map((s) => [s.id, s]))),
     rang = [];
@@ -106,7 +106,7 @@ export function atlasTreffpunkte(listen) {
     });
   }
   return rang.sort(
-    (a, b) => a.max - b.max || a.summe - b.summe || a.id.localeCompare(b.id),
+    (a, b) => (objective === "total" ? a.summe - b.summe || a.max - b.max : a.max - b.max || a.summe - b.summe) || a.id.localeCompare(b.id),
   );
 }
 export function atlasGebiete(listen) {

@@ -1,3 +1,4 @@
+import { autobahnZeit, gueltigesTempo } from "./autobahntempo.js";
 // Reiner Rechenkern; Browser-Worker und Node-Tests verwenden denselben Code.
 export function buildGraph(data) {
   const n = data.nodes.length,
@@ -60,6 +61,7 @@ export function shortest(
     slow = false,
     sylt = "both",
     transferWait = 0,
+    autobahnTempo,
   } = {},
 ) {
   const n = g.nodes.length,
@@ -70,6 +72,19 @@ export function shortest(
     order = [];
   const heap = new Heap(),
     adj = reverse ? g.incoming : g.out;
+  let tempoZeiten;
+  if (gueltigesTempo(autobahnTempo)) {
+    g.tempoCache ||= new Map();
+    if (!g.tempoCache.has(autobahnTempo)) {
+      const zeiten = new Float64Array(g.edges.length * 2);
+      g.edges.forEach((e, i) => {
+        zeiten[2 * i] = autobahnZeit(e, autobahnTempo, true);
+        zeiten[2 * i + 1] = autobahnZeit(e, autobahnTempo, false);
+      });
+      g.tempoCache.set(autobahnTempo, zeiten);
+    }
+    tempoZeiten = g.tempoCache.get(autobahnTempo);
+  }
   seeds.forEach((v, i) => {
     if (v < 0 || v >= n || d[v] === 0) return;
     d[v] = 0;
@@ -90,12 +105,16 @@ export function shortest(
       const wartezeit = transport
         ? Math.max(0, Math.min(180, Number(transferWait) || 0))
         : 0;
+      const vorwaerts = reverse ? g.edges[id][1] === u : g.edges[id][0] === u;
+      const fahrzeit = tempoZeiten
+        ? tempoZeiten[2 * id + (vorwaerts ? 0 : 1)]
+        : time;
       const w =
           metric === "distance"
             ? km
             : slow && g.edges[id][5] === 0
               ? Math.max(time, km)
-              : time + wartezeit,
+              : fahrzeit + wartezeit,
         nd = cost + w;
       if (nd < d[v]) {
         d[v] = nd;
@@ -211,8 +230,9 @@ export function analyze(g, s) {
         .map((id) => g.cities.find((c) => c.id === id)?.node)
         .filter((n) => n !== undefined),
       s.objective,
-      { sylt: s.sylt, transferWait: s.transferWait },
+      { sylt: s.sylt, transferWait: s.transferWait, autobahnTempo: s.autobahnTempo },
     );
+    if (s.limit > 0) m.candidates = m.candidates.filter((c) => c.max <= s.limit * 60);
     const selected =
       m.candidates.find((c) => g.cities[c.index].id === s.meeting) ||
       m.candidates[0];
@@ -232,7 +252,7 @@ export function analyze(g, s) {
           .filter((n) => n !== undefined)
       : [s.node];
   const metric = ["effect", "reach"].includes(s.mode) ? "time" : s.metric;
-  const transport = { sylt: s.sylt, transferWait: s.transferWait };
+  const transport = { sylt: s.sylt, transferWait: s.transferWait, autobahnTempo: s.autobahnTempo };
   const r = shortest(g, seeds, {
     metric,
     ...transport,

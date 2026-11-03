@@ -1,4 +1,7 @@
 import { STANDARDORTE } from "./standardorte.js";
+import { leseZustand, vergleichLink, strasseZuBahn } from "./vergleich.js";
+import { gueltigesTempo, modellTempo } from "./autobahntempo.js";
+let bahnStand = {};
 const $ = (id) => document.getElementById(id),
   esc = (s) =>
     String(s).replace(
@@ -91,6 +94,8 @@ let state = {
   basinCount: 10,
   sylt: "both",
   transferWait: 0,
+  autobahnTempo: 130,
+  centers: [],
 };
 const project = (lon, lat) => [(lon - 10.5) * 69.98, (55.15 - lat) * 111.2];
 const unproject = (x, y) => [x / 69.98 + 10.5, 55.15 - y / 111.2];
@@ -161,11 +166,12 @@ function serialize() {
   const s = { ...state };
   delete s.node;
   delete s.seeds;
-  return "#" + new URLSearchParams({ v: "1", s: JSON.stringify(s) });
+  return vergleichLink("", s, bahnStand);
 }
 function readHash() {
   try {
     const p = new URLSearchParams(location.hash.slice(1));
+    bahnStand = leseZustand(location.hash, "bahn") || {};
     if (!p.has("s")) return;
     const s = JSON.parse(p.get("s"));
     if (s.mode === "effect") s.mode = "reach";
@@ -177,6 +183,9 @@ function readHash() {
     if (["nodes", "cities"].includes(s.weight)) state.weight = s.weight;
     if (["paper", "night", "ink"].includes(s.theme)) state.theme = s.theme;
     if (["fair", "total"].includes(s.objective)) state.objective = s.objective;
+    if (gueltigesTempo(s.autobahnTempo)) state.autobahnTempo = s.autobahnTempo;
+    state.centers = Array.isArray(s.centers) ? [...new Set(s.centers.filter((id) => city(id)))].slice(0, 20) : [];
+    if (typeof s.uebernahme === "string") toast(s.uebernahme);
     // Alte Sonderoptionen normalisieren: alle hinterlegten Ueberfahrten automatisch.
     state.sylt = "both";
     state.transferWait = 0;
@@ -184,7 +193,7 @@ function readHash() {
       ["limit", 0, 8],
       ["branches", 3, 10],
     ])
-      if (Number.isInteger(s[k]) && s[k] >= lo && s[k] <= hi) state[k] = s[k];
+      if (Number.isFinite(s[k]) && (k === "limit" ? Number.isInteger(s[k] * 2) : Number.isInteger(s[k])) && s[k] >= lo && s[k] <= hi) state[k] = s[k];
     if ([5, 10, 20].includes(s.basinCount)) state.basinCount = s.basinCount;
 
     if (Array.isArray(s.travelers))
@@ -213,8 +222,9 @@ function sync() {
   $("richtung").value = state.direction;
   $("richtung-controls").hidden = !["one", "reach"].includes(state.mode);
   $("reach-results").hidden = state.mode !== "reach";
-  $("reach").min = state.mode === "reach" ? "1" : "0";
-  $("reach-min").textContent = state.mode === "reach" ? "1 Stunde" : "Gesamt";
+  $("reach").min = state.mode === "reach" ? "0.5" : "0";
+  $("reach").step = "0.5";
+  $("reach-min").textContent = state.mode === "reach" ? "30 Minuten" : "Gesamt";
 
   document.body.dataset.theme = state.theme;
   document
@@ -240,10 +250,12 @@ function sync() {
   $("meet-controls").hidden = state.mode !== "meet";
   $("basin-controls").hidden = state.mode !== "basins";
   $("reach-controls").hidden = state.mode !== "reach";
-  $("routing-controls").hidden = state.mode === "meet";
+  $("routing-controls").hidden = false;
   $("branch-controls").hidden = state.mode !== "one";
-  $("metric").hidden = state.mode === "reach";
-  $("metric").previousElementSibling.hidden = state.mode === "reach";
+  $("metric").hidden = ["reach", "meet"].includes(state.mode);
+  $("metric").previousElementSibling.hidden = $("metric").hidden;
+  $("linienstaerke-feld").hidden = state.mode === "meet";
+  $("linienstaerke-hinweis").hidden = state.mode === "meet";
   $("play").hidden = state.mode === "meet";
   $("destination").value = destinationLabel();
   $("objective").value = state.objective;
@@ -251,16 +263,18 @@ function sync() {
   $("reach").value = state.limit;
   $("branches").value = state.branches;
   $("branch-value").textContent = state.branches;
-  $("basin-count").value = state.basinCount;
+  $("basin-custom").hidden = !state.centers.length;
+  $("basin-custom").textContent = `${state.centers.length} übernommene Zentren`;
+  $("basin-count").value = state.centers.length ? "custom" : state.basinCount;
   $("reach-value").textContent = state.limit
-    ? state.metric === "time" || state.mode === "reach"
-      ? `${state.limit} Stunden`
+    ? state.metric === "time" || ["reach", "meet"].includes(state.mode)
+      ? duration(state.limit * 60)
       : `${state.limit * 100} km`
     : "Ganzes Netz";
   $("reach-unit").textContent =
-    state.metric === "time" || state.mode === "reach" ? "8 Stunden" : "800 km";
+    state.metric === "time" || ["reach", "meet"].includes(state.mode) ? "8 Stunden" : "800 km";
   $("basin-controls").querySelector(".hint").textContent =
-    state.metric === "distance"
+    state.centers.length ? "Dieselben Zentren wie in der Bahnansicht. Über die Auswahl oben kannst du wieder die größten Orte verwenden." : state.metric === "distance"
       ? "Jeder Netzknoten gehört zur Stadt mit der kürzesten Straßenentfernung. Städtauswahl nach GeoNames-Einwohnerzahl."
       : "Jeder Netzknoten gehört zur Stadt, die er am schnellsten erreicht. Städtauswahl nach GeoNames-Einwohnerzahl.";
   $("objective-hint").textContent =
@@ -282,7 +296,12 @@ function sync() {
         `<div class="traveler"><i style="background:${palette[i]}"></i><span>${esc(label(city(id)))}</span><button data-remove="${esc(id)}" aria-label="${esc(label(city(id)))} entfernen">×</button></div>`,
     )
     .join("");
-  state.seeds = data.cities.slice(0, state.basinCount).map((c) => c.id);
+  state.seeds = state.centers.length ? state.centers : data.cities.slice(0, state.basinCount).map((c) => c.id);
+  $("autobahn-tempo").value = state.autobahnTempo;
+  $("autobahn-tempo-wert").textContent = `${state.autobahnTempo} km/h`;
+  $("autobahn-tempo-hinweis").textContent = `Tagesverkehr-Szenario: auf unbeschränkten Abschnitten rechnerisch ca. ${Math.round(modellTempo(state.autobahnTempo))} km/h im Mittel. Erfasste Tempolimits gelten weiter. Annahmen unter „Daten & Modell“.`;
+  for (const a of document.querySelectorAll('[data-wechsel-bahn]'))
+    a.href = vergleichLink("bahn.html", { ...state, node: undefined }, strasseZuBahn(state, data.cities, bahnStand));
   $("basin-legend").innerHTML = state.seeds
     .map(
       (id, i) =>
@@ -359,9 +378,9 @@ function heading() {
   } else if (state.mode === "basins") {
     title = `Deutschlands <em>Einzugsgebiete.</em>`;
     kicker = "WELCHE STADT IST AM NÄCHSTEN?";
-    subtitle = `${state.basinCount} Städte. ${state.metric === "time" ? "Die Fahrzeit" : "Die Straßenentfernung"} entscheidet über die Zugehörigkeit.`;
+    subtitle = `${state.seeds.length} Städte. ${state.metric === "time" ? "Die Fahrzeit" : "Die Straßenentfernung"} entscheidet über die Zugehörigkeit.`;
   } else if (state.mode === "reach") {
-    title = `${state.limit} ${state.limit === 1 ? "Stunde" : "Stunden"} ${state.direction === "from" ? "ab" : "nach"} <em>${esc(dest)}.</em>`;
+    title = `${duration(state.limit * 60)} ${state.direction === "from" ? "ab" : "nach"} <em>${esc(dest)}.</em>`;
     kicker = "WIE WEIT KOMME ICH IN DIESER ZEIT?";
     subtitle = `${state.direction === "from" ? "Ziele ab" : "Ausgangsorte mit Ziel"} ${dest} · schnellste Wege im Straßenmodell · Farben zeigen die Fahrzeit bis ${state.limit * 60} Minuten.`;
   } else {
@@ -933,11 +952,17 @@ function wire() {
     state.limit = Number(e.target.value);
     update();
   };
+  $("autobahn-tempo").oninput = (e) => {
+    state.autobahnTempo = Number(e.target.value);
+    state.meeting = null;
+    update();
+  };
   $("branches").oninput = (e) => {
     state.branches = Number(e.target.value);
     update();
   };
   $("basin-count").onchange = (e) => {
+    state.centers = [];
     state.basinCount = Number(e.target.value);
     update();
   };
@@ -1099,7 +1124,7 @@ function wire() {
 async function init() {
   try {
     const responses = await Promise.all([
-      fetch("data/roads.json.gz?v=5"),
+      fetch("data/roads.json.gz?v=6"),
       fetch("data/borders.json"),
     ]);
     for (const r of responses)
@@ -1172,8 +1197,8 @@ async function init() {
     $("data-state").textContent =
       `${nf.format(data.meta.nodes)} Knoten · OSM ${data.meta.osmTimestamp?.slice(0, 10) || data.meta.retrieved}`;
     $("data-details").textContent =
-      `OSM-Datenstand: ${data.meta.osmTimestamp}. ${nf.format(data.meta.nodes)} Knoten, ${nf.format(data.meta.edges)} Straßenabschnitte, ${nf.format(data.cities.length)} angebundene Orte. Durch Autozug und Fähre verbundenes Netz; ${nf.format(data.meta.excludedNodes)} andere Knoten wurden ausgelassen. Einwohnerzahlen dienen nur der Auswahl der größten Orte; die acht zusätzlich aufgenommenen Orte sind davon unabhängig.`;
-    worker = new Worker("worker.js?v=20261103-7", { type: "module" });
+      `OSM-Datenstand: ${data.meta.osmTimestamp}. ${nf.format(data.meta.nodes)} Knoten, ${nf.format(data.meta.edges)} Straßenabschnitte, ${nf.format(data.cities.length)} angebundene Orte. Durch Autozug und Fähre verbundenes Netz; ${nf.format(data.meta.excludedNodes)} andere Knoten wurden ausgelassen. Einwohnerzahlen dienen nur der Auswahl der größten Orte; die zusätzlich aufgenommenen Orte sind davon unabhängig.`;
+    worker = new Worker("worker.js?v=20261103-9", { type: "module" });
     worker.onmessage = ({ data: msg }) => {
       if (msg.type === "ready") {
         ready = true;

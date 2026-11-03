@@ -1,8 +1,8 @@
 {
   "osmTimestamp": "2026-11-02T21:21:26Z",
   "retrieved": "2026-11-03",
-  "nodes": 276861,
-  "edges": 369135,
+  "nodes": 276912,
+  "edges": 369186,
   "excludedNodes": 15752,
   "components": 14795,
   "cities": 971,
@@ -32,6 +32,7 @@
     "city centers snapped to road nodes within 5 km"
   ],
   "geometryToleranceMeters": 30,
+  "motorwayProfile": "edge[9]: [km, forward limit, backward limit]; 0 explicit unlimited, -1 unknown; motorway links excluded",
   "networkComponentsRetained": 1,
   "transfers": {
     "osmTimestamp": "2026-11-02T21:21:26Z",

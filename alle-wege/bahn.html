@@ -20,7 +20,7 @@
           <circle cx="18" cy="18" r="4" /></svg
         ><span>ALLE WEGE<small>DEUTSCHLAND</small></span></a
       ><span class="edition">Ein Atlas der Verbindungen — Bahn & Bus</span
-      ><a href="./" class="zurueck">← Straßenatlas</a>
+      ><a href="./" class="zurueck" data-wechsel-strasse>← Straßenatlas</a>
     </header>
     <div class="workspace">
       <aside id="bahn-eingaben" inert aria-busy="true">
@@ -30,7 +30,7 @@
           <p>Deutschland im Takt des Fahrplans.</p>
         </div>
         <div class="verkehrswahl">
-          <a href="./">Straße</a
+          <a href="./" data-wechsel-strasse>Straße</a
           ><a href="bahn.html" aria-current="page">Bahn &amp; Bus</a>
         </div>
         <nav class="modes" id="bahn-modus" aria-label="Bahnansicht">
@@ -108,7 +108,7 @@
               role="status"
             ></p>
             <p class="hint">
-              2–8 Zentren einzeln hinzufügen. Jede Haltestelle gehört zum
+              2–20 Zentren einzeln hinzufügen. Jede Haltestelle gehört zum
               zeitlich nächsten Zentrum bei gleicher Ankunftsfrist.
             </p>
           </div>
@@ -196,6 +196,11 @@
               <option value="auto">Automatisch finden</option>
               <option value="eigen">Eigene Orte vergleichen</option>
             </select>
+            <label for="bahn-objective">WAS BEDEUTET FAIR?</label>
+            <select id="bahn-objective">
+              <option value="fair">Längste Anreise minimieren</option>
+              <option value="total">Gesamte Fahrzeit minimieren</option>
+            </select>
             <div id="eigene-kandidaten" hidden>
               <label for="kandidaten-ort"
                 >WELCHE TREFFPUNKTE VERGLEICHEN?</label
@@ -242,12 +247,19 @@
             ><select id="horizont">
               <option value="30">30 Minuten</option>
               <option value="60">1 Stunde</option>
+              <option value="90">1 Stunde 30 Minuten</option>
               <option value="120" selected>2 Stunden</option>
+              <option value="150">2 Stunden 30 Minuten</option>
               <option value="180">3 Stunden</option>
+              <option value="210">3 Stunden 30 Minuten</option>
               <option value="240">4 Stunden</option>
+              <option value="270">4 Stunden 30 Minuten</option>
               <option value="300">5 Stunden</option>
+              <option value="330">5 Stunden 30 Minuten</option>
               <option value="360">6 Stunden</option>
+              <option value="390">6 Stunden 30 Minuten</option>
               <option value="420">7 Stunden</option>
+              <option value="450">7 Stunden 30 Minuten</option>
               <option value="480">8 Stunden</option>
             </select>
             <p class="hint" id="atlas-hinweis">
@@ -346,6 +358,7 @@
           Wähle Orte, Reisetag und Abfahrt. Die Suche startet erst mit dem
           Knopf.
         </div>
+        <p id="wechsel-hinweis" class="hint" hidden></p>
         <div id="bahn-ergebnis" aria-busy="false">
           <div id="bahn-karten"></div>
           <section id="atlas-ergebnis" hidden>
@@ -529,6 +542,6 @@
       </main>
     </div>
     <datalist id="bahn-orte"></datalist>
-    <script type="module" src="bahn.js?v=7"></script>
+    <script type="module" src="bahn.js?v=8"></script>
   </body>
 </html>

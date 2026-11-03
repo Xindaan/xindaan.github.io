@@ -1,6 +1,8 @@
 import { STANDARDORTE } from "./standardorte.js";
-import { atlasURL, verdichteAtlas } from "./bahn-atlas-core.js?v=20261103-8";
-import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261103-8";
+import { leseZustand, vergleichLink, bahnZuStrasse } from "./vergleich.js";
+let strassenStand = {}, vergleichInfo = {};
+import { atlasURL, verdichteAtlas } from "./bahn-atlas-core.js?v=20261103-9";
+import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261103-9";
 import { ortsnamen, ergaenzeOrt } from "./ortslisten.js";
 import {
   API,
@@ -152,7 +154,7 @@ function modus(neu) {
       : "ABFAHRT AB";
   $("atlas-hinweis").textContent =
     art === "finden"
-      ? "Gemeinsame Haltestellen in Deutschland automatisch finden. Rangfolge: kürzeste längste Anreise, danach geringste Summe. Zeitlimit gilt je Person."
+        ? `Gemeinsame Haltestellen in Deutschland automatisch finden. Rangfolge: ${$("bahn-objective").value === "total" ? "geringste gesamte Anreise, danach kürzeste längste Anreise" : "kürzeste längste Anreise, danach geringste Summe"}. Zeitlimit gilt je Person.`
       : art === "gebiete"
         ? "Vergleich bei gleicher Ankunftsfrist. Nur Haltestellen innerhalb des Suchhorizonts; Farbe = zeitlich nächstes Zentrum."
         : art === "effekt"
@@ -169,6 +171,15 @@ function modus(neu) {
         ),
       ),
     );
+  wechselLinks();
+}
+function wechselLinks() {
+  if (!orte.length) return;
+  try {
+    const neu = bahnZuStrasse(zustand(), orte, strassenStand);
+    for (const a of document.querySelectorAll('[data-wechsel-strasse]'))
+      a.href = vergleichLink("./", neu.strasse, neu.bahn);
+  } catch { /* Unbestaetigte Texte erst beim Wechsel als Fehler zeigen. */ }
 }
 function kontingent() {
   let q;
@@ -246,6 +257,7 @@ function optionen() {
     puffer: Number($("puffer").value),
     nurRegional: $("regional").checked,
     vergleich: art === "treffen",
+    objective: $("bahn-objective").value,
     horizont: Number($("horizont").value),
     arriveBy:
       art === "gebiete" ||
@@ -290,13 +302,14 @@ function ortHinzufuegen(feld, name = $(feld + "-ort").value) {
     const wert = ergaenzeOrt(
       $(feld).value,
       label,
-      feld === "kandidaten" ? 3 : 8,
+      feld === "kandidaten" ? 3 : feld === "zentren" ? 20 : 8,
     );
     leeren();
     $(feld).value = wert;
     $(feld + "-ort").value = "";
     $(feld + "-fehler").textContent = "";
     ortslistenAnzeigen();
+    wechselLinks();
   } catch (e) {
     $(feld + "-fehler").textContent = e.message;
   }
@@ -401,6 +414,7 @@ async function suchen(event) {
         result.push({ ort: kandidat, reisen });
       }
       const rang = treffpunkte(result, opt.zeit);
+      if (opt.objective === "total") rang.sort((a, b) => Number(b.erreichbar) - Number(a.erreichbar) || a.summe - b.summe || a.max - b.max);
       ergebnis = { art, rang, personen, opt, abgerufen: new Date() };
       $("bahn-karten").innerHTML = rang
         .map(
@@ -409,7 +423,7 @@ async function suchen(event) {
         )
         .join("");
       status(
-        `${personen.length} Startorte × ${kandidaten.length} ${kandidaten.length === 1 ? "Treffpunkt" : "Treffpunkte"} geprüft. Rangfolge: früheste gemeinsame Ankunft, bei Gleichstand geringste Summe der Zeiten ab Wunschabfahrt. Nur die eingegebenen Orte werden verglichen.`,
+        `${personen.length} Startorte × ${kandidaten.length} ${kandidaten.length === 1 ? "Treffpunkt" : "Treffpunkte"} geprüft. Rangfolge: ${opt.objective === "total" ? "geringste gesamte Anreise, danach früheste gemeinsame Ankunft" : "früheste gemeinsame Ankunft, bei Gleichstand geringste Summe der Zeiten ab Wunschabfahrt"}. Nur die eingegebenen Orte werden verglichen.`,
       );
       zeigeTreff(0);
     }
@@ -458,7 +472,7 @@ async function sucheAtlas(opt, signal, id) {
     typ === "finden"
       ? liste("personen", 2, 8)
       : typ === "gebiete"
-        ? liste("zentren", 2, 8)
+        ? liste("zentren", 2, 20)
         : [finde($("atlas-ort").value, "atlas-ort")];
   if (personen.some((p) => !p))
     throw new Error(
@@ -797,6 +811,8 @@ async function haltestellen(feld) {
 }
 function zustand() {
   return {
+    ...vergleichInfo,
+    objective: $("bahn-objective").value,
     art,
     von: $("von").value,
     nach: $("nach").value,
@@ -819,15 +835,20 @@ function schreibeLink() {
   history.replaceState(
     null,
     "",
-    "#" + new URLSearchParams({ bahn: JSON.stringify(zustand()) }),
+    vergleichLink("", strassenStand, zustand()),
   );
 }
 function leseLink() {
   try {
+    strassenStand = leseZustand(location.hash, "s") || {};
     const s = JSON.parse(
       new URLSearchParams(location.hash.slice(1)).get("bahn"),
     );
     if (!s) return;
+    vergleichInfo = { uebernahme: s.uebernahme, unbegrenztUebernommen: s.unbegrenztUebernommen, rueckvergleich: s.rueckvergleich, objective: s.objective, strassenBudget: s.strassenBudget };
+    $("bahn-objective").value = s.objective === "total" ? "total" : "fair";
+    $("wechsel-hinweis").textContent = typeof s.uebernahme === "string" ? s.uebernahme : "";
+    $("wechsel-hinweis").hidden = !$("wechsel-hinweis").textContent;
     for (const id of [
       "von",
       "nach",
@@ -853,9 +874,7 @@ function leseLink() {
         c &&
         typeof c.name === "string" &&
         c.name.length < 200 &&
-        typeof c.stopId === "string" &&
-        c.stopId.length > 0 &&
-        c.stopId.length < 300 &&
+        ((typeof c.stopId === "string" && c.stopId.length > 0 && c.stopId.length < 300) || c.punkt === true) &&
         Number.isFinite(c.lat) &&
         c.lat >= 47 &&
         c.lat <= 56 &&
@@ -864,8 +883,9 @@ function leseLink() {
         c.lon <= 16
       )
         auswahl[f] = {
-          key: c.stopId,
+          key: c.stopId || `punkt:${c.lat},${c.lon}`,
           stopId: c.stopId,
+          punkt: c.punkt === true,
           name: c.name,
           display: c.name,
           lat: c.lat,
@@ -922,6 +942,7 @@ async function init() {
     modus(art);
     leseLink();
     ortslistenAnzeigen();
+    wechselLinks();
     ["von", "nach", "atlas-ort"].forEach(ortHinweis);
     $("bahn-schnell").innerHTML = STANDARDORTE.map((name) =>
       orte.find((c) => c.name === name),
@@ -957,6 +978,7 @@ async function init() {
           .join("\n");
         $(feld + "-fehler").textContent = "";
         ortslistenAnzeigen();
+        wechselLinks();
       };
     }
     document.querySelectorAll("[data-fuer]").forEach(
@@ -983,6 +1005,7 @@ async function init() {
         $(feld).value = c.label;
         delete auswahl[feld];
         ortHinweis(feld);
+        wechselLinks();
       }
     };
     $("bahn-form").onsubmit = suchen;
@@ -992,14 +1015,25 @@ async function init() {
       )
         return;
       leeren();
+      if (e.target.id === "horizont") vergleichInfo.unbegrenztUebernommen = false;
       if (["von", "nach", "atlas-ort"].includes(e.target.id)) {
         delete auswahl[e.target.id];
         $(e.target.id + "-vorschlaege").innerHTML = "";
         ortHinweis(e.target.id);
       }
     };
+    $("bahn-form").addEventListener("input", () => queueMicrotask(wechselLinks));
+    for (const a of document.querySelectorAll('[data-wechsel-strasse]')) {
+      a.onclick = (e) => {
+        try {
+          const neu = bahnZuStrasse(zustand(), orte, strassenStand);
+          a.href = vergleichLink("./", neu.strasse, neu.bahn);
+        } catch (fehler) { e.preventDefault(); status(fehler.message, true); }
+      };
+    }
     $("treff-art").onchange = () =>
       modus($("treff-art").value === "auto" ? "finden" : "treffen");
+    $("bahn-objective").onchange = () => modus(art);
     $("atlas-richtung").onchange = () => modus(art);
     $("tauschen").onclick = () => {
       leeren();
@@ -1007,6 +1041,7 @@ async function init() {
       [auswahl.von, auswahl.nach] = [auswahl.nach, auswahl.von];
       ortHinweis("von");
       ortHinweis("nach");
+      wechselLinks();
     };
     $("abbrechen").onclick = () => {
       leeren();

@@ -6,7 +6,7 @@ import {
   atlasEffekt,
   inGebiet,
   atlasLeerHinweis,
-} from "./bahn-atlas-core.js?v=20261103-8";
+} from "./bahn-atlas-core.js?v=20261103-9";
 const farben = [
   "#a9674c",
   "#517a78",
@@ -67,7 +67,7 @@ export async function atlasBerechnen({
     );
   }
   let punkte = listen[0];
-  if (typ === "finden") punkte = atlasTreffpunkte(listen);
+  if (typ === "finden") punkte = atlasTreffpunkte(listen, opt.objective);
   if (typ === "gebiete") punkte = atlasGebiete(listen);
   if (typ === "effekt") punkte = atlasEffekt(...listen);
   return {
