@@ -1,4 +1,4 @@
-import { buildGraph, analyze } from "./graph.js?v=20261103-9";
+import { buildGraph, analyze } from "./graph.js?v=20261103-10";
 let graph;
 self.onmessage = ({ data }) => {
   try {

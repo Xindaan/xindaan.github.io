@@ -1,5 +1,5 @@
 import { STANDARDORTE } from "./standardorte.js";
-import { leseZustand, vergleichLink, strasseZuBahn } from "./vergleich.js";
+import { leseZustand, vergleichLink, strasseZuBahn } from "./vergleich.js?v=20261103-10";
 import { gueltigesTempo, modellTempo } from "./autobahntempo.js";
 let bahnStand = {};
 const $ = (id) => document.getElementById(id),
@@ -250,7 +250,7 @@ function sync() {
   $("meet-controls").hidden = state.mode !== "meet";
   $("basin-controls").hidden = state.mode !== "basins";
   $("reach-controls").hidden = state.mode !== "reach";
-  $("routing-controls").hidden = false;
+  $("routing-controls").hidden = state.mode === "meet";
   $("branch-controls").hidden = state.mode !== "one";
   $("metric").hidden = ["reach", "meet"].includes(state.mode);
   $("metric").previousElementSibling.hidden = $("metric").hidden;
@@ -279,8 +279,8 @@ function sync() {
       : "Jeder Netzknoten gehört zur Stadt, die er am schnellsten erreicht. Städtauswahl nach GeoNames-Einwohnerzahl.";
   $("objective-hint").textContent =
     state.objective === "fair"
-      ? "Die längste einzelne Anreise wird so kurz wie möglich."
-      : "Die Summe aller Anreisen wird so klein wie möglich.";
+      ? "Die längste einzelne Anreise wird so kurz wie möglich. Die Suche vergleicht alle geladenen Orte, ohne Zeitlimit."
+      : "Die Summe aller Anreisen wird so klein wie möglich. Die Suche vergleicht alle geladenen Orte, ohne Zeitlimit.";
   $("quick").innerHTML = STANDARDORTE.map((n) =>
     data.cities.find((c) => c.name === n),
   )
@@ -441,7 +441,7 @@ function heading() {
       $("meeting-results").innerHTML =
         state.travelers.length < 2
           ? '<p class="hint">Füge mindestens zwei verschiedene Startorte hinzu.</p>'
-          : '<p class="hint">Kein gemeinsamer Treffpunkt mit diesen Einstellungen. Startorte und Zeitlimit prüfen.</p>';
+          : '<p class="hint">Kein gemeinsamer Treffpunkt im geladenen Straßennetz. Bitte die Startorte prüfen.</p>';
       stats = [
         [
           "STARTORTE",
@@ -1198,7 +1198,7 @@ async function init() {
       `${nf.format(data.meta.nodes)} Knoten · OSM ${data.meta.osmTimestamp?.slice(0, 10) || data.meta.retrieved}`;
     $("data-details").textContent =
       `OSM-Datenstand: ${data.meta.osmTimestamp}. ${nf.format(data.meta.nodes)} Knoten, ${nf.format(data.meta.edges)} Straßenabschnitte, ${nf.format(data.cities.length)} angebundene Orte. Durch Autozug und Fähre verbundenes Netz; ${nf.format(data.meta.excludedNodes)} andere Knoten wurden ausgelassen. Einwohnerzahlen dienen nur der Auswahl der größten Orte; die zusätzlich aufgenommenen Orte sind davon unabhängig.`;
-    worker = new Worker("worker.js?v=20261103-9", { type: "module" });
+    worker = new Worker("worker.js?v=20261103-10", { type: "module" });
     worker.onmessage = ({ data: msg }) => {
       if (msg.type === "ready") {
         ready = true;

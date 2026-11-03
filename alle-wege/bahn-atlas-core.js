@@ -4,7 +4,7 @@ export function atlasURL(ort, opt) {
   if (
     !Number.isInteger(opt.horizont) ||
     opt.horizont < 30 ||
-    opt.horizont > 480
+    opt.horizont > (opt.automatischeTreffpunktsuche ? 1440 : 480)
   )
     throw new Error(
       "Bitte einen Suchhorizont zwischen 30 Minuten und 8 Stunden wählen.",
@@ -131,14 +131,18 @@ export function atlasEffekt(mit, ohne) {
 export function atlasLeerHinweis(r) {
   const ohne = r.personen.filter((p, i) => !r.anzahlen[i]).map((p) => p.name);
   const stunden = `${r.opt.horizont / 60}`.replace(".", ",");
+  if (r.typ === "finden") return {
+    titel: "Kein gemeinsamer Treffpunkt in den verfügbaren Fahrplandaten",
+    text: ohne.length
+      ? `Für ${ohne.join(", ")} liefert die Fahrplanauskunft keine erreichbaren Haltestellen. Bitte Startort, Abfahrt oder Umstiege prüfen; es können Fahrplandaten fehlen.`
+      : `Die automatische Suche wurde bis ${stunden} Stunden ab Abfahrt erweitert. Die Fahrplandaten liefern damit keinen gemeinsamen Halt. Das ist keine Aussage, dass ein Treffen grundsätzlich unmöglich ist. Bitte eine andere Abfahrt oder eigene Treffpunktorte prüfen.`,
+    naechsterHorizont: null,
+  };
   return {
-    titel:
-      r.typ === "finden"
-        ? `Kein gemeinsamer Treffpunkt im Sollfahrplan innerhalb von ${stunden} Stunden`
-        : "Keine erreichbaren Haltestellen mit dieser Auswahl",
+    titel: "Keine erreichbaren Haltestellen mit dieser Auswahl",
     text: ohne.length
       ? `Für ${ohne.join(", ")} liefert die Fahrplanauskunft innerhalb des Zeitlimits keine erreichbaren Haltestellen. Bitte Startort, Uhrzeit oder Umstiege ändern. Das kann auch an fehlenden Fahrplandaten liegen.`
-      : `Für alle ${r.personen.length} Startorte wurden Verbindungen gefunden. Im Sollfahrplan ergibt sich jedoch keine gemeinsame Haltestelle innerhalb von ${stunden} Stunden. Das Zeitlimit gilt je Person, einschließlich Warten ab Wunschabfahrt. Aktuelle Verspätungen oder Ausfälle können die erreichbaren Anschlüsse verändern.`,
+      : `Die Fahrplanauskunft liefert keine passenden Haltestellen innerhalb von ${stunden} Stunden. Bitte Zeitlimit, Uhrzeit oder Umstiege prüfen.`,
     naechsterHorizont:
       [60, 120, 180, 240, 300, 360, 420, 480].find((h) => h > r.opt.horizont) ??
       null,

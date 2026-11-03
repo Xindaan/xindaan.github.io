@@ -201,6 +201,7 @@
               <option value="fair">Längste Anreise minimieren</option>
               <option value="total">Gesamte Fahrzeit minimieren</option>
             </select>
+            <p class="hint">Wir suchen den bestmöglichen gemeinsamen Treffpunkt ohne persönliches Zeitlimit.</p>
             <div id="eigene-kandidaten" hidden>
               <label for="kandidaten-ort"
                 >WELCHE TREFFPUNKTE VERGLEICHEN?</label
@@ -476,8 +477,12 @@
           <p>
             Diese nichtkommerzielle Anwendung ist Open Source (MIT). Höchstens
             40 neue Fahrplananfragen pro Tag und Browser. Eine Atlas-Karte
-            benötigt eine Anfrage, automatische Treffpunkte und Einzugsgebiete
-            eine pro Person beziehungsweise Zentrum. Für den besten Treffpunkt
+            benötigt eine Anfrage, Einzugsgebiete eine pro Zentrum. Automatische
+            Treffpunkte suchen ohne persönliches Zeitlimit: zuerst mit sechs Stunden,
+            bei Bedarf mit acht, zwölf und 24 Stunden Fahrplanausschnitt, jeweils
+            eine Anfrage pro Person. Der Dienst kann große Sammelantworten ablehnen;
+            dann wird eine technische Suchgrenze gemeldet, keine Unerreichbarkeit.
+            Für den besten Treffpunkt
             werden anschließend die konkreten Anreisen abgefragt. Der
             Fernverkehrsvergleich braucht zwei Anfragen. Ein Vergleich eigener
             Ziele benötigt bis zu 24. Antworten bleiben zehn Minuten im
@@ -542,6 +547,6 @@
       </main>
     </div>
     <datalist id="bahn-orte"></datalist>
-    <script type="module" src="bahn.js?v=8"></script>
+    <script type="module" src="bahn.js?v=9"></script>
   </body>
 </html>

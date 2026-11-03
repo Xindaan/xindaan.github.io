@@ -30,7 +30,7 @@ export function strasseZuBahn(s, orte, alt = {}) {
   neu["atlas-richtung"] = s.direction === "to" ? "nach" : "von";
   neu.horizont = String(s.limit > 0 ? s.limit * 60 : 480);
   neu.unbegrenztUebernommen = !s.limit;
-  if (!s.limit) neu.uebernahme = "Straße ohne Zeitlimit: Die Bahn-Suche ist auf höchstens 8 Stunden begrenzt. Für den Rückwechsel bleibt die unbegrenzte Straßenansicht erhalten, solange du das Zeitlimit nicht änderst.";
+  if (!s.limit && s.mode !== "meet") neu.uebernahme = "Straße ohne Zeitlimit: Die Bahn-Erreichbarkeit ist auf höchstens 8 Stunden begrenzt. Für den Rückwechsel bleibt die unbegrenzte Straßenansicht erhalten, solange du das Zeitlimit nicht änderst.";
   if (s.metric === "distance" && s.mode !== "meet") {
     neu.horizont = alt.horizont || "120";
     neu.uebernahme = "Die Bahn vergleicht Reisezeit statt Straßenentfernung. Das vorherige Straßenmodell bleibt beim Rückwechsel erhalten.";

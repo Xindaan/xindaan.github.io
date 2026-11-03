@@ -6,7 +6,7 @@ import {
   atlasEffekt,
   inGebiet,
   atlasLeerHinweis,
-} from "./bahn-atlas-core.js?v=20261103-9";
+} from "./bahn-atlas-core.js?v=20261103-10";
 const farben = [
   "#a9674c",
   "#517a78",
@@ -30,7 +30,32 @@ const zeit = (m) =>
   m < 60
     ? `${Math.round(m)} Min.`
     : `${Math.floor(m / 60)} Std. ${Math.round(m % 60)} Min.`;
-export async function atlasBerechnen({
+export async function atlasBerechnen(args) {
+  if (args.typ !== "finden") return atlasRunde(args);
+  let vorher;
+  // Kein persoenliches Zeitbudget. Die Sammelsuche wird bei Bedarf erweitert.
+  // Minimax ist gesichert, sobald ein gemeinsamer Halt innerhalb der Runde liegt:
+  // Jeder noch nicht erfasste Halt braucht fuer mindestens eine Person laenger.
+  // Fuer die Summe ist deren Wert eine konservative Obergrenze fuer die Suche.
+  for (const horizont of [360, 480, 720, 1440]) {
+    const opt = { ...args.opt, horizont, automatischeTreffpunktsuche: true };
+    let r;
+    try {
+      args.pruefeBudget?.(args.personen.map((p) => atlasURL(p, opt)));
+      r = await atlasRunde({ ...args, opt });
+    } catch (e) {
+      if (args.signal?.aborted || !vorher?.punkte.length) throw e;
+      return { ...vorher, rangVollstaendig: false,
+        suchHinweis: `Die weitere Fahrplansuche konnte nicht abgeschlossen werden: ${e.message} Die angezeigten Vorschläge sind geprüft; die beste Gesamtsumme ist noch nicht abgesichert.` };
+    }
+    if (r.punkte.length && (opt.objective !== "total" || r.punkte[0].summe <= horizont))
+      return { ...r, rangVollstaendig: true };
+    vorher = r;
+  }
+  return { ...vorher, rangVollstaendig: false,
+    suchHinweis: vorher.punkte.length ? "Die automatische Suche umfasst 24 Stunden ab Abfahrt. Die angezeigten Vorschläge sind geprüft; eine bessere Gesamtsumme außerhalb dieses Fahrplanausschnitts ist nicht ausgeschlossen." : "" };
+}
+async function atlasRunde({
   typ,
   personen,
   opt,
@@ -103,7 +128,7 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
     minute: "2-digit",
   }).format(new Date(r.opt.zeit));
   $("atlas-zahlen").innerHTML =
-    `<div><span>${r.typ === "finden" ? "TREFFPUNKTVORSCHLÄGE" : "HALTEPUNKTE IM ERGEBNIS"}</span><strong>${r.typ === "finden" ? vorschlaege.length : punkte.length.toLocaleString("de-DE")}</strong></div><div><span>SUCHHORIZONT</span><strong>${zeit(r.opt.horizont)}</strong></div><div><span>${r.opt.arriveBy ? "ANKUNFT BIS" : "ABFAHRT AB"}</span><strong>${uhrzeit}</strong></div>`;
+    `<div><span>${r.typ === "finden" ? "TREFFPUNKTVORSCHLÄGE" : "HALTEPUNKTE IM ERGEBNIS"}</span><strong>${r.typ === "finden" ? vorschlaege.length : punkte.length.toLocaleString("de-DE")}</strong></div><div><span>${r.typ === "finden" ? "LÄNGSTE ANREISE · BESTER VORSCHLAG" : "SUCHHORIZONT"}</span><strong>${r.typ === "finden" ? punkte.length ? zeit(punkte[0].max) : "–" : zeit(r.opt.horizont)}</strong></div><div><span>${r.opt.arriveBy ? "ANKUNFT BIS" : "ABFAHRT AB"}</span><strong>${uhrzeit}</strong></div>`;
   $("atlas-raster").hidden = !punkte.length;
   $("atlas-leer").hidden = !!punkte.length;
   if (!punkte.length) {
@@ -123,6 +148,8 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
         : r.typ === "effekt"
           ? "Grün: wenig Zeitvorteil · Braun: viel Zeitvorteil · Violett: ohne Fernverkehr nicht innerhalb des Zeitlimits."
           : "Grün: kurze Reisezeit · Braun: lange Reisezeit. Jeder Punkt zeigt eine erreichbare Haltestelle. Die Flächen dazwischen sind nicht automatisch erreichbar.";
+  if (r.suchHinweis)
+    $("atlas-legende").insertAdjacentHTML("afterbegin", `<strong>${esc(r.suchHinweis)}</strong><br>`);
   if (["gebiete", "finden"].includes(r.typ))
     $("atlas-legende").insertAdjacentHTML(
       "beforeend",
@@ -199,7 +226,7 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
             `<button class="atlas-halt" data-halt="${i}"><strong>${r.typ === "finden" ? `${i + 1}. ` : ""}${esc(s.name)}</strong><span>${esc(info(s))}</span></button>`,
         )
         .join("") ||
-      "<p>Keine passende Haltestelle. Suchbegriff oder Zeitlimit ändern.</p>";
+      (r.typ === "finden" ? "<p>Kein Treffpunkt passt zum Suchbegriff.</p>" : "<p>Keine passende Haltestelle. Suchbegriff oder Zeitlimit ändern.</p>");
     $("atlas-liste").onclick = (e) => {
       const b = e.target.closest("[data-halt]");
       if (b) waehlen(gezeigt[Number(b.dataset.halt)]);

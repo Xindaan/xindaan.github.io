@@ -232,7 +232,6 @@ export function analyze(g, s) {
       s.objective,
       { sylt: s.sylt, transferWait: s.transferWait, autobahnTempo: s.autobahnTempo },
     );
-    if (s.limit > 0) m.candidates = m.candidates.filter((c) => c.max <= s.limit * 60);
     const selected =
       m.candidates.find((c) => g.cities[c.index].id === s.meeting) ||
       m.candidates[0];

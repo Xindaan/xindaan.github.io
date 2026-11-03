@@ -1,8 +1,8 @@
 import { STANDARDORTE } from "./standardorte.js";
-import { leseZustand, vergleichLink, bahnZuStrasse } from "./vergleich.js";
+import { leseZustand, vergleichLink, bahnZuStrasse } from "./vergleich.js?v=20261103-10";
 let strassenStand = {}, vergleichInfo = {};
-import { atlasURL, verdichteAtlas } from "./bahn-atlas-core.js?v=20261103-9";
-import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261103-9";
+import { atlasURL, verdichteAtlas } from "./bahn-atlas-core.js?v=20261103-10";
+import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261103-10";
 import { ortsnamen, ergaenzeOrt } from "./ortslisten.js";
 import {
   API,
@@ -124,7 +124,8 @@ function modus(neu) {
   $("treffen-felder").hidden = !["treffen", "finden"].includes(art);
   $("atlas-felder").hidden = !["reichweite", "effekt"].includes(art);
   $("zentren-felder").hidden = art !== "gebiete";
-  $("horizont-feld").hidden = ["route", "treffen"].includes(art);
+  $("horizont-feld").hidden = ["route", "treffen", "finden"].includes(art);
+  $("wechsel-hinweis").hidden = ["treffen", "finden"].includes(art) || !$("wechsel-hinweis").textContent;
   $("eigene-kandidaten").hidden = art !== "treffen";
   $("treff-art").value = art === "treffen" ? "eigen" : "auto";
   $("regional").disabled = art === "effekt";
@@ -154,7 +155,7 @@ function modus(neu) {
       : "ABFAHRT AB";
   $("atlas-hinweis").textContent =
     art === "finden"
-        ? `Gemeinsame Haltestellen in Deutschland automatisch finden. Rangfolge: ${$("bahn-objective").value === "total" ? "geringste gesamte Anreise, danach kürzeste längste Anreise" : "kürzeste längste Anreise, danach geringste Summe"}. Zeitlimit gilt je Person.`
+        ? `Gemeinsame Haltestellen in Deutschland automatisch finden. Rangfolge: ${$("bahn-objective").value === "total" ? "geringste gesamte Anreise, danach kürzeste längste Anreise" : "kürzeste längste Anreise, danach geringste Summe"}. Ohne persönliches Zeitlimit; die Fahrplansuche wird bei Bedarf erweitert.`
       : art === "gebiete"
         ? "Vergleich bei gleicher Ankunftsfrist. Nur Haltestellen innerhalb des Suchhorizonts; Farbe = zeitlich nächstes Zentrum."
         : art === "effekt"
@@ -219,6 +220,8 @@ async function lade(url, signal, fahrplan = false) {
     throw new Error(
       response.status === 429
         ? "Der Fahrplandienst ist ausgelastet. Bitte später erneut suchen."
+        : response.status === 422 && url.includes("/v6/one-to-all?")
+          ? "Die Sammelsuche überschreitet eine technische Grenze des Fahrplandienstes. Bitte eine andere Abfahrt oder eigene Treffpunktorte prüfen."
         : `Der Fahrplandienst ist momentan nicht verfügbar (HTTP ${response.status}).`,
     );
   const raw = await response.json();
@@ -484,7 +487,7 @@ async function sucheAtlas(opt, signal, id) {
           atlasURL(personen[0], { ...opt, nurRegional }),
         )
       : personen.map((p) => atlasURL(p, opt));
-  pruefeBudget(urls);
+  if (typ !== "finden") pruefeBudget(urls);
   $("suchen").disabled = true;
   $("abbrechen").hidden = false;
   $("bahn-ergebnis").setAttribute("aria-busy", "true");
@@ -501,6 +504,7 @@ async function sucheAtlas(opt, signal, id) {
     signal,
     grenzen,
     status,
+    pruefeBudget,
   });
   if (id !== folge) return;
   r.orte = orte;
@@ -513,9 +517,9 @@ async function sucheAtlas(opt, signal, id) {
   });
   status(
     r.punkte.length
-      ? `${r.punkte.length.toLocaleString("de-DE")} ${typ === "finden" ? "gemeinsame" : "berechnete"} Haltestellen in Deutschland · ${datumText(opt.zeit)} ${opt.arriveBy ? "Ankunft bis" : "ab"} ${uhr(opt.zeit)} · Fahrplan ohne Echtzeit. ${typ === "finden" ? "Automatische Rangfolge innerhalb des gewählten Zeitlimits." : "Haltestelle wählen, um die Verbindung aktuell zu prüfen."}`
-      : `Keine ${typ === "finden" ? "gemeinsamen " : ""}Haltestellen im Suchhorizont gefunden. Zeitlimit erweitern, Umstiegsgrenze oder Uhrzeit ändern.`,
-    !r.punkte.length,
+      ? `${r.punkte.length.toLocaleString("de-DE")} ${typ === "finden" ? "gemeinsame" : "berechnete"} Haltestellen in Deutschland · ${datumText(opt.zeit)} ${opt.arriveBy ? "Ankunft bis" : "ab"} ${uhr(opt.zeit)} · Fahrplan ohne Echtzeit. ${typ === "finden" ? r.suchHinweis || "Bestmöglicher Treffpunkt nach gewählter Fairness, ohne persönliches Zeitlimit." : "Haltestelle wählen, um die Verbindung aktuell zu prüfen."}`
+      : typ === "finden" ? "Keine gemeinsame Haltestelle in den verfügbaren Fahrplandaten. Bitte die Erläuterung unten beachten." : "Keine Haltestellen im Suchhorizont gefunden. Zeitlimit erweitern, Umstiegsgrenze oder Uhrzeit ändern.",
+    !r.punkte.length || !!r.suchHinweis,
   );
   if (typ === "finden" && r.punkte.length) await atlasDetails(r.punkte[0], r);
 }
