@@ -1,0 +1,65 @@
+{
+  "osmTimestamp": "2026-11-02T21:21:26Z",
+  "retrieved": "2026-11-03",
+  "nodes": 276432,
+  "edges": 368641,
+  "excludedNodes": 15734,
+  "components": 14793,
+  "cities": 970,
+  "excludedCities": [],
+  "source": "OpenStreetMap contributors / Overpass Europe (dresel.systems)",
+  "license": "ODbL-1.0",
+  "projection": "equirectangular centered at 51N, 10.5E",
+  "speedKmh": {
+    "motorway": 130,
+    "trunk": 85,
+    "primary": 65,
+    "secondary": 55,
+    "links": 40,
+    "tertiary": 45,
+    "unclassified": 35,
+    "residential": 25,
+    "service": 15,
+    "living_street": 7
+  },
+  "speedRule": "motorway: min(130 km/h, numeric maxspeed); other roads: min(class speed, 85% of numeric maxspeed); roundabouts max 25 km/h",
+  "limitations": [
+    "no traffic",
+    "no turn restrictions or junction delay",
+    "local roads only in selected areas",
+    "foreign roads only in Sylt ferry access corridor; other ferries/car trains excluded",
+    "Sylt transfers use fixed planned-crossing times plus terminal buffer, no timetable",
+    "city centers snapped to road nodes within 5 km"
+  ],
+  "geometryToleranceMeters": 30,
+  "networkComponentsRetained": 1,
+  "transfers": {
+    "osmTimestamp": "2026-11-02T21:21:26Z",
+    "checked": "2026-11-03",
+    "autozug": {
+      "name": "Autozug Niebüll–Westerland",
+      "rideMinutes": 35,
+      "terminalBufferMinutes": 45
+    },
+    "faehre": {
+      "name": "Autofähre Havneby–List",
+      "rideMinutes": 40,
+      "terminalBufferMinutes": 30
+    },
+    "assumption": "Planned crossing plus fixed terminal buffer; no timetable, capacity, night-service or cancellation model.",
+    "sources": [
+      "https://www.autozug-sylt.de/de/fahrplan?stage=Live",
+      "https://www.syltshuttle.de/syltshuttle-de/reiseinformationen/anreisetipps-2049338",
+      "https://www.frs-syltfaehre.de/faq",
+      "https://www.frs-syltfaehre.de/fahrplan-2026",
+      "https://www.frs-syltfaehre.de/informationen/anreise-und-haefen/havneby-auf-roemoe"
+    ]
+  },
+  "localRoadAreas": [
+    "Gärtringen",
+    "Schleiz/Zollgrün/Tanna/Burgk",
+    "Lehnitz bei Oranienburg",
+    "Sylt/Niebüll/Rømø/Danish access corridor",
+    "Pfakofen"
+  ]
+}

@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Bahn- und Busverbindungen mit Abfahrtszeit, Umstiegen und ausgewählten Treffpunkten vergleichen."
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Bahn & Bus · Alle Wege</title>
+    <link rel="stylesheet" href="style.css?v=20261103-7" />
+    <link rel="stylesheet" href="bahn.css?v=5" />
+  </head>
+  <body class="bahn-seite">
+    <header>
+      <a class="brand" href="./"
+        ><svg viewBox="0 0 36 36" aria-hidden="true">
+          <path d="M5 4L18 18M31 4L18 18M4 31L18 18M32 31L18 18" />
+          <circle cx="18" cy="18" r="4" /></svg
+        ><span>ALLE WEGE<small>DEUTSCHLAND</small></span></a
+      ><span class="edition">Ein Atlas der Verbindungen — Bahn & Bus</span
+      ><a href="./" class="zurueck">← Straßenatlas</a>
+    </header>
+    <div class="workspace">
+      <aside>
+        <div class="sidebar-intro">
+          <span class="eyebrow">MIT BAHN & BUS</span>
+          <h1>Wann kommen<br />wir an?</h1>
+          <p>Deutschland im Takt des Fahrplans.</p>
+        </div>
+        <div class="verkehrswahl">
+          <a href="./">Straße</a
+          ><a href="bahn.html" aria-current="page">Bahn &amp; Bus</a>
+        </div>
+        <nav class="modes" id="bahn-modus" aria-label="Bahnansicht">
+          <button data-art="reichweite" aria-pressed="true">
+            <span>01</span> Erreichbarkeit
+          </button>
+          <button data-art="finden" aria-pressed="false">
+            <span>02</span> Fairer Treffpunkt
+          </button>
+          <button data-art="gebiete" aria-pressed="false">
+            <span>03</span> Einzugsgebiete
+          </button>
+          <button data-art="effekt" aria-pressed="false">
+            <span>04</span> Fernverkehr-Effekt
+          </button>
+        </nav>
+        <button class="plain" data-art="route">
+          Einzelne Verbindung suchen ↗
+        </button>
+        <form id="bahn-form">
+          <div id="atlas-felder">
+            <label for="atlas-ort">ORT ODER HALTESTELLE</label>
+            <div class="searchbox">
+              <input
+                id="atlas-ort"
+                value="Berlin"
+                list="bahn-orte"
+                autocomplete="off"
+              /><button
+                type="button"
+                data-suche="atlas-ort"
+                aria-label="Weitere Atlas-Haltestellen suchen"
+              >
+                ⌕
+              </button>
+            </div>
+            <small id="atlas-ort-hinweis"></small>
+            <div id="atlas-ort-vorschlaege" class="vorschlaege"></div>
+            <label for="atlas-richtung">RICHTUNG</label>
+            <select id="atlas-richtung">
+              <option value="von">Von diesem Ort · Abfahrt ab</option>
+              <option value="nach">Zu diesem Ort · Ankunft bis</option>
+            </select>
+          </div>
+          <div id="zentren-felder" hidden>
+            <label for="zentren">WELCHE ZENTREN VERGLEICHEN?</label>
+            <textarea id="zentren" rows="5">
+Berlin
+Hamburg
+München
+Köln
+Frankfurt am Main</textarea
+            >
+            <p class="hint">
+              2–8 Orte, einer pro Zeile. Jede Haltestelle gehört zum zeitlich
+              nächsten Zentrum bei gleicher Ankunftsfrist.
+            </p>
+          </div>
+          <div id="horizont-feld">
+            <label for="horizont">MAXIMALE REISEZEIT</label
+            ><select id="horizont">
+              <option value="30">30 Minuten</option>
+              <option value="60">1 Stunde</option>
+              <option value="120" selected>2 Stunden</option>
+              <option value="180">3 Stunden</option>
+              <option value="240">4 Stunden</option>
+              <option value="360">6 Stunden</option>
+              <option value="480">8 Stunden</option>
+            </select>
+            <p class="hint" id="atlas-hinweis">
+              Erreichbare Haltestellen laut Fahrplan, einschließlich Wartezeit
+              ab Wunschabfahrt. Fußzugang bis 15 Minuten; keine flächige
+              Erreichbarkeitsgarantie.
+            </p>
+          </div>
+          <div id="route-felder" hidden>
+            <div class="orts-feld" data-feld="von">
+              <label for="von">VON</label>
+              <div class="searchbox">
+                <input
+                  id="von"
+                  list="bahn-orte"
+                  autocomplete="off"
+                  value="Berlin"
+                /><button
+                  type="button"
+                  data-suche="von"
+                  aria-label="Weitere Starthaltestellen suchen"
+                >
+                  ⌕
+                </button>
+              </div>
+              <small id="von-hinweis"></small>
+              <div id="von-vorschlaege" class="vorschlaege"></div>
+            </div>
+            <button
+              id="tauschen"
+              type="button"
+              class="plain"
+              aria-label="Start und Ziel tauschen"
+            >
+              ⇅ Start und Ziel tauschen
+            </button>
+            <div class="orts-feld" data-feld="nach">
+              <label for="nach">NACH</label>
+              <div class="searchbox">
+                <input
+                  id="nach"
+                  list="bahn-orte"
+                  autocomplete="off"
+                  value="Hamburg"
+                /><button
+                  type="button"
+                  data-suche="nach"
+                  aria-label="Weitere Zielhaltestellen suchen"
+                >
+                  ⌕
+                </button>
+              </div>
+              <small id="nach-hinweis"></small>
+              <div id="nach-vorschlaege" class="vorschlaege"></div>
+            </div>
+          </div>
+          <div id="treffen-felder" hidden>
+            <label for="personen">WO STARTET IHR?</label
+            ><textarea id="personen" rows="3">
+Berlin
+Hamburg</textarea
+            >
+            <p class="hint">
+              2–8 Orte aus dem Ortsverzeichnis, ein Ort pro Zeile.
+            </p>
+            <label for="treff-art">TREFFPUNKTWAHL</label
+            ><select id="treff-art">
+              <option value="auto">Automatisch finden</option>
+              <option value="eigen">Eigene Orte vergleichen</option>
+            </select>
+            <div id="eigene-kandidaten" hidden>
+              <label for="kandidaten">WELCHE TREFFPUNKTE VERGLEICHEN?</label
+              ><textarea id="kandidaten" rows="3">
+Erfurt
+Fulda
+Kassel</textarea
+              >
+              <p class="hint">
+                1–3 Orte. Verglichen wird die Zeit ab der gemeinsamen
+                Wunschabfahrt bis zur Ankunft, einschließlich Wartezeit vor der
+                ersten Fahrt. Keine deutschlandweite Optimierung.
+              </p>
+            </div>
+          </div>
+          <section class="reisezeit">
+            <div>
+              <label for="datum">REISETAG</label
+              ><input type="date" id="datum" required />
+            </div>
+            <div>
+              <label for="uhrzeit" id="zeit-label">ABFAHRT AB</label
+              ><input type="time" id="uhrzeit" required />
+            </div>
+          </section>
+          <p class="hint">
+            Alle Uhrzeiten gelten für Deutschland (Europe/Berlin).
+          </p>
+          <div class="fieldrow">
+            <label for="umstiege">MAX. UMSTIEGE</label
+            ><select id="umstiege">
+              <option value="0">Ohne Umstieg</option>
+              <option value="1">1 Umstieg</option>
+              <option value="2">2 Umstiege</option>
+              <option value="3">3 Umstiege</option>
+              <option value="4" selected>4 Umstiege</option>
+              <option value="5">5 Umstiege</option>
+              <option value="6">6 Umstiege</option>
+            </select>
+          </div>
+          <div class="fieldrow">
+            <label for="puffer">EXTRA UMSTIEGSZEIT</label
+            ><select id="puffer">
+              <option value="0">Ohne Zusatz</option>
+              <option value="5">+ 5 Minuten</option>
+              <option value="10">+ 10 Minuten</option>
+              <option value="15">+ 15 Minuten</option>
+            </select>
+          </div>
+          <label class="check"
+            ><input id="regional" type="checkbox" />Nur Nahverkehr (auch
+            Bus)</label
+          >
+          <p class="hint">
+            Busse und Fußwege sind eingeschlossen. „Nur Nahverkehr“ prüft keine
+            Ticketgültigkeit.
+          </p>
+          <button type="submit" id="suchen" class="primaer" disabled>
+            Verbindungen suchen →
+          </button>
+          <button type="button" id="abbrechen" class="plain" hidden>
+            Suche abbrechen
+          </button>
+          <p class="hint">
+            Die Suche sendet die ausgewählten Orte und die Zeit an Transitous.
+            Keine automatische Abfrage beim Öffnen.
+          </p>
+        </form>
+        <section>
+          <label>SCHNELL AUSWÄHLEN</label>
+          <div class="segmented" id="schnell-ziel">
+            <button data-fuer="von" aria-pressed="false">Als Start</button
+            ><button data-fuer="nach" aria-pressed="true">Als Ziel</button>
+          </div>
+          <div class="chips" id="bahn-schnell"></div>
+          <p class="hint">Weitere Orte über die Suche auswählen.</p>
+        </section>
+        <section class="appearance">
+          <label for="bahn-theme">DARSTELLUNG</label
+          ><select id="bahn-theme">
+            <option value="paper">Papier</option>
+            <option value="night">Nacht</option>
+            <option value="ink">Tinte</option>
+          </select>
+        </section>
+        <div class="sidebar-footer">
+          <span class="status-dot"></span> Offene Fahrplananwendung
+          <span>Fahrplandaten: Transitous</span>
+        </div>
+      </aside>
+      <main>
+        <div class="map-heading">
+          <div>
+            <div class="eyebrow">FAHRPLAN STATT MODELLTEMPO</div>
+            <h2>Der nächste<br /><em>gemeinsame Weg.</em></h2>
+            <p>
+              Wege, Reichweite und faire Treffpunkte – mit Datum und Uhrzeit.
+            </p>
+          </div>
+          <button class="plain" id="bahn-teilen">Link kopieren ↗</button>
+        </div>
+        <div id="bahn-status" role="status" aria-live="polite">
+          Wähle Orte, Reisetag und Abfahrt. Die Suche startet erst mit dem
+          Knopf.
+        </div>
+        <div id="bahn-ergebnis" aria-busy="false">
+          <div id="bahn-karten"></div>
+          <section id="atlas-ergebnis" hidden>
+            <div id="atlas-zahlen" class="atlas-zahlen"></div>
+            <div class="atlas-raster">
+              <div>
+                <div class="atlas-navigation">
+                  <button
+                    type="button"
+                    id="atlas-zoom-in"
+                    aria-label="Bahnkarte vergrößern"
+                  >
+                    +</button
+                  ><button
+                    type="button"
+                    id="atlas-zoom-out"
+                    aria-label="Bahnkarte verkleinern"
+                  >
+                    −</button
+                  ><button
+                    type="button"
+                    id="atlas-reset"
+                    aria-label="Bahnkarte zurücksetzen"
+                  >
+                    ⌂
+                  </button>
+                </div>
+                <canvas
+                  id="atlas-karte"
+                  width="800"
+                  height="900"
+                  aria-label="Fahrplan-Erreichbarkeit an Haltestellen"
+                  role="img"
+                ></canvas>
+                <p class="hint" id="atlas-legende"></p>
+                <p id="atlas-routenstatus" class="hint" role="status"></p>
+              </div>
+              <div>
+                <label for="atlas-filter">HALTESTELLE IM ERGEBNIS SUCHEN</label
+                ><input
+                  id="atlas-filter"
+                  type="search"
+                  placeholder="Ort oder Haltestelle …"
+                />
+                <div id="atlas-auswahl"></div>
+                <div id="atlas-liste"></div>
+              </div>
+            </div>
+          </section>
+          <div class="bahn-detailbereich" id="bahn-detailbereich" hidden>
+            <div id="bahn-detail"></div>
+            <div class="bahn-kartenkasten">
+              <svg
+                id="bahn-karte"
+                viewBox="0 0 640 690"
+                role="img"
+                aria-label="Verlauf der ausgewählten Verbindung"
+              ></svg>
+              <p class="hint">
+                Verbindungsgeometrie des Fahrplandienstes; gestrichelt: Fußweg.
+                Fehlende Geometrie wird nicht durch eine erfundene Route
+                ersetzt.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="bahn-einstieg" id="bahn-einstieg">
+          <span class="grosses-symbol">↗</span>
+          <h3>Vom kleinen Ort<br />bis ans andere Ende des Landes.</h3>
+          <p>
+            Auch kleinere Orte sind über die Suche auffindbar. Busse und Fußwege
+            verbinden Orte ohne eigenen Bahnhof.
+          </p>
+          <div class="info-raster">
+            <div>
+              <b>Abfahrt & Ankunft</b>
+              <p>Mit Datum, Tageswechsel und Fahrtdauer.</p>
+            </div>
+            <div>
+              <b>Umstiege im Detail</b>
+              <p>Linien, Fußwege, Wartezeiten und verfügbare Gleise.</p>
+            </div>
+            <div>
+              <b>Treffpunkte prüfen</b>
+              <p>
+                Automatisch gemeinsame Haltestellen für zwei bis acht Reisende
+                finden.
+              </p>
+            </div>
+          </div>
+        </div>
+        <details class="bahn-quellen">
+          <summary>Daten & Grenzen</summary>
+          <p>
+            Verbindungen stammen aus
+            <a
+              href="https://transitous.org/sources/"
+              target="_blank"
+              rel="noopener"
+              >Transitous und seinen Fahrplanquellen</a
+            >, Geometrie auch von
+            <a
+              href="https://www.openstreetmap.org/copyright"
+              target="_blank"
+              rel="noopener"
+              >OpenStreetMap</a
+            >. Die Atlas-Karten verwenden den Fahrplan ohne Echtzeitdaten.
+            Ausfälle und Verspätungen können die Karte und Rangfolge verändern.
+            Bei der separaten Detailprüfung werden verfügbare Echtzeitdaten
+            berücksichtigt; gemeldete ausgefallene Verbindungen werden
+            verworfen. Vor der Fahrt die Angaben beim Verkehrsunternehmen
+            prüfen.
+          </p>
+          <p>
+            Diese nichtkommerzielle Anwendung ist Open Source (MIT). Höchstens
+            40 neue Fahrplananfragen pro Tag und Browser. Eine Atlas-Karte
+            benötigt eine Anfrage, automatische Treffpunkte und Einzugsgebiete
+            eine pro Person beziehungsweise Zentrum. Für den besten Treffpunkt
+            werden anschließend die konkreten Anreisen abgefragt. Der
+            Fernverkehrsvergleich braucht zwei Anfragen. Ein Vergleich eigener
+            Ziele benötigt bis zu 24. Antworten bleiben zehn Minuten im
+            Arbeitsspeicher. Keine Hintergrundabfragen, keine Analyse-Tracker.
+            Für dauerhaften oder breiten Betrieb verlangt die
+            <a href="https://transitous.org/api/" target="_blank" rel="noopener"
+              >Transitous-Nutzungsregel</a
+            >
+            eine offene Code-Lizenz und ressourcenschonende Nutzung. Der
+            Quellcode ist unten verlinkt.
+          </p>
+          <p>
+            Die vorgegebenen Haltestellen sind nicht zwingend der
+            Ortsmittelpunkt. Der Weg von deiner Haustür dorthin ist nicht
+            enthalten. Frei gewählte Ortsmittelpunkte werden mit Fußwegen
+            angebunden. Ein Ansichtslink enthält deine Eingaben; aktuelle
+            Ergebnisse werden beim Öffnen nicht automatisch neu abgefragt.
+          </p>
+          <p>
+            Betreiber/Projekt:
+            <a href="https://xindaan.github.io/alle-wege/"
+              >Alle Wege · Deutschland</a
+            >.
+            <a
+              href="https://transitous.org/donate/"
+              target="_blank"
+              rel="noopener"
+              >Transitous unterstützen</a
+            >.
+          </p>
+        </details>
+        <footer>
+          <span
+            >© OpenStreetMap-Mitwirkende ·
+            <a
+              href="https://transitous.org/sources/"
+              target="_blank"
+              rel="noopener"
+              >Fahrplanquellen: Transitous</a
+            >
+            · GeoNames · Natural Earth</span
+          ><span>Zeiten in Europe/Berlin</span>
+          <span class="herkunft"
+            >Idee:
+            <a
+              href="https://all-roads-lead-to.netlify.app/"
+              target="_blank"
+              rel="noopener"
+              >All Roads Lead To</a
+            >, von Ethan Mollick vorgestellt und von Arterial Mapping
+            inspiriert. Eigenständige Umsetzung für Deutschland.
+            <a
+              href="https://github.com/Xindaan/xindaan.github.io/tree/main/alle-wege"
+              >Quellcode (MIT)</a
+            >
+            ·
+            <a href="https://github.com/Xindaan/xindaan.github.io/issues"
+              >Kontakt / Fehler melden</a
+            ></span
+          >
+        </footer>
+      </main>
+    </div>
+    <datalist id="bahn-orte"></datalist>
+    <script type="module" src="bahn.js?v=5"></script>
+  </body>
+</html>

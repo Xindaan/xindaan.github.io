@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#ece9df" />
+    <meta
+      name="description"
+      content="Entdecke Deutschlands Straßennetz: Wege zu deiner Stadt, faire Treffpunkte und die Einzugsgebiete großer Städte."
+    />
+    <title>Alle Wege · Deutschland</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23263832'/%3E%3Cpath d='M8 6L20 20M32 6L20 20M6 32L20 20M34 32L20 20' stroke='%23d4ae6f' stroke-width='3'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="style.css?v=20261103-7" />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="#"
+        ><svg viewBox="0 0 36 36" aria-hidden="true">
+          <path d="M5 4L18 18M31 4L18 18M4 31L18 18M32 31L18 18" />
+          <circle cx="18" cy="18" r="4" /></svg
+        ><span>ALLE WEGE<small>DEUTSCHLAND</small></span></a
+      ><span class="edition"
+        >Ein Atlas der Verbindungen <span>—</span> 01 / Deutschland</span
+      ><button id="about-open" class="plain">
+        Über den Atlas <span>↗</span>
+      </button>
+    </header>
+    <div class="workspace">
+      <aside>
+        <div class="sidebar-intro">
+          <span class="eyebrow">DEUTSCHLAND NEU LESEN</span>
+          <h1>Wohin führen<br />unsere Wege?</h1>
+          <p>Das Land, gesehen durch seine Straßen.</p>
+        </div>
+        <div class="verkehrswahl">
+          <a href="./" aria-current="page">Straße</a
+          ><a href="bahn.html">Bahn &amp; Bus</a>
+        </div>
+        <nav aria-label="Kartenansicht" class="modes">
+          <button data-mode="reach" aria-pressed="true">
+            <span>01</span> Erreichbarkeit <b>↗</b></button
+          ><button data-mode="meet" aria-pressed="false">
+            <span>02</span> Fairer Treffpunkt <b>⌖</b></button
+          ><button data-mode="basins" aria-pressed="false">
+            <span>03</span> Einzugsgebiete <b>◈</b>
+          </button>
+        </nav>
+        <div id="controls" aria-busy="true">
+          <section id="destination-controls">
+            <label for="destination">ORT</label>
+            <div class="searchbox">
+              <span>⌕</span
+              ><input
+                id="destination"
+                list="cities"
+                placeholder="Stadt suchen …"
+                autocomplete="off"
+                value="Berlin"
+              /><button id="destination-go" aria-label="Zielort auswählen">
+                ↵
+              </button>
+            </div>
+            <div class="chips" id="quick"></div>
+            <p class="hint">Oder einen Punkt auf der Karte anklicken.</p>
+            <p class="hint" id="ort-hinweis" hidden></p>
+          </section>
+          <section id="meet-controls" hidden>
+            <label for="traveler">WO STARTET IHR?</label>
+            <div class="searchbox">
+              <span>+</span
+              ><input
+                id="traveler"
+                list="cities"
+                placeholder="Startort hinzufügen …"
+                autocomplete="off"
+              /><button id="traveler-add" aria-label="Startort hinzufügen">
+                ↵
+              </button>
+            </div>
+            <div id="travelers"></div>
+            <label for="objective">WAS BEDEUTET FAIR?</label
+            ><select id="objective">
+              <option value="fair">Längste Anreise minimieren</option>
+              <option value="total">Gesamte Fahrzeit minimieren</option>
+            </select>
+            <p class="hint" id="objective-hint">
+              Niemand soll länger fahren müssen als nötig.
+            </p>
+            <div id="meeting-results" aria-live="polite"></div>
+          </section>
+          <section id="basin-controls" hidden>
+            <label for="basin-count">WELCHE STÄDTE ZIEHEN AN?</label
+            ><select id="basin-count">
+              <option value="5">5 größte Orte im Datensatz</option>
+              <option value="10" selected>10 größte Orte im Datensatz</option>
+              <option value="20">20 größte Orte im Datensatz</option>
+            </select>
+            <p class="hint">
+              Jeder Netzknoten gehört zur Stadt, die er am schnellsten erreicht.
+              Nach Einwohnerzahl aus GeoNames.
+            </p>
+            <div id="basin-legend"></div>
+          </section>
+          <section id="richtung-controls">
+            <label for="richtung">RICHTUNG</label>
+            <select id="richtung">
+              <option value="from">Von diesem Ort</option>
+              <option value="to">Zu diesem Ort</option>
+            </select>
+            <p class="hint">
+              Hin- und Rückweg werden getrennt berechnet: Einbahnstraßen und
+              richtungsabhängige Fahrzeiten können sich unterscheiden.
+            </p>
+          </section>
+          <section id="kartenbild-controls">
+            <label for="kartenbild">WAS SOLL DIE FARBE ZEIGEN?</label>
+            <select id="kartenbild">
+              <option value="fahrzeit">Fahrzeit · wie weit komme ich?</option>
+              <option value="aeste">
+                Hauptäste · welche Wege bündeln sich?
+              </option>
+            </select>
+            <p class="hint">
+              Gleiche Orte und Wege, andere Einfärbung: Fahrzeit zeigt Minuten,
+              Hauptäste zeigen zusammenlaufende Routen.
+            </p>
+          </section>
+          <section id="reach-controls" hidden>
+            <p class="hint">
+              Farbe = Fahrzeit auf dem schnellsten Weg. Farbige Straßen liegen
+              innerhalb deines Zeitbudgets; das graue Netz dient der
+              Orientierung. Autobahnen: 130 km/h oder niedrigeres erfasstes
+              Tempolimit.
+            </p>
+          </section>
+          <section id="routing-controls">
+            <label>WEGE OPTIMIEREN NACH</label>
+            <div class="segmented" id="metric">
+              <button data-value="time" aria-pressed="true">Fahrzeit</button
+              ><button data-value="distance" aria-pressed="false">
+                Entfernung
+              </button>
+            </div>
+            <div class="fieldrow">
+              <label for="weight">LINIENSTÄRKE</label
+              ><select id="weight">
+                <option value="nodes">Netzknoten</option>
+                <option value="cities">Orte</option>
+              </select>
+            </div>
+            <p class="hint">
+              Dicker heißt: mehr kürzeste Wege nutzen diese Straße. Kein
+              gemessenes Verkehrsaufkommen.
+            </p>
+            <div class="fieldrow">
+              <label for="reach">EINZUGSBEREICH</label
+              ><output id="reach-value">Ganzes Netz</output>
+            </div>
+            <input
+              id="reach"
+              type="range"
+              min="0"
+              max="8"
+              step="1"
+              value="0"
+              aria-label="Einzugsbereich"
+            />
+            <div class="range-labels">
+              <span id="reach-min">Gesamt</span
+              ><span id="reach-unit">8 Stunden</span>
+            </div>
+          </section>
+          <section id="reach-results" hidden>
+            <label for="reach-filter">ERREICHBARE ORTE DURCHSUCHEN</label>
+            <input
+              id="reach-filter"
+              type="search"
+              placeholder="Ort im Ergebnis suchen …"
+            />
+            <div id="reach-list"></div>
+            <p class="hint">
+              Aus dem geladenen Ortsverzeichnis. Der Weg zwischen Ortsmitte und
+              Netzknoten fehlt in der Modellzeit.
+            </p>
+          </section>
+          <section id="sylt-controls">
+            <label for="sylt-mode">SYLT-ANBINDUNG</label>
+            <select id="sylt-mode">
+              <option value="both">Autozug &amp; Fähre</option>
+              <option value="autozug">Nur Autozug</option>
+              <option value="faehre">Nur Autofähre</option>
+              <option value="none">Ohne Überfahrt</option>
+            </select>
+            <p class="hint">
+              Autozug: 35 Min. Fahrt + 45 Min. Terminalpuffer. Fähre: 40 + 30
+              Min., über Dänemark. Geplante Überfahrten; kein Fahrplan, keine
+              Auslastung oder Ausfälle.
+            </p>
+            <label for="transfer-wait"
+              >ZUSÄTZLICHE WARTEZEIT JE ÜBERFAHRT</label
+            >
+            <select id="transfer-wait">
+              <option value="0">Ohne Zusatz</option>
+              <option value="30">+ 30 Minuten</option>
+              <option value="60">+ 60 Minuten</option>
+              <option value="120">+ 120 Minuten</option>
+              <option value="180">+ 180 Minuten</option>
+            </select>
+            <p class="hint">
+              Ohne passende Reservierung kann die Wartezeit erheblich länger
+              sein, besonders bei der saisonabhängigen Fähre. Gestrichelte
+              Linien kennzeichnen die Überfahrten.
+            </p>
+          </section>
+          <section id="branch-controls">
+            <div class="fieldrow">
+              <label for="branches">HAUPTZUFLÜSSE</label
+              ><output id="branch-value">6</output>
+            </div>
+            <input
+              id="branches"
+              type="range"
+              min="3"
+              max="10"
+              step="1"
+              value="6"
+            />
+            <p class="hint">
+              Bis zu zehn große Zuflüsse, auch vor einer gemeinsamen Zufahrt.
+              Gemeinsame Abschnitte und kleine Nebenäste bleiben neutral.
+            </p>
+          </section>
+          <section class="appearance">
+            <label>DARSTELLUNG</label>
+            <div class="themes" id="themes">
+              <button data-theme="paper" aria-pressed="true">
+                <i></i>Papier</button
+              ><button data-theme="night" aria-pressed="false">
+                <i></i>Nacht</button
+              ><button data-theme="ink" aria-pressed="false">
+                <i></i>Tinte
+              </button>
+            </div>
+          </section>
+        </div>
+        <div class="sidebar-footer">
+          <span class="status-dot"></span> Berechnet auf deinem Gerät<span
+            id="data-state"
+            >Daten werden geladen</span
+          >
+        </div>
+      </aside>
+      <main>
+        <div class="map-heading">
+          <div>
+            <div class="eyebrow" id="map-kicker">
+              DIE SCHNELLSTEN WEGE IM STRASSENMODELL
+            </div>
+            <h2 id="map-title">Alle Wege nach <em>Berlin.</em></h2>
+            <p id="map-subtitle">Viele Ausgangspunkte. Ein gemeinsames Ziel.</p>
+          </div>
+          <div class="map-actions">
+            <button
+              id="play"
+              title="Anreise animieren"
+              aria-label="Anreise animieren"
+            >
+              ▷</button
+            ><button
+              id="share"
+              title="Ansicht teilen"
+              aria-label="Link zur Ansicht kopieren"
+            >
+              ↗</button
+            ><button
+              id="export"
+              title="Karte als PNG speichern"
+              aria-label="Karte als PNG speichern"
+            >
+              ↓
+            </button>
+          </div>
+        </div>
+        <div id="map-wrap">
+          <canvas
+            id="map"
+            tabindex="0"
+            role="img"
+            aria-label="Deutschlandkarte mit berechneten Straßenrouten. Zielorte sind auch über die Ortssuche auswählbar."
+          ></canvas>
+          <div id="loading">
+            <div class="spinner"></div>
+            <b>Deutschland verbindet sich.</b>
+            <p>Das Straßennetz wird geladen …</p>
+          </div>
+          <div class="map-tools">
+            <button id="zoom-in" aria-label="Karte vergrößern">+</button
+            ><button id="zoom-out" aria-label="Karte verkleinern">−</button
+            ><button id="reset-map" aria-label="Kartenausschnitt zurücksetzen">
+              ⌂
+            </button>
+          </div>
+          <div id="map-legend"></div>
+          <div id="hover" hidden></div>
+          <span class="north">N<br />↑</span>
+        </div>
+        <div class="insights" id="insights">
+          <div><span>STRAßENNETZ</span><strong>Wird geladen</strong></div>
+          <div>
+            <span>RECHENMODELL</span><strong>Ohne Echtzeitverkehr</strong>
+          </div>
+          <div>
+            <span>DATENSCHUTZ</span><strong>Keine Ortungsfreigabe nötig</strong>
+          </div>
+        </div>
+        <footer>
+          <span
+            >©
+            <a
+              href="https://www.openstreetmap.org/copyright"
+              target="_blank"
+              rel="noopener"
+              >OpenStreetMap-Mitwirkende</a
+            >
+            ·
+            <a href="https://www.geonames.org/" target="_blank" rel="noopener"
+              >GeoNames</a
+            >
+            · Natural Earth</span
+          ><span id="performance">Modellzeiten, keine Navigationsauskunft</span>
+          <span class="herkunft"
+            >Idee:
+            <a
+              href="https://all-roads-lead-to.netlify.app/"
+              target="_blank"
+              rel="noopener"
+              >All Roads Lead To</a
+            >, von Ethan Mollick vorgestellt und von Arterial Mapping
+            inspiriert. Eigenständige Umsetzung für Deutschland.
+            <a
+              href="https://github.com/Xindaan/xindaan.github.io/tree/main/alle-wege"
+              >Quellcode (MIT)</a
+            >
+            ·
+            <a href="https://github.com/Xindaan/xindaan.github.io/issues"
+              >Kontakt / Fehler melden</a
+            ></span
+          >
+        </footer>
+      </main>
+    </div>
+    <datalist id="cities"></datalist>
+    <div id="toast" role="status" hidden></div>
+    <dialog id="about">
+      <button
+        id="about-close"
+        class="dialog-close"
+        aria-label="Dialog schließen"
+      >
+        ×</button
+      ><span class="eyebrow">DIE IDEE HINTER DEM ATLAS</span>
+      <h2>Ein Land ist mehr<br />als seine Grenzen.</h2>
+      <p>
+        Straßen verbinden Orte zu einem Netz. Dieser Atlas macht sichtbar,
+        welche Wege zusammenlaufen, welche Städte einander Konkurrenz machen und
+        wo sich Menschen mit möglichst wenig Anreise treffen können.
+      </p>
+      <h3>Wie wird gerechnet?</h3>
+      <p>
+        Ein gerichteter Dijkstra-Algorithmus sucht die kürzesten Wege auf echten
+        OpenStreetMap-Straßen: Autobahnen, Schnellstraßen, Haupt- und
+        Landesstraßen (OSM motorway, trunk, primary, secondary und Zubringer).
+        Einbahnrichtungen werden berücksichtigt.
+      </p>
+      <p>
+        Auf Autobahnen rechnen wir mit 130 km/h oder einem niedrigeren erfassten
+        Tempolimit. Für Schnell-, Haupt- und Landesstraßen gelten 85 / 65 / 55
+        km/h, für Zubringer 40 km/h; dort begrenzen erkannte Tempolimits die
+        Geschwindigkeit auf 85 % des Limits. Kreisverkehre sind auf 25 km/h
+        begrenzt. Das sind Modellannahmen, keine kalibrierten Fahrzeitprognosen.
+      </p>
+      <h3>Was die Karte nicht abbildet</h3>
+      <p>
+        Kein Liveverkehr, keine Ampelwartezeiten oder Abbiegebeschränkungen,
+        Wohn- und Nebenstraßen nur in Gärtringen, Schleiz/Zollgrün/Tanna/Burgk,
+        Lehnitz, Pfakofen und auf Sylt, keine durchgehenden Auslandsrouten außer
+        dem dänischen Zugang zur Syltfähre. Westerland ist durch Autozug
+        Niebüll–Westerland und Autofähre Havneby–List angebunden. Die
+        Überfahrten rechnen mit 35 + 45 beziehungsweise 40 + 30 Minuten für
+        Fahrt und pauschalen Terminalpuffer. Sie setzen eine geplante Überfahrt
+        voraus; Fahrplan, Nachtbetrieb, Auslastung und Ausfälle sind nicht
+        enthalten. Weitere Fähren und Autozüge sind nicht erfasst. Orte werden
+        an einen Straßenknoten in höchstens 5 km Luftlinie angebunden; diese
+        letzte Strecke ist nicht in der Fahrzeit enthalten.
+      </p>
+      <h3>Wie fair ist ein Treffpunkt?</h3>
+      <p>
+        „Längste Anreise minimieren“ wählt den Ort mit dem kleinsten Maximum der
+        einzelnen Fahrzeiten. Bei Gleichstand entscheidet die Summe. „Gesamte
+        Fahrzeit minimieren“ optimiert die Summe, bei Gleichstand die längste
+        Anreise. Das garantiert keine identischen Anreisezeiten. Optimiert wird
+        unter den geladenen, angebundenen GeoNames-Orten ab etwa 15.000
+        Einwohnern sowie Gärtringen, Schleiz, Zollgrün, Lehnitz, Westerland,
+        Tanna, Pfakofen und Burgk. Die fünf besten Kandidaten kannst du
+        vergleichen.
+      </p>
+      <h3>Datengrundlage & Quellen</h3>
+      <p id="data-details"></p>
+      <p>
+        Die abgeleitete Straßendatenbank steht unter der
+        <a
+          href="https://opendatacommons.org/licenses/odbl/1-0/"
+          target="_blank"
+          rel="noopener"
+          >ODbL</a
+        >: <a href="data/roads.json.gz" download>Datensatz herunterladen</a>.
+        Ortsdaten:
+        <a
+          href="https://download.geonames.org/export/dump/"
+          target="_blank"
+          rel="noopener"
+          >GeoNames</a
+        >, CC BY 4.0. Grenzen:
+        <a
+          href="https://www.naturalearthdata.com/"
+          target="_blank"
+          rel="noopener"
+          >Natural Earth</a
+        >, Public Domain.
+      </p>
+      <p>
+        Eigenständige Deutschland-Umsetzung, inspiriert von
+        <a
+          href="https://all-roads-lead-to.netlify.app/"
+          target="_blank"
+          rel="noopener"
+          >All Roads Lead To</a
+        >, geteilt von Ethan Mollick, und
+        <a
+          href="https://arterialmapping.wordpress.com/2022/03/20/all-roads-lead-to-richmond-2/"
+          target="_blank"
+          rel="noopener"
+          >Arterial Mapping</a
+        >. Kein Quellcode oder US-Straßendatensatz der Vorlage übernommen.
+      </p>
+      <h3>Privatsphäre</h3>
+      <p>
+        Der Straßenatlas rechnet nach dem Laden lokal. Der
+        <a href="bahn.html">Bahnmodus</a>
+        fragt nach einem ausdrücklichen Suchauftrag Transitous ab und
+        übermittelt dafür Orte und Reisezeit. Keine Analyse-Tracker und keine
+        Abfrage deines Standorts. Ein kopierter Ansichtslink enthält die
+        ausgewählten Orte beziehungsweise Kartenkoordinaten.
+      </p>
+    </dialog>
+    <script type="module" src="app.js?v=20261103-7"></script>
+  </body>
+</html>

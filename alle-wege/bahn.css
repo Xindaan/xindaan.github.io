@@ -1,0 +1,534 @@
+.bahn-seite {
+  --bahngruen: #376c5a;
+}
+.bahn-seite .workspace {
+  min-height: 0;
+}
+body[data-theme="night"] {
+  --bahngruen: #94c8ad;
+}
+.zurueck {
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.bahn-seite main {
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  display: block;
+  padding-bottom: 24px;
+}
+.bahn-seite #bahn-modus {
+  display: flex;
+  flex-direction: column;
+  margin: 18px 0;
+  gap: 3px;
+  padding: 0;
+}
+.bahn-seite #bahn-modus button {
+  text-align: left;
+  justify-content: flex-start;
+}
+.bahn-seite #horizont-feld,
+.bahn-seite #atlas-felder,
+.bahn-seite #zentren-felder {
+  margin: 20px 0;
+}
+.bahn-seite #atlas-felder label,
+.bahn-seite #horizont-feld label {
+  display: block;
+  margin: 16px 0 8px;
+}
+.bahn-seite #atlas-richtung,
+.bahn-seite #horizont,
+.bahn-seite #treff-art {
+  width: 100%;
+  padding: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.atlas-zahlen {
+  display: flex;
+  gap: 22px;
+  padding: 18px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.atlas-zahlen div {
+  flex: 1;
+}
+.atlas-zahlen span {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+.atlas-zahlen strong {
+  font-size: 22px;
+}
+.atlas-raster {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(220px, 1fr);
+  gap: 24px;
+  margin: 24px 0;
+  align-items: start;
+}
+#atlas-karte {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  touch-action: pan-y;
+  cursor: crosshair;
+}
+#atlas-filter {
+  width: 100%;
+  padding: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  margin: 8px 0;
+}
+#atlas-auswahl {
+  padding: 12px 0 18px;
+  line-height: 1.6;
+}
+#atlas-auswahl h3 {
+  margin: 8px 0;
+  font-size: 20px;
+}
+#atlas-auswahl .primaer {
+  padding: 12px;
+}
+.atlas-halt {
+  display: block;
+  text-align: left;
+  width: 100%;
+  padding: 12px;
+  margin: 7px 0;
+  background: var(--panel);
+}
+.atlas-halt span {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.atlas-navigation {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.atlas-navigation button {
+  padding: 7px 13px;
+}
+@media (max-width: 1100px) {
+  .atlas-raster {
+    grid-template-columns: 1fr;
+  }
+  #atlas-karte {
+    max-width: 620px;
+  }
+}
+@media (max-width: 700px) {
+  .atlas-zahlen {
+    gap: 10px;
+  }
+  .atlas-zahlen strong {
+    font-size: 16px;
+  }
+  .bahn-seite #bahn-modus {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .bahn-seite .verkehrswahl {
+    margin: 18px 0;
+  }
+}
+.bahn-seite .map-heading h2 {
+  font-size: clamp(38px, 5vw, 70px);
+  line-height: 1.04;
+}
+.bahn-seite .map-heading {
+  align-items: flex-start;
+  padding-bottom: 24px;
+}
+#bahn-status,
+#bahn-ergebnis,
+.bahn-einstieg,
+.bahn-quellen {
+  margin-left: 36px;
+  margin-right: 36px;
+}
+.bahn-seite .orts-feld {
+  margin: 20px 0 10px;
+}
+.bahn-seite input[type="date"],
+.bahn-seite input[type="time"],
+.bahn-seite textarea {
+  width: 100%;
+  min-width: 0;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 10px;
+  font: inherit;
+  font-size: 13px;
+}
+.bahn-seite textarea {
+  resize: vertical;
+  line-height: 1.7;
+  margin: 8px 0;
+}
+.bahn-seite small {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-top: 5px;
+}
+.reisezeit {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 8px;
+  padding: 20px 0 0 !important;
+  border: 0 !important;
+}
+.reisezeit label {
+  display: block;
+  margin-bottom: 8px;
+}
+.check {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px !important;
+  letter-spacing: 0 !important;
+  margin-top: 16px;
+}
+.check input {
+  accent-color: var(--ink);
+}
+.primaer {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  margin: 20px 0 8px;
+}
+.primaer:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+.bahn-seite .primaer:hover,
+.bahn-seite .primaer:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+}
+#bahn-status {
+  padding: 16px 20px;
+  background: var(--map);
+  border-left: 3px solid var(--bahngruen);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+#bahn-status[data-fehler="true"] {
+  border-color: var(--accent);
+}
+.bahn-einstieg {
+  padding: 32px 0 38px;
+  max-width: 850px;
+}
+.grosses-symbol {
+  font:
+    80px "Libre Caslon Display",
+    serif;
+  color: var(--accent);
+  float: right;
+  padding: 0 40px;
+}
+.bahn-einstieg h3 {
+  font:
+    40px/1.1 "Libre Caslon Display",
+    serif;
+  margin: 0 0 20px;
+}
+.bahn-einstieg p {
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 610px;
+  color: var(--muted);
+}
+.info-raster {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 38px;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+.info-raster b {
+  font-size: 13px;
+}
+.info-raster p {
+  font-size: 12px;
+}
+#bahn-karten {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.fahrt-karte {
+  text-align: left;
+  border: 1px solid var(--line);
+  padding: 18px;
+  background: transparent;
+  color: var(--ink);
+  border-radius: 7px;
+  min-width: 0;
+}
+.fahrt-karte[aria-pressed="true"] {
+  border: 2px solid var(--bahngruen);
+  padding: 17px;
+  background: var(--map);
+}
+.fahrt-karte strong {
+  display: block;
+  font-size: 22px;
+  margin: 4px 0 12px;
+}
+.fahrt-karte span {
+  display: block;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.fahrt-karte .etikett {
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.bahn-detailbereich {
+  display: grid;
+  grid-template-columns: minmax(280px, 1.1fr) minmax(260px, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+.bahn-kartenkasten {
+  position: sticky;
+  top: 20px;
+  background: var(--map);
+  border-radius: 8px;
+  padding: 12px;
+}
+#bahn-karte {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  display: block;
+}
+.reise-kopf {
+  padding: 0 0 18px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 22px;
+}
+.reise-kopf h3 {
+  font:
+    32px/1.1 "Libre Caslon Display",
+    serif;
+  margin: 0 0 10px;
+}
+.reise-kopf p {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 5px 0;
+}
+.etappe {
+  position: relative;
+  padding: 0 0 22px 23px;
+  border-left: 2px solid var(--bahngruen);
+  margin-left: 6px;
+}
+.etappe:before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 2px;
+  width: 8px;
+  height: 8px;
+  background: var(--paper);
+  border: 1px solid var(--bahngruen);
+  border-radius: 50%;
+}
+.etappe.fuss {
+  border-left-style: dashed;
+  border-left-color: var(--muted);
+}
+.etappe h4 {
+  margin: 0 0 7px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.etappe p {
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 4px 0;
+}
+.etappe .linie {
+  display: inline-block;
+  border-radius: 3px;
+  padding: 3px 6px;
+  background: var(--map);
+  font-size: 11px;
+  margin: 5px 0;
+}
+.umstieg {
+  margin: -7px 0 17px 28px;
+  color: var(--accent);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.bahn-quellen {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0;
+  margin-top: 32px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.bahn-quellen summary {
+  cursor: pointer;
+  color: var(--ink);
+  font-weight: 600;
+}
+.bahn-quellen a,
+.bahn-seite footer a {
+  color: inherit;
+}
+.vorschlaege {
+  display: grid;
+  gap: 4px;
+  margin-top: 5px;
+}
+.vorschlaege button {
+  text-align: left;
+  background: var(--map);
+  border: 1px solid var(--line);
+  padding: 8px;
+  font-size: 12px;
+  border-radius: 3px;
+  color: var(--ink);
+}
+.bahn-seite .plain {
+  font-size: 12px;
+}
+.bahn-seite button:focus-visible,
+.bahn-seite a:focus-visible,
+.bahn-seite input:focus-visible,
+.bahn-seite textarea:focus-visible,
+.bahn-seite select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.vergleich-person {
+  margin: 10px 0;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 12px;
+}
+.vergleich-person summary {
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1.6;
+}
+.vergleich-person .reise-kopf {
+  margin-top: 18px;
+}
+.vergleich-person details {
+  margin: 8px 0;
+}
+@media (max-width: 1100px) {
+  .bahn-detailbereich {
+    grid-template-columns: 1fr;
+  }
+  .bahn-kartenkasten {
+    position: static;
+    max-width: 520px;
+  }
+  .bahn-seite .map-heading h2 {
+    font-size: 48px;
+  }
+}
+@media (max-width: 700px) {
+  .bahn-seite aside {
+    display: block;
+    padding: 24px 20px;
+  }
+  #bahn-status,
+  #bahn-ergebnis,
+  .bahn-einstieg,
+  .bahn-quellen {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+@media (max-width: 700px) {
+  .bahn-seite .workspace {
+    display: flex;
+    flex-direction: column;
+  }
+  .bahn-seite aside {
+    order: 0;
+  }
+  .bahn-seite main {
+    order: 1;
+    overflow: visible;
+  }
+  .bahn-seite .sidebar-intro {
+    display: block;
+  }
+  .bahn-seite .sidebar-intro h1 {
+    font-size: 38px;
+  }
+  .bahn-seite #bahn-form {
+    display: block;
+  }
+  .bahn-seite .map-heading {
+    padding-top: 26px;
+  }
+  .bahn-seite .map-heading h2 {
+    font-size: 40px;
+  }
+  .info-raster {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .grosses-symbol {
+    padding: 0 15px;
+  }
+  .bahn-einstieg h3 {
+    font-size: 32px;
+  }
+  .bahn-seite #bahn-teilen {
+    max-width: 90px;
+  }
+  .bahn-seite .bahn-detailbereich {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
