@@ -991,6 +991,8 @@ async function init() {
       leeren();
       leseLink();
     };
+    $("bahn-eingaben").inert = false;
+    $("bahn-eingaben").setAttribute("aria-busy", "false");
   } catch (error) {
     status(error.message, true);
   }
