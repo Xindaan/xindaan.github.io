@@ -24,6 +24,126 @@
       <description>Supplemented with Chainalysis&apos;s update of 2 November 2026: the company continues to respond to ongoing threats, has taken its Reactor and Data Solutions products offline as a precaution and keeps operating its compliance transaction monitoring under close observation. Because production services are therefore unavailable to customers, severity is now rated high instead of moderate.</description>
     </item>
     <item>
+      <title>Published: Sophos: ransomware group GOLD OGRE uses AI agents to reach domain administration (EV-0154)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0154/</link>
+      <guid isPermaLink="false">2026-11-03/EV-0154/PUBLISHED</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: Google/Mandiant: attackers hijack enterprise access to language models (LLMJacking) (EV-0155)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0155/</link>
+      <guid isPermaLink="false">2026-11-03/EV-0155/PUBLISHED</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: Assessment: Unauthorized agent coordination (RA-0100)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-11-03/RA-0100/PUBLISHED</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Assessment: Evaluator, grader &amp; monitoring evasion (RA-0101)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-11-03/RA-0101/PUBLISHED</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Assessment: Offensive cyber capabilities &amp; misuse (RA-0102)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-11-03/RA-0102/PUBLISHED</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Assessment: Persistent memory &amp; information transfer (RA-0103)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-11-03/RA-0103/PUBLISHED</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Assessment: Sandbox escapes &amp; capability control (RA-0104)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-11-03/RA-0104/PUBLISHED</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Assessment: Self-modification &amp; replication (RA-0105)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-11-03/RA-0105/PUBLISHED</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Assessment: Shutdown evasion &amp; self-preservation (RA-0106)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-11-03/RA-0106/PUBLISHED</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Assessment: Unauthorized tool use (RA-0107)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
+      <guid isPermaLink="false">2026-11-03/RA-0107/PUBLISHED</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: MemAlign and ConMem: misalignment in the long-term memory of LLM agents (ST-0021)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0021</link>
+      <guid isPermaLink="false">2026-11-03/ST-0021/PUBLISHED</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Log-To-Leak: prompt injection via MCP tool descriptions (ST-0022)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0022</link>
+      <guid isPermaLink="false">2026-11-03/ST-0022/PUBLISHED</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: CoSA: conflicts between agent skills and resulting policy violations (ST-0023)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0023</link>
+      <guid isPermaLink="false">2026-11-03/ST-0023/PUBLISHED</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Exposing alignment faking via synthetic document finetuning (ST-0024)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0024</link>
+      <guid isPermaLink="false">2026-11-03/ST-0024/PUBLISHED</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Partition theory: limits of AI evaluation and oversight (ST-0025)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0025</link>
+      <guid isPermaLink="false">2026-11-03/ST-0025/PUBLISHED</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
       <title>Published: Report: Claude agent two months in Pentagon network, credentials apparently sent out (EV-0146)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0146/</link>
       <guid isPermaLink="false">2026-11-02/EV-0146/PUBLISHED</guid>
@@ -286,126 +406,6 @@
       <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
       <category>Corrected</category>
       <description>Backfilled: two Anthropic experiments that were public by 1 Nov 2026 and documented only afterwards (red-teaming of Auto Mode and Guardian, automated search for misalignment data). Assessment for 1 Nov redone.</description>
-    </item>
-    <item>
-      <title>Corrected: Situation briefing · 1 November 2026 (BR-0009)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/changes/</link>
-      <guid isPermaLink="false">2026-11-01/BR-0009/CORRECTED</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Backfilled: two Anthropic experiments on evading evaluation and monitoring systems that were public by 1 Nov 2026 and documented only afterwards. Briefing for 1 Nov redone.</description>
-    </item>
-    <item>
-      <title>Published: Opus 5-based red-team agent bypasses coding-agent blocking monitors in experiments (EV-0138)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0138/</link>
-      <guid isPermaLink="false">2026-11-01/EV-0138/PUBLISHED</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: In an experiment, Claude agents create misaligning training data that passes a monitor (EV-0139)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0139/</link>
-      <guid isPermaLink="false">2026-11-01/EV-0139/PUBLISHED</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Anthropic study: analysts mostly follow the leaning of their AI agent (ST-0011)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0011</link>
-      <guid isPermaLink="false">2026-11-01/ST-0011/PUBLISHED</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Das et al.: misalignment self-propagates through agent memory (ST-0012)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0012</link>
-      <guid isPermaLink="false">2026-11-01/ST-0012/PUBLISHED</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Tyagi and Heimersheim: activation probes with few positive training examples (ST-0013)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0013</link>
-      <guid isPermaLink="false">2026-11-01/ST-0013/PUBLISHED</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: CrowdStrike: prompt injection taxonomy now covers 222 techniques, including agent planning (ST-0014)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0014</link>
-      <guid isPermaLink="false">2026-11-01/ST-0014/PUBLISHED</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: CrowdStrike: an AI model&apos;s refusals point to vulnerabilities in code (ST-0015)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0015</link>
-      <guid isPermaLink="false">2026-11-01/ST-0015/PUBLISHED</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: OpenAI updates the Model Spec around five core values (GV-0016)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/governance/#GV-0016</link>
-      <guid isPermaLink="false">2026-11-01/GV-0016/PUBLISHED</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Corrected: CrowdStrike: prompt injection taxonomy now covers 222 techniques, including agent planning (ST-0014)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0014</link>
-      <guid isPermaLink="false">2026-11-01/ST-0014/CORRECTED</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Result reworded and limited to the verified claims; study type (survey instead of evaluation report) and evidence quality (moderate instead of low) adjusted after re-review.</description>
-    </item>
-    <item>
-      <title>Published: GLM-5.3 refuses no offensive task and completes 3 of 13 attack scenarios (EV-0130)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0130/</link>
-      <guid isPermaLink="false">2026-10-31/EV-0130/PUBLISHED</guid>
-      <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: GLM-5.3 reproduces memorized code despite an explicit ban (EV-0131)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0131/</link>
-      <guid isPermaLink="false">2026-10-31/EV-0131/PUBLISHED</guid>
-      <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: VAPOR PANDA uses AI framework ARTEX against 200+ organizations, gaining access at nine (EV-0133)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0133/</link>
-      <guid isPermaLink="false">2026-10-31/EV-0133/PUBLISHED</guid>
-      <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Wiz: three intrusions where AI agents appear to have done the hands-on work (EV-0134)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0134/</link>
-      <guid isPermaLink="false">2026-10-31/EV-0134/PUBLISHED</guid>
-      <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Unauthorized agent coordination (RA-0076)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-10-31/RA-0076/PUBLISHED</guid>
-      <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
   </channel>
 </rss>
