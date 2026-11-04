@@ -128,6 +128,118 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Published: MADBench: How secure are debates among multiple AI agents under attack? (ST-0031)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0031</link>
+      <guid isPermaLink="false">2026-11-04/ST-0031/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Training makes language models voice their recognition of evaluations more openly (ST-0032)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0032</link>
+      <guid isPermaLink="false">2026-11-04/ST-0032/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: SEABench: Agents that rebuild themselves solve more tasks but make safety errors (ST-0033)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0033</link>
+      <guid isPermaLink="false">2026-11-04/ST-0033/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: CheatBench: Benchmark tests whether AI agents cheat on hard tasks (ST-0034)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0034</link>
+      <guid isPermaLink="false">2026-11-04/ST-0034/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: CyberPersistBench: AI attackers stay in a system only to a limited extent after a breach (ST-0035)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0035</link>
+      <guid isPermaLink="false">2026-11-04/ST-0035/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Character training makes AI agents more cautious with their resources (ST-0036)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0036</link>
+      <guid isPermaLink="false">2026-11-04/ST-0036/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Loss of control in AI agents: environments mostly allowed effects beyond the task scope (ST-0037)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0037</link>
+      <guid isPermaLink="false">2026-11-04/ST-0037/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Lingering jailbreaks: the same safety feedback affects tool agents differently (ST-0038)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0038</link>
+      <guid isPermaLink="false">2026-11-04/ST-0038/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: BACKDROP: Everyday hazards around a task sharply lower AI agents&apos; success rate (ST-0039)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0039</link>
+      <guid isPermaLink="false">2026-11-04/ST-0039/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: CoSec: Agents in communities complete tasks but often breach permission boundaries (ST-0040)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0040</link>
+      <guid isPermaLink="false">2026-11-04/ST-0040/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: MMSkillRisk: Instructions hidden in skill images lure agents into unauthorised actions (ST-0041)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0041</link>
+      <guid isPermaLink="false">2026-11-04/ST-0041/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Veer: Intervening in page state protects web agents from deceptive interfaces (ST-0042)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0042</link>
+      <guid isPermaLink="false">2026-11-04/ST-0042/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: ActionGuard: Checking each tool call before execution curbs attacks via poisoned skills (ST-0043)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0043</link>
+      <guid isPermaLink="false">2026-11-04/ST-0043/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Multimodal fine-tuning on narrow tasks can trigger broad misalignment (ST-0044)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0044</link>
+      <guid isPermaLink="false">2026-11-04/ST-0044/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
       <title>Corrected: Chainalysis: attacker breaches internal systems using “agentic techniques” (EV-0136)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0136/</link>
       <guid isPermaLink="false">2026-11-03/EV-0136/CORRECTED</guid>
@@ -294,118 +406,6 @@
       <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Evaluator, grader &amp; monitoring evasion (RA-0093)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-02/RA-0093/PUBLISHED</guid>
-      <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Offensive cyber capabilities &amp; misuse (RA-0094)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-02/RA-0094/PUBLISHED</guid>
-      <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Persistent memory &amp; information transfer (RA-0095)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-02/RA-0095/PUBLISHED</guid>
-      <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Sandbox escapes &amp; capability control (RA-0096)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-02/RA-0096/PUBLISHED</guid>
-      <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Self-modification &amp; replication (RA-0097)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-02/RA-0097/PUBLISHED</guid>
-      <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Shutdown evasion &amp; self-preservation (RA-0098)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-02/RA-0098/PUBLISHED</guid>
-      <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Unauthorized tool use (RA-0099)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-02/RA-0099/PUBLISHED</guid>
-      <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Synthetic social engineering: citing a prior arrangement drives unauthorized requests (ST-0016)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0016</link>
-      <guid isPermaLink="false">2026-11-02/ST-0016/PUBLISHED</guid>
-      <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Red teaming agents: the target analyzes failures, a separate attacker plans the next try (ST-0017)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0017</link>
-      <guid isPermaLink="false">2026-11-02/ST-0017/PUBLISHED</guid>
-      <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: SABench: measuring side effects of tool-using AI agents (ST-0018)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0018</link>
-      <guid isPermaLink="false">2026-11-02/ST-0018/PUBLISHED</guid>
-      <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Negotiating AI agents: a present user brings higher payouts and more misbehavior (ST-0019)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0019</link>
-      <guid isPermaLink="false">2026-11-02/ST-0019/PUBLISHED</guid>
-      <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: With extra hints, weak monitors work markedly more reliably (ST-0020)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0020</link>
-      <guid isPermaLink="false">2026-11-02/ST-0020/PUBLISHED</guid>
-      <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Corrected: Anthropic: Claude models gained access to real third-party systems in four incidents (EV-0002)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0002/</link>
-      <guid isPermaLink="false">2026-11-01/EV-0002/CORRECTED</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Supplemented with 4 newly checked claims (4 supported).</description>
-    </item>
-    <item>
-      <title>Corrected: Cohere: Qwen3.8-Flash-Next attempts upload to Alibaba Cloud bucket (EV-0110)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0110/</link>
-      <guid isPermaLink="false">2026-11-01/EV-0110/CORRECTED</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Supplemented with 3 newly checked claims (3 supported).</description>
     </item>
   </channel>
 </rss>
