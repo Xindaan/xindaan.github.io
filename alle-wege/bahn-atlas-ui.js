@@ -7,7 +7,7 @@ import {
   inGebiet,
   atlasLeerHinweis,
 } from "./bahn-atlas-core.js?v=20261103-10";
-import { vergleicheBahnAuto, bilanz, TOLERANZ_MIN } from "./bahn-auto-core.js?v=20261104-1";
+import { vergleicheBahnAuto, bilanz, TOLERANZ_MIN, versetzteZeiten, bestwertJeHalt, ABFAHRTEN, RASTER_MIN } from "./bahn-auto-core.js?v=20261104-2";
 const farben = [
   "#a9674c",
   "#517a78",
@@ -69,8 +69,11 @@ async function atlasRunde({
 }) {
   const de = grenzen.features.find((f) => f.properties.code === "DEU").geometry;
   const listen = [];
+  const zeiten = typ === "auto" ? versetzteZeiten(opt.zeit, opt.arriveBy) : [];
   const paare =
-    typ === "effekt"
+    typ === "auto"
+      ? zeiten.map((zeit) => ({ ...opt, zeit }))
+      : typ === "effekt"
       ? [
           { ...opt, nurRegional: false },
           { ...opt, nurRegional: true },
@@ -78,10 +81,10 @@ async function atlasRunde({
       : personen.map(() => opt);
   for (let i = 0; i < paare.length; i++) {
     status(
-      `${typ === "effekt" ? (i ? "Ohne Fernverkehr" : "Mit Fernverkehr") : personen[i].name}: Fahrplan-Erreichbarkeit wird berechnet (${i + 1}/${paare.length}) …`,
+      `${typ === "effekt" ? (i ? "Ohne Fernverkehr" : "Mit Fernverkehr") : typ === "auto" ? `${opt.arriveBy ? "Ankunft bis" : "Abfahrt ab"} ${new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit" }).format(new Date(paare[i].zeit))}` : personen[i].name}: Fahrplan-Erreichbarkeit wird berechnet (${i + 1}/${paare.length}) …`,
     );
     const daten = await lade(
-      atlasURL(typ === "effekt" ? personen[0] : personen[i], paare[i]),
+      atlasURL(["effekt", "auto"].includes(typ) ? personen[0] : personen[i], paare[i]),
       signal,
       true,
     );
@@ -100,13 +103,14 @@ async function atlasRunde({
   if (typ === "effekt") punkte = atlasEffekt(...listen);
   let vergleich = null;
   if (typ === "auto") {
+    punkte = bestwertJeHalt(listen, zeiten);
     status("Straßenzeiten werden berechnet (beim ersten Mal wird das Straßennetz geladen) …");
-    const s = await strassenZeiten(personen[0], listen[0], {
+    const s = await strassenZeiten(personen[0], punkte, {
       richtung: opt.arriveBy ? "nach" : "von",
       autobahnTempo,
     });
     if (signal?.aborted) throw new DOMException("Abgebrochen", "AbortError");
-    punkte = vergleicheBahnAuto(listen[0], s.minuten);
+    punkte = vergleicheBahnAuto(punkte, s.minuten);
     vergleich = { bilanz: bilanz(punkte), startKm: s.startKm, autobahnTempo };
   }
   return {
@@ -139,7 +143,7 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
           : r.typ === "auto"
             ? s.urteil === "ohne"
               ? `Bahn ${zeit(s.dauer)} · Auto: kein Straßenanschluss im Modell`
-              : `Bahn ${zeit(s.dauer)} · Auto ${zeit(s.auto)} · ${s.urteil === "bahn" ? `Bahn ${zeit(-s.differenz)} schneller` : s.urteil === "auto" ? `Auto ${zeit(s.differenz)} schneller` : "etwa gleich"}`
+              : `Bahn ${zeit(s.dauer)} (${r.opt.arriveBy ? "an bis" : "ab"} ${new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit" }).format(new Date(s.startZeit))}) · Auto ${zeit(s.auto)} · ${s.urteil === "bahn" ? `Bahn ${zeit(-s.differenz)} schneller` : s.urteil === "auto" ? `Auto ${zeit(s.differenz)} schneller` : "etwa gleich"}`
           : `${zeit(s.dauer)} · ${s.umstiege === 0 ? "ohne Umstieg" : `${s.umstiege} ${s.umstiege === 1 ? "Umstieg" : "Umstiege"}`}`;
   const uhrzeit = new Intl.DateTimeFormat("de-DE", {
     timeZone: "Europe/Berlin",
@@ -167,7 +171,7 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
         : r.typ === "effekt"
           ? "Grün: wenig Zeitvorteil · Braun: viel Zeitvorteil · Violett: ohne Fernverkehr nicht innerhalb des Zeitlimits."
           : r.typ === "auto"
-            ? `Blau: Bahn mehr als ${TOLERANZ_MIN} Min. schneller · Braun: Auto mehr als ${TOLERANZ_MIN} Min. schneller · Grau: etwa gleich (±${TOLERANZ_MIN} Min.); kräftiger = größerer Abstand. Bahn: Sollfahrplan inkl. Warten ab Wunschabfahrt bzw. bis zur Ankunftsfrist und Fußweg bis 15 Min. Auto: Straßenmodell mit Wunschtempo ${r.autobahnTempo} km/h, ohne Stau, Parken und letzte Strecke; Haltestellen an den nächsten Nicht-Autobahn-Knoten (bis 5 km) angebunden, ohne Anschluss nicht verglichen. Keine Tür-zu-Tür-Aussage.`
+            ? `Blau: Bahn mehr als ${TOLERANZ_MIN} Min. schneller · Braun: Auto mehr als ${TOLERANZ_MIN} Min. schneller · Grau: etwa gleich (±${TOLERANZ_MIN} Min.); kräftiger = größerer Abstand. Bahn: Sollfahrplan, beste von ${ABFAHRTEN} ${r.opt.arriveBy ? `Ankunftsfristen bis ${(ABFAHRTEN - 1) * RASTER_MIN} Min. vor der gewählten` : `Abfahrten bis ${(ABFAHRTEN - 1) * RASTER_MIN} Min. nach der gewählten`} Zeit im ${RASTER_MIN}-Min.-Raster; enthält höchstens ${RASTER_MIN} Min. Warten auf die nächste Fahrt sowie Fußweg bis 15 Min. Auto: Straßenmodell mit Wunschtempo ${r.autobahnTempo} km/h, ohne Stau, Parken und letzte Strecke; Haltestellen an den nächsten Nicht-Autobahn-Knoten (bis 5 km) angebunden, ohne Anschluss nicht verglichen. Keine Tür-zu-Tür-Aussage.`
             : "Grün: kurze Reisezeit · Braun: lange Reisezeit. Jeder Punkt zeigt eine erreichbare Haltestelle. Die Flächen dazwischen sind nicht automatisch erreichbar.";
   if (r.suchHinweis)
     $("atlas-legende").insertAdjacentHTML("afterbegin", `<strong>${esc(r.suchHinweis)}</strong><br>`);

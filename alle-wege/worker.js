@@ -1,5 +1,5 @@
 import { buildGraph, analyze } from "./graph.js?v=20261103-10";
-import { anbindungsRaster, autoMinuten } from "./bahn-auto-core.js?v=20261104-1";
+import { anbindungsRaster, autoMinuten } from "./bahn-auto-core.js?v=20261104-2";
 let graph, raster;
 self.onmessage = ({ data }) => {
   try {

@@ -2,7 +2,8 @@ import { STANDARDORTE } from "./standardorte.js";
 import { leseZustand, vergleichLink, bahnZuStrasse } from "./vergleich.js?v=20261104-1";
 let strassenStand = {}, vergleichInfo = {};
 import { atlasURL, verdichteAtlas } from "./bahn-atlas-core.js?v=20261103-10";
-import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261104-1";
+import { versetzteZeiten } from "./bahn-auto-core.js?v=20261104-2";
+import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261104-2";
 import { ortsnamen, ergaenzeOrt } from "./ortslisten.js";
 import {
   API,
@@ -163,7 +164,7 @@ function modus(neu) {
         : art === "effekt"
           ? "Vergleich mit und ohne Fernverkehr bei gleicher Zeit und Umstiegsgrenze. Fehlt der Nahverkehrsweg im Zeitlimit, wird kein unbegrenzter Zeitgewinn behauptet."
           : art === "auto"
-            ? "Je Haltestelle: Fahrplanzeit gegen Modell-Autozeit vom selben Ausgangspunkt. Bahn mit Warten und Fußweg, Auto ohne Stau, Parken und letzte Strecke. Lädt beim ersten Mal das Straßennetz (ca. 13 MB)."
+            ? "Je Haltestelle: Fahrplanzeit gegen Modell-Autozeit vom selben Ausgangspunkt. Bahn: beste von 4 Abfahrten im 15-Minuten-Raster (4 Fahrplananfragen), also höchstens 15 Min. Warten. Auto ohne Stau, Parken und letzte Strecke. Lädt beim ersten Mal das Straßennetz (ca. 13 MB)."
             : "Erreichbare Haltestellen laut Fahrplan, einschließlich Wartezeit ab Wunschabfahrt bzw. bis zur Ankunftsfrist. Fußzugang bis 15 Minuten; keine flächige Erreichbarkeitsgarantie.";
   document
     .querySelectorAll("[data-art]")
@@ -479,7 +480,7 @@ function strassenWorker() {
           ).text()
         : new TextDecoder().decode(bytes),
     );
-    const w = new Worker("worker.js?v=20261104-1", { type: "module" });
+    const w = new Worker("worker.js?v=20261104-2", { type: "module" });
     await new Promise((ok, fail) => {
       w.onmessage = ({ data: m }) =>
         m.type === "ready" ? ok() : fail(new Error(m.message));
@@ -533,7 +534,11 @@ async function sucheAtlas(opt, signal, id) {
       "Bitte einen Ort aus der Liste oder eine Haltestelle auswählen.",
     );
   const urls =
-    typ === "effekt"
+    typ === "auto"
+      ? versetzteZeiten(opt.zeit, opt.arriveBy).map((zeit) =>
+          atlasURL(personen[0], { ...opt, zeit }),
+        )
+      : typ === "effekt"
       ? [false, true].map((nurRegional) =>
           atlasURL(personen[0], { ...opt, nurRegional }),
         )
@@ -598,6 +603,7 @@ async function atlasDetails(s, r) {
         : [[ziel, halt]];
   const opt = {
     ...r.opt,
+    ...(r.typ === "auto" && s.startZeit ? { zeit: s.startZeit } : {}),
     vergleich: r.typ === "finden",
     nurRegional: r.typ === "effekt" ? false : r.opt.nurRegional,
   };

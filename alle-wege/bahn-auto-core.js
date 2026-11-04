@@ -60,6 +60,30 @@ export function autoMinuten(g, raster, start, halte, { richtung = "von", autobah
   };
 }
 
+// Die One-to-all-Dauer enthaelt das Warten auf die naechste Fahrt (vorwaerts ab
+// Wunschabfahrt, rueckwaerts bis zur Frist). Mehrere versetzte Anfragen und der
+// Bestwert je Halt begrenzen diese Takt-Wartezeit auf hoechstens ein Raster.
+export const ABFAHRTEN = 4,
+  RASTER_MIN = 15;
+export function versetzteZeiten(zeit, arriveBy, anzahl = ABFAHRTEN, raster = RASTER_MIN) {
+  const t = Date.parse(zeit);
+  if (!Number.isFinite(t)) throw new Error("Ungültiger Reisezeitpunkt.");
+  return Array.from({ length: anzahl }, (_, i) =>
+    new Date(t + (arriveBy ? -1 : 1) * i * raster * 60000).toISOString(),
+  );
+}
+export function bestwertJeHalt(listen, zeiten) {
+  const beste = new Map();
+  listen.forEach((liste, i) => {
+    for (const p of liste) {
+      const alt = beste.get(p.id);
+      if (!alt || p.dauer < alt.dauer || (p.dauer === alt.dauer && p.umstiege < alt.umstiege))
+        beste.set(p.id, { ...p, startZeit: zeiten[i] });
+    }
+  });
+  return [...beste.values()];
+}
+
 // differenz = Bahn minus Auto; negativ heisst Bahn schneller.
 export function vergleicheBahnAuto(punkte, minuten, toleranz = TOLERANZ_MIN) {
   return punkte.map((p, i) => {
