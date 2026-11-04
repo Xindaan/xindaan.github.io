@@ -96,6 +96,9 @@ let state = {
   transferWait: 0,
   autobahnTempo: 130,
   centers: [],
+  menschen: [],
+  wohnort: null,
+  umzug: null,
 };
 const project = (lon, lat) => [(lon - 10.5) * 69.98, (55.15 - lat) * 111.2];
 const unproject = (x, y) => [x / 69.98 + 10.5, 55.15 - y / 111.2];
@@ -176,7 +179,7 @@ function readHash() {
     const s = JSON.parse(p.get("s"));
     if (s.mode === "effect") s.mode = "reach";
     if (s.mode) state.direction = s.direction === "from" ? "from" : "to";
-    if (["one", "meet", "basins", "reach"].includes(s.mode))
+    if (["one", "meet", "basins", "reach", "leben"].includes(s.mode))
       state.mode = s.mode;
     if (city(s.destination)) state.destination = s.destination;
     if (["time", "distance"].includes(s.metric)) state.metric = s.metric;
@@ -201,6 +204,14 @@ function readHash() {
         ...new Set(s.travelers.filter((id) => city(id))),
       ].slice(0, 8);
     state.meeting = city(s.meeting) ? s.meeting : null;
+    state.menschen = Array.isArray(s.menschen)
+      ? s.menschen
+          .filter((m) => Array.isArray(m) && city(m[0]) && Number.isInteger(m[1]) && m[1] >= 1 && m[1] <= 365)
+          .filter((m, i, a) => a.findIndex((x) => x[0] === m[0]) === i)
+          .slice(0, 8)
+      : [];
+    state.wohnort = city(s.wohnort) ? s.wohnort : null;
+    state.umzug = city(s.umzug) ? s.umzug : null;
     state.point =
       Array.isArray(s.point) &&
       s.point.length === 2 &&
@@ -249,14 +260,15 @@ function sync() {
   $("destination-controls").hidden = !["one", "reach"].includes(state.mode);
   $("meet-controls").hidden = state.mode !== "meet";
   $("basin-controls").hidden = state.mode !== "basins";
+  $("leben-controls").hidden = state.mode !== "leben";
   $("reach-controls").hidden = state.mode !== "reach";
-  $("routing-controls").hidden = state.mode === "meet";
+  $("routing-controls").hidden = ["meet", "leben"].includes(state.mode);
   $("branch-controls").hidden = state.mode !== "one";
   $("metric").hidden = ["reach", "meet"].includes(state.mode);
   $("metric").previousElementSibling.hidden = $("metric").hidden;
   $("linienstaerke-feld").hidden = state.mode === "meet";
   $("linienstaerke-hinweis").hidden = state.mode === "meet";
-  $("play").hidden = state.mode === "meet";
+  $("play").hidden = ["meet", "leben"].includes(state.mode);
   $("destination").value = destinationLabel();
   $("objective").value = state.objective;
   $("weight").value = state.weight;
@@ -296,6 +308,13 @@ function sync() {
         `<div class="traveler"><i style="background:${palette[i]}"></i><span>${esc(label(city(id)))}</span><button data-remove="${esc(id)}" aria-label="${esc(label(city(id)))} entfernen">×</button></div>`,
     )
     .join("");
+  $("menschen").innerHTML = state.menschen
+    .map(
+      ([id, fahrten], i) =>
+        `<div class="traveler"><i style="background:${palette[i]}"></i><span>${esc(label(city(id)))}</span><input class="fahrten" type="number" min="1" max="365" step="1" value="${fahrten}" data-fahrten="${esc(id)}" aria-label="Fahrten pro Jahr nach ${esc(label(city(id)))}" /><button data-remove="${esc(id)}" aria-label="${esc(label(city(id)))} entfernen">×</button></div>`,
+    )
+    .join("");
+  $("wohnort").value = state.wohnort ? label(city(state.wohnort)) : "";
   state.seeds = state.centers.length ? state.centers : data.cities.slice(0, state.basinCount).map((c) => c.id);
   $("autobahn-tempo").value = state.autobahnTempo;
   $("autobahn-tempo-wert").textContent = `${state.autobahnTempo} km/h`;
@@ -375,6 +394,18 @@ function heading() {
       state.travelers.length < 2
         ? "Wähle mindestens zwei Startorte."
         : `${state.travelers.length} Startorte · ${state.objective === "fair" ? "Kürzeste maximale Anreise" : "Geringste Gesamtfahrzeit"} · ${nf.format(data.cities.length)} mögliche Orte`;
+  } else if (state.mode === "leben") {
+    const umzug = state.umzug && state.wohnort && city(state.umzug),
+      bester = result?.mode === "leben" && result.besteOrte[0] ? data.cities[result.besteOrte[0].index] : null;
+    title = umzug
+      ? `Umzug nach <em>${esc(umzug.name)}?</em>`
+      : bester
+        ? `Am nächsten an deinen Menschen: <em>${esc(bester.name)}.</em>`
+        : "Wo leben deine <em>Menschen?</em>";
+    kicker = "WO LIEGT MEIN LEBEN AM GÜNSTIGSTEN?";
+    subtitle = state.menschen.length
+      ? `${state.menschen.length} Orte · ${nf.format(fahrtenSumme())} Fahrten pro Jahr, hin und zurück · ${state.wohnort ? `Farbe = Unterschied je Fahrt gegenüber ${city(state.wohnort).name}` : "Farbe = Mehrzeit je Fahrt gegenüber dem besten Ort"}`
+      : "Füge die Orte hinzu, an denen deine Menschen leben.";
   } else if (state.mode === "basins") {
     title = `Deutschlands <em>Einzugsgebiete.</em>`;
     kicker = "WELCHE STADT IST AM NÄCHSTEN?";
@@ -397,10 +428,11 @@ function heading() {
   $("map-title").innerHTML = title;
   $("map-kicker").textContent = kicker;
   $("map-subtitle").textContent = subtitle;
-  document.title = `${state.mode === "meet" ? "Fairer Treffpunkt" : state.mode === "basins" ? "Einzugsgebiete" : dest} · Alle Wege`;
+  document.title = `${state.mode === "meet" ? "Fairer Treffpunkt" : state.mode === "basins" ? "Einzugsgebiete" : state.mode === "leben" ? "Lebensorte" : dest} · Alle Wege`;
   if (!result || result.mode !== state.mode) return;
   let stats = [];
-  if (state.mode === "meet") {
+  if (state.mode === "leben") stats = lebenErgebnis();
+  else if (state.mode === "meet") {
     const sel = result.selected;
     if (sel) {
       stats = [
@@ -505,6 +537,18 @@ function heading() {
             `<div class="key"><i style="background:${colors[i % colors.length]}"></i>${esc(city(id).name)}</div>`,
         )
         .join("");
+  else if (state.mode === "leben")
+    legend = Number.isFinite(lebenBasis())
+      ? `<b>JE FAHRT GEGENÜBER ${esc(city(state.wohnort).name.toUpperCase())}</b>` +
+        ["mehr als 30 Min. kürzer", "5–30 Min. kürzer", "etwa gleich (± 5 Min.)", "5–30 Min. länger", "mehr als 30 Min. länger"]
+          .map((t, i) => `<div class="key"><i style="background:${lebenFarbe(i)}"></i>${t}</div>`)
+          .join("") +
+        "<small>Mittel über alle Fahrten, gewichtet, hin und zurück.<br>Keine Echtzeitverkehrsdaten.</small>"
+      : "<b>MEHRZEIT JE FAHRT GEGENÜBER DEM BESTEN ORT</b>" +
+        ["bis 15 Min.", "15–45 Min.", "45–90 Min.", "mehr als 90 Min."]
+          .map((t, i) => `<div class="key"><i style="background:${lebenFarbe(i)}"></i>${t}</div>`)
+          .join("") +
+        "<small>Mittel über alle Fahrten, gewichtet, hin und zurück.<br>Keine Echtzeitverkehrsdaten.</small>";
   else if (state.mode === "basins")
     legend =
       state.theme === "ink"
@@ -520,6 +564,109 @@ function reiseColors() {
   return state.theme === "night"
     ? ["#85c6b4", "#b8be83", "#dcc17d", "#de9870"]
     : ["#517a78", "#809252", "#b9a24f", "#b36345"];
+}
+// Lebensorte: Klassen je Fahrt (hin und zurueck), damit Gewichte die Skala nicht verzerren.
+const LEBEN_STUFEN = [15, 45, 90],
+  UMZUG_STUFEN = [-30, -5, 5, 30];
+function umzugColors() {
+  return state.theme === "night"
+    ? ["#6fc7a8", "#a7d3b2", "#8a8f80", "#e3a77a", "#e06b4f"]
+    : ["#2f6f5e", "#7fae8f", "#c9c6b0", "#d79a6c", "#a8462f"];
+}
+const fahrtenSumme = () => state.menschen.reduce((a, m) => a + m[1], 0);
+const stunden = (m) => `${nf.format(Math.round(m / 60))} Std.`;
+const plusMinus = (m) =>
+  Math.round(m) === 0 ? "± 0 Min." : `${m > 0 ? "+" : "−"} ${duration(Math.abs(m))}`;
+function lebenBasis() {
+  const c = state.wohnort && city(state.wohnort);
+  return c && result?.mode === "leben" ? result.jahr[c.node] : NaN;
+}
+function lebenKlasse(u) {
+  const v = result.jahr[u],
+    f = fahrtenSumme();
+  if (!Number.isFinite(v) || !f) return -1;
+  const basis = lebenBasis();
+  if (Number.isFinite(basis)) {
+    const k = UMZUG_STUFEN.findIndex((g) => (v - basis) / f <= g);
+    return k < 0 ? UMZUG_STUFEN.length : k;
+  }
+  const best = result.besteOrte[0]?.jahr ?? v,
+    k = LEBEN_STUFEN.findIndex((g) => (v - best) / f <= g);
+  return k < 0 ? LEBEN_STUFEN.length : k;
+}
+function lebenFarbe(k) {
+  if (state.theme === "ink") return "#333";
+  return Number.isFinite(lebenBasis()) ? umzugColors()[k] : reiseColors()[k];
+}
+function nearestCity(x, y) {
+  let best = null,
+    bd = Infinity;
+  for (const c of data.cities) {
+    const [cx, cy] = nodeXY[c.node],
+      d = (cx - x) ** 2 + (cy - y) ** 2;
+    if (d < bd) [best, bd] = [c, d];
+  }
+  return { c: best, km: Math.sqrt(bd) };
+}
+function lebenErgebnis() {
+  const el = $("leben-results");
+  if (!state.menschen.length) {
+    el.innerHTML = '<p class="hint">Füge mindestens einen Ort hinzu, an dem Menschen leben, die du besuchst.</p>';
+    return [["MENSCHEN", "0 Orte", "Mindestens einen Ort hinzufügen"]];
+  }
+  if (!result.besteOrte.length) {
+    el.innerHTML = '<p class="hint">Kein Ort im Straßennetz erreicht alle ausgewählten Orte. Bitte die Orte prüfen.</p>';
+    return [["MENSCHEN", String(state.menschen.length), "Kein gemeinsam erreichbarer Ort"]];
+  }
+  const f = fahrtenSumme(),
+    basis = lebenBasis(),
+    wohn = state.wohnort && city(state.wohnort),
+    wohnIndex = wohn ? data.cities.indexOf(wohn) : -1,
+    umzug = state.umzug && city(state.umzug),
+    umzugIndex = umzug ? data.cities.indexOf(umzug) : -1,
+    gesamt = result.rang.size;
+  const zeile = (index) => {
+    const v = result.jahr[data.cities[index].node];
+    return `${stunden(v)} pro Jahr${Number.isFinite(basis) ? ` · ${plusMinus((v - basis) / f)} je Fahrt` : ""}`;
+  };
+  let html = "";
+  if (wohn)
+    html += Number.isFinite(basis)
+      ? `<p class="hint"><b>Jetzt ${esc(wohn.name)}:</b> ${stunden(basis)} pro Jahr, Platz ${nf.format(result.rang.get(wohnIndex))} von ${nf.format(gesamt)} Orten.</p>`
+      : `<p class="hint">${esc(wohn.name)} erreicht nicht alle ausgewählten Orte.</p>`;
+  html +=
+    `<label style="margin-top:14px">AM NÄCHSTEN AN ALLEN</label>` +
+    result.besteOrte
+      .map(
+        (c, i) =>
+          `<button class="meeting" data-umzug="${esc(data.cities[c.index].id)}" aria-pressed="${c.index === umzugIndex}"><strong>${i + 1}. ${esc(label(data.cities[c.index]))}</strong><span>${zeile(c.index)}</span></button>`,
+      )
+      .join("");
+  if (umzug && !result.besteOrte.some((c) => c.index === umzugIndex))
+    html += `<button class="meeting" data-umzug="${esc(umzug.id)}" aria-pressed="true"><strong>${result.rang.has(umzugIndex) ? nf.format(result.rang.get(umzugIndex)) + ". " : ""}${esc(label(umzug))}</strong><span>${result.rang.has(umzugIndex) ? zeile(umzugIndex) : "erreicht nicht alle ausgewählten Orte"}</span></button>`;
+  if (umzug && result.rang.has(umzugIndex)) {
+    const proPerson = state.menschen
+      .map(([id, fahrten], k) => {
+        const [hin, rueck] = result.zeiten[k][umzugIndex],
+          neu = fahrten * (hin + rueck);
+        const alt = wohnIndex >= 0 ? fahrten * result.zeiten[k][wohnIndex].reduce((a, b) => a + b, 0) : NaN;
+        return `${esc(city(id).name)} (${fahrten}×): ${duration(hin)} hin, ${duration(rueck)} zurück${Number.isFinite(alt) && Number.isFinite(basis) ? ` · ${plusMinus(neu - alt)} pro Jahr` : ""}`;
+      })
+      .join("<br>");
+    html += `<p class="hint leben-detail"><b>Ab ${esc(umzug.name)}</b><br>${proPerson}<br>Ortsanschluss: ${umzug.snapKm.toLocaleString("de-DE")} km Luftlinie (nicht enthalten)</p>`;
+  }
+  el.innerHTML = html;
+  const bester = data.cities[result.besteOrte[0].index];
+  const stats = [
+    ["BESTER ORT", bester.name, `${stunden(result.besteOrte[0].jahr)} Fahrzeit pro Jahr`],
+    ["FAHRTEN", nf.format(f), `pro Jahr zu ${state.menschen.length} Orten, hin und zurück`],
+  ];
+  if (umzug && Number.isFinite(basis) && result.rang.has(umzugIndex)) {
+    const d = result.jahr[umzug.node] - basis;
+    stats.push(["UMZUG", `${d > 0 ? "+" : d < 0 ? "−" : "±"} ${stunden(Math.abs(d))}`, `pro Jahr, ${wohn.name} → ${umzug.name}`]);
+  } else if (Number.isFinite(basis))
+    stats.push(["JETZT", stunden(basis), `pro Jahr ab ${wohn.name}`]);
+  return stats;
 }
 function zeigeReichweite() {
   if (!result || result.mode !== "reach") return;
@@ -651,6 +798,25 @@ function draw(target = $("map"), progress = 1, exporting = false) {
       ctx.lineJoin = "round";
       ctx.stroke();
     });
+  } else if (state.mode === "leben") {
+    const buckets = new Map();
+    for (const u of result.order) {
+      const e = result.edge[u],
+        k = e < 0 ? -1 : lebenKlasse(u);
+      if (k < 0) continue;
+      if (!buckets.has(k)) buckets.set(k, []);
+      buckets.get(k).push(e);
+    }
+    for (const [k, ids] of buckets) {
+      ctx.beginPath();
+      for (const id of ids) addEdge(ctx, id, scale, ox, oy);
+      ctx.strokeStyle = lebenFarbe(k);
+      ctx.lineWidth = 0.9 * (exporting ? 1.7 : 1);
+      ctx.globalAlpha = 0.88;
+      ctx.lineJoin = "round";
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
   } else {
     const buckets = new Map(),
       widths = [0.35, 0.55, 0.8, 1.15, 1.7, 2.5, 3.6],
@@ -702,7 +868,9 @@ function draw(target = $("map"), progress = 1, exporting = false) {
   const genutzt = new Set(
     state.mode === "meet"
       ? result.paths.flat()
-      : result.order.filter((u) => result.w[u] > 0).map((u) => result.edge[u]),
+      : state.mode === "leben"
+        ? result.order.map((u) => result.edge[u])
+        : result.order.filter((u) => result.w[u] > 0).map((u) => result.edge[u]),
   );
   ctx.setLineDash([5, 4]);
   for (let i = 0; i < data.edges.length; i++)
@@ -723,6 +891,12 @@ function draw(target = $("map"), progress = 1, exporting = false) {
         color: ink,
         special: true,
       });
+  } else if (state.mode === "leben") {
+    state.menschen.forEach(([id], i) =>
+      highlights.set(id, { color: colors[i % colors.length], special: false }),
+    );
+    for (const id of [state.wohnort, state.umzug])
+      if (id) highlights.set(id, { color: ink, special: true });
   } else if (state.mode === "basins")
     state.seeds.forEach((id, i) =>
       highlights.set(id, { color: colors[i % colors.length], special: true }),
@@ -774,7 +948,7 @@ function draw(target = $("map"), progress = 1, exporting = false) {
   for (const [id, h] of highlights) drawLabel(city(id), true, h.color);
   for (const c of data.cities.slice(0, view.zoom > 1.8 ? 65 : 24))
     if (!highlights.has(c.id)) drawLabel(c);
-  if (state.point && state.mode !== "meet" && state.mode !== "basins") {
+  if (state.point && ["one", "reach"].includes(state.mode)) {
     const [x, y] = xy(...nodeXY[state.node]);
     ctx.strokeStyle = ink;
     ctx.lineWidth = 1.5;
@@ -845,7 +1019,7 @@ function animate() {
     draw();
     return;
   }
-  if (!result || computing || state.mode === "meet") return;
+  if (!result || computing || ["meet", "leben"].includes(state.mode)) return;
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
     toast(
       "Animation ist wegen deiner Einstellung für reduzierte Bewegung ausgeschaltet.",
@@ -912,6 +1086,60 @@ function wire() {
   $("quick").onclick = (e) => {
     const b = e.target.closest("[data-city]");
     if (b) selectDestination(city(b.dataset.city));
+  };
+  const addMensch = () => {
+    const c = findCity($("mensch").value);
+    if (!c) return toast("Bitte einen Ort aus der Vorschlagsliste auswählen.");
+    if (state.menschen.some((m) => m[0] === c.id))
+      return toast("Dieser Ort ist schon dabei. Erhöhe stattdessen die Fahrten pro Jahr.");
+    if (state.menschen.length >= 8) return toast("Bis zu acht Orte sind möglich.");
+    state.menschen.push([c.id, 4]);
+    $("mensch").value = "";
+    update();
+  };
+  $("mensch-add").onclick = addMensch;
+  $("mensch").onkeydown = (e) => {
+    if (e.key === "Enter") addMensch();
+  };
+  $("menschen").onclick = (e) => {
+    const b = e.target.closest("[data-remove]");
+    if (!b) return;
+    state.menschen = state.menschen.filter((m) => m[0] !== b.dataset.remove);
+    update();
+  };
+  $("menschen").onchange = (e) => {
+    const f = e.target.closest("[data-fahrten]");
+    if (!f) return;
+    const n = Math.round(Number(f.value));
+    if (!(n >= 1 && n <= 365)) {
+      toast("Fahrten pro Jahr: ganze Zahl von 1 bis 365.");
+      sync();
+      return;
+    }
+    state.menschen = state.menschen.map((m) => (m[0] === f.dataset.fahrten ? [m[0], n] : m));
+    update();
+  };
+  const setWohnort = () => {
+    const text = $("wohnort").value.trim();
+    if (!text) {
+      state.wohnort = null;
+      return update({ recompute: false });
+    }
+    const c = findCity(text);
+    if (!c) return toast("Bitte einen Ort aus der Vorschlagsliste auswählen.");
+    state.wohnort = c.id;
+    update({ recompute: false });
+  };
+  $("wohnort-go").onclick = setWohnort;
+  $("wohnort").onchange = setWohnort;
+  $("wohnort").onkeydown = (e) => {
+    if (e.key === "Enter") setWohnort();
+  };
+  $("leben-results").onclick = (e) => {
+    const b = e.target.closest("[data-umzug]");
+    if (!b) return;
+    state.umzug = state.umzug === b.dataset.umzug ? null : b.dataset.umzug;
+    update({ recompute: false });
   };
   $("traveler-add").onclick = addTraveler;
   $("traveler").onkeydown = (e) => {
@@ -1079,6 +1307,17 @@ function wire() {
       $("hover").hidden = true;
       return;
     }
+    if (state.mode === "leben") {
+      const v = result.jahr[n.node],
+        basis = lebenBasis();
+      $("hover").textContent = !Number.isFinite(v)
+        ? "erreicht nicht alle Orte · Modell"
+        : `${stunden(v)} pro Jahr${Number.isFinite(basis) ? ` · ${plusMinus((v - basis) / fahrtenSumme())} je Fahrt` : ""} · Modell`;
+      $("hover").style.left = Math.max(8, Math.min(x + 12, mapBox.w - 190)) + "px";
+      $("hover").style.top = Math.max(5, y - 33) + "px";
+      $("hover").hidden = false;
+      return;
+    }
     const val =
       valueFmt(result.d[n.node]) +
       (result.d[n.node] > result.limit ? " · außerhalb des Zeitbudgets" : "");
@@ -1096,6 +1335,20 @@ function wire() {
     if (!drag) return;
     const clicked = !drag.moved;
     drag = null;
+    if (clicked && state.mode === "leben" && result?.mode === "leben") {
+      const b = canvas.getBoundingClientRect(),
+        { c, km } = nearestCity(
+          (e.clientX - b.left - mapBox.ox) / mapBox.scale,
+          (e.clientY - b.top - mapBox.oy) / mapBox.scale,
+        );
+      if (!c || km > 25) {
+        toast("Bitte näher an einen Ort im Ortsverzeichnis klicken.");
+        return;
+      }
+      state.umzug = c.id;
+      update({ recompute: false });
+      return;
+    }
     if (!clicked || !["one", "reach"].includes(state.mode)) return;
     const b = canvas.getBoundingClientRect(),
       p = [
@@ -1198,7 +1451,7 @@ async function init() {
       `${nf.format(data.meta.nodes)} Knoten · OSM ${data.meta.osmTimestamp?.slice(0, 10) || data.meta.retrieved}`;
     $("data-details").textContent =
       `OSM-Datenstand: ${data.meta.osmTimestamp}. ${nf.format(data.meta.nodes)} Knoten, ${nf.format(data.meta.edges)} Straßenabschnitte, ${nf.format(data.cities.length)} angebundene Orte. Durch Autozug und Fähre verbundenes Netz; ${nf.format(data.meta.excludedNodes)} andere Knoten wurden ausgelassen. Einwohnerzahlen dienen nur der Auswahl der größten Orte; die zusätzlich aufgenommenen Orte sind davon unabhängig.`;
-    worker = new Worker("worker.js?v=20261103-10", { type: "module" });
+    worker = new Worker("worker.js?v=20261104-3", { type: "module" });
     worker.onmessage = ({ data: msg }) => {
       if (msg.type === "ready") {
         ready = true;

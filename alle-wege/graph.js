@@ -222,7 +222,36 @@ export function pathTo(r, node) {
   }
   return path;
 }
+// Lebensorte: je Person Hin- (Wohnort -> Person) und Rueckfahrt, gewichtet mit
+// Fahrten pro Jahr. Ergebnis je Netzknoten: Fahrminuten pro Jahr; ein
+// unerreichbarer Mensch macht den Knoten unbrauchbar (Infinity).
+export function lebensorte(g, menschen, options = {}) {
+  const n = g.nodes.length,
+    jahr = new Float64Array(n),
+    zeiten = [];
+  let baum = null;
+  menschen.forEach(({ node, fahrten }) => {
+    const hin = shortest(g, [node], { ...options, reverse: true, metric: "time" }),
+      zurueck = shortest(g, [node], { ...options, reverse: false, metric: "time" });
+    baum ||= hin;
+    for (let i = 0; i < n; i++) jahr[i] += fahrten * (hin.d[i] + zurueck.d[i]);
+    zeiten.push(g.cities.map((c) => [hin.d[c.node], zurueck.d[c.node]]));
+  });
+  for (let i = 0; i < n; i++) if (Number.isNaN(jahr[i]) || !menschen.length) jahr[i] = Infinity;
+  const orte = g.cities
+    .map((c, index) => ({ index, jahr: jahr[c.node] }))
+    .filter((c) => Number.isFinite(c.jahr))
+    .sort((a, b) => a.jahr - b.jahr || a.index - b.index);
+  return { jahr, zeiten, orte, order: baum?.order || [], edge: baum?.edge || new Int32Array(n).fill(-1) };
+}
 export function analyze(g, s) {
+  if (s.mode === "leben") {
+    const menschen = (s.menschen || [])
+      .map(([id, fahrten]) => ({ node: g.cities.find((c) => c.id === id)?.node, fahrten }))
+      .filter((m) => m.node !== undefined && m.fahrten > 0);
+    const r = lebensorte(g, menschen, { sylt: s.sylt, transferWait: s.transferWait, autobahnTempo: s.autobahnTempo });
+    return { mode: "leben", ...r, besteOrte: r.orte.slice(0, 5), orte: undefined, rang: new Map(r.orte.map((c, i) => [c.index, i + 1])) };
+  }
   if (s.mode === "meet") {
     const m = rankMeetings(
       g,

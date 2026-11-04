@@ -13,7 +13,7 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23263832'/%3E%3Cpath d='M8 6L20 20M32 6L20 20M6 32L20 20M34 32L20 20' stroke='%23d4ae6f' stroke-width='3'/%3E%3C/svg%3E"
     />
-    <link rel="stylesheet" href="style.css?v=20261103-8" />
+    <link rel="stylesheet" href="style.css?v=20261104-3" />
   </head>
   <body>
     <header>
@@ -45,7 +45,9 @@
           ><button data-mode="meet" aria-pressed="false">
             <span>02</span> Fairer Treffpunkt <b>⌖</b></button
           ><button data-mode="basins" aria-pressed="false">
-            <span>03</span> Einzugsgebiete <b>◈</b>
+            <span>03</span> Einzugsgebiete <b>◈</b></button
+          ><button data-mode="leben" aria-pressed="false">
+            <span>04</span> Lebensorte <b>⌂</b>
           </button>
         </nav>
         <div id="controls" aria-busy="true">
@@ -90,6 +92,39 @@
               Niemand soll länger fahren müssen als nötig.
             </p>
             <div id="meeting-results" aria-live="polite"></div>
+          </section>
+          <section id="leben-controls" hidden>
+            <label for="mensch">WEN BESUCHST DU?</label>
+            <div class="searchbox">
+              <span>+</span
+              ><input
+                id="mensch"
+                list="cities"
+                placeholder="Ort einer Person hinzufügen …"
+                autocomplete="off"
+              /><button id="mensch-add" aria-label="Ort hinzufügen">↵</button>
+            </div>
+            <div id="menschen"></div>
+            <p class="hint">
+              Zahl = Fahrten pro Jahr dorthin, jeweils hin und zurück. Wer oft
+              besucht wird, zählt mehr; mehrere Menschen am selben Ort fasst du
+              in einer Zahl zusammen.
+            </p>
+            <label for="wohnort">WO WOHNST DU JETZT?</label>
+            <div class="searchbox">
+              <span>⌂</span
+              ><input
+                id="wohnort"
+                list="cities"
+                placeholder="Optional: heutiger Wohnort …"
+                autocomplete="off"
+              /><button id="wohnort-go" aria-label="Wohnort übernehmen">↵</button>
+            </div>
+            <p class="hint" id="wohnort-hinweis">
+              Mit Wohnort zeigt die Karte, wo ein Umzug Fahrzeit spart oder kostet.
+              Einen Umzugsort wählst du in der Liste oder per Klick auf die Karte.
+            </p>
+            <div id="leben-results" aria-live="polite"></div>
           </section>
           <section id="basin-controls" hidden>
             <label for="basin-count">WELCHE STÄDTE ZIEHEN AN?</label
@@ -456,6 +491,6 @@
         ausgewählten Orte beziehungsweise Kartenkoordinaten.
       </p>
     </dialog>
-    <script type="module" src="app.js?v=20261103-10"></script>
+    <script type="module" src="app.js?v=20261104-3"></script>
   </body>
 </html>

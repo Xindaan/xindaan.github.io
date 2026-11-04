@@ -7,7 +7,7 @@ import {
   inGebiet,
   atlasLeerHinweis,
 } from "./bahn-atlas-core.js?v=20261103-10";
-import { vergleicheBahnAuto, bilanz, TOLERANZ_MIN, versetzteZeiten, bestwertJeHalt, ABFAHRTEN, RASTER_MIN } from "./bahn-auto-core.js?v=20261104-2";
+import { vergleicheBahnAuto, bilanz, TOLERANZ_MIN, versetzteZeiten, bestwertJeHalt, ABFAHRTEN, RASTER_MIN } from "./bahn-auto-core.js?v=20261104-3";
 const farben = [
   "#a9674c",
   "#517a78",
