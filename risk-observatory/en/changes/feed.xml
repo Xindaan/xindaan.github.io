@@ -352,58 +352,58 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
-      <title>Corrected: Chainalysis: attacker breaches internal systems using “agentic techniques” (EV-0136)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0136/</link>
-      <guid isPermaLink="false">2026-11-03/EV-0136/CORRECTED</guid>
-      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Supplemented with 3 newly checked claims (3 supported).</description>
-    </item>
-    <item>
-      <title>Corrected: Chainalysis: attacker breaches internal systems using “agentic techniques” (EV-0136)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0136/</link>
-      <guid isPermaLink="false">2026-11-03/EV-0136/CORRECTED/2</guid>
-      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Supplemented with Chainalysis&apos;s update of 2 November 2026: the company continues to respond to ongoing threats, has taken its Reactor and Data Solutions products offline as a precaution and keeps operating its compliance transaction monitoring under close observation. Because production services are therefore unavailable to customers, severity is now rated high instead of moderate.</description>
-    </item>
-    <item>
-      <title>Published: Sophos: ransomware group GOLD OGRE uses AI agents to reach domain administration (EV-0154)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0154/</link>
-      <guid isPermaLink="false">2026-11-03/EV-0154/PUBLISHED</guid>
-      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Google/Mandiant: attackers hijack enterprise access to language models (LLMJacking) (EV-0155)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0155/</link>
-      <guid isPermaLink="false">2026-11-03/EV-0155/PUBLISHED</guid>
-      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Unauthorized agent coordination (RA-0100)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-03/RA-0100/PUBLISHED</guid>
-      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <title>Published: Ecology of AI agents: collaborating populations take off only beyond a critical size (ST-0059)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0059</link>
+      <guid isPermaLink="false">2026-11-04/ST-0059/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
-      <title>Published: Assessment: Evaluator, grader &amp; monitoring evasion (RA-0101)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-03/RA-0101/PUBLISHED</guid>
-      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <title>Published: FIBS: probes inside the model detect sabotage slightly better than text-only monitors (ST-0060)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0060</link>
+      <guid isPermaLink="false">2026-11-04/ST-0060/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
-      <title>Published: Assessment: Offensive cyber capabilities &amp; misuse (RA-0102)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-03/RA-0102/PUBLISHED</guid>
-      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <title>Published: Reward hacking as a contagious strategy in multi-agent coding systems (ST-0061)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0061</link>
+      <guid isPermaLink="false">2026-11-04/ST-0061/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: APEX-Harm: script attacks on agents in professional workspaces mostly succeed (ST-0062)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0062</link>
+      <guid isPermaLink="false">2026-11-04/ST-0062/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: LEST: tests based on system cards find counterexamples to 6 of 9 safety claims (ST-0063)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0063</link>
+      <guid isPermaLink="false">2026-11-04/ST-0063/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: KedgeFlow: control plane enforces approvals for enterprise agents outside the agent (ST-0064)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0064</link>
+      <guid isPermaLink="false">2026-11-04/ST-0064/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Injected page text makes browser agents grant third parties access to user accounts (ST-0065)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0065</link>
+      <guid isPermaLink="false">2026-11-04/ST-0065/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
