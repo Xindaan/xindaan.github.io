@@ -1,9 +1,9 @@
 import { STANDARDORTE } from "./standardorte.js";
 import { leseZustand, vergleichLink, bahnZuStrasse } from "./vergleich.js?v=20261104-1";
 let strassenStand = {}, vergleichInfo = {};
-import { atlasURL, verdichteAtlas } from "./bahn-atlas-core.js?v=20261103-10";
+import { atlasURL, verdichteAtlas } from "./bahn-atlas-core.js?v=20261104-4";
 import { versetzteZeiten } from "./bahn-auto-core.js?v=20261104-3";
-import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261104-3";
+import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261104-5";
 import { ortsnamen, ergaenzeOrt } from "./ortslisten.js";
 import {
   API,
@@ -128,6 +128,7 @@ function modus(neu) {
   $("horizont-feld").hidden = ["route", "treffen", "finden"].includes(art);
   $("wechsel-hinweis").hidden = ["treffen", "finden"].includes(art) || !$("wechsel-hinweis").textContent;
   $("eigene-kandidaten").hidden = art !== "treffen";
+  $("rueck-felder").hidden = art !== "finden";
   $("treff-art").value = art === "treffen" ? "eigen" : "auto";
   $("regional").disabled = art === "effekt";
   $("schnell-ziel").hidden = art !== "route";
@@ -267,11 +268,24 @@ function optionen() {
     vergleich: art === "treffen",
     objective: $("bahn-objective").value,
     horizont: Number($("horizont").value),
+    ...(art === "finden" && $("rueck-uhrzeit").value ? rueckOptionen(zeit) : {}),
     arriveBy:
       art === "gebiete" ||
       (["reichweite", "effekt", "auto"].includes(art) &&
         $("atlas-richtung").value === "nach"),
   };
+}
+function rueckOptionen(zeit) {
+  let frist = abfahrtISO($("datum").value, $("rueck-uhrzeit").value);
+  // Uhrzeit vor der Abfahrt: Rueckkehr am Folgetag.
+  if (Date.parse(frist) <= Date.parse(zeit)) {
+    const d = new Date(`${$("datum").value}T12:00:00Z`);
+    d.setUTCDate(d.getUTCDate() + 1);
+    frist = abfahrtISO(d.toISOString().slice(0, 10), $("rueck-uhrzeit").value);
+  }
+  if (Date.parse(frist) - Date.parse(zeit) > 1440 * 60000)
+    throw new Error("Die Rückkehr darf höchstens 24 Stunden nach der Abfahrt liegen.");
+  return { rueckFrist: frist, aufenthalt: Number($("aufenthalt").value) };
 }
 function liste(id, min, max) {
   const namen = ortsnamen($(id).value);
@@ -892,6 +906,8 @@ function zustand() {
     "atlas-richtung": $("atlas-richtung").value,
     horizont: $("horizont").value,
     zentren: $("zentren").value,
+    "rueck-uhrzeit": $("rueck-uhrzeit").value,
+    aufenthalt: $("aufenthalt").value,
   };
 }
 function schreibeLink() {
@@ -925,6 +941,8 @@ function leseLink() {
       "atlas-richtung",
       "horizont",
       "zentren",
+      "rueck-uhrzeit",
+      "aufenthalt",
     ])
       if (typeof s[id] === "string" && s[id].length < 1000) $(id).value = s[id];
     $("regional").checked = s.regional === true;

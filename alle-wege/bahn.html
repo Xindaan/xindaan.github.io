@@ -205,6 +205,27 @@
               <option value="total">Gesamte Fahrzeit minimieren</option>
             </select>
             <p class="hint">Wir suchen den bestmöglichen gemeinsamen Treffpunkt ohne persönliches Zeitlimit.</p>
+            <div id="rueck-felder" hidden>
+              <div class="fieldrow">
+                <label for="rueck-uhrzeit">ALLE ZURÜCK ZU HAUSE BIS</label
+                ><input type="time" id="rueck-uhrzeit" />
+              </div>
+              <div class="fieldrow">
+                <label for="aufenthalt">MINDESTENS ZUSAMMEN</label
+                ><select id="aufenthalt">
+                  <option value="60">1 Stunde</option>
+                  <option value="120" selected>2 Stunden</option>
+                  <option value="180">3 Stunden</option>
+                  <option value="240">4 Stunden</option>
+                  <option value="360">6 Stunden</option>
+                </select>
+              </div>
+              <p class="hint">
+                Optional. Mit Uhrzeit zählen nur Treffpunkte, von denen alle nach dem
+                Treffen rechtzeitig heimkommen; liegt die Uhrzeit vor der Abfahrt, gilt
+                der Folgetag. Kostet eine zusätzliche Fahrplananfrage je Person.
+              </p>
+            </div>
             <div id="eigene-kandidaten" hidden>
               <label for="kandidaten-ort"
                 >WELCHE TREFFPUNKTE VERGLEICHEN?</label
@@ -550,6 +571,6 @@
       </main>
     </div>
     <datalist id="bahn-orte"></datalist>
-    <script type="module" src="bahn.js?v=12"></script>
+    <script type="module" src="bahn.js?v=14"></script>
   </body>
 </html>

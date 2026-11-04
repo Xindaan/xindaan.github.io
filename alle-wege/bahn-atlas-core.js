@@ -131,6 +131,11 @@ export function atlasEffekt(mit, ohne) {
 export function atlasLeerHinweis(r) {
   const ohne = r.personen.filter((p, i) => !r.anzahlen[i]).map((p) => p.name);
   const stunden = `${r.opt.horizont / 60}`.replace(".", ",");
+  if (r.typ === "finden" && r.rueck && !ohne.length) return {
+    titel: "Kein Treffpunkt mit rechtzeitiger Rückfahrt",
+    text: `In den Fahrplandaten gibt es keinen gemeinsamen Halt, an dem alle mindestens ${r.rueck.aufenthalt / 60} ${r.rueck.aufenthalt === 60 ? "Stunde" : "Stunden"} zusammen sind und danach bis zur Rückkehrfrist heimkommen. Bitte früher abfahren, die Frist später legen oder den Mindestaufenthalt verkürzen.`,
+    naechsterHorizont: null,
+  };
   if (r.typ === "finden") return {
     titel: "Kein gemeinsamer Treffpunkt in den verfügbaren Fahrplandaten",
     text: ohne.length
@@ -147,4 +152,25 @@ export function atlasLeerHinweis(r) {
       [60, 120, 180, 240, 300, 360, 420, 480].find((h) => h > r.opt.horizont) ??
       null,
   };
+}
+
+// Treffpunkt mit Rueckfahrt: Rueckwaerts-Listen (Ankunftsfrist am Wohnort) je Person
+// in derselben Reihenfolge wie die Hin-Listen. Dauer rueckwaerts = Frist minus
+// spaeteste Abfahrt am Halt. Ein Treffpunkt bleibt, wenn nach der letzten Ankunft
+// noch mindestens `aufenthalt` Minuten bleiben, bevor die erste Person los muss.
+export function mitRueckfahrt(punkte, rueckListen, { start, frist, aufenthalt = 0 }) {
+  const t0 = Date.parse(start),
+    t1 = Date.parse(frist),
+    maps = rueckListen.map((l) => new Map(l.map((s) => [s.id, s])));
+  if (!Number.isFinite(t0) || !Number.isFinite(t1) || t1 <= t0) return [];
+  return punkte.flatMap((p) => {
+    const rueck = maps.map((m) => m.get(p.id)?.dauer);
+    if (rueck.some((d) => !Number.isFinite(d))) return [];
+    const treffen = t0 + p.max * 60000,
+      abfahrten = rueck.map((d) => t1 - d * 60000),
+      los = Math.min(...abfahrten),
+      zusammen = Math.round((los - treffen) / 60000);
+    if (zusammen < aufenthalt) return [];
+    return [{ ...p, rueck, abfahrten: abfahrten.map((a) => new Date(a).toISOString()), treffen: new Date(treffen).toISOString(), zusammen }];
+  });
 }

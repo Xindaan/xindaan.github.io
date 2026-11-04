@@ -6,7 +6,8 @@ import {
   atlasEffekt,
   inGebiet,
   atlasLeerHinweis,
-} from "./bahn-atlas-core.js?v=20261103-10";
+  mitRueckfahrt,
+} from "./bahn-atlas-core.js?v=20261104-4";
 import { vergleicheBahnAuto, bilanz, TOLERANZ_MIN, versetzteZeiten, bestwertJeHalt, ABFAHRTEN, RASTER_MIN } from "./bahn-auto-core.js?v=20261104-3";
 const farben = [
   "#a9674c",
@@ -33,7 +34,18 @@ const zeit = (m) =>
     : `${Math.floor(m / 60)} Std. ${Math.round(m % 60)} Min.`;
 export async function atlasBerechnen(args) {
   if (args.typ !== "finden") return atlasRunde(args);
-  let vorher;
+  let vorher, rueckListen = null;
+  const rueck = args.opt.rueckFrist
+    ? {
+        ...args.opt,
+        zeit: args.opt.rueckFrist,
+        arriveBy: true,
+        automatischeTreffpunktsuche: true,
+        // Rueckfahrt dauert hoechstens Frist - Abfahrt - Mindestaufenthalt.
+        fenster: Math.max(30, Math.round((Date.parse(args.opt.rueckFrist) - Date.parse(args.opt.zeit)) / 60000) - (args.opt.aufenthalt || 0)),
+      }
+    : null;
+  let rueckGekappt = false;
   // Kein persoenliches Zeitbudget. Die Sammelsuche wird bei Bedarf erweitert.
   // Minimax ist gesichert, sobald ein gemeinsamer Halt innerhalb der Runde liegt:
   // Jeder noch nicht erfasste Halt braucht fuer mindestens eine Person laenger.
@@ -42,15 +54,43 @@ export async function atlasBerechnen(args) {
     const opt = { ...args.opt, horizont, automatischeTreffpunktsuche: true };
     let r;
     try {
-      args.pruefeBudget?.(args.personen.map((p) => atlasURL(p, opt)));
+      args.pruefeBudget?.([
+        ...args.personen.map((p) => atlasURL(p, opt)),
+        ...(rueck && !rueckListen ? args.personen.map((p) => atlasURL(p, { ...rueck, horizont: Math.min(rueck.fenster, 480) })) : []),
+      ]);
+      if (rueck && !rueckListen) {
+        // Eine Rueckfahrt-Anfrage je Person, fuer alle Suchrunden gemeinsam.
+        rueckListen = [];
+        for (let i = 0; i < args.personen.length; i++) {
+          args.status(`${args.personen[i].name}: Rückfahrten bis zur Frist werden berechnet (${i + 1}/${args.personen.length}) …`);
+          // Dienstgrenze "too many results": erst 8, dann 6 Stunden Rueckfahrt.
+          let daten, fehler;
+          for (const h of [...new Set([Math.min(rueck.fenster, 480), Math.min(rueck.fenster, 360)])]) {
+            try {
+              daten = await args.lade(atlasURL(args.personen[i], { ...rueck, horizont: h }), args.signal, true);
+              if (h < rueck.fenster) rueckGekappt = h;
+              break;
+            } catch (e) {
+              if (args.signal?.aborted) throw e;
+              fehler = e;
+            }
+          }
+          if (!daten) throw fehler;
+          rueckListen.push(daten.filter((p) => p.umstiege <= rueck.umstiege));
+        }
+      }
       r = await atlasRunde({ ...args, opt });
+      if (rueck) {
+        r.punkte = mitRueckfahrt(r.punkte, rueckListen, { start: opt.zeit, frist: rueck.zeit, aufenthalt: opt.aufenthalt || 0 });
+        r.rueck = { frist: rueck.zeit, aufenthalt: opt.aufenthalt || 0, gekappt: rueckGekappt };
+      }
     } catch (e) {
       if (args.signal?.aborted || !vorher?.punkte.length) throw e;
       return { ...vorher, rangVollstaendig: false,
         suchHinweis: `Die weitere Fahrplansuche konnte nicht abgeschlossen werden: ${e.message} Die angezeigten Vorschläge sind geprüft; die beste Gesamtsumme ist noch nicht abgesichert.` };
     }
     if (r.punkte.length && (opt.objective !== "total" || r.punkte[0].summe <= horizont))
-      return { ...r, rangVollstaendig: true };
+      return { ...r, rangVollstaendig: true, ...(rueckGekappt ? { suchHinweis: `Rückfahrten wurden bis ${rueckGekappt / 60} Stunden berücksichtigt (Grenze des Fahrplandienstes); Treffpunkte mit noch längerer Rückfahrt fehlen.` } : {}) };
     vorher = r;
   }
   return { ...vorher, rangVollstaendig: false,
@@ -133,7 +173,7 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
   r.auswahlId = null;
   const info = (s) =>
     r.typ === "finden"
-      ? `Max. ${zeit(s.max)} · Gesamt ${zeit(s.summe)}`
+      ? `Max. ${zeit(s.max)} · Gesamt ${zeit(s.summe)}${s.zusammen !== undefined ? ` · ${zeit(s.zusammen)} zusammen, erste Rückfahrt ${new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit" }).format(new Date(Math.min(...s.abfahrten.map(Date.parse))))}` : ""}`
       : r.typ === "gebiete"
         ? `${r.personen[s.gebiet].name} · ${zeit(s.dauer)}`
         : r.typ === "effekt"
