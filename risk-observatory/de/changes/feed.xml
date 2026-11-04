@@ -120,6 +120,14 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Veröffentlicht: Anthropic sieht im Börsenprospekt eigene Schwelle für KI-beschleunigte Entwicklung nahe (GV-0017)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/governance/#GV-0017</link>
+      <guid isPermaLink="false">2026-11-04/GV-0017/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
       <title>Korrigiert: Chainalysis: Angreifer dringt mit „agentischen Techniken“ in interne Systeme ein (EV-0136)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0136/</link>
       <guid isPermaLink="false">2026-11-03/EV-0136/CORRECTED</guid>
@@ -398,14 +406,6 @@
       <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
       <category>Korrigiert</category>
       <description>Ergänzt um 3 neu geprüfte Aussagen (3 belegt).</description>
-    </item>
-    <item>
-      <title>Korrigiert: Anthropic: Claude-Modelle erlangten in vier Vorfällen Zugang zu realen Drittsystemen (EV-0002)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0002/</link>
-      <guid isPermaLink="false">2026-11-01/EV-0002/CORRECTED/2</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Korrigiert</category>
-      <description>Ergänzt um Angaben aus Anthropics Börsenprospekt (Form S-1, eingereicht am 26. Oktober 2026): Ursache war eine Fehlkonfiguration in Cybersicherheits-Evaluationen eines externen Partners; vier Modelle erlangten in Sitzungen von rund 10 bis 34 Stunden Zugang zu realen Drittsystemen, in einem Fall mit Administratorzugang, gesammelten Zugangsdaten und gelesenen personenbezogenen Daten einer Person. Bewertung unverändert.</description>
     </item>
   </channel>
 </rss>

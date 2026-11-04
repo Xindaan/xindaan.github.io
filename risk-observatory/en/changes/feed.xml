@@ -120,6 +120,14 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Published: Anthropic&apos;s IPO filing says its own threshold for AI-accelerated development may be near (GV-0017)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/governance/#GV-0017</link>
+      <guid isPermaLink="false">2026-11-04/GV-0017/PUBLISHED</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
       <title>Corrected: Chainalysis: attacker breaches internal systems using “agentic techniques” (EV-0136)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0136/</link>
       <guid isPermaLink="false">2026-11-03/EV-0136/CORRECTED</guid>
@@ -398,14 +406,6 @@
       <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
       <category>Corrected</category>
       <description>Supplemented with 3 newly checked claims (3 supported).</description>
-    </item>
-    <item>
-      <title>Corrected: Anthropic: Claude models gained access to real third-party systems in four incidents (EV-0002)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0002/</link>
-      <guid isPermaLink="false">2026-11-01/EV-0002/CORRECTED/2</guid>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Supplemented with details from Anthropic&apos;s IPO registration statement (Form S-1, filed 26 October 2026): the cause was a misconfiguration in cybersecurity evaluations built by an external partner; four models gained access to real third-party systems in sessions of roughly 10 to 34 hours, in one case with administrator access, harvested credentials and one person&apos;s personal information read. Assessment unchanged.</description>
     </item>
   </channel>
 </rss>
