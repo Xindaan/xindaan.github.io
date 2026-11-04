@@ -7,6 +7,7 @@ import {
   inGebiet,
   atlasLeerHinweis,
 } from "./bahn-atlas-core.js?v=20261103-10";
+import { vergleicheBahnAuto, bilanz, TOLERANZ_MIN } from "./bahn-auto-core.js?v=20261104-1";
 const farben = [
   "#a9674c",
   "#517a78",
@@ -63,6 +64,8 @@ async function atlasRunde({
   signal,
   grenzen,
   status,
+  strassenZeiten,
+  autobahnTempo = 130,
 }) {
   const de = grenzen.features.find((f) => f.properties.code === "DEU").geometry;
   const listen = [];
@@ -95,7 +98,19 @@ async function atlasRunde({
   if (typ === "finden") punkte = atlasTreffpunkte(listen, opt.objective);
   if (typ === "gebiete") punkte = atlasGebiete(listen);
   if (typ === "effekt") punkte = atlasEffekt(...listen);
+  let vergleich = null;
+  if (typ === "auto") {
+    status("Straßenzeiten werden berechnet (beim ersten Mal wird das Straßennetz geladen) …");
+    const s = await strassenZeiten(personen[0], listen[0], {
+      richtung: opt.arriveBy ? "nach" : "von",
+      autobahnTempo,
+    });
+    if (signal?.aborted) throw new DOMException("Abgebrochen", "AbortError");
+    punkte = vergleicheBahnAuto(listen[0], s.minuten);
+    vergleich = { bilanz: bilanz(punkte), startKm: s.startKm, autobahnTempo };
+  }
   return {
+    ...(vergleich || {}),
     art: "atlas",
     typ,
     personen,
@@ -121,6 +136,10 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
           ? s.regional === null
             ? `${zeit(s.dauer)} mit Fernverkehr · ohne nicht im Zeitlimit`
             : `${zeit(s.vorteil)} Zeitvorteil · ${zeit(s.dauer)} / ${zeit(s.regional)}`
+          : r.typ === "auto"
+            ? s.urteil === "ohne"
+              ? `Bahn ${zeit(s.dauer)} · Auto: kein Straßenanschluss im Modell`
+              : `Bahn ${zeit(s.dauer)} · Auto ${zeit(s.auto)} · ${s.urteil === "bahn" ? `Bahn ${zeit(-s.differenz)} schneller` : s.urteil === "auto" ? `Auto ${zeit(s.differenz)} schneller` : "etwa gleich"}`
           : `${zeit(s.dauer)} · ${s.umstiege === 0 ? "ohne Umstieg" : `${s.umstiege} ${s.umstiege === 1 ? "Umstieg" : "Umstiege"}`}`;
   const uhrzeit = new Intl.DateTimeFormat("de-DE", {
     timeZone: "Europe/Berlin",
@@ -128,7 +147,7 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
     minute: "2-digit",
   }).format(new Date(r.opt.zeit));
   $("atlas-zahlen").innerHTML =
-    `<div><span>${r.typ === "finden" ? "TREFFPUNKTVORSCHLÄGE" : "HALTEPUNKTE IM ERGEBNIS"}</span><strong>${r.typ === "finden" ? vorschlaege.length : punkte.length.toLocaleString("de-DE")}</strong></div><div><span>${r.typ === "finden" ? "LÄNGSTE ANREISE · BESTER VORSCHLAG" : "SUCHHORIZONT"}</span><strong>${r.typ === "finden" ? punkte.length ? zeit(punkte[0].max) : "–" : zeit(r.opt.horizont)}</strong></div><div><span>${r.opt.arriveBy ? "ANKUNFT BIS" : "ABFAHRT AB"}</span><strong>${uhrzeit}</strong></div>`;
+    `<div><span>${r.typ === "finden" ? "TREFFPUNKTVORSCHLÄGE" : "HALTEPUNKTE IM ERGEBNIS"}</span><strong>${r.typ === "finden" ? vorschlaege.length : punkte.length.toLocaleString("de-DE")}</strong></div><div><span>${r.typ === "finden" ? "LÄNGSTE ANREISE · BESTER VORSCHLAG" : r.typ === "auto" ? "BAHN SCHNELLER · AUTO SCHNELLER" : "SUCHHORIZONT"}</span><strong>${r.typ === "finden" ? punkte.length ? zeit(punkte[0].max) : "–" : r.typ === "auto" ? `${r.bilanz.bahn.toLocaleString("de-DE")} · ${r.bilanz.auto.toLocaleString("de-DE")}` : zeit(r.opt.horizont)}</strong></div><div><span>${r.opt.arriveBy ? "ANKUNFT BIS" : "ABFAHRT AB"}</span><strong>${uhrzeit}</strong></div>`;
   $("atlas-raster").hidden = !punkte.length;
   $("atlas-leer").hidden = !!punkte.length;
   if (!punkte.length) {
@@ -147,7 +166,9 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
         ? "Punktfarbe: am schnellsten erreichbares Zentrum."
         : r.typ === "effekt"
           ? "Grün: wenig Zeitvorteil · Braun: viel Zeitvorteil · Violett: ohne Fernverkehr nicht innerhalb des Zeitlimits."
-          : "Grün: kurze Reisezeit · Braun: lange Reisezeit. Jeder Punkt zeigt eine erreichbare Haltestelle. Die Flächen dazwischen sind nicht automatisch erreichbar.";
+          : r.typ === "auto"
+            ? `Blau: Bahn mehr als ${TOLERANZ_MIN} Min. schneller · Braun: Auto mehr als ${TOLERANZ_MIN} Min. schneller · Grau: etwa gleich (±${TOLERANZ_MIN} Min.); kräftiger = größerer Abstand. Bahn: Sollfahrplan inkl. Warten ab Wunschabfahrt bzw. bis zur Ankunftsfrist und Fußweg bis 15 Min. Auto: Straßenmodell mit Wunschtempo ${r.autobahnTempo} km/h, ohne Stau, Parken und letzte Strecke; Haltestellen an den nächsten Nicht-Autobahn-Knoten (bis 5 km) angebunden, ohne Anschluss nicht verglichen. Keine Tür-zu-Tür-Aussage.`
+            : "Grün: kurze Reisezeit · Braun: lange Reisezeit. Jeder Punkt zeigt eine erreichbare Haltestelle. Die Flächen dazwischen sind nicht automatisch erreichbar.";
   if (r.suchHinweis)
     $("atlas-legende").insertAdjacentHTML("afterbegin", `<strong>${esc(r.suchHinweis)}</strong><br>`);
   if (["gebiete", "finden"].includes(r.typ))
@@ -173,6 +194,14 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
   const sorted =
     r.typ === "finden"
       ? punkte
+      : r.typ === "auto"
+        ? punkte
+            .slice()
+            .sort(
+              (a, b) =>
+                (a.differenz ?? Infinity) - (b.differenz ?? Infinity) ||
+                a.name.localeCompare(b.name, "de"),
+            )
       : punkte
           .slice()
           .sort(
@@ -241,7 +270,7 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
     xy = (lon, lat) => [45 + (lon - 5.6) * 74, 35 + (55.25 - lat) * 103];
   let view = { z: 1, x: 0, y: 0 },
     drag = null;
-  if (["reichweite", "effekt", "finden"].includes(r.typ) && punkte.length) {
+  if (["reichweite", "effekt", "auto", "finden"].includes(r.typ) && punkte.length) {
     let minX = Infinity,
       minY = Infinity,
       maxX = -Infinity,
@@ -270,6 +299,12 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
       y: 450 - ((minY + maxY) / 2) * z,
     };
   }
+  // Bahn gegen Auto: seltene Bahnvorteile zuletzt zeichnen, damit sie sichtbar bleiben.
+  const rang = { ohne: 0, auto: 1, gleich: 2, bahn: 3 };
+  const zeichenfolge =
+    r.typ === "auto"
+      ? punkte.slice().sort((a, b) => rang[a.urteil] - rang[b.urteil])
+      : punkte;
   const pixel = (s) => {
     const [x, y] = xy(s.lon, s.lat);
     return [x * view.z + view.x, y * view.z + view.y];
@@ -313,12 +348,21 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
     ctx.lineWidth = 1.05 / view.z;
     ctx.stroke();
     ctx.restore();
-    for (const s of r.typ === "finden" ? [] : punkte) {
+    for (const s of r.typ === "finden" ? [] : zeichenfolge) {
       const [x, y] = pixel(s);
       if (x < 0 || x > 800 || y < 0 || y > 900) continue;
       let c;
       if (r.typ === "gebiete") c = farben[s.gebiet % farben.length];
-      else if (r.typ === "effekt")
+      else if (r.typ === "auto") {
+        if (s.urteil === "ohne") continue;
+        const staerke = Math.min(Math.abs(s.differenz) / 60, 1);
+        c =
+          s.urteil === "gleich"
+            ? dark ? "#9aa59c" : "#8f968c"
+            : s.urteil === "bahn"
+              ? `hsl(208 ${35 + staerke * 30}% ${dark ? 72 - staerke * 12 : 55 - staerke * 22}%)`
+              : `hsl(24 ${35 + staerke * 30}% ${dark ? 70 - staerke * 12 : 55 - staerke * 22}%)`;
+      } else if (r.typ === "effekt")
         c =
           s.vorteil === null
             ? "#8b68ad"

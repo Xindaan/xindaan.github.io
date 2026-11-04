@@ -1,8 +1,8 @@
 import { STANDARDORTE } from "./standardorte.js";
-import { leseZustand, vergleichLink, bahnZuStrasse } from "./vergleich.js?v=20261103-10";
+import { leseZustand, vergleichLink, bahnZuStrasse } from "./vergleich.js?v=20261104-1";
 let strassenStand = {}, vergleichInfo = {};
 import { atlasURL, verdichteAtlas } from "./bahn-atlas-core.js?v=20261103-10";
-import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261103-10";
+import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261104-1";
 import { ortsnamen, ergaenzeOrt } from "./ortslisten.js";
 import {
   API,
@@ -122,7 +122,7 @@ function modus(neu) {
   art = neu;
   $("route-felder").hidden = art !== "route";
   $("treffen-felder").hidden = !["treffen", "finden"].includes(art);
-  $("atlas-felder").hidden = !["reichweite", "effekt"].includes(art);
+  $("atlas-felder").hidden = !["reichweite", "effekt", "auto"].includes(art);
   $("zentren-felder").hidden = art !== "gebiete";
   $("horizont-feld").hidden = ["route", "treffen", "finden"].includes(art);
   $("wechsel-hinweis").hidden = ["treffen", "finden"].includes(art) || !$("wechsel-hinweis").textContent;
@@ -138,6 +138,7 @@ function modus(neu) {
     reichweite: "Erreichbarkeit berechnen →",
     gebiete: "Einzugsgebiete berechnen →",
     effekt: "Fernverkehr vergleichen →",
+    auto: "Bahn und Auto vergleichen →",
   }[art];
   document.querySelector(".map-heading h2").textContent = {
     route: "Eine konkrete Verbindung.",
@@ -146,10 +147,11 @@ function modus(neu) {
     reichweite: "Alle Wege im Fahrplan.",
     gebiete: "Welches Zentrum liegt näher?",
     effekt: "Was leistet der Fernverkehr?",
+    auto: "Wo schlägt die Bahn das Auto?",
   }[art];
   $("zeit-label").textContent =
     art === "gebiete" ||
-    (["reichweite", "effekt"].includes(art) &&
+    (["reichweite", "effekt", "auto"].includes(art) &&
       $("atlas-richtung").value === "nach")
       ? "ANKUNFT BIS"
       : "ABFAHRT AB";
@@ -160,7 +162,9 @@ function modus(neu) {
         ? "Vergleich bei gleicher Ankunftsfrist. Nur Haltestellen innerhalb des Suchhorizonts; Farbe = zeitlich nächstes Zentrum."
         : art === "effekt"
           ? "Vergleich mit und ohne Fernverkehr bei gleicher Zeit und Umstiegsgrenze. Fehlt der Nahverkehrsweg im Zeitlimit, wird kein unbegrenzter Zeitgewinn behauptet."
-          : "Erreichbare Haltestellen laut Fahrplan, einschließlich Wartezeit ab Wunschabfahrt bzw. bis zur Ankunftsfrist. Fußzugang bis 15 Minuten; keine flächige Erreichbarkeitsgarantie.";
+          : art === "auto"
+            ? "Je Haltestelle: Fahrplanzeit gegen Modell-Autozeit vom selben Ausgangspunkt. Bahn mit Warten und Fußweg, Auto ohne Stau, Parken und letzte Strecke. Lädt beim ersten Mal das Straßennetz (ca. 13 MB)."
+            : "Erreichbare Haltestellen laut Fahrplan, einschließlich Wartezeit ab Wunschabfahrt bzw. bis zur Ankunftsfrist. Fußzugang bis 15 Minuten; keine flächige Erreichbarkeitsgarantie.";
   document
     .querySelectorAll("[data-art]")
     .forEach((b) =>
@@ -264,7 +268,7 @@ function optionen() {
     horizont: Number($("horizont").value),
     arriveBy:
       art === "gebiete" ||
-      (["reichweite", "effekt"].includes(art) &&
+      (["reichweite", "effekt", "auto"].includes(art) &&
         $("atlas-richtung").value === "nach"),
   };
 }
@@ -326,7 +330,7 @@ async function suchen(event) {
   let opt;
   try {
     opt = optionen();
-    if (["reichweite", "finden", "gebiete", "effekt"].includes(art)) {
+    if (["reichweite", "finden", "gebiete", "effekt", "auto"].includes(art)) {
       await sucheAtlas(opt, controller.signal, id);
       return;
     }
@@ -459,6 +463,53 @@ async function suchen(event) {
     }
   }
 }
+// Strassennetz nur fuer "Bahn gegen Auto" und erst bei Bedarf laden.
+let strassenWorkerLauf = null,
+  strassenAnfrage = 0;
+function strassenWorker() {
+  strassenWorkerLauf ||= (async () => {
+    const res = await fetch("data/roads.json.gz?v=6");
+    if (!res.ok) throw new Error(`Straßendaten nicht verfügbar (${res.status}).`);
+    const bytes = await res.arrayBuffer(),
+      sig = new Uint8Array(bytes, 0, 2);
+    const data = JSON.parse(
+      sig[0] === 31 && sig[1] === 139
+        ? await new Response(
+            new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip")),
+          ).text()
+        : new TextDecoder().decode(bytes),
+    );
+    const w = new Worker("worker.js?v=20261104-1", { type: "module" });
+    await new Promise((ok, fail) => {
+      w.onmessage = ({ data: m }) =>
+        m.type === "ready" ? ok() : fail(new Error(m.message));
+      w.onerror = () => fail(new Error("Der Straßenrechner konnte nicht starten."));
+      w.postMessage({ type: "init", data });
+    });
+    return w;
+  })().catch((e) => {
+    strassenWorkerLauf = null;
+    throw e;
+  });
+  return strassenWorkerLauf;
+}
+async function strassenZeiten(start, halte, optionen) {
+  const w = await strassenWorker(),
+    id = ++strassenAnfrage;
+  return new Promise((ok, fail) => {
+    w.onmessage = ({ data: m }) => {
+      if (m.id !== id) return;
+      m.type === "result" ? ok(m.result) : fail(new Error(m.message));
+    };
+    w.postMessage({
+      type: "bahnauto",
+      id,
+      start: { lon: start.lon, lat: start.lat },
+      halte: halte.map((h) => ({ lon: h.lon, lat: h.lat })),
+      optionen,
+    });
+  });
+}
 function pruefeBudget(urls) {
   const neu = [...new Set(urls)].filter(
     (url) => !cache.has(url) || Date.now() - cache.get(url).zeit >= 600000,
@@ -505,6 +556,8 @@ async function sucheAtlas(opt, signal, id) {
     grenzen,
     status,
     pruefeBudget,
+    strassenZeiten,
+    autobahnTempo: Number.isInteger(strassenStand.autobahnTempo) && strassenStand.autobahnTempo >= 100 && strassenStand.autobahnTempo <= 200 ? strassenStand.autobahnTempo : 130,
   });
   if (id !== folge) return;
   r.orte = orte;
@@ -517,7 +570,7 @@ async function sucheAtlas(opt, signal, id) {
   });
   status(
     r.punkte.length
-      ? `${r.punkte.length.toLocaleString("de-DE")} ${typ === "finden" ? "gemeinsame" : "berechnete"} Haltestellen in Deutschland · ${datumText(opt.zeit)} ${opt.arriveBy ? "Ankunft bis" : "ab"} ${uhr(opt.zeit)} · Fahrplan ohne Echtzeit. ${typ === "finden" ? r.suchHinweis || "Bestmöglicher Treffpunkt nach gewählter Fairness, ohne persönliches Zeitlimit." : "Haltestelle wählen, um die Verbindung aktuell zu prüfen."}`
+      ? `${r.punkte.length.toLocaleString("de-DE")} ${typ === "finden" ? "gemeinsame" : "berechnete"} Haltestellen in Deutschland${typ === "auto" ? ` (Bahn schneller: ${r.bilanz.bahn.toLocaleString("de-DE")}, Auto schneller: ${r.bilanz.auto.toLocaleString("de-DE")}, etwa gleich: ${r.bilanz.gleich.toLocaleString("de-DE")})` : ""} · ${datumText(opt.zeit)} ${opt.arriveBy ? "Ankunft bis" : "ab"} ${uhr(opt.zeit)} · Fahrplan ohne Echtzeit. ${typ === "finden" ? r.suchHinweis || "Bestmöglicher Treffpunkt nach gewählter Fairness, ohne persönliches Zeitlimit." : "Haltestelle wählen, um die Verbindung aktuell zu prüfen."}`
       : typ === "finden" ? "Keine gemeinsame Haltestelle in den verfügbaren Fahrplandaten. Bitte die Erläuterung unten beachten." : "Keine Haltestellen im Suchhorizont gefunden. Zeitlimit erweitern, Umstiegsgrenze oder Uhrzeit ändern.",
     !r.punkte.length || !!r.suchHinweis,
   );
@@ -904,6 +957,7 @@ function leseLink() {
         "finden",
         "gebiete",
         "effekt",
+        "auto",
       ].includes(s.art)
     )
       modus(s.art);
@@ -1003,7 +1057,7 @@ async function init() {
         ortHinzufuegen(feld, c.label);
       } else {
         leeren();
-        const feld = ["reichweite", "effekt"].includes(art)
+        const feld = ["reichweite", "effekt", "auto"].includes(art)
           ? "atlas-ort"
           : schnellFuer;
         $(feld).value = c.label;

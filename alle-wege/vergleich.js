@@ -75,7 +75,7 @@ export function bahnZuStrasse(b, orte, alt = {}) {
   else if (p && p.name === b[feld] && Number.isFinite(p.lon) && Number.isFinite(p.lat)) {
     neu.point = [p.lon, p.lat];
     neu.uebernahme = "Die übernommene Haltestelle wird im Straßenmodell an den nächsten Netzknoten angebunden.";
-  } else if (["reichweite", "effekt", "route"].includes(b.art)) {
+  } else if (["reichweite", "effekt", "auto", "route"].includes(b.art)) {
     throw new Error("Bitte zuerst einen Ort oder eine Haltestelle auswählen.");
   }
   // Hauptaeste und unbegrenztes Netz bei unveraendertem Vergleich behalten.

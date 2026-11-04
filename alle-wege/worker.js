@@ -1,14 +1,21 @@
 import { buildGraph, analyze } from "./graph.js?v=20261103-10";
-let graph;
+import { anbindungsRaster, autoMinuten } from "./bahn-auto-core.js?v=20261104-1";
+let graph, raster;
 self.onmessage = ({ data }) => {
   try {
     if (data.type === "init") {
       graph = buildGraph(data.data);
+      raster = null;
       postMessage({ type: "ready" });
       return;
     }
     const start = performance.now();
-    const result = analyze(graph, data.state);
+    let result;
+    if (data.type === "bahnauto") {
+      // Bahnseite: Strassenzeiten zu den Haltestellen einer Fahrplanantwort.
+      raster ||= anbindungsRaster(graph);
+      result = autoMinuten(graph, raster, data.start, data.halte, data.optionen);
+    } else result = analyze(graph, data.state);
     postMessage({
       type: "result",
       id: data.id,
