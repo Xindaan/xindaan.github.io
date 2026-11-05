@@ -205,6 +205,19 @@
               <option value="total">Gesamte Fahrzeit minimieren</option>
             </select>
             <p class="hint">Wir suchen den bestmöglichen gemeinsamen Treffpunkt ohne persönliches Zeitlimit.</p>
+            <div id="nutzbar-felder" hidden>
+              <label for="nutzbar">TREFFPUNKT SOLL HABEN</label>
+              <select id="nutzbar">
+                <option value="egal">Keine Vorgabe</option>
+                <option value="bahnhof">Einen Bahnhof</option>
+                <option value="gastro">Bahnhof mit Gastronomie (mind. 3 Lokale)</option>
+              </select>
+              <p class="hint">
+                Aus OpenStreetMap vorberechnet: Bahnhof oder Haltepunkt höchstens 300 m vom Halt,
+                Restaurants, Cafés, Imbisse, Kneipen und Bars höchstens 300 m vom Bahnhof (Luftlinie).
+                Öffnungszeiten und Barrierefreiheit sind nicht berücksichtigt.
+              </p>
+            </div>
             <div id="rueck-felder" hidden>
               <div class="fieldrow">
                 <label for="rueck-uhrzeit">ALLE ZURÜCK ZU HAUSE BIS</label
@@ -571,6 +584,6 @@
       </main>
     </div>
     <datalist id="bahn-orte"></datalist>
-    <script type="module" src="bahn.js?v=14"></script>
+    <script type="module" src="bahn.js?v=15"></script>
   </body>
 </html>

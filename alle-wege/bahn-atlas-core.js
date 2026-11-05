@@ -174,3 +174,33 @@ export function mitRueckfahrt(punkte, rueckListen, { start, frist, aufenthalt = 
     return [{ ...p, rueck, abfahrten: abfahrten.map((a) => new Date(a).toISOString()), treffen: new Date(treffen).toISOString(), zusammen }];
   });
 }
+
+// Treffpunkt-Umfeld (T-0004): Halt aus der Fahrplanauskunft dem naechsten OSM-Bahnhof
+// innerhalb radiusKm zuordnen; umfeld = {radiusM, halte: [[lat, lon, name, gastro], ...]}.
+// anspruch: "egal" | "bahnhof" | "gastro" (Bahnhof mit mindestens minGastro Orten).
+const kmZwischen = (a, b) =>
+  6371 * Math.hypot(((b.lat - a.lat) * Math.PI) / 180, (((b.lon - a.lon) * Math.PI) / 180) * Math.cos((((a.lat + b.lat) / 2) * Math.PI) / 180));
+export function umfeldIndex(umfeld) {
+  const gitter = new Map();
+  for (const [lat, lon, name, gastro] of umfeld?.halte || []) {
+    const k = `${Math.floor(lat * 100)}|${Math.floor(lon * 100)}`;
+    if (!gitter.has(k)) gitter.set(k, []);
+    gitter.get(k).push({ lat, lon, name, gastro });
+  }
+  return gitter;
+}
+export function mitUmfeld(punkte, index, anspruch = "egal", { radiusKm = 0.3, minGastro = 3 } = {}) {
+  return punkte.flatMap((p) => {
+    let best = null, bd = Infinity;
+    const i0 = Math.floor(p.lat * 100), j0 = Math.floor(p.lon * 100);
+    for (let i = i0 - 1; i <= i0 + 1; i++)
+      for (let j = j0 - 1; j <= j0 + 1; j++)
+        for (const b of index.get(`${i}|${j}`) || []) {
+          const d = kmZwischen(p, b);
+          if (d <= radiusKm && d < bd) [best, bd] = [b, d];
+        }
+    if (anspruch === "bahnhof" && !best) return [];
+    if (anspruch === "gastro" && !(best && best.gastro >= minGastro)) return [];
+    return [{ ...p, umfeld: best ? { bahnhof: best.name, gastro: best.gastro } : null }];
+  });
+}

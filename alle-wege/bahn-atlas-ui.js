@@ -7,7 +7,8 @@ import {
   inGebiet,
   atlasLeerHinweis,
   mitRueckfahrt,
-} from "./bahn-atlas-core.js?v=20261104-4";
+  mitUmfeld,
+} from "./bahn-atlas-core.js?v=20261104-6";
 import { vergleicheBahnAuto, bilanz, TOLERANZ_MIN, versetzteZeiten, bestwertJeHalt, ABFAHRTEN, RASTER_MIN } from "./bahn-auto-core.js?v=20261104-3";
 const farben = [
   "#a9674c",
@@ -83,6 +84,11 @@ export async function atlasBerechnen(args) {
       if (rueck) {
         r.punkte = mitRueckfahrt(r.punkte, rueckListen, { start: opt.zeit, frist: rueck.zeit, aufenthalt: opt.aufenthalt || 0 });
         r.rueck = { frist: rueck.zeit, aufenthalt: opt.aufenthalt || 0, gekappt: rueckGekappt };
+      }
+      if (args.umfeld) {
+        // Nur filtern: Minimax-Abbruch bleibt gueltig.
+        r.punkte = mitUmfeld(r.punkte, args.umfeld, opt.nutzbar || "egal");
+        r.nutzbar = opt.nutzbar || "egal";
       }
     } catch (e) {
       if (args.signal?.aborted || !vorher?.punkte.length) throw e;
@@ -173,7 +179,7 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
   r.auswahlId = null;
   const info = (s) =>
     r.typ === "finden"
-      ? `Max. ${zeit(s.max)} · Gesamt ${zeit(s.summe)}${s.zusammen !== undefined ? ` · ${zeit(s.zusammen)} zusammen, erste Rückfahrt ${new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit" }).format(new Date(Math.min(...s.abfahrten.map(Date.parse))))}` : ""}`
+      ? `Max. ${zeit(s.max)} · Gesamt ${zeit(s.summe)}${s.zusammen !== undefined ? ` · ${zeit(s.zusammen)} zusammen, erste Rückfahrt ${new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit" }).format(new Date(Math.min(...s.abfahrten.map(Date.parse))))}` : ""}${s.umfeld !== undefined ? s.umfeld ? ` · Bahnhof, ${s.umfeld.gastro === 1 ? "1 Lokal" : `${s.umfeld.gastro} Lokale`} in 300 m` : " · kein Bahnhof in 300 m" : ""}`
       : r.typ === "gebiete"
         ? `${r.personen[s.gebiet].name} · ${zeit(s.dauer)}`
         : r.typ === "effekt"

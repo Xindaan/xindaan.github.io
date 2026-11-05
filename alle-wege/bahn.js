@@ -1,9 +1,9 @@
 import { STANDARDORTE } from "./standardorte.js";
 import { leseZustand, vergleichLink, bahnZuStrasse } from "./vergleich.js?v=20261104-1";
 let strassenStand = {}, vergleichInfo = {};
-import { atlasURL, verdichteAtlas } from "./bahn-atlas-core.js?v=20261104-4";
+import { atlasURL, verdichteAtlas, umfeldIndex } from "./bahn-atlas-core.js?v=20261104-6";
 import { versetzteZeiten } from "./bahn-auto-core.js?v=20261104-3";
-import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261104-5";
+import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261104-6";
 import { ortsnamen, ergaenzeOrt } from "./ortslisten.js";
 import {
   API,
@@ -129,6 +129,7 @@ function modus(neu) {
   $("wechsel-hinweis").hidden = ["treffen", "finden"].includes(art) || !$("wechsel-hinweis").textContent;
   $("eigene-kandidaten").hidden = art !== "treffen";
   $("rueck-felder").hidden = art !== "finden";
+  $("nutzbar-felder").hidden = art !== "finden";
   $("treff-art").value = art === "treffen" ? "eigen" : "auto";
   $("regional").disabled = art === "effekt";
   $("schnell-ziel").hidden = art !== "route";
@@ -269,11 +270,22 @@ function optionen() {
     objective: $("bahn-objective").value,
     horizont: Number($("horizont").value),
     ...(art === "finden" && $("rueck-uhrzeit").value ? rueckOptionen(zeit) : {}),
+    ...(art === "finden" ? { nutzbar: $("nutzbar").value } : {}),
     arriveBy:
       art === "gebiete" ||
       (["reichweite", "effekt", "auto"].includes(art) &&
         $("atlas-richtung").value === "nach"),
   };
+}
+let umfeld = null;
+async function ladeUmfeld() {
+  // Einmal je Seite; ohne Datei bleibt die Treffpunktsuche nutzbar, nur ohne Bahnhofsangaben.
+  if (umfeld === null)
+    umfeld = await fetch("data/bahnhof-umfeld.json?v=1")
+      .then((r) => (r.ok ? r.json() : false))
+      .then((d) => (d ? umfeldIndex(d) : false))
+      .catch(() => false);
+  return umfeld;
 }
 function rueckOptionen(zeit) {
   let frist = abfahrtISO($("datum").value, $("rueck-uhrzeit").value);
@@ -558,6 +570,9 @@ async function sucheAtlas(opt, signal, id) {
         )
       : personen.map((p) => atlasURL(p, opt));
   if (typ !== "finden") pruefeBudget(urls);
+  const umfeldDaten = typ === "finden" ? await ladeUmfeld() : false;
+  if (typ === "finden" && opt.nutzbar !== "egal" && !umfeldDaten)
+    throw new Error("Die Bahnhofsdaten konnten nicht geladen werden. Bitte „Keine Vorgabe“ wählen oder später erneut suchen.");
   $("suchen").disabled = true;
   $("abbrechen").hidden = false;
   $("bahn-ergebnis").setAttribute("aria-busy", "true");
@@ -576,6 +591,7 @@ async function sucheAtlas(opt, signal, id) {
     status,
     pruefeBudget,
     strassenZeiten,
+    umfeld: umfeldDaten || null,
     autobahnTempo: Number.isInteger(strassenStand.autobahnTempo) && strassenStand.autobahnTempo >= 100 && strassenStand.autobahnTempo <= 200 ? strassenStand.autobahnTempo : 130,
   });
   if (id !== folge) return;
@@ -907,6 +923,7 @@ function zustand() {
     horizont: $("horizont").value,
     zentren: $("zentren").value,
     "rueck-uhrzeit": $("rueck-uhrzeit").value,
+    nutzbar: $("nutzbar").value,
     aufenthalt: $("aufenthalt").value,
   };
 }
@@ -945,6 +962,7 @@ function leseLink() {
       "aufenthalt",
     ])
       if (typeof s[id] === "string" && s[id].length < 1000) $(id).value = s[id];
+    if (["egal", "bahnhof", "gastro"].includes(s.nutzbar)) $("nutzbar").value = s.nutzbar;
     $("regional").checked = s.regional === true;
     if (["paper", "night", "ink"].includes(s.theme))
       $("bahn-theme").value = s.theme;
