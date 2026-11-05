@@ -1128,7 +1128,7 @@ function wire() {
 async function init() {
   try {
     const responses = await Promise.all([
-      fetch("data/roads.json.gz?v=8"),
+      fetch("data/roads.json.gz?v=9"),
       fetch("data/borders.json"),
     ]);
     for (const r of responses)
@@ -1202,7 +1202,7 @@ async function init() {
       `${nf.format(data.meta.nodes)} Knoten · OSM ${data.meta.osmTimestamp?.slice(0, 10) || data.meta.retrieved}`;
     $("data-details").textContent =
       `OSM-Datenstand: ${data.meta.osmTimestamp}. ${nf.format(data.meta.nodes)} Knoten, ${nf.format(data.meta.edges)} Straßenabschnitte, ${nf.format(data.cities.length)} angebundene Orte. Durch Autozug und Fähre verbundenes Netz; ${nf.format(data.meta.excludedNodes)} andere Knoten wurden ausgelassen. Einwohnerzahlen dienen nur der Auswahl der größten Orte; die zusätzlich aufgenommenen Orte sind davon unabhängig.`;
-    worker = new Worker("worker.js?v=20261105-1", { type: "module" });
+    worker = new Worker("worker.js?v=20261105-2", { type: "module" });
     worker.onmessage = ({ data: msg }) => {
       if (msg.type === "ready") {
         ready = true;

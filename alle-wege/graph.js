@@ -15,7 +15,44 @@ export function buildGraph(data) {
       incoming[u].push([v, id, tb, km]);
     }
   });
-  return { ...data, out, incoming };
+  return { ...data, out, incoming, ...abbiegeZustaende(data, out, incoming) };
+}
+// T-0030: Abbiegeverbote [via, vonKante, nachKante, nur]. Ein Verbot haengt an der Ankunftskante,
+// darum bekommt jede Kombination (Via, Ankunftskante) mit Verbot einen eigenen Suchzustand.
+// Vorwaerts: Ankunft ueber vonKante, verboten sind Nach-Kanten; rueckwaerts umgekehrt.
+// only_* wird zu Verboten aller anderen Kanten am Via-Knoten aufgeloest.
+function abbiegeZustaende(data, out, incoming) {
+  if (!data.turns?.length) return {};
+  const paare = new Map(); // via -> Set "a,b"
+  const verbiete = (via, a, b) => {
+    if (!paare.has(via)) paare.set(via, new Set());
+    paare.get(via).add(a + "," + b);
+  };
+  for (const [via, a, b, nur] of data.turns) {
+    if (!nur) verbiete(via, a, b);
+    else {
+      const kanten = new Set([...out[via], ...incoming[via]].map((x) => x[1]));
+      for (const k of kanten) if (k !== b) verbiete(via, a, k);
+    }
+  }
+  const baue = (vorwaerts) => {
+    const karte = new Map(), via = [], verboten = [];
+    for (const [v, menge] of paare)
+      for (const paar of menge) {
+        const [a, b] = paar.split(",").map(Number);
+        const an = vorwaerts ? a : b, weg = vorwaerts ? b : a;
+        if (!karte.has(v)) karte.set(v, new Map());
+        const m = karte.get(v);
+        if (!m.has(an)) {
+          m.set(an, via.length);
+          via.push(v);
+          verboten.push(new Set());
+        }
+        verboten[m.get(an)].add(weg);
+      }
+    return { karte, via: Int32Array.from(via), verboten };
+  };
+  return { abbiegen: { vor: baue(true), rueck: baue(false) } };
 }
 class Heap {
   constructor() {
@@ -65,10 +102,12 @@ export function shortest(
   } = {},
 ) {
   const n = g.nodes.length,
-    d = new Float64Array(n).fill(Infinity),
-    parent = new Int32Array(n).fill(-1),
-    edge = new Int32Array(n).fill(-1),
-    basin = new Int32Array(n).fill(-1),
+    ab = g.abbiegen ? (reverse ? g.abbiegen.rueck : g.abbiegen.vor) : null,
+    N = n + (ab ? ab.via.length : 0),
+    d = new Float64Array(N).fill(Infinity),
+    parent = new Int32Array(N).fill(-1),
+    edge = new Int32Array(N).fill(-1),
+    basin = new Int32Array(N).fill(-1),
     order = [];
   const heap = new Heap(),
     adj = reverse ? g.incoming : g.out;
@@ -92,10 +131,13 @@ export function shortest(
     heap.push(0, v);
   });
   while (heap.a.length) {
-    const [cost, u] = heap.pop();
-    if (cost !== d[u]) continue;
-    order.push(u);
+    const [cost, s] = heap.pop();
+    if (cost !== d[s]) continue;
+    order.push(s);
+    const u = s < n ? s : ab.via[s - n],
+      verboten = s < n ? null : ab.verboten[s - n];
     for (const [v, id, time, km] of adj[u]) {
+      if (verboten && verboten.has(id)) continue;
       const transport = g.edges[id][8];
       if (
         transport &&
@@ -116,16 +158,55 @@ export function shortest(
               ? Math.max(time, km)
               : fahrzeit + wartezeit,
         nd = cost + w;
-      if (nd < d[v]) {
-        d[v] = nd;
-        parent[v] = u;
-        edge[v] = id;
-        basin[v] = basin[u];
-        heap.push(nd, v);
+      const z = ab?.karte.get(v)?.get(id),
+        t = z === undefined ? v : n + z;
+      if (nd < d[t]) {
+        d[t] = nd;
+        parent[t] = s;
+        edge[t] = id;
+        basin[t] = basin[s];
+        heap.push(nd, t);
       }
     }
   }
-  return { d, parent, edge, basin, order };
+  if (!ab) return { d, parent, edge, basin, order };
+  return falte(n, ab, d, parent, edge, basin, order);
+}
+// Zusatzzustaende auf ihre Knoten zurueckfalten: bester Zustand je Knoten, Eltern auf echte Knoten.
+function falte(n, ab, d, parent, edge, basin, order) {
+  const echt = (x) => (x < n ? x : ab.via[x - n]);
+  // Zustandsgenaue Eltern fuer pathTo, damit gezeichnete Wege keine verbotene Abbiegung zeigen
+  const zustand = { parent: parent.slice(), edge: edge.slice(), best: new Int32Array(n) };
+  for (let v = 0; v < n; v++) zustand.best[v] = v;
+  for (let z = 0; z < ab.via.length; z++) {
+    const s = n + z,
+      v = ab.via[z];
+    if (d[s] < d[v]) {
+      zustand.best[v] = s;
+      d[v] = d[s];
+      parent[v] = parent[s];
+      edge[v] = edge[s];
+      basin[v] = basin[s];
+    }
+  }
+  for (let v = 0; v < n; v++) if (parent[v] >= n) parent[v] = echt(parent[v]);
+  const gesehen = new Uint8Array(n),
+    ordnung = [];
+  for (const x of order) {
+    const v = echt(x);
+    if (!gesehen[v]) {
+      gesehen[v] = 1;
+      ordnung.push(v);
+    }
+  }
+  return {
+    d: d.subarray(0, n),
+    parent: parent.subarray(0, n),
+    edge: edge.subarray(0, n),
+    basin: basin.subarray(0, n),
+    order: ordnung,
+    zustand,
+  };
 }
 export function accumulate(g, r, weight = "nodes", limit = Infinity) {
   const w = new Float64Array(g.nodes.length);
@@ -215,6 +296,15 @@ export function rankMeetings(
 }
 export function pathTo(r, node) {
   const path = [];
+  if (r.zustand) {
+    const { parent, edge, best } = r.zustand;
+    let u = best[node];
+    for (let k = 0; k < parent.length && parent[u] >= 0; k++) {
+      path.push(edge[u]);
+      u = parent[u];
+    }
+    return path;
+  }
   let u = node;
   for (let k = 0; k < r.parent.length && r.parent[u] >= 0; k++) {
     path.push(r.edge[u]);
@@ -282,5 +372,5 @@ export function analyze(g, s) {
   const median = samples.length
     ? samples[Math.floor(samples.length / 2)].value
     : 0;
-  return { mode: s.mode, ...r, w, source, ...b, delta, samples, median, limit };
+  return { mode: s.mode, ...r, zustand: undefined, w, source, ...b, delta, samples, median, limit };
 }

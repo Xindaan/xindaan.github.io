@@ -495,7 +495,7 @@ let strassenWorkerLauf = null,
   strassenAnfrage = 0;
 function strassenWorker() {
   strassenWorkerLauf ||= (async () => {
-    const res = await fetch("data/roads.json.gz?v=8");
+    const res = await fetch("data/roads.json.gz?v=9");
     if (!res.ok) throw new Error(`Straßendaten nicht verfügbar (${res.status}).`);
     const bytes = await res.arrayBuffer(),
       sig = new Uint8Array(bytes, 0, 2);
@@ -506,7 +506,7 @@ function strassenWorker() {
           ).text()
         : new TextDecoder().decode(bytes),
     );
-    const w = new Worker("worker.js?v=20261105-1", { type: "module" });
+    const w = new Worker("worker.js?v=20261105-2", { type: "module" });
     await new Promise((ok, fail) => {
       w.onmessage = ({ data: m }) =>
         m.type === "ready" ? ok() : fail(new Error(m.message));

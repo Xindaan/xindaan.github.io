@@ -25,7 +25,7 @@
   "speedRule": "motorway: min(130 km/h, numeric maxspeed); other roads: min(class speed, 85% of numeric maxspeed); roundabouts max 25 km/h",
   "limitations": [
     "no traffic",
-    "no turn restrictions or junction delay",
+    "turn restrictions only at major junctions (motorway/trunk/primary); no junction delay",
     "local residential roads only in selected areas; tertiary roads included",
     "foreign roads: motorway/trunk/primary within about 20 km of Germany plus the Sylt access corridor",
     "car ferries inside Germany (OSM ways, split ways joined, ends on roads or snapped up to 150 m, landings linked by local roads up to 3 km, max 60 km); OSM duration or 15 km/h plus fixed waiting time, no timetable",
@@ -234,5 +234,25 @@
       "kmhOhneDuration": 15,
       "wartepauschale": "10 min bis 2 km, sonst 30 min; kein Fahrplan"
     }
+  },
+  "abbiegeverbote": {
+    "geladen": 73585,
+    "zugeordnet": 54918,
+    "ausgelassen": {
+      "kein einfaches Verbot": 531,
+      "PKW ausgenommen": 73,
+      "Via ist ein Weg": 1358,
+      "nur bedingt oder andere Fahrzeuge": 111,
+      "andere Art": 62,
+      "Weg nicht im Netz": 18666,
+      "Via mitten im Weg": 1
+    },
+    "widerspruechlich": 10,
+    "abschneidend": 19,
+    "ausserhalbNetz": 6645,
+    "imNetz": 48244,
+    "viaKnoten": 42024,
+    "format": "turns: [Via-Knoten, Von-Kante, Nach-Kante, 1=only_* sonst no_*]",
+    "umfang": "Von- oder Nach-Weg motorway/trunk/primary(_link); PKW; ohne bedingte Verbote und Via-Wege"
   }
 }
