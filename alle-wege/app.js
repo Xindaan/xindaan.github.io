@@ -77,7 +77,7 @@ let data,
   drag = null,
   frame = 0;
 let state = {
-  mode: "one", // Standard: Hauptaeste (Andre 2026-11-05), Fahrzeit per Kartenbild-Auswahl
+  mode: "one", // Standard: Hauptaeste (T-0028), Fahrzeit per Kartenbild-Auswahl
   direction: "from",
   destination: "2950159",
   node: 0,
