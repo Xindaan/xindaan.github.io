@@ -1,8 +1,8 @@
 {
   "osmTimestamp": "2026-11-02T21:21:26Z",
   "retrieved": "2026-11-03; Zusatz 2026-11-05 (gleicher OSM-Stand)",
-  "nodes": 455893,
-  "edges": 624127,
+  "nodes": 460743,
+  "edges": 628977,
   "excludedNodes": 17671,
   "components": 15520,
   "cities": 971,
@@ -244,14 +244,14 @@
       "Via ist ein Weg": 1358,
       "nur bedingt oder andere Fahrzeuge": 111,
       "andere Art": 62,
-      "Weg nicht im Netz": 18666,
-      "Via mitten im Weg": 1
+      "Weg nicht im Netz": 18665,
+      "Via mitten im Weg": 2
     },
     "widerspruechlich": 10,
-    "abschneidend": 19,
-    "ausserhalbNetz": 6645,
-    "imNetz": 48244,
-    "viaKnoten": 42024,
+    "abschneidend": 67,
+    "ausserhalbNetz": 620,
+    "imNetz": 54221,
+    "viaKnoten": 47231,
     "format": "turns: [Via-Knoten, Von-Kante, Nach-Kante, 1=only_* sonst no_*]",
     "umfang": "Von- oder Nach-Weg motorway/trunk/primary(_link); PKW; ohne bedingte Verbote und Via-Wege"
   }

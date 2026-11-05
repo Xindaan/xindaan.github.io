@@ -642,6 +642,7 @@ function draw(target = $("map"), progress = 1, exporting = false) {
       : state.theme === "night"
         ? bright
         : palette;
+  const fluss = result.fluss || result;
   if (state.mode === "meet") {
     result.paths.forEach((path, i) => {
       ctx.beginPath();
@@ -656,17 +657,17 @@ function draw(target = $("map"), progress = 1, exporting = false) {
       widths = [0.35, 0.55, 0.8, 1.15, 1.7, 2.5, 3.6],
       maxW = Math.max(
         1,
-        ...Array.from(result.roots || []).map((i) => result.w[i]),
+        ...Array.from(fluss.roots || []).map((i) => fluss.w[i]),
       );
     let maxD = 1;
     if (progress < 1)
-      for (const i of result.order)
-        if (Number.isFinite(result.d[i])) maxD = Math.max(maxD, result.d[i]);
-    for (const u of result.order) {
-      const e = result.edge[u];
-      if (e < 0 || result.w[u] <= 0) continue;
-      if (progress < 1 && result.d[u] < maxD * (1 - progress)) continue;
-      let ci = result.colors[u];
+      for (const i of fluss.order)
+        if (Number.isFinite(fluss.d[i])) maxD = Math.max(maxD, fluss.d[i]);
+    for (const u of fluss.order) {
+      const e = fluss.edge[u];
+      if (e < 0 || fluss.w[u] <= 0) continue;
+      if (progress < 1 && fluss.d[u] < maxD * (1 - progress)) continue;
+      let ci = fluss.colors[u];
       let color =
         ci < 0
           ? state.theme === "night"
@@ -674,13 +675,13 @@ function draw(target = $("map"), progress = 1, exporting = false) {
             : "#596350"
           : colors[ci % colors.length];
       if (state.mode === "reach") {
-        const j = Math.min(3, Math.floor(result.d[u] / (state.limit * 15)));
+        const j = Math.min(3, Math.floor(fluss.d[u] / (state.limit * 15)));
         color = reiseColors()[j];
         if (state.theme === "ink") color = "#333";
       }
       const bin = Math.min(
         6,
-        Math.floor((Math.log1p(result.w[u]) / Math.log1p(maxW)) * 6),
+        Math.floor((Math.log1p(fluss.w[u]) / Math.log1p(maxW)) * 6),
       );
       const key = color + "|" + bin;
       if (!buckets.has(key)) buckets.set(key, { color, bin, ids: [] });
@@ -702,7 +703,7 @@ function draw(target = $("map"), progress = 1, exporting = false) {
   const genutzt = new Set(
     state.mode === "meet"
       ? result.paths.flat()
-      : result.order.filter((u) => result.w[u] > 0).map((u) => result.edge[u]),
+      : fluss.order.filter((u) => fluss.w[u] > 0).map((u) => fluss.edge[u]),
   );
   ctx.setLineDash([5, 4]);
   for (let i = 0; i < data.edges.length; i++)
@@ -1128,7 +1129,7 @@ function wire() {
 async function init() {
   try {
     const responses = await Promise.all([
-      fetch("data/roads.json.gz?v=9"),
+      fetch("data/roads.json.gz?v=10"),
       fetch("data/borders.json"),
     ]);
     for (const r of responses)
@@ -1202,7 +1203,7 @@ async function init() {
       `${nf.format(data.meta.nodes)} Knoten · OSM ${data.meta.osmTimestamp?.slice(0, 10) || data.meta.retrieved}`;
     $("data-details").textContent =
       `OSM-Datenstand: ${data.meta.osmTimestamp}. ${nf.format(data.meta.nodes)} Knoten, ${nf.format(data.meta.edges)} Straßenabschnitte, ${nf.format(data.cities.length)} angebundene Orte. Durch Autozug und Fähre verbundenes Netz; ${nf.format(data.meta.excludedNodes)} andere Knoten wurden ausgelassen. Einwohnerzahlen dienen nur der Auswahl der größten Orte; die zusätzlich aufgenommenen Orte sind davon unabhängig.`;
-    worker = new Worker("worker.js?v=20261105-2", { type: "module" });
+    worker = new Worker("worker.js?v=20261105-3", { type: "module" });
     worker.onmessage = ({ data: msg }) => {
       if (msg.type === "ready") {
         ready = true;

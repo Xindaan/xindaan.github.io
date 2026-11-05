@@ -8,8 +8,8 @@ import {
   atlasLeerHinweis,
   mitRueckfahrt,
   mitUmfeld,
-} from "./bahn-atlas-core.js?v=20261105-1";
-import { vergleicheBahnAuto, bilanz, TOLERANZ_MIN, versetzteZeiten, bestwertJeHalt, ABFAHRTEN, RASTER_MIN } from "./bahn-auto-core.js?v=20261105-1";
+} from "./bahn-atlas-core.js?v=20261105-2";
+import { vergleicheBahnAuto, bilanz, TOLERANZ_MIN, versetzteZeiten, bestwertJeHalt, ABFAHRTEN, RASTER_MIN } from "./bahn-auto-core.js?v=20261105-2";
 const farben = [
   "#a9674c",
   "#517a78",
@@ -47,6 +47,9 @@ export async function atlasBerechnen(args) {
       }
     : null;
   let rueckGekappt = false;
+  const rueckHinweis = () => rueckGekappt
+    ? `Die Rückfahrtsuche ist unvollständig: Es wurden nur die letzten ${rueckGekappt / 60} Stunden vor der Rückkehrfrist durchsucht (Grenze des Fahrplandienstes). Das Fenster enthält auch die Zeit zwischen früher Heimkehr und Rückkehrfrist; dadurch können rechtzeitige Rückfahrten und bessere Treffpunkte fehlen.`
+    : "";
   // Kein persoenliches Zeitbudget. Die Sammelsuche wird bei Bedarf erweitert.
   // Minimax ist gesichert, sobald ein gemeinsamer Halt innerhalb der Runde liegt:
   // Jeder noch nicht erfasste Halt braucht fuer mindestens eine Person laenger.
@@ -69,7 +72,7 @@ export async function atlasBerechnen(args) {
           for (const h of [...new Set([Math.min(rueck.fenster, 480), Math.min(rueck.fenster, 360)])]) {
             try {
               daten = await args.lade(atlasURL(args.personen[i], { ...rueck, horizont: h }), args.signal, true);
-              if (h < rueck.fenster) rueckGekappt = h;
+              if (h < rueck.fenster) rueckGekappt = rueckGekappt ? Math.min(rueckGekappt, h) : h;
               break;
             } catch (e) {
               if (args.signal?.aborted) throw e;
@@ -93,14 +96,14 @@ export async function atlasBerechnen(args) {
     } catch (e) {
       if (args.signal?.aborted || !vorher?.punkte.length) throw e;
       return { ...vorher, rangVollstaendig: false,
-        suchHinweis: `Die weitere Fahrplansuche konnte nicht abgeschlossen werden: ${e.message} Die angezeigten Vorschläge sind geprüft; die beste Gesamtsumme ist noch nicht abgesichert.` };
+        suchHinweis: `${rueckHinweis()} Die weitere Fahrplansuche konnte nicht abgeschlossen werden: ${e.message} Die angezeigten Vorschläge sind geprüft; die beste Gesamtsumme ist noch nicht abgesichert.` };
     }
     if (r.punkte.length && (opt.objective !== "total" || r.punkte[0].summe <= horizont))
-      return { ...r, rangVollstaendig: true, ...(rueckGekappt ? { suchHinweis: `Rückfahrten wurden bis ${rueckGekappt / 60} Stunden berücksichtigt (Grenze des Fahrplandienstes); Treffpunkte mit noch längerer Rückfahrt fehlen.` } : {}) };
+      return { ...r, rangVollstaendig: !rueckGekappt, ...(rueckGekappt ? { suchHinweis: rueckHinweis() } : {}) };
     vorher = r;
   }
   return { ...vorher, rangVollstaendig: false,
-    suchHinweis: vorher.punkte.length ? "Die automatische Suche umfasst 24 Stunden ab Abfahrt. Die angezeigten Vorschläge sind geprüft; eine bessere Gesamtsumme außerhalb dieses Fahrplanausschnitts ist nicht ausgeschlossen." : "" };
+    suchHinweis: [rueckHinweis(), vorher.punkte.length ? "Die automatische Suche umfasst 24 Stunden ab Abfahrt. Die angezeigten Vorschläge sind geprüft; eine bessere Gesamtsumme außerhalb dieses Fahrplanausschnitts ist nicht ausgeschlossen." : ""].filter(Boolean).join(" ") };
 }
 async function atlasRunde({
   typ,
@@ -189,7 +192,7 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
           : r.typ === "auto"
             ? s.urteil === "ohne"
               ? `Bahn ${zeit(s.dauer)} · Auto: kein Straßenanschluss im Modell`
-              : `Bahn ${zeit(s.dauer)} (${r.opt.arriveBy ? "an bis" : "ab"} ${new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit" }).format(new Date(s.startZeit))}) · Auto ${zeit(s.auto)} · ${s.urteil === "bahn" ? `Bahn ${zeit(-s.differenz)} schneller` : s.urteil === "auto" ? `Auto ${zeit(s.differenz)} schneller` : "etwa gleich"}`
+              : `Bahn ${zeit(s.dauer)} (${r.opt.arriveBy ? "Abfrage: an bis" : "Abfrage: ab"} ${new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit" }).format(new Date(s.startZeit))}) · Auto ${zeit(s.auto)} · ${s.urteil === "bahn" ? `Bahn ${zeit(-s.differenz)} schneller` : s.urteil === "auto" ? `Auto ${zeit(s.differenz)} schneller` : "etwa gleich"}`
           : `${zeit(s.dauer)} · ${s.umstiege === 0 ? "ohne Umstieg" : `${s.umstiege} ${s.umstiege === 1 ? "Umstieg" : "Umstiege"}`}`;
   const uhrzeit = new Intl.DateTimeFormat("de-DE", {
     timeZone: "Europe/Berlin",
@@ -217,7 +220,7 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
         : r.typ === "effekt"
           ? "Grün: wenig Zeitvorteil · Braun: viel Zeitvorteil · Violett: ohne Fernverkehr nicht innerhalb des Zeitlimits."
           : r.typ === "auto"
-            ? `Blau: Bahn mehr als ${TOLERANZ_MIN} Min. schneller · Braun: Auto mehr als ${TOLERANZ_MIN} Min. schneller · Grau: etwa gleich (±${TOLERANZ_MIN} Min.); kräftiger = größerer Abstand. Bahn: Sollfahrplan, beste von ${ABFAHRTEN} ${r.opt.arriveBy ? `Ankunftsfristen bis ${(ABFAHRTEN - 1) * RASTER_MIN} Min. vor der gewählten` : `Abfahrten bis ${(ABFAHRTEN - 1) * RASTER_MIN} Min. nach der gewählten`} Zeit im ${RASTER_MIN}-Min.-Raster; enthält höchstens ${RASTER_MIN} Min. Warten auf die nächste Fahrt sowie Fußweg bis 15 Min. Auto: Straßenmodell mit Wunschtempo ${r.autobahnTempo} km/h, ohne Stau, Parken und letzte Strecke; Haltestellen an den nächsten Nicht-Autobahn-Knoten (bis 5 km) angebunden, ohne Anschluss nicht verglichen. Keine Tür-zu-Tür-Aussage.`
+            ? `Blau: Bahn mehr als ${TOLERANZ_MIN} Min. schneller · Braun: Auto mehr als ${TOLERANZ_MIN} Min. schneller · Grau: etwa gleich (±${TOLERANZ_MIN} Min.); kräftiger = größerer Abstand. Bahn: Sollfahrplan, beste von ${ABFAHRTEN} ${r.opt.arriveBy ? `Ankunftsfristen bis ${(ABFAHRTEN - 1) * RASTER_MIN} Min. vor der gewählten` : `Abfragezeitpunkten bis ${(ABFAHRTEN - 1) * RASTER_MIN} Min. nach der gewählten`} Zeit im ${RASTER_MIN}-Min.-Raster; enthält die verbleibende Wartezeit ab dem jeweiligen Abfragezeitpunkt bzw. bis zur Ankunftsfrist sowie Fußweg bis 15 Min. Die Wartezeit kann auch länger als ${RASTER_MIN} Min. sein; der Vergleich ist eine Stichprobe, keine reine Fahrzeit. Auto: Straßenmodell mit Wunschtempo ${r.autobahnTempo} km/h, ohne Stau, Parken und letzte Strecke; Haltestellen an den nächsten Nicht-Autobahn-Knoten (bis 5 km) angebunden, ohne Anschluss nicht verglichen. Keine Tür-zu-Tür-Aussage.`
             : "Grün: kurze Reisezeit · Braun: lange Reisezeit. Jeder Punkt zeigt eine erreichbare Haltestelle. Die Flächen dazwischen sind nicht automatisch erreichbar.";
   if (r.suchHinweis)
     $("atlas-legende").insertAdjacentHTML("afterbegin", `<strong>${esc(r.suchHinweis)}</strong><br>`);

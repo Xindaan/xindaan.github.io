@@ -172,11 +172,18 @@ export function shortest(
   if (!ab) return { d, parent, edge, basin, order };
   return falte(n, ab, d, parent, edge, basin, order);
 }
-// Zusatzzustaende auf ihre Knoten zurueckfalten: bester Zustand je Knoten, Eltern auf echte Knoten.
+// Knotenwerte fuer Ortsanzeigen; der vollstaendige Zustandsbaum bleibt fuer Wege und Fluesse erhalten.
 function falte(n, ab, d, parent, edge, basin, order) {
   const echt = (x) => (x < n ? x : ab.via[x - n]);
-  // Zustandsgenaue Eltern fuer pathTo, damit gezeichnete Wege keine verbotene Abbiegung zeigen
-  const zustand = { parent: parent.slice(), edge: edge.slice(), best: new Int32Array(n) };
+  // Vor dem Falten sichern: Eltern und Reihenfolge duerfen fuer Fluesse nicht vereinfacht werden.
+  const zustand = {
+    d: d.slice(),
+    parent: parent.slice(),
+    edge: edge.slice(),
+    basin: basin.slice(),
+    order,
+    best: new Int32Array(n),
+  };
   for (let v = 0; v < n; v++) zustand.best[v] = v;
   for (let z = 0; z < ab.via.length; z++) {
     const s = n + z,
@@ -209,20 +216,23 @@ function falte(n, ab, d, parent, edge, basin, order) {
   };
 }
 export function accumulate(g, r, weight = "nodes", limit = Infinity) {
-  const w = new Float64Array(g.nodes.length);
-  if (weight === "cities")
-    for (const c of g.cities) {
-      if (Number.isFinite(r.d[c.node]) && r.d[c.node] <= limit) w[c.node]++;
-    }
-  else for (const i of r.order) if (r.d[i] <= limit) w[i] = 1;
+  const baum = r.zustand || r;
+  const w = new Float64Array(baum.d.length);
+  const quelle = (v) => {
+    if (Number.isFinite(r.d[v]) && r.d[v] <= limit)
+      w[r.zustand ? r.zustand.best[v] : v]++;
+  };
+  if (weight === "cities") for (const c of g.cities) quelle(c.node);
+  else for (const v of r.order) quelle(v);
   const source = w.slice();
-  for (let k = r.order.length - 1; k >= 0; k--) {
-    const u = r.order[k];
-    if (r.parent[u] >= 0) w[r.parent[u]] += w[u];
+  for (let k = baum.order.length - 1; k >= 0; k--) {
+    const u = baum.order[k];
+    if (baum.parent[u] >= 0) w[baum.parent[u]] += w[u];
   }
   return { w, source };
 }
 export function branches(r, w, count = 6) {
+  r = r.zustand || r;
   const n = w.length,
     children = Array.from({ length: n }, () => []);
   for (const u of r.order)
@@ -350,9 +360,10 @@ export function analyze(g, s) {
   const limit =
     s.limit > 0 ? (metric === "time" ? s.limit * 60 : s.limit * 100) : Infinity;
   const { w, source } = accumulate(g, r, s.weight, limit);
+  const baum = r.zustand || r;
   const b =
     s.mode === "basins"
-      ? { colors: r.basin, roots: seeds }
+      ? { colors: baum.basin, roots: seeds }
       : branches(r, w, s.branches);
   const slow =
     s.mode === "effect"
@@ -372,5 +383,11 @@ export function analyze(g, s) {
   const median = samples.length
     ? samples[Math.floor(samples.length / 2)].value
     : 0;
-  return { mode: s.mode, ...r, zustand: undefined, w, source, ...b, delta, samples, median, limit };
+  // d/order bleiben Knotenwerte fuer Ortslisten und Kartenausschnitt;
+  // die Flussfelder verwenden ausschliesslich Indizes des Zustandsbaums.
+  return {
+    mode: s.mode, ...r, zustand: undefined, w, source, ...b,
+    fluss: { d: baum.d, parent: baum.parent, edge: baum.edge, order: baum.order, w, source, ...b },
+    delta, samples, median, limit,
+  };
 }

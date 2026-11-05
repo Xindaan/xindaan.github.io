@@ -1,6 +1,6 @@
 // Bahn gegen Auto: Haltestellen ans Strassennetz anbinden und Zeiten vergleichen.
 // Reiner Rechenkern fuer Worker und Node-Tests.
-import { shortest } from "./graph.js?v=20261105-2";
+import { shortest } from "./graph.js?v=20261105-3";
 
 export const MAX_ANBINDUNG_KM = 5;
 export const TOLERANZ_MIN = 5;
@@ -62,7 +62,8 @@ export function autoMinuten(g, raster, start, halte, { richtung = "von", autobah
 
 // Die One-to-all-Dauer enthaelt das Warten auf die naechste Fahrt (vorwaerts ab
 // Wunschabfahrt, rueckwaerts bis zur Frist). Mehrere versetzte Anfragen und der
-// Bestwert je Halt begrenzen diese Takt-Wartezeit auf hoechstens ein Raster.
+// Bestwert je Halt verringern sie unter Umstaenden. Bei duennem Takt bleibt
+// auch mehr als ein Raster Wartezeit; die Abfragezeit ist keine echte Abfahrt.
 export const ABFAHRTEN = 4,
   RASTER_MIN = 15;
 export function versetzteZeiten(zeit, arriveBy, anzahl = ABFAHRTEN, raster = RASTER_MIN) {

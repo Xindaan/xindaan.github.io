@@ -1,9 +1,9 @@
 import { STANDARDORTE } from "./standardorte.js";
 import { leseZustand, vergleichLink, bahnZuStrasse } from "./vergleich.js?v=20261104-1";
 let strassenStand = {}, vergleichInfo = {};
-import { atlasURL, verdichteAtlas, umfeldIndex } from "./bahn-atlas-core.js?v=20261105-1";
-import { versetzteZeiten } from "./bahn-auto-core.js?v=20261105-1";
-import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261105-2";
+import { atlasURL, verdichteAtlas, umfeldIndex } from "./bahn-atlas-core.js?v=20261105-2";
+import { versetzteZeiten } from "./bahn-auto-core.js?v=20261105-2";
+import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261105-3";
 import { ortsnamen, ergaenzeOrt } from "./ortslisten.js";
 import {
   API,
@@ -166,7 +166,7 @@ function modus(neu) {
         : art === "effekt"
           ? "Vergleich mit und ohne Fernverkehr bei gleicher Zeit und Umstiegsgrenze. Fehlt der Nahverkehrsweg im Zeitlimit, wird kein unbegrenzter Zeitgewinn behauptet."
           : art === "auto"
-            ? "Je Haltestelle: Fahrplanzeit gegen Modell-Autozeit vom selben Ausgangspunkt. Bahn: beste von 4 Abfahrten im 15-Minuten-Raster (4 Fahrplananfragen), also höchstens 15 Min. Warten. Auto ohne Stau, Parken und letzte Strecke. Lädt beim ersten Mal das Straßennetz (ca. 13 MB)."
+            ? "Je Haltestelle: Fahrplanzeit gegen Modell-Autozeit vom selben Ausgangspunkt. Bahn: beste von 4 Abfragezeitpunkten im 15-Minuten-Raster (4 Fahrplananfragen). Die verbleibende Wartezeit kann auch länger als 15 Min. sein; die Stichprobe liefert keine reine Fahrzeit. Auto ohne Stau, Parken und letzte Strecke. Lädt beim ersten Mal das Straßennetz (ca. 24 MB)."
             : "Erreichbare Haltestellen laut Fahrplan, einschließlich Wartezeit ab Wunschabfahrt bzw. bis zur Ankunftsfrist. Fußzugang bis 15 Minuten; keine flächige Erreichbarkeitsgarantie.";
   document
     .querySelectorAll("[data-art]")
@@ -495,7 +495,7 @@ let strassenWorkerLauf = null,
   strassenAnfrage = 0;
 function strassenWorker() {
   strassenWorkerLauf ||= (async () => {
-    const res = await fetch("data/roads.json.gz?v=9");
+    const res = await fetch("data/roads.json.gz?v=10");
     if (!res.ok) throw new Error(`Straßendaten nicht verfügbar (${res.status}).`);
     const bytes = await res.arrayBuffer(),
       sig = new Uint8Array(bytes, 0, 2);
@@ -506,7 +506,7 @@ function strassenWorker() {
           ).text()
         : new TextDecoder().decode(bytes),
     );
-    const w = new Worker("worker.js?v=20261105-2", { type: "module" });
+    const w = new Worker("worker.js?v=20261105-3", { type: "module" });
     await new Promise((ok, fail) => {
       w.onmessage = ({ data: m }) =>
         m.type === "ready" ? ok() : fail(new Error(m.message));

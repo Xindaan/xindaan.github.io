@@ -131,6 +131,11 @@ export function atlasEffekt(mit, ohne) {
 export function atlasLeerHinweis(r) {
   const ohne = r.personen.filter((p, i) => !r.anzahlen[i]).map((p) => p.name);
   const stunden = `${r.opt.horizont / 60}`.replace(".", ",");
+  if (r.typ === "finden" && r.suchHinweis) return {
+    titel: "Kein Treffpunkt im durchsuchten Fahrplanausschnitt",
+    text: `${r.suchHinweis} Das leere Ergebnis schließt einen passenden Treffpunkt mit rechtzeitiger Heimkehr nicht aus. Bitte eine andere Abfahrt oder eigene Treffpunktorte prüfen.`,
+    naechsterHorizont: null,
+  };
   if (r.typ === "finden" && r.rueck && !ohne.length) return {
     titel: "Kein Treffpunkt mit rechtzeitiger Rückfahrt",
     text: `In den Fahrplandaten gibt es keinen gemeinsamen Halt, an dem alle mindestens ${r.rueck.aufenthalt / 60} ${r.rueck.aufenthalt === 60 ? "Stunde" : "Stunden"} zusammen sind und danach bis zur Rückkehrfrist heimkommen. Bitte früher abfahren, die Frist später legen oder den Mindestaufenthalt verkürzen.`,
