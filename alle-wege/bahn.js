@@ -495,7 +495,7 @@ let strassenWorkerLauf = null,
   strassenAnfrage = 0;
 function strassenWorker() {
   strassenWorkerLauf ||= (async () => {
-    const res = await fetch("data/roads.json.gz?v=7");
+    const res = await fetch("data/roads.json.gz?v=8");
     if (!res.ok) throw new Error(`Straßendaten nicht verfügbar (${res.status}).`);
     const bytes = await res.arrayBuffer(),
       sig = new Uint8Array(bytes, 0, 2);

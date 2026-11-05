@@ -1,10 +1,10 @@
 {
   "osmTimestamp": "2026-11-02T21:21:26Z",
   "retrieved": "2026-11-03; Zusatz 2026-11-05 (gleicher OSM-Stand)",
-  "nodes": 455674,
-  "edges": 623866,
-  "excludedNodes": 17607,
-  "components": 15498,
+  "nodes": 455893,
+  "edges": 624127,
+  "excludedNodes": 17671,
+  "components": 15520,
   "cities": 971,
   "excludedCities": [],
   "source": "OpenStreetMap contributors / Overpass Europe (dresel.systems)",
@@ -28,7 +28,7 @@
     "no turn restrictions or junction delay",
     "local residential roads only in selected areas; tertiary roads included",
     "foreign roads: motorway/trunk/primary within about 20 km of Germany plus the Sylt access corridor",
-    "car ferries inside Germany (single OSM way, both ends on roads, max 60 km); OSM duration or 15 km/h plus fixed waiting time, no timetable",
+    "car ferries inside Germany (OSM ways, split ways joined, ends on roads or snapped up to 150 m, landings linked by local roads up to 3 km, max 60 km); OSM duration or 15 km/h plus fixed waiting time, no timetable",
     "Sylt transfers use fixed planned-crossing times plus terminal buffer, no timetable",
     "city centers snapped to road nodes within 5 km"
   ],
@@ -88,15 +88,148 @@
       "uebernommen": 88070,
       "km": 20
     },
+    "faehranleger": {
+      "wege": 401,
+      "maxKm": 3,
+      "fangKm": 0.15,
+      "Anleger im Ausland": 165,
+      "angebunden": 100,
+      "kein Netz in Reichweite": 18,
+      "Ende verschoben": 11,
+      "Anleger ohne Strasse": 8
+    },
     "faehren": {
-      "uebernommen": 73,
-      "mitDuration": 48,
+      "uebernommen": 104,
+      "mitDuration": 80,
       "ausgelassen": {
-        "Enden nicht im Strassennetz": 216,
-        "Ende im Ausland": 3,
+        "sylt eigen": 1,
         "kein PKW": 5,
-        "sylt eigen": 1
+        "verkettet": 21,
+        "Enden nicht im Strassennetz": 114,
+        "Ende im Ausland": 2
       },
+      "fehlendInDeutschland": [
+        {
+          "name": "Mattinger Fähre",
+          "osm": 5079909,
+          "vonImNetz": true,
+          "nachImNetz": false
+        },
+        {
+          "name": "Weserfähre Schweringen",
+          "osm": 5784465,
+          "vonImNetz": false,
+          "nachImNetz": true
+        },
+        {
+          "name": "Ginsheim - Langenaue",
+          "osm": 11276280,
+          "vonImNetz": true,
+          "nachImNetz": false
+        },
+        {
+          "name": "Rheinfähre Zons-Urdenbach",
+          "osm": 23914745,
+          "vonImNetz": true,
+          "nachImNetz": false
+        },
+        {
+          "name": "Fähre Brobergen",
+          "osm": 25959175,
+          "vonImNetz": false,
+          "nachImNetz": true
+        },
+        {
+          "name": "Fähre Pritzerbe",
+          "osm": 26175686,
+          "vonImNetz": true,
+          "nachImNetz": false
+        },
+        {
+          "name": "Fähre Klotten",
+          "osm": 26397206,
+          "vonImNetz": true,
+          "nachImNetz": true
+        },
+        {
+          "name": "Fähre Calbe (Saale)",
+          "osm": 26728967,
+          "vonImNetz": false,
+          "nachImNetz": true
+        },
+        {
+          "name": "Gierfähre Arneburg",
+          "osm": 27744125,
+          "vonImNetz": false,
+          "nachImNetz": true
+        },
+        {
+          "name": "Regnitzfähre Pettstadt",
+          "osm": 38964538,
+          "vonImNetz": false,
+          "nachImNetz": false
+        },
+        {
+          "name": "Autofähre Lindwerder",
+          "osm": 59265663,
+          "vonImNetz": false,
+          "nachImNetz": true
+        },
+        {
+          "name": "Moselfähre Briedel",
+          "osm": 62062829,
+          "vonImNetz": true,
+          "nachImNetz": true
+        },
+        {
+          "name": "Havelfähre Neuendorf",
+          "osm": 71319988,
+          "vonImNetz": false,
+          "nachImNetz": false
+        },
+        {
+          "name": "Mühlenfähre",
+          "osm": 123612802,
+          "vonImNetz": true,
+          "nachImNetz": false
+        },
+        {
+          "name": "95: Käpt'n Nicks Piratenschlacht",
+          "osm": 209771599,
+          "vonImNetz": false,
+          "nachImNetz": false
+        },
+        {
+          "name": "Seilzugfähre Siebeneichen-Fitzen",
+          "osm": 220048016,
+          "vonImNetz": false,
+          "nachImNetz": true
+        },
+        {
+          "name": "Herrenwörth",
+          "osm": 368436360,
+          "vonImNetz": false,
+          "nachImNetz": true
+        },
+        {
+          "name": "Fähre",
+          "osm": 425768581,
+          "vonImNetz": false,
+          "nachImNetz": true
+        },
+        {
+          "name": "Travemünde – Rostock",
+          "osm": 533470203,
+          "vonImNetz": true,
+          "nachImNetz": false
+        },
+        {
+          "name": "Columbushopper",
+          "osm": 1100842035,
+          "vonImNetz": true,
+          "nachImNetz": true
+        }
+      ],
       "maxKm": 60,
       "kmhOhneDuration": 15,
       "wartepauschale": "10 min bis 2 km, sonst 30 min; kein Fahrplan"

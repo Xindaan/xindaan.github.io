@@ -1128,7 +1128,7 @@ function wire() {
 async function init() {
   try {
     const responses = await Promise.all([
-      fetch("data/roads.json.gz?v=7"),
+      fetch("data/roads.json.gz?v=8"),
       fetch("data/borders.json"),
     ]);
     for (const r of responses)
