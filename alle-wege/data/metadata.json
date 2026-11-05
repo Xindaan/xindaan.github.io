@@ -1,10 +1,10 @@
 {
   "osmTimestamp": "2026-11-02T21:21:26Z",
-  "retrieved": "2026-11-03",
-  "nodes": 276912,
-  "edges": 369186,
-  "excludedNodes": 15752,
-  "components": 14795,
+  "retrieved": "2026-11-03; Zusatz 2026-11-05 (gleicher OSM-Stand)",
+  "nodes": 455674,
+  "edges": 623866,
+  "excludedNodes": 17607,
+  "components": 15498,
   "cities": 971,
   "excludedCities": [],
   "source": "OpenStreetMap contributors / Overpass Europe (dresel.systems)",
@@ -26,8 +26,9 @@
   "limitations": [
     "no traffic",
     "no turn restrictions or junction delay",
-    "local roads only in selected areas",
-    "foreign roads only in Sylt ferry access corridor; other ferries/car trains excluded",
+    "local residential roads only in selected areas; tertiary roads included",
+    "foreign roads: motorway/trunk/primary within about 20 km of Germany plus the Sylt access corridor",
+    "car ferries inside Germany (single OSM way, both ends on roads, max 60 km); OSM duration or 15 km/h plus fixed waiting time, no timetable",
     "Sylt transfers use fixed planned-crossing times plus terminal buffer, no timetable",
     "city centers snapped to road nodes within 5 km"
   ],
@@ -63,5 +64,42 @@
     "Sylt/Niebüll/Rømø/Danish access corridor",
     "Pfakofen",
     "Heidesee (Friedersdorf)"
-  ]
+  ],
+  "zusatz": {
+    "osmTimestamp": "2026-11-02T21:21:26Z",
+    "zusatz-0": {
+      "ways": 103465,
+      "neu": 102788
+    },
+    "zusatz-1": {
+      "ways": 162428,
+      "neu": 161039
+    },
+    "zusatz-2": {
+      "ways": 175398,
+      "neu": 174198
+    },
+    "zusatz-3": {
+      "ways": 57695,
+      "neu": 57047
+    },
+    "grenzsaum": {
+      "abgefragt": 278629,
+      "uebernommen": 88070,
+      "km": 20
+    },
+    "faehren": {
+      "uebernommen": 73,
+      "mitDuration": 48,
+      "ausgelassen": {
+        "Enden nicht im Strassennetz": 216,
+        "Ende im Ausland": 3,
+        "kein PKW": 5,
+        "sylt eigen": 1
+      },
+      "maxKm": 60,
+      "kmhOhneDuration": 15,
+      "wartepauschale": "10 min bis 2 km, sonst 30 min; kein Fahrplan"
+    }
+  }
 }
