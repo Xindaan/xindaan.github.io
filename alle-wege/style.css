@@ -996,22 +996,3 @@ footer {
   background: var(--paper);
   color: var(--ink);
 }
-#menschen {
-  margin: 10px 0 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.traveler .fahrten {
-  margin-left: auto;
-  width: 52px;
-  padding: 2px 4px;
-  font: inherit;
-  text-align: right;
-}
-.traveler .fahrten + button {
-  margin-left: 0;
-}
-.leben-detail {
-  line-height: 1.6;
-}

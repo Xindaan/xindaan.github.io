@@ -9,7 +9,7 @@ import {
   mitRueckfahrt,
   mitUmfeld,
 } from "./bahn-atlas-core.js?v=20261104-6";
-import { vergleicheBahnAuto, bilanz, TOLERANZ_MIN, versetzteZeiten, bestwertJeHalt, ABFAHRTEN, RASTER_MIN } from "./bahn-auto-core.js?v=20261104-3";
+import { vergleicheBahnAuto, bilanz, TOLERANZ_MIN, versetzteZeiten, bestwertJeHalt, ABFAHRTEN, RASTER_MIN } from "./bahn-auto-core.js?v=20261105-1";
 const farben = [
   "#a9674c",
   "#517a78",

@@ -1,6 +1,6 @@
 // Bahn gegen Auto: Haltestellen ans Strassennetz anbinden und Zeiten vergleichen.
 // Reiner Rechenkern fuer Worker und Node-Tests.
-import { shortest } from "./graph.js?v=20261104-3";
+import { shortest } from "./graph.js?v=20261105-1";
 
 export const MAX_ANBINDUNG_KM = 5;
 export const TOLERANZ_MIN = 5;

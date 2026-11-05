@@ -1,6 +1,6 @@
 # Alle Wege · Deutschland
 
-Deutschsprachiger Strassen- und Fahrplanatlas: Erreichbarkeit von/nach einem Ort, faire Treffpunkte, Einzugsgebiete und Lebensorte (welcher Wohnort liegt am guenstigsten zu den Menschen, die man besucht, und was aendert ein Umzug).
+Deutschsprachiger Strassen- und Fahrplanatlas: Erreichbarkeit von/nach einem Ort, faire Treffpunkte und Einzugsgebiete.
 
 **Website:** https://xindaan.github.io/alle-wege/
 
