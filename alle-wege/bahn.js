@@ -1,9 +1,9 @@
 import { STANDARDORTE } from "./standardorte.js";
 import { leseZustand, vergleichLink, bahnZuStrasse } from "./vergleich.js?v=20261104-1";
 let strassenStand = {}, vergleichInfo = {};
-import { atlasURL, verdichteAtlas, umfeldIndex } from "./bahn-atlas-core.js?v=20261104-6";
+import { atlasURL, verdichteAtlas, umfeldIndex } from "./bahn-atlas-core.js?v=20261105-1";
 import { versetzteZeiten } from "./bahn-auto-core.js?v=20261105-1";
-import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261105-1";
+import { atlasBerechnen, atlasAnzeigen } from "./bahn-atlas-ui.js?v=20261105-2";
 import { ortsnamen, ergaenzeOrt } from "./ortslisten.js";
 import {
   API,
@@ -281,7 +281,7 @@ let umfeld = null;
 async function ladeUmfeld() {
   // Einmal je Seite; ohne Datei bleibt die Treffpunktsuche nutzbar, nur ohne Bahnhofsangaben.
   if (umfeld === null)
-    umfeld = await fetch("data/bahnhof-umfeld.json?v=1")
+    umfeld = await fetch("data/bahnhof-umfeld.json?v=2")
       .then((r) => (r.ok ? r.json() : false))
       .then((d) => (d ? umfeldIndex(d) : false))
       .catch(() => false);
@@ -962,7 +962,7 @@ function leseLink() {
       "aufenthalt",
     ])
       if (typeof s[id] === "string" && s[id].length < 1000) $(id).value = s[id];
-    if (["egal", "bahnhof", "gastro"].includes(s.nutzbar)) $("nutzbar").value = s.nutzbar;
+    if (["egal", "bahnhof", "gastro", "stufenfrei"].includes(s.nutzbar)) $("nutzbar").value = s.nutzbar;
     $("regional").checked = s.regional === true;
     if (["paper", "night", "ink"].includes(s.theme))
       $("bahn-theme").value = s.theme;

@@ -8,7 +8,7 @@ import {
   atlasLeerHinweis,
   mitRueckfahrt,
   mitUmfeld,
-} from "./bahn-atlas-core.js?v=20261104-6";
+} from "./bahn-atlas-core.js?v=20261105-1";
 import { vergleicheBahnAuto, bilanz, TOLERANZ_MIN, versetzteZeiten, bestwertJeHalt, ABFAHRTEN, RASTER_MIN } from "./bahn-auto-core.js?v=20261105-1";
 const farben = [
   "#a9674c",
@@ -179,7 +179,7 @@ export function atlasAnzeigen(r, onDetails, onErweitern) {
   r.auswahlId = null;
   const info = (s) =>
     r.typ === "finden"
-      ? `Max. ${zeit(s.max)} · Gesamt ${zeit(s.summe)}${s.zusammen !== undefined ? ` · ${zeit(s.zusammen)} zusammen, erste Rückfahrt ${new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit" }).format(new Date(Math.min(...s.abfahrten.map(Date.parse))))}` : ""}${s.umfeld !== undefined ? s.umfeld ? ` · Bahnhof, ${s.umfeld.gastro === 1 ? "1 Lokal" : `${s.umfeld.gastro} Lokale`} in 300 m` : " · kein Bahnhof in 300 m" : ""}`
+      ? `Max. ${zeit(s.max)} · Gesamt ${zeit(s.summe)}${s.zusammen !== undefined ? ` · ${zeit(s.zusammen)} zusammen, erste Rückfahrt ${new Intl.DateTimeFormat("de-DE", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit" }).format(new Date(Math.min(...s.abfahrten.map(Date.parse))))}` : ""}${s.umfeld !== undefined ? s.umfeld ? ` · Bahnhof, ${s.umfeld.gastro === 1 ? "1 Lokal" : `${s.umfeld.gastro} Lokale`} in 300 m${["nicht stufenfrei", "teilweise stufenfrei", "stufenfrei"][s.umfeld.stufenfrei] ? ` · ${["nicht stufenfrei", "teilweise stufenfrei", "stufenfrei"][s.umfeld.stufenfrei]} (DB)` : ""}` : " · kein Bahnhof in 300 m" : ""}`
       : r.typ === "gebiete"
         ? `${r.personen[s.gebiet].name} · ${zeit(s.dauer)}`
         : r.typ === "effekt"

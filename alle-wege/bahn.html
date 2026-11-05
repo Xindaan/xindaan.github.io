@@ -211,11 +211,13 @@
                 <option value="egal">Keine Vorgabe</option>
                 <option value="bahnhof">Einen Bahnhof</option>
                 <option value="gastro">Bahnhof mit Gastronomie (mind. 3 Lokale)</option>
+                <option value="stufenfrei">Stufenfreien Bahnhof (laut DB)</option>
               </select>
               <p class="hint">
                 Aus OpenStreetMap vorberechnet: Bahnhof oder Haltepunkt höchstens 300 m vom Halt,
                 Restaurants, Cafés, Imbisse, Kneipen und Bars höchstens 300 m vom Bahnhof (Luftlinie).
-                Öffnungszeiten und Barrierefreiheit sind nicht berücksichtigt.
+                Öffnungszeiten sind nicht berücksichtigt. Stufenfreiheit laut DB-Stationsdaten
+                (StaDa, Stand 5.11.2026) nur für DB-Stationen; kein aktueller Aufzugsstatus.
               </p>
             </div>
             <div id="rueck-felder" hidden>
@@ -504,6 +506,12 @@
               target="_blank"
               rel="noopener"
               >OpenStreetMap</a
+            >, Stufenfreiheit der Bahnhöfe aus
+            <a
+              href="https://developers.deutschebahn.com/db-api-marketplace/apis/"
+              target="_blank"
+              rel="noopener"
+              >DB InfraGO, StaDa (CC BY 4.0)</a
             >. Die Atlas-Karten verwenden den Fahrplan ohne Echtzeitdaten.
             Ausfälle und Verspätungen können die Karte und Rangfolge verändern.
             Bei der separaten Detailprüfung werden verfügbare Echtzeitdaten
@@ -584,6 +592,6 @@
       </main>
     </div>
     <datalist id="bahn-orte"></datalist>
-    <script type="module" src="bahn.js?v=19"></script>
+    <script type="module" src="bahn.js?v=20"></script>
   </body>
 </html>

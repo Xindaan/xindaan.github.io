@@ -176,16 +176,17 @@ export function mitRueckfahrt(punkte, rueckListen, { start, frist, aufenthalt = 
 }
 
 // Treffpunkt-Umfeld (T-0004): Halt aus der Fahrplanauskunft dem naechsten OSM-Bahnhof
-// innerhalb radiusKm zuordnen; umfeld = {radiusM, halte: [[lat, lon, name, gastro], ...]}.
-// anspruch: "egal" | "bahnhof" | "gastro" (Bahnhof mit mindestens minGastro Orten).
+// innerhalb radiusKm zuordnen; umfeld = {radiusM, halte: [[lat, lon, name, gastro, stufenfrei?], ...]}.
+// stufenfrei (T-0026, DB StaDa): 2 ja, 1 teilweise, 0 nein, null unbekannt.
+// anspruch: "egal" | "bahnhof" | "gastro" (Bahnhof mit mindestens minGastro Orten) | "stufenfrei" (laut DB stufenfrei).
 const kmZwischen = (a, b) =>
   6371 * Math.hypot(((b.lat - a.lat) * Math.PI) / 180, (((b.lon - a.lon) * Math.PI) / 180) * Math.cos((((a.lat + b.lat) / 2) * Math.PI) / 180));
 export function umfeldIndex(umfeld) {
   const gitter = new Map();
-  for (const [lat, lon, name, gastro] of umfeld?.halte || []) {
+  for (const [lat, lon, name, gastro, stufenfrei = null] of umfeld?.halte || []) {
     const k = `${Math.floor(lat * 100)}|${Math.floor(lon * 100)}`;
     if (!gitter.has(k)) gitter.set(k, []);
-    gitter.get(k).push({ lat, lon, name, gastro });
+    gitter.get(k).push({ lat, lon, name, gastro, stufenfrei });
   }
   return gitter;
 }
@@ -201,6 +202,7 @@ export function mitUmfeld(punkte, index, anspruch = "egal", { radiusKm = 0.3, mi
         }
     if (anspruch === "bahnhof" && !best) return [];
     if (anspruch === "gastro" && !(best && best.gastro >= minGastro)) return [];
-    return [{ ...p, umfeld: best ? { bahnhof: best.name, gastro: best.gastro } : null }];
+    if (anspruch === "stufenfrei" && !(best && best.stufenfrei === 2)) return [];
+    return [{ ...p, umfeld: best ? { bahnhof: best.name, gastro: best.gastro, stufenfrei: best.stufenfrei } : null }];
   });
 }
