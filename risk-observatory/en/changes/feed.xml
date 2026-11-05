@@ -168,6 +168,30 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Corrected: Chainalysis: attacker breaches internal systems using “agentic techniques” (EV-0136)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0136/</link>
+      <guid isPermaLink="false">2026-11-05/EV-0136/CORRECTED/3</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Supplemented with 2 newly checked claims (2 supported).</description>
+    </item>
+    <item>
+      <title>Corrected: Chainalysis: attacker breaches internal systems using “agentic techniques” (EV-0136)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0136/</link>
+      <guid isPermaLink="false">2026-11-05/EV-0136/CORRECTED/4</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Two claims on the first state of Chainalysis&apos;s notice (only non-sensitive customer data accessed; no indication of session tokens) read as the current state. The update of 4 November reports exposed password hashes and live tokens of all users. Both claims have been removed and replaced by newly verified versions that explicitly reflect the state of 30 October.</description>
+    </item>
+    <item>
+      <title>Corrected: Chainalysis: attacker breaches internal systems using “agentic techniques” (EV-0136)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0136/</link>
+      <guid isPermaLink="false">2026-11-05/EV-0136/CORRECTED/5</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Second of the two replaced claims on the first state of Chainalysis&apos;s notice (see the preceding note).</description>
+    </item>
+    <item>
       <title>Published: Jailbreak bundle “Haiou” for Codex injects advertising into agent responses (EV-0161)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0161/</link>
       <guid isPermaLink="false">2026-11-04/EV-0161/PUBLISHED</guid>
@@ -379,30 +403,6 @@
       <title>Published: Veer: Intervening in page state protects web agents from deceptive interfaces (ST-0042)</title>
       <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0042</link>
       <guid isPermaLink="false">2026-11-04/ST-0042/PUBLISHED</guid>
-      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: ActionGuard: Checking each tool call before execution curbs attacks via poisoned skills (ST-0043)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0043</link>
-      <guid isPermaLink="false">2026-11-04/ST-0043/PUBLISHED</guid>
-      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Multimodal fine-tuning on narrow tasks can trigger broad misalignment (ST-0044)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0044</link>
-      <guid isPermaLink="false">2026-11-04/ST-0044/PUBLISHED</guid>
-      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Memetic trojans: malicious payloads travel through agent networks as viral posts (ST-0045)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0045</link>
-      <guid isPermaLink="false">2026-11-04/ST-0045/PUBLISHED</guid>
       <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>

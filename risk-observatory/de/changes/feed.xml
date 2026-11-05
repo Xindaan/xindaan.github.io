@@ -168,6 +168,30 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Korrigiert: Chainalysis: Angreifer dringt mit „agentischen Techniken“ in interne Systeme ein (EV-0136)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0136/</link>
+      <guid isPermaLink="false">2026-11-05/EV-0136/CORRECTED/3</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzt um 2 neu geprüfte Aussagen (2 belegt).</description>
+    </item>
+    <item>
+      <title>Korrigiert: Chainalysis: Angreifer dringt mit „agentischen Techniken“ in interne Systeme ein (EV-0136)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0136/</link>
+      <guid isPermaLink="false">2026-11-05/EV-0136/CORRECTED/4</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Zwei Aussagen zum ersten Stand der Chainalysis-Mitteilung (nur nicht sensible Kundendaten abgerufen; kein Hinweis auf Sitzungstoken) lasen sich als aktueller Stand. Die Aktualisierung vom 4. November nennt offengelegte Passwort-Hashes und aktive Tokens aller Nutzer:innen. Beide Aussagen sind entfernt und durch neu geprüfte Fassungen ersetzt, die ausdrücklich den Stand vom 30. Oktober wiedergeben.</description>
+    </item>
+    <item>
+      <title>Korrigiert: Chainalysis: Angreifer dringt mit „agentischen Techniken“ in interne Systeme ein (EV-0136)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0136/</link>
+      <guid isPermaLink="false">2026-11-05/EV-0136/CORRECTED/5</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Zweite der beiden ersetzten Aussagen zum ersten Stand der Chainalysis-Mitteilung (siehe Vermerk davor).</description>
+    </item>
+    <item>
       <title>Veröffentlicht: Jailbreak-Paket „Haiou“ für Codex blendet Werbung in Agentenantworten ein (EV-0161)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0161/</link>
       <guid isPermaLink="false">2026-11-04/EV-0161/PUBLISHED</guid>
@@ -379,30 +403,6 @@
       <title>Veröffentlicht: Veer: Eingriff in den Seitenzustand schützt Web-Agenten vor täuschenden Oberflächen (ST-0042)</title>
       <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0042</link>
       <guid isPermaLink="false">2026-11-04/ST-0042/PUBLISHED</guid>
-      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: ActionGuard: Prüfung vor jedem Tool-Aufruf bremst Angriffe über vergiftete Skills (ST-0043)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0043</link>
-      <guid isPermaLink="false">2026-11-04/ST-0043/PUBLISHED</guid>
-      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Multimodales Fine-Tuning auf engen Aufgaben kann breite Fehlausrichtung auslösen (ST-0044)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0044</link>
-      <guid isPermaLink="false">2026-11-04/ST-0044/PUBLISHED</guid>
-      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Memetische Trojaner: Schadinhalte reisen als virale Beiträge durch Agentennetze (ST-0045)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0045</link>
-      <guid isPermaLink="false">2026-11-04/ST-0045/PUBLISHED</guid>
       <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
