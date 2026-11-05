@@ -6,7 +6,15 @@
     <atom:link href="https://xindaan.github.io/risk-observatory/en/changes/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Publications, corrections and retractions of the Frontier AI Risk Observatory.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Published: Research agents: humans remain key, HackBench reveals weaknesses on reward hacking (ST-0138)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0138</link>
+      <guid isPermaLink="false">2026-11-05/ST-0138/PUBLISHED</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
     <item>
       <title>Published: Jailbreak bundle “Haiou” for Codex injects advertising into agent responses (EV-0161)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0161/</link>
@@ -395,14 +403,6 @@
       <title>Published: KedgeFlow: control plane enforces approvals for enterprise agents outside the agent (ST-0064)</title>
       <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0064</link>
       <guid isPermaLink="false">2026-11-04/ST-0064/PUBLISHED</guid>
-      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Injected page text makes browser agents grant third parties access to user accounts (ST-0065)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0065</link>
-      <guid isPermaLink="false">2026-11-04/ST-0065/PUBLISHED</guid>
       <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
