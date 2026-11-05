@@ -77,14 +77,14 @@ let data,
   drag = null,
   frame = 0;
 let state = {
-  mode: "reach",
+  mode: "one", // Standard: Hauptaeste (Andre 2026-11-05), Fahrzeit per Kartenbild-Auswahl
   direction: "from",
   destination: "2950159",
   node: 0,
   point: null,
   metric: "time",
   weight: "nodes",
-  limit: 2,
+  limit: 0, // Hauptaeste ueber ganz Deutschland; Fahrzeit setzt beim Wechsel 2 Std.
   branches: 6,
   theme: "paper",
   travelers: [],
@@ -1055,10 +1055,14 @@ function addTraveler() {
   $("traveler").value = "";
   update();
 }
+// Schaltflaeche "Erreichbarkeit": aktuelles Kartenbild behalten, sonst Hauptaeste.
+function erreichbarkeitsBild() {
+  return ["one", "reach"].includes(state.mode) ? state.mode : "one";
+}
 function wire() {
   document
     .querySelectorAll("[data-mode]")
-    .forEach((b) => (b.onclick = () => setMode(b.dataset.mode)));
+    .forEach((b) => (b.onclick = () => setMode(b.dataset.mode === "reach" ? erreichbarkeitsBild() : b.dataset.mode)));
   document.querySelectorAll("#metric button").forEach(
     (b) =>
       (b.onclick = () => {

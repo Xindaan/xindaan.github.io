@@ -14,7 +14,7 @@ Dann http://localhost:8765/ oeffnen. Alle Dateien sind statisch, ohne Build oder
 
 ## Bedienung
 
-- Strasse: Ort, Richtung und Zeitbudget waehlen. **Fahrzeit** beantwortet, wie weit man kommt; **Hauptaeste** zeigt, welche Routen sich buendeln. Beide gehoeren zur Ansicht **Erreichbarkeit**.
+- Strasse: Ort, Richtung und Zeitbudget waehlen. **Fahrzeit** beantwortet, wie weit man kommt; **Hauptaeste** zeigt, welche Routen sich buendeln. Beide gehoeren zur Ansicht **Erreichbarkeit**; die Seite startet mit Hauptaesten ueber ganz Deutschland.
 - Bahn & Bus: Datum, Uhrzeit, Richtung und Umstiege festlegen, dann berechnen. Graue Linien sind ein vereinfachtes Orientierungsnetz. Auswahl einer Haltestelle zeichnet die vom Fahrplandienst gelieferten Fahrtabschnitte ein; gestrichelt sind Fusswege.
 - Ortsauswahl bei Bahn wie bei Strasse: Orte einzeln suchen, mit Enter/Pfeil hinzufuegen und ueber × entfernen. Das gilt auch fuer Zentren und eigene Treffpunkte.
 - Bahn-Treffpunkte: bester gemeinsamer Haltepunkt und bis zu vier Alternativen mit mindestens 20 km Abstand. Nummern entsprechen der Liste; Linienfarben den Startorten. Die Anreisen zum besten Vorschlag werden automatisch nach der Suche geladen.
