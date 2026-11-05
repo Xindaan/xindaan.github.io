@@ -16,6 +16,22 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Published: Influence between AI agents: every tested model sways the overseer (ST-0139)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0139</link>
+      <guid isPermaLink="false">2026-11-05/ST-0139/PUBLISHED</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: CNAS report: “sovereign agents” beyond human control as a risk (ST-0140)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0140</link>
+      <guid isPermaLink="false">2026-11-05/ST-0140/PUBLISHED</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
       <title>Published: Jailbreak bundle “Haiou” for Codex injects advertising into agent responses (EV-0161)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0161/</link>
       <guid isPermaLink="false">2026-11-04/EV-0161/PUBLISHED</guid>
@@ -387,22 +403,6 @@
       <title>Published: APEX-Harm: script attacks on agents in professional workspaces mostly succeed (ST-0062)</title>
       <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0062</link>
       <guid isPermaLink="false">2026-11-04/ST-0062/PUBLISHED</guid>
-      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: LEST: tests based on system cards find counterexamples to 6 of 9 safety claims (ST-0063)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0063</link>
-      <guid isPermaLink="false">2026-11-04/ST-0063/PUBLISHED</guid>
-      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: KedgeFlow: control plane enforces approvals for enterprise agents outside the agent (ST-0064)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0064</link>
-      <guid isPermaLink="false">2026-11-04/ST-0064/PUBLISHED</guid>
       <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
