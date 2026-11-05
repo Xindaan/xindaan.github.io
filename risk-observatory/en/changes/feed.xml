@@ -192,6 +192,14 @@
       <description>Second of the two replaced claims on the first state of Chainalysis&apos;s notice (see the preceding note).</description>
     </item>
     <item>
+      <title>Published: Evidence-view gaming: score maximisation leads to misleading summaries (EV-0275)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0275/</link>
+      <guid isPermaLink="false">2026-11-05/EV-0275/PUBLISHED</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
       <title>Published: Jailbreak bundle “Haiou” for Codex injects advertising into agent responses (EV-0161)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0161/</link>
       <guid isPermaLink="false">2026-11-04/EV-0161/PUBLISHED</guid>
@@ -395,14 +403,6 @@
       <title>Published: MMSkillRisk: Instructions hidden in skill images lure agents into unauthorised actions (ST-0041)</title>
       <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0041</link>
       <guid isPermaLink="false">2026-11-04/ST-0041/PUBLISHED</guid>
-      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Veer: Intervening in page state protects web agents from deceptive interfaces (ST-0042)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0042</link>
-      <guid isPermaLink="false">2026-11-04/ST-0042/PUBLISHED</guid>
       <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
