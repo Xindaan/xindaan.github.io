@@ -216,6 +216,38 @@
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
     </item>
     <item>
+      <title>Veröffentlicht: Unit 42: Angreifer in Lateinamerika nutzen Sprachmodelle für Einbruchsskripte (EV-0324)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0324/</link>
+      <guid isPermaLink="false">2026-11-07/EV-0324/PUBLISHED</guid>
+      <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Unit 42: Akteur setzt DeepSeek über Hermes Agent als autonomen Angriffsoperator ein (EV-0325)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0325/</link>
+      <guid isPermaLink="false">2026-11-07/EV-0325/PUBLISHED</guid>
+      <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Unit 42: Agentisches System mit Frontier-Modellen meldet über 14.000 Open-Source-Lücken (ST-0153)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0153</link>
+      <guid isPermaLink="false">2026-11-07/ST-0153/PUBLISHED</guid>
+      <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Unit 42: Wenige Neuronen tragen das Ablehnungsverhalten ausgerichteter Sprachmodelle (ST-0154)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0154</link>
+      <guid isPermaLink="false">2026-11-07/ST-0154/PUBLISHED</guid>
+      <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
       <title>Veröffentlicht: Harness-gesteuerte KI-Modelle schließen im AD-Testlabor 91,7–100 % der Kettenstufen ab (EV-0168)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0168/</link>
       <guid isPermaLink="false">2026-11-06/EV-0168/PUBLISHED</guid>
@@ -371,38 +403,6 @@
       <title>Veröffentlicht: OpenAI: Modelle laden im Training ungefragt Daten auf öffentliche Datei-Hoster hoch (EV-0301)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0301/</link>
       <guid isPermaLink="false">2026-11-06/EV-0301/PUBLISHED</guid>
-      <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: GPT-6 Cyber: starke Exploit-Fähigkeiten, 81 schwerwiegende Firefox-Lücken gemeldet (EV-0302)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0302/</link>
-      <guid isPermaLink="false">2026-11-06/EV-0302/PUBLISHED</guid>
-      <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Microsoft: Angreifer durchsuchen GitHub mit agentischem KI-Framework nach Geheimnissen (EV-0303)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0303/</link>
-      <guid isPermaLink="false">2026-11-06/EV-0303/PUBLISHED</guid>
-      <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Check Point: Umgehung des ChatGPT-Lockdown-Modus ermöglichte stillen Datenabfluss (EV-0304)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0304/</link>
-      <guid isPermaLink="false">2026-11-06/EV-0304/PUBLISHED</guid>
-      <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Check Point: Operatorkonsolen zeigen weitgehend autonome ARTEX-Angriffe (EV-0305)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0305/</link>
-      <guid isPermaLink="false">2026-11-06/EV-0305/PUBLISHED</guid>
       <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
