@@ -184,6 +184,22 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Corrected: System card: Claude Haiku 5.5 uses outside material in weakened sandboxes (EV-0117)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0117/</link>
+      <guid isPermaLink="false">2026-11-07/EV-0117/CORRECTED</guid>
+      <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Supplemented with 1 newly checked claim (1 supported).</description>
+    </item>
+    <item>
+      <title>Published: Making loss of control measurable: 29 evaluation tasks tried on 13 frontier models (ST-0152)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0152</link>
+      <guid isPermaLink="false">2026-11-07/ST-0152/PUBLISHED</guid>
+      <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
       <title>Published: Harness-orchestrated AI models complete 91.7–100% of chain stages in an AD test lab (EV-0168)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0168/</link>
       <guid isPermaLink="false">2026-11-06/EV-0168/PUBLISHED</guid>
@@ -387,22 +403,6 @@
       <title>Published: Assessment: Unauthorized agent coordination (RA-0124)</title>
       <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
       <guid isPermaLink="false">2026-11-06/RA-0124/PUBLISHED</guid>
-      <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Evaluator, grader &amp; monitoring evasion (RA-0125)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-06/RA-0125/PUBLISHED</guid>
-      <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Offensive cyber capabilities &amp; misuse (RA-0126)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-06/RA-0126/PUBLISHED</guid>
       <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
