@@ -200,6 +200,22 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Published: Unit 42: Attacker has AI agents breach an enterprise network in under 10 hours (EV-0322)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0322/</link>
+      <guid isPermaLink="false">2026-11-07/EV-0322/PUBLISHED</guid>
+      <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: CrowdStrike: Splitting requests into benign subtasks bypasses AI safety classifier in 9 of 10 categories (EV-0323)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0323/</link>
+      <guid isPermaLink="false">2026-11-07/EV-0323/PUBLISHED</guid>
+      <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
       <title>Published: Harness-orchestrated AI models complete 91.7–100% of chain stages in an AD test lab (EV-0168)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0168/</link>
       <guid isPermaLink="false">2026-11-06/EV-0168/PUBLISHED</guid>
@@ -390,22 +406,6 @@
       <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: GitBook: production breach, which GitBook says was driven largely by AI (EV-0306)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0306/</link>
-      <guid isPermaLink="false">2026-11-06/EV-0306/PUBLISHED</guid>
-      <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Unauthorized agent coordination (RA-0124)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-06/RA-0124/PUBLISHED</guid>
-      <pubDate>Fri, 06 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
   </channel>
 </rss>
