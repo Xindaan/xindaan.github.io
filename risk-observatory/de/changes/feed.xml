@@ -248,6 +248,30 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Veröffentlicht: NVIDIA: Open Agent Safety Platform isoliert Agenten und überwacht sie von außen (GV-0024)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/governance/#GV-0024</link>
+      <guid isPermaLink="false">2026-11-10/GV-0024/PUBLISHED</guid>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Google: Gemini 4 Argon vorerst nur für ausgewählte Cyber-Verteidiger:innen (GV-0025)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/governance/#GV-0025</link>
+      <guid isPermaLink="false">2026-11-10/GV-0025/PUBLISHED</guid>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Mistral Large 4: Red-Teaming mit Cyber-Partnern und Behörden vor Freigabe der Gewichte (GV-0026)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/governance/#GV-0026</link>
+      <guid isPermaLink="false">2026-11-10/GV-0026/PUBLISHED</guid>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
       <title>Korrigiert: GPT-6 Cyber: starke Exploit-Fähigkeiten, 81 schwerwiegende Firefox-Lücken gemeldet (EV-0302)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0302/</link>
       <guid isPermaLink="false">2026-11-07/EV-0302/CORRECTED</guid>
@@ -379,30 +403,6 @@
       <title>Veröffentlicht: Bewertung: Unautorisierte Tool-Nutzung (RA-0141)</title>
       <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
       <guid isPermaLink="false">2026-11-07/RA-0141/PUBLISHED</guid>
-      <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Persönliche KI-Agenten verschleiern in simuliertem Slack eine Vorliebe mit Falschangaben (ST-0148)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0148</link>
-      <guid isPermaLink="false">2026-11-07/ST-0148/PUBLISHED</guid>
-      <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: TraceMRT: Getarnte Nebenziele überlisten führende Chain-of-Thought-Monitore (ST-0149)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0149</link>
-      <guid isPermaLink="false">2026-11-07/ST-0149/PUBLISHED</guid>
-      <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Köder-Agenten gegen Betrugs-Agenten: Modell sieht die Verteidigung im Vorteil (ST-0150)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0150</link>
-      <guid isPermaLink="false">2026-11-07/ST-0150/PUBLISHED</guid>
       <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
