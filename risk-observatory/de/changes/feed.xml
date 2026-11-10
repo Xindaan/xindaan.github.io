@@ -240,6 +240,14 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Veröffentlicht: OpenAI: Control Room zum zentralen Stoppen von Modell-Jobs in der Forschung (GV-0023)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/governance/#GV-0023</link>
+      <guid isPermaLink="false">2026-11-10/GV-0023/PUBLISHED</guid>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
       <title>Korrigiert: GPT-6 Cyber: starke Exploit-Fähigkeiten, 81 schwerwiegende Firefox-Lücken gemeldet (EV-0302)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0302/</link>
       <guid isPermaLink="false">2026-11-07/EV-0302/CORRECTED</guid>
@@ -395,14 +403,6 @@
       <title>Veröffentlicht: Köder-Agenten gegen Betrugs-Agenten: Modell sieht die Verteidigung im Vorteil (ST-0150)</title>
       <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0150</link>
       <guid isPermaLink="false">2026-11-07/ST-0150/PUBLISHED</guid>
-      <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Multimodal-SEA: Multimodale Inhalte steigern Social-Engineering-Erfolge gegen KI-Agenten (ST-0151)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0151</link>
-      <guid isPermaLink="false">2026-11-07/ST-0151/PUBLISHED</guid>
       <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
