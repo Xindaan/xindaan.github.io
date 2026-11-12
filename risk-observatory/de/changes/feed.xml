@@ -32,7 +32,7 @@
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
     </item>
     <item>
-      <title>Veröffentlicht: Outlook-Lücke CVE-2026-124194 wird ausgenutzt; Entdeckung mit Claude (EV-0361)</title>
+      <title>Veröffentlicht: Outlook-Zero-Day CVE-2026-124194: Entdeckung laut Microsoft mit Claude (EV-0361)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0361/</link>
       <guid isPermaLink="false">2026-11-12/EV-0361/PUBLISHED</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
@@ -166,6 +166,30 @@
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Korrigiert: Outlook-Zero-Day CVE-2026-124194: Entdeckung laut Microsoft mit Claude (EV-0361)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0361/</link>
+      <guid isPermaLink="false">2026-11-12/EV-0361/CORRECTED</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzt um 3 neu geprüfte Aussagen (3 belegt).</description>
+    </item>
+    <item>
+      <title>Korrigiert: Binance: Angreifer missbrauchen internes KI-Werkzeug vor Diebstahl aus Hot Wallets (EV-0362)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0362/</link>
+      <guid isPermaLink="false">2026-11-12/EV-0362/CORRECTED</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzt um 2 neu geprüfte Aussagen (2 belegt).</description>
+    </item>
+    <item>
+      <title>Korrigiert: Outlook-Zero-Day CVE-2026-124194: Entdeckung laut Microsoft mit Claude (EV-0361)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0361/</link>
+      <guid isPermaLink="false">2026-11-12/EV-0361/CORRECTED/2</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzt um Berichte von SecurityWeek (10. November 2026) und The Record zu Microsofts Advisory: Microsoft führt die Outlook-Lücke als aktiv ausgenutzt und dankt Benoît Sevens für die Entdeckung unter Nutzung von Anthropics Claude. Bei der Neubewertung: Evidenz von „niedrig“ auf „moderat“, unabhängige Bestätigung von „keine“ auf „teilweise“, weil nun drei Berichte übereinstimmen; für die KI-Beteiligung gehen sie alle auf Microsofts Advisory zurück.</description>
     </item>
     <item>
       <title>Veröffentlicht: OpenAI: Evaluations-Agenten nutzen Hinterlassenschaften früherer Läufe für Clusterzugriff (EV-0347)</title>
@@ -379,30 +403,6 @@
       <title>Veröffentlicht: Bewertung: Evaluator-, Grader- &amp; Monitoring-Umgehung (RA-0143)</title>
       <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
       <guid isPermaLink="false">2026-11-10/RA-0143/PUBLISHED</guid>
-      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Bewertung: Offensive Cyberfähigkeiten &amp; Missbrauch (RA-0144)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-10/RA-0144/PUBLISHED</guid>
-      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Bewertung: Persistente Speicher &amp; Informationsweitergabe (RA-0145)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-10/RA-0145/PUBLISHED</guid>
-      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Bewertung: Rekursive Selbstverbesserung (RA-0146)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-10/RA-0146/PUBLISHED</guid>
       <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
