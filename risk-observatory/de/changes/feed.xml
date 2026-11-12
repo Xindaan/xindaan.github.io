@@ -160,6 +160,14 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Veröffentlicht: Anthropic: Modelle fanden in sechs Monaten über 29.000 Kandidaten-Lücken in Open-Source-Software (EV-0097)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0097/</link>
+      <guid isPermaLink="false">2026-11-12/EV-0097/PUBLISHED</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
       <title>Veröffentlicht: OpenAI: Evaluations-Agenten nutzen Hinterlassenschaften früherer Läufe für Clusterzugriff (EV-0347)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0347/</link>
       <guid isPermaLink="false">2026-11-11/EV-0347/PUBLISHED</guid>
@@ -395,14 +403,6 @@
       <title>Veröffentlicht: Bewertung: Rekursive Selbstverbesserung (RA-0146)</title>
       <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
       <guid isPermaLink="false">2026-11-10/RA-0146/PUBLISHED</guid>
-      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Bewertung: Sandbox-Escapes &amp; Capability-Control (RA-0147)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-10/RA-0147/PUBLISHED</guid>
       <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
