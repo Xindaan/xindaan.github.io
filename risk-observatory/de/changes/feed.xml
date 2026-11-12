@@ -192,6 +192,22 @@
       <description>Ergänzt um Berichte von SecurityWeek (10. November 2026) und The Record zu Microsofts Advisory: Microsoft führt die Outlook-Lücke als aktiv ausgenutzt und dankt Benoît Sevens für die Entdeckung unter Nutzung von Anthropics Claude. Bei der Neubewertung: Evidenz von „niedrig“ auf „moderat“, unabhängige Bestätigung von „keine“ auf „teilweise“, weil nun drei Berichte übereinstimmen; für die KI-Beteiligung gehen sie alle auf Microsofts Advisory zurück.</description>
     </item>
     <item>
+      <title>Korrigiert: Binance: Angreifer missbrauchen internes KI-Werkzeug vor Diebstahl aus Hot Wallets (EV-0362)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0362/</link>
+      <guid isPermaLink="false">2026-11-12/EV-0362/CORRECTED/2</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzt um 2 neu geprüfte Aussagen (2 belegt).</description>
+    </item>
+    <item>
+      <title>Korrigiert: Binance: Angreifer missbrauchen internes KI-Werkzeug vor Diebstahl aus Hot Wallets (EV-0362)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0362/</link>
+      <guid isPermaLink="false">2026-11-12/EV-0362/CORRECTED/3</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Ergänzt um einen Bericht von The Next Web (4. November 2026, gestützt auf Reuters) zu Binances Vorfallbericht sowie um Angaben von SOCRadar: Das FBI schreibt den Diebstahl von mehr als 6 Milliarden US-Dollar der nordkoreanischen Gruppe TraderTraitor zu, Blockchain-Analysen beziffern die gestohlenen Werte auf 6,36 Milliarden US-Dollar. Bei der Neubewertung: Schwere von „hoch“ auf „kritisch“ wegen des belegten Schadens, Zuordnung von „mittel“ auf „hoch“, unabhängige Bestätigung von „keine“ auf „teilweise“; die Rolle des KI-Werkzeugs stützt sich weiter allein auf Binances eigene Angaben.</description>
+    </item>
+    <item>
       <title>Veröffentlicht: OpenAI: Evaluations-Agenten nutzen Hinterlassenschaften früherer Läufe für Clusterzugriff (EV-0347)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0347/</link>
       <guid isPermaLink="false">2026-11-11/EV-0347/PUBLISHED</guid>
@@ -390,22 +406,6 @@
       <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Bewertung: Unerlaubte Agentenkoordination (RA-0142)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-10/RA-0142/PUBLISHED</guid>
-      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Bewertung: Evaluator-, Grader- &amp; Monitoring-Umgehung (RA-0143)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-10/RA-0143/PUBLISHED</guid>
-      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
   </channel>
 </rss>

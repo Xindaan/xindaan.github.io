@@ -40,7 +40,7 @@
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
     </item>
     <item>
-      <title>Published: Binance: attackers abuse an internal AI tool on the way to a hot wallet theft (EV-0362)</title>
+      <title>Published: Binance: attackers abuse internal AI tool before hot wallet theft (EV-0362)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0362/</link>
       <guid isPermaLink="false">2026-11-12/EV-0362/PUBLISHED</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
@@ -176,7 +176,7 @@
       <description>Supplemented with 3 newly checked claims (3 supported).</description>
     </item>
     <item>
-      <title>Corrected: Binance: attackers abuse an internal AI tool on the way to a hot wallet theft (EV-0362)</title>
+      <title>Corrected: Binance: attackers abuse internal AI tool before hot wallet theft (EV-0362)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0362/</link>
       <guid isPermaLink="false">2026-11-12/EV-0362/CORRECTED</guid>
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
@@ -190,6 +190,22 @@
       <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
       <category>Corrected</category>
       <description>Supplemented with reports by SecurityWeek (10 November 2026) and The Record on Microsoft&apos;s advisory: Microsoft lists the Outlook vulnerability as actively exploited and credits Benoît Sevens with its discovery using Anthropic&apos;s Claude. Reassessment: evidence raised from “low” to “moderate”, independent confirmation from “none” to “partial”, because three reports now agree; for the AI involvement, all of them trace back to Microsoft&apos;s advisory.</description>
+    </item>
+    <item>
+      <title>Corrected: Binance: attackers abuse internal AI tool before hot wallet theft (EV-0362)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0362/</link>
+      <guid isPermaLink="false">2026-11-12/EV-0362/CORRECTED/2</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Supplemented with 2 newly checked claims (2 supported).</description>
+    </item>
+    <item>
+      <title>Corrected: Binance: attackers abuse internal AI tool before hot wallet theft (EV-0362)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0362/</link>
+      <guid isPermaLink="false">2026-11-12/EV-0362/CORRECTED/3</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Supplemented with a report by The Next Web (4 November 2026, based on Reuters) on Binance&apos;s incident report and with information from SOCRadar: the FBI attributes the theft of more than $6 billion to the North Korean group TraderTraitor, and blockchain analyses value the stolen assets at $6.36 billion. Reassessment: severity raised from “high” to “critical” because of the documented loss, attribution from “medium” to “high”, independent confirmation from “none” to “partial”; the role of the AI tool still rests solely on Binance&apos;s own statements.</description>
     </item>
     <item>
       <title>Published: OpenAI: Evaluation agents use leftovers of earlier runs to access research cluster (EV-0347)</title>
@@ -390,22 +406,6 @@
       <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Unauthorized agent coordination (RA-0142)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-10/RA-0142/PUBLISHED</guid>
-      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Evaluator, grader &amp; monitoring evasion (RA-0143)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-10/RA-0143/PUBLISHED</guid>
-      <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
   </channel>
 </rss>
