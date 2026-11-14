@@ -136,6 +136,22 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Published: SOCRadar: XaocMail campaign malware developed and tested with Claude Code (EV-0420)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0420/</link>
+      <guid isPermaLink="false">2026-11-14/EV-0420/PUBLISHED</guid>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: OpenAI ChatGPT Wallet: approval for each agent purchase, no card details for agents (GV-0030)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/governance/#GV-0030</link>
+      <guid isPermaLink="false">2026-11-14/GV-0030/PUBLISHED</guid>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
       <title>Corrected: PHP2Shell: AI-assisted PHP flaws, followed by real attacks up to a wiper (EV-0087)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0087/</link>
       <guid isPermaLink="false">2026-11-13/EV-0087/CORRECTED</guid>
@@ -387,22 +403,6 @@
       <title>Published: UK AISI and CAISI: Kimi K3 completes cyber range once but trails US models (EV-0383)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0383/</link>
       <guid isPermaLink="false">2026-11-13/EV-0383/PUBLISHED</guid>
-      <pubDate>Fri, 13 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: OpenAI: GPT-5.6 Sol finds bugs and exploit building blocks but no functional exploit chain (EV-0384)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0384/</link>
-      <guid isPermaLink="false">2026-11-13/EV-0384/PUBLISHED</guid>
-      <pubDate>Fri, 13 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: OpenAI: Astra at Critical cyber level per developer, browser chain with sandbox escape (EV-0385)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0385/</link>
-      <guid isPermaLink="false">2026-11-13/EV-0385/PUBLISHED</guid>
       <pubDate>Fri, 13 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
