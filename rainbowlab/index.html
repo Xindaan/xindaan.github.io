@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RainbowLab · Regenbogen im Winkel</title>
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif;margin:0;background:#0b0e18;color:#e9f0ff;}
+  header{padding:18px 18px 6px 18px;}
+  h1{font-size:22px;margin:0 0 6px 0}
+  p{margin:0.3rem 0 0.6rem 0;line-height:1.35}
+  .wrap{display:flex;flex-wrap:wrap;gap:14px;padding:10px 14px 20px 14px}
+  .panel{background:#0f1428;border:1px solid #1a254a;border-radius:10px;box-shadow:0 0 0 1px #0b1024 inset;padding:12px}
+  #controls{flex:1 1 320px;min-width:0;max-width:540px}
+  #viz{flex:3 1 560px;min-width:0;display:flex;flex-direction:column;align-items:center;gap:8px}
+  .row{display:grid;grid-template-columns:150px 1fr 70px;align-items:center;gap:10px;margin:8px 0}
+  .row input[type="range"]{width:100%;min-width:0}
+  .small{font-size:12px;color:#a7b4ff}
+  canvas{display:block;width:min(100%, 720px);height:auto;background:linear-gradient(#061023,#0b1636);border-radius:12px;border:1px solid #1b264e}
+  .legend{display:flex;gap:14px;flex-wrap:wrap}
+  .badge{font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid #2a3a72;background:#0d1530;color:#cfe0ff}
+  .horizon{color:#7ea9ff}
+  .btn{display:inline-block;padding:8px 12px;border-radius:8px;border:1px solid #314a9a;background:#122055;color:#fff;text-decoration:none;cursor:pointer}
+  .btn:active{transform:translateY(1px)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  code{background:#0c1330;padding:2px 4px;border-radius:4px;color:#cfe0ff}
+  *, *::before, *::after{box-sizing:border-box}
+  footer{padding:0 18px 20px}
+  a{color:#caddff}
+  @media(max-width:560px){.wrap{padding:10px}.row{grid-template-columns:minmax(0, 1fr) 56px}.row label{grid-column:1/-1}.panel{max-width:100%}}
+</style>
+</head>
+<body>
+<header>
+  <h1>RainbowLab</h1>
+  <p class="small">Verändere die Sonnenhöhe und sieh, welcher Teil von Haupt- und Nebenbogen über dem Horizont liegt. Die Bogenwinkel folgen der geometrischen Optik. Die Darstellung von Helligkeit und Interferenzstreifen ist schematisch.</p>
+</header>
+
+<div class="wrap">
+  <div id="viz" class="panel">
+    <canvas id="c" width="900" height="700" role="img" aria-label="Haupt- und Nebenregenbogen über dem Horizont."></canvas>
+    <div class="legend">
+      <span class="badge">Primärbogen ≈ 42°</span>
+      <span class="badge">Sekundärbogen ≈ 51°</span>
+      <span class="badge">Farbumkehr (rot außen → innen)</span>
+      <span class="badge">Alexander’s Dark Band dazwischen</span>
+      <span class="badge">Zusatzbögen innen am Hauptbogen</span>
+      <span class="badge horizon">Horizont und Bogenhöhen</span>
+    </div>
+    <p id="bow-heights" class="small"></p>
+    <div class="grid">
+      <button id="save" class="btn">PNG exportieren</button>
+      <button id="reset" class="btn">Standardwerte</button>
+    </div>
+  </div>
+
+  <div id="controls" class="panel">
+    <div class="row">
+      <label for="rDrop">Tröpfchenradius (µm)</label>
+      <input id="rDrop" type="range" min="10" max="3000" step="1" value="250">
+      <output id="rDropVal">250</output>
+    </div>
+    <div class="row">
+      <label for="sunElev">Sonnenhöhe (°)</label>
+      <input id="sunElev" type="range" min="0" max="60" step="0.1" value="8">
+      <output id="sunElevVal">8.0</output>
+    </div>
+    <div class="row">
+      <label for="gain">Helligkeit</label>
+      <input id="gain" type="range" min="0.2" max="2.0" step="0.01" value="1.10">
+      <output id="gainVal">1.10</output>
+    </div>
+    <div class="row">
+      <label for="gamma">Gamma</label>
+      <input id="gamma" type="range" min="0.8" max="2.2" step="0.01" value="1.30">
+      <output id="gammaVal">1.30</output>
+    </div>
+    <div class="row">
+      <label for="supernum">Zusatzbögen (schematisch)</label>
+      <input id="supernum" type="range" min="0.0" max="1.0" step="0.01" value="0.60">
+      <output id="supernumVal">0.60</output>
+    </div>
+    <div class="row">
+      <label for="secondary">Sekundärbogen</label>
+      <input id="secondary" type="range" min="0.0" max="1.0" step="0.01" value="0.55">
+      <output id="secondaryVal">0.55</output>
+    </div>
+    <div class="row">
+      <label for="sky">Himmel &amp; Dunst</label>
+      <input id="sky" type="range" min="0.0" max="1.0" step="0.01" value="0.35">
+      <output id="skyVal">0.35</output>
+    </div>
+    <p class="small">Je höher die Sonne steht, desto tiefer liegt der Gegenpunkt der Sonne. Wenn die Sonnenhöhe den jeweiligen Bogenradius übersteigt, liegt der gesamte Bogen unter dem Horizont.</p>
+    <details>
+      <summary>Was hier physikalisch passiert (kurz)</summary>
+      <p class="small">
+        Für einen Brechungsindex <code>n(λ)</code> (Wasser ist dispersiv) ergeben sich stationäre Ablenkwinkel für die Ordnung <code>m</code> der inneren Reflexion:
+        Der Ablenkwinkel ist <code>D_m = 2θ_i - 2(m+1)θ_r + mπ</code> mit <code>n sinθ_r = sinθ_i</code>.
+        Die Bedingung <code>dD_m/dθ_i = 0</code> liefert für den Primärbogen (<code>m=1</code>) <code>sin²θ_r = (4 - n²)/(3n²)</code> und für den Sekundärbogen (<code>m=2</code>) <code>sin²θ_r = (9 - n²)/(8n²)</code>.
+        Der beobachtete Radius ist <code>|D_m - 180°|</code>. Die spektrale Variation von <code>n(λ)</code> (rot → kleineres <code>n</code>) erzeugt die Farbsortierung – beim Sekundärbogen invertiert.
+        Physikalisch entstehen Zusatzbögen durch Interferenz. Hier zeigen gedämpfte Streifen qualitativ, dass sie innen liegen und ihr Abstand bei kleineren Tropfen zunimmt. Die Intensität ist keine berechnete Airy- oder Mie-Kurve. Hinter dem Winkelbereich der einmal und vor dem der zweimal reflektierten Strahlen liegt Alexanders dunkles Band.
+      </p>
+      <p class="small"><a href="https://indico.physics.lbl.gov/event/369/contributions/858/attachments/788/876/LBLJDJwideperf.pdf">Physikalischer Hintergrund · J. D. Jackson, UC Berkeley</a></p>
+    </details>
+  </div>
+</div>
+
+<footer><a href="../">Alle Projekte</a></footer>
+
+<script>
+// ---------- Utilities ----------
+const deg = x => x * Math.PI / 180;
+const rad = x => x * 180 / Math.PI;
+function clamp(x, a, b){ return Math.max(a, Math.min(b, x)); }
+
+// Wellenlänge → sRGB (ungefähr, 380–700 nm). Returns [r,g,b] in 0..1
+function wl2rgb(nm){
+  let r=0,g=0,b=0;
+  if(nm>=380 && nm<440){ r=-(nm-440)/(440-380); b=1; }
+  else if(nm<490){ g=(nm-440)/(490-440); b=1; }
+  else if(nm<510){ g=1; b=-(nm-510)/(510-490); }
+  else if(nm<580){ r=(nm-510)/(580-510); g=1; }
+  else if(nm<645){ r=1; g=-(nm-645)/(645-580); }
+  else if(nm<=700){ r=1; }
+  // Luminanz-Korrektur (sichtbarkeitskurve grob)
+  let s=1.0;
+  if(nm<420) s=0.3+0.7*(nm-380)/(40);
+  else if(nm>645) s=0.3+0.7*(700-nm)/(55);
+  return [r*s,g*s,b*s];
+}
+
+// Dispersiver Index Wasser: einfache lineare Approx zwischen 400nm (1.343) und 700nm (1.331).
+function nWater(nm){
+  const nBlue=1.343, nRed=1.331, nmBlue=400, nmRed=700;
+  const t = clamp((nmRed - nm)/(nmRed - nmBlue), 0, 1);
+  return nRed + t*(nBlue - nRed);
+}
+
+// Stationärer Radius für Ordnung m (m=1 primär, m=2 sekundär). Return Grad.
+function rainbowRadiusDeg(n, m){
+  // Lösen der Stationärbedingung analytisch (siehe Text oben)
+  let s2;
+  if(m===1){
+    s2 = (4 - n*n) / (3*n*n);
+  }else if(m===2){
+    s2 = (9 - n*n) / (8*n*n);
+  }else{
+    return NaN;
+  }
+  s2 = clamp(s2, 0, 1);
+  const sr = Math.sqrt(s2);
+  const theta_r = Math.asin(sr);
+  const theta_i = Math.asin(n*sr);
+  let D;
+  if(m===1){
+    D = Math.PI + 2*theta_i - 4*theta_r; // in rad
+  }else{
+    D = 2*Math.PI + 2*theta_i - 6*theta_r;
+  }
+  const R = Math.abs(rad(D) - 180);
+  return R;
+}
+
+// Precompute spectral samples
+const spectrum = Array.from({ length: 61 }, (_, index) => {
+  const nm = 400 + index * 5;
+  const n = nWater(nm);
+  return { primary: rainbowRadiusDeg(n, 1), secondary: rainbowRadiusDeg(n, 2), rgb: wl2rgb(nm) };
+});
+const red = spectrum.at(-1);
+function angularRadius(x, y, focal, elevation) {
+  // View ray in a level pinhole camera; the antisolar vector has altitude −elevation.
+  const cosine = (focal * Math.cos(elevation) - y * Math.sin(elevation)) /
+    Math.hypot(x, y, focal);
+  return rad(Math.acos(clamp(cosine, -1, 1)));
+}
+
+// Controls
+const rDrop = document.getElementById('rDrop');
+const sunElev = document.getElementById('sunElev');
+const gain = document.getElementById('gain');
+const gamma = document.getElementById('gamma');
+const supernum = document.getElementById('supernum');
+const secondary = document.getElementById('secondary');
+const sky = document.getElementById('sky');
+const outs = {
+  rDropVal: document.getElementById('rDropVal'),
+  sunElevVal: document.getElementById('sunElevVal'),
+  gainVal: document.getElementById('gainVal'),
+  gammaVal: document.getElementById('gammaVal'),
+  supernumVal: document.getElementById('supernumVal'),
+  secondaryVal: document.getElementById('secondaryVal'),
+  skyVal: document.getElementById('skyVal'),
+};
+for(const el of [rDrop,sunElev,gain,gamma,supernum,secondary,sky]){
+  el.addEventListener('input', ()=>{ syncLabels(); render(); });
+}
+function syncLabels(){
+  outs.rDropVal.textContent = rDrop.value;
+  outs.sunElevVal.textContent = (+sunElev.value).toFixed(1);
+  outs.gainVal.textContent = (+gain.value).toFixed(2);
+  outs.gammaVal.textContent = (+gamma.value).toFixed(2);
+  outs.supernumVal.textContent = (+supernum.value).toFixed(2);
+  outs.secondaryVal.textContent = (+secondary.value).toFixed(2);
+  outs.skyVal.textContent = (+sky.value).toFixed(2);
+  const height = radius => {
+    const altitude = radius - Number(sunElev.value);
+    return altitude < 0 ? 'unter dem Horizont' : `${altitude.toFixed(1).replace('.', ',')}° über dem Horizont`;
+  };
+  document.getElementById('bow-heights').textContent =
+    `Höhe am Scheitel des roten Rands: Hauptbogen ${height(red.primary)} · Nebenbogen ${height(red.secondary)}`;
+}
+document.getElementById('reset').onclick = ()=>{
+  rDrop.value=250; sunElev.value=8; gain.value=1.10; gamma.value=1.30; supernum.value=0.60; secondary.value=0.55; sky.value=0.35;
+  syncLabels(); render();
+};
+
+// Canvas + geometry
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+// One-dimensional radial color profile approach for speed
+function makeProfile(){
+  const maxAngle = 95; // degrees shown from antisolar point
+  const step = 0.05;
+  const N = Math.floor(maxAngle/step)+1;
+  const prof = new Float32Array(N*3); // RGB linear
+  const sigBase = 0.30; // deg for 100 µm
+  const R = Math.max(10, +rDrop.value); // µm
+  const sigma = sigBase * Math.sqrt(100/R);
+  const sigma2 = sigma*sigma*2;
+  const Asec = +secondary.value;      // relative amplitude of secondary
+  const Asuper = +supernum.value;     // supernumerary strength
+  // Supernumerary spatial frequency ~ sqrt(R) (heuristic)
+  const k0 = 1.4; // cycles/deg at R=100 µm (tuned for looks)
+  const k = k0 * Math.sqrt(R/100);
+  for(let i=0;i<N;i++){
+    const a = i*step; // angle in deg
+    let rr=0, gg=0, bb=0;
+    for(const { primary, secondary, rgb: [r,g,b] } of spectrum){
+      const dp = a - primary;
+      let Ip = Math.exp(-(dp*dp) / sigma2);
+      if (dp < 0 && Asuper > 0) {
+        // Illustrative fringes on the inner side. This is not an Airy solution.
+        const spread = 1.8 / k;
+        const envelope = Math.exp(dp / spread);
+        Ip += Asuper * 0.24 * envelope * Math.sin(Math.PI * k * dp) ** 2;
+      }
+      const ds = a - secondary;
+      const Is = Asec * Math.exp(-(ds*ds) / (sigma2 * 1.15**2));
+      rr += r*(Ip + Is*0.7);
+      gg += g*(Ip + Is*0.7);
+      bb += b*(Ip + Is*0.7);
+    }
+    // Normalize
+    const scale = 1.0 / spectrum.length;
+    prof[i*3+0] = rr*scale;
+    prof[i*3+1] = gg*scale;
+    prof[i*3+2] = bb*scale;
+  }
+  // Gain normalize
+  let maxv=0;
+  for(let i=0;i<N;i++){
+    const r=prof[i*3], g=prof[i*3+1], b=prof[i*3+2];
+    maxv=Math.max(maxv, r, g, b);
+  }
+  const gmul = (+gain.value) / (maxv>1e-6?maxv:1);
+  const gm = +gamma.value;
+  for(let i=0;i<N;i++){
+    let r=prof[i*3]*gmul, g=prof[i*3+1]*gmul, b=prof[i*3+2]*gmul;
+    // gamma
+    r = Math.pow(clamp(r,0,1), 1/gm);
+    g = Math.pow(clamp(g,0,1), 1/gm);
+    b = Math.pow(clamp(b,0,1), 1/gm);
+    prof[i*3]=r; prof[i*3+1]=g; prof[i*3+2]=b;
+  }
+  return {prof, step, maxAngle};
+}
+
+function render(){
+  const W = canvas.width, H = canvas.height;
+  // Sky background gradient + haze
+  const haze = +sky.value;
+  const grd = ctx.createLinearGradient(0,0,0,H);
+  grd.addColorStop(0, `rgba(40,70,180,${0.65+haze*0.20})`);
+  grd.addColorStop(0.5, `rgba(12,30,80,${0.7+haze*0.15})`);
+  grd.addColorStop(1, `rgba(5,10,22,${0.9})`);
+  ctx.fillStyle = grd;
+  ctx.fillRect(0,0,W,H);
+
+  // Horizon line
+  const Hline = H/2;
+  ctx.strokeStyle = `rgba(170,210,255,${0.35+0.25*+sky.value})`;
+  ctx.lineWidth = 1.2;
+  ctx.setLineDash([6,6]);
+  ctx.beginPath();
+  ctx.moveTo(0,Hline); ctx.lineTo(W,Hline); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Antisolar center position depends on sun elevation: below horizon by h degrees
+  const elevation = deg(Number(sunElev.value));
+  const focal = Hline / Math.tan(deg(60));
+  const {prof, step, maxAngle} = makeProfile();
+
+  // Draw ring by look-up in radial profile
+  const img = ctx.getImageData(0,0,W,H);
+  const data = img.data;
+  for(let y=0;y<H;y++){
+    const dy = Hline - y;
+    for(let x=0;x<W;x++){
+      const dx = x - W/2;
+      const idx = (y*W + x)*4;
+      // Only add rainbow above horizon (y < Hline), softly fade near the horizon
+      if(y <= Hline){
+        const aDeg = angularRadius(dx, dy, focal, elevation);
+        if(aDeg <= maxAngle){
+          const i = Math.floor(aDeg/step);
+          const t = (aDeg/step) - i;
+          const base = i*3;
+          // Linear interp
+          const r1 = prof[base], g1 = prof[base+1], b1 = prof[base+2];
+          const r2 = prof[base+3]??r1, g2 = prof[base+4]??g1, b2 = prof[base+5]??b1;
+          let r = r1 + t*(r2-r1);
+          let g = g1 + t*(g2-g1);
+          let b = b1 + t*(b2-b1);
+          // Fade with altitude (simple air mass-ish)
+          const alt = (Hline - y) / (Hline); // 0..1
+          const fade = Math.pow(alt, 0.6) * (1.0 - 0.15*+sky.value);
+          r *= fade; g *= fade; b *= fade;
+          // Composite over sky
+          const R = clamp(Math.round(r*255),0,255);
+          const G = clamp(Math.round(g*255),0,255);
+          const B = clamp(Math.round(b*255),0,255);
+          // Alpha based on magnitude to avoid banding
+          const A = clamp(Math.round(255 * Math.min(1, (r+g+b))), 0, 255);
+          // Simple 'additive over' blend
+          data[idx+0] = clamp((data[idx+0] + R), 0, 255);
+          data[idx+1] = clamp((data[idx+1] + G), 0, 255);
+          data[idx+2] = clamp((data[idx+2] + B), 0, 255);
+          data[idx+3] = Math.max(data[idx+3], A);
+        }
+      }
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+
+
+}
+
+// Export
+document.getElementById('save').onclick = ()=>{
+  const url = canvas.toDataURL('image/png');
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'RainbowLab.png';
+  a.click();
+};
+
+syncLabels();
+render();
+</script>
+</body>
+</html>

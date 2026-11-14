@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="./style.css"><title>Planetenjäger · Detektivlabor</title><script type="module" src="./detective.js"></script></head>
+<body class="detective-body">
+  <section class="detective-intro"><div><h2>Nur Licht. Deine Hypothese.</h2><p>Finde die Wiederholung. Lege die Umläufe übereinander. Prüfe, was die Daten wirklich tragen.</p></div><span class="badge">Geometrie ausgeblendet</span></section>
+  <div class="detective-layout">
+    <section class="curve-panel"><div class="curve-header"><div><p class="eyebrow">01 / DIE MESSUNG FALTEN</p><h2>Wird aus Streuung ein Muster?</h2></div><span class="badge" id="fold-period">P = 4,00 d</span></div>
+      <canvas id="folded" class="chart fold-chart" role="img" aria-label="Nach Kandidatenperiode gefaltete Messdaten; verschiedene Umläufe in unterschiedlichen Farben"></canvas>
+      <div class="fold-options"><label><input id="show-model" type="checkbox" checked> Hypothese</label><label><input id="show-bins" type="checkbox" checked> Mittelwerte ± 1 Standardfehler</label><label><input id="zoom" type="checkbox"> Transit vergrößern</label></div>
+      <div class="curve-bottom"><p><i class="dot mint"></i><i class="dot violet"></i><i class="dot gold"></i> Farben trennen die gefalteten Zyklen.</p><p id="candidate-score">Hypothese wird geprüft …</p></div>
+    </section>
+    <aside class="detective-controls" aria-label="Hypothesenparameter"><h2>Deine Hypothese</h2>
+      <label class="number-row" for="candidate-period">Periode in Tagen<input id="candidate-period" type="number" min="1" max="12" step="0.001" value="4"></label>
+      <label class="control" for="candidate-radius"><span>Radiusverhältnis <small>Rₚ / R★</small><output id="candidate-radius-value">0,100</output></span><input id="candidate-radius" type="range" min="0.02" max="0.24" step="0.001" value="0.1"></label>
+      <label class="control" for="candidate-epoch"><span>Transitzeit <small>t₀ / P</small><output id="candidate-epoch-value">0,00</output></span><input id="candidate-epoch" type="range" min="0" max="1" step="0.001" value="0"></label>
+      <label class="control" for="candidate-impact"><span>Bahnversatz <small>b / R★</small><output id="candidate-impact-value">0,50</output></span><input id="candidate-impact" type="range" min="0" max="1.24" step="0.005" value="0.5"></label>
+      <button id="fit" class="primary-button fit-button">Aus Messdaten fitten <span>↗</span></button><p class="fit-hint">Suchbereich: 1–12 Tage. Gleiche Annahmen über den Stern. Alle Systemparameter werden neu geschätzt.</p><p id="fit-progress" class="busy-status" aria-live="polite"></p>
+    </aside>
+  </div>
+  <section class="curve-panel detective-raw"><div class="curve-header"><div><p class="eyebrow">02 / DAS BEOBACHTUNGSFENSTER</p><h2>Die ursprüngliche Messreihe</h2></div><span class="small" id="data-info"></span></div><canvas id="raw" class="chart" role="img" aria-label="Ausschließlich verrauschte relative Helligkeit über die Zeit, ohne wahre Modellkurve"></canvas></section>
+  <section id="result" class="result-panel" aria-live="polite"><p class="eyebrow">03 / WAS LÄSST SICH SAGEN?</p><div class="empty-state">Eine passende Kurve allein ist noch kein Nachweis. Probiere eine Periode aus oder starte den Fit, um konkurrierende Lösungen und Unsicherheit zu untersuchen.</div></section>
+  <div class="data-tools"><span>NEUER FALL</span><button data-case="blind">Unbekanntes System</button><button data-case="short">Zu kurze Messreihe</button><button data-case="noisy">Im Rauschen verborgen</button><span>Jeder Fall enthält neue, ausschließlich simulierte Messungen.</span></div>
+  <p class="fit-hint">Faltung: Phase = ((t − t₀) / P + ½) mod 1 − ½. Bei der richtigen Periode wiederholt sich ein Transit an derselben Phase. Die orange gestrichelte Linie ist deine Hypothese.</p>
+</body></html>

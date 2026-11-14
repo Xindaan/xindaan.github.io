@@ -1,0 +1,26 @@
+// Editorial snapshot, checked against primary sources. Never interpreted as a launch guarantee.
+export const CATALOG_CHECKED = '14.11.2026';
+export const MISSIONS = [
+  {id:'webb',name:'James Webb',date:'Seit 2022',status:'Wissenschaftsbetrieb',kind:'active',size:'6,5 m Spiegel',band:'Infrarot',
+    title:'Atmosphären werden messbar.',can:'Webb misst bereits Exoplanetenspektren: reichhaltige Chemie bei großen Planeten und Grenzen für Atmosphären kleiner Gesteinswelten.',
+    limit:'Keine Kontinentbilder von Exoplaneten. Eine interessante Molekülspur wäre noch kein Lebensnachweis.',when:'Beobachtungen und neue Ergebnisse gibt es schon heute. Schwierige Ziele brauchen viele Messungen und sorgfältige Modellvergleiche.',
+    sources:[['NASA · Exoplaneten mit Webb','https://science.nasa.gov/mission/webb/science-overview/science-explainers/webbs-impact-on-exoplanet-research/'],['NASA · Spiegel und Instrumente','https://science.nasa.gov/wp-content/uploads/2024/08/webbmediakit.pdf']]},
+  {id:'roman',name:'Roman',date:'30.08.2026',status:'Wissenschaftliche Inbetriebnahme',kind:'active',size:'2,4 m Spiegel',band:'Weitfeld + Koronograf',
+    title:'Viele Welten finden. Sternlicht kontrollieren.',can:'Roman verbindet große Himmelsdurchmusterungen mit einer Koronograf-Technologiedemonstration für die direkte Beobachtung geeigneter großer Planeten und Staubscheiben.',
+    limit:'Kein Instrument für einen systematischen Lebensnachweis auf Erde–Sonne-Analoga. Die Koronograf-Funktion ist eine Technologiedemonstration.',when:'NASA meldete am 13.11.2026 die präzise Ausrichtung der Instrumente. Testbeobachtungen und Kalibrierung bereiten den regulären Wissenschaftsbetrieb vor.',
+    sources:[['NASA · Startmeldung vom 30.08.2026','https://www.nasa.gov/news-release/nasas-dark-universe-seeking-nancy-grace-roman-space-telescope-launches/'],['NASA · Inbetriebnahme, 13.11.2026','https://science.nasa.gov/blogs/roman/2026/11/13/instruments-on-nasas-roman-space-telescope-get-in-sync-for-science/'],['NASA · Instrumente und 2,4-m-Spiegel','https://science.nasa.gov/mission/roman-space-telescope/observatory-technical/']]},
+  {id:'plato',name:'PLATO',date:'Frühjahr 2027',status:'Geplanter Start',kind:'planned',size:'26 Kameras',band:'Präzise Sternhelligkeit',
+    title:'Die besten Kandidaten kennenlernen.',can:'PLATO soll Gesteinsplaneten finden und ihre Sterne charakterisieren – auch mit Blick auf Umlaufbahnen in der bewohnbaren Zone sonnenähnlicher Sterne.',
+    limit:'Transit- und Sternmessungen sind keine Atmosphärenspektren oder Lebensnachweise. „Bewohnbare Zone“ bedeutet noch keinen bewohnten Planeten.',when:'Die ESA führt den Start für das Frühjahr 2027. Ihre Übersichten nennen unterschiedliche Monate. Bei langen Umlaufperioden benötigen wiederholte Transits anschließend Jahre; Kandidatenlisten wachsen mit der Beobachtungszeit.',
+    sources:[['ESA · Missionsseite PLATO','https://www.esa.int/Science_Exploration/Space_Science/Plato'],['ESA · Programmübersicht PLATO','https://www.esa.int/ga/missions/about-us/directorates/science/plato']]},
+  {id:'ariel',name:'Ariel',date:'2031',status:'Geplanter Start',kind:'planned',size:'0,64 m² Sammelfläche',band:'Atmosphärenspektren',
+    title:'Atmosphären im großen Vergleich.',can:'Ariel soll rund 1000 Exoplaneten untersuchen: Gaszusammensetzung, Wolken und unterschiedliche Atmosphärentypen, besonders gut zugängliche warme und heiße Welten.',
+    limit:'Eine Atmosphäreninventur ist keine Suche mit zugesagtem Lebensnachweis auf einer zweiten Erde.',when:'Die aktuelle ESA-Missionsseite nennt 2031. Ältere ESA-Factsheets nennen noch 2029. Nach Start und Inbetriebnahme soll ein mehrjähriges Beobachtungsprogramm folgen.',
+    sources:[['ESA · Aktuelle Missionsseite: 2031','https://www.esa.int/Science_Exploration/Space_Science/Ariel'],['ESA · Wissenschaftliche Fragen','https://www.esa.int/Science_Exploration/Space_Science/Ariel/Ariel_s_three_key_questions']]},
+  {id:'hwo',name:'Habitable Worlds Observatory',date:'2040er?',status:'Konzept & Technologieentwicklung',kind:'concept',size:'Spiegeldesign offen',band:'UV · sichtbar · nahes IR',
+    title:'Das Licht einer zweiten Erde untersuchen.',can:'HWO soll geeignete erdähnliche Welten direkt vom Stern trennen und ihre Spektren auf mögliche Biosignaturen untersuchen. Als Ziel werden etwa 25 potenziell bewohnbare Welten genannt.',
+    limit:'Architektur, Finanzierung und Termin sind nicht endgültig. Auch HWO würde solche Planeten als unaufgelöste Lichtquellen untersuchen; eine Biosignatur verlangt Gegenproben.',when:'Die 2040er sind eine Planungsperspektive. Falls die Mission realisiert wird und geeignete Ziele existieren, könnte dann eine systematischere Suche nach atmosphärischen Lebenshinweisen möglich werden. Ein Entdeckungsjahr folgt daraus nicht.',
+    sources:[['NASA · HWO-Ziele und offenes Design','https://science.nasa.gov/astrophysics/programs/habitable-worlds-observatory/'],['NASA · Technologieperspektive 2040er','https://science.nasa.gov/astrophysics/programs/exep/technology/']]},
+];
+export const LIFE_SOURCE='https://life-space-mission.com/technology/';
+export const CLIPPER_SOURCE='https://science.nasa.gov/mission/europa-clipper/mission-timeline/';
