@@ -1,0 +1,73 @@
+{
+  "timestepSeconds": 0.00025,
+  "relativeEnergyTolerance": 1e-7,
+  "cases": [
+    {
+      "name": "Standard",
+      "arrivalSeconds": 0.8982175769725379,
+      "freeArrivalSeconds": 0.3540935794347899,
+      "peakCurrentA": 100.32972596614096,
+      "jouleHeatJ": 0.11866920344976756,
+      "maxAbsoluteEnergyErrorJ": 3.3306690738754696e-16,
+      "maxRelativeEnergyError": 2.208245492902029e-15
+    },
+    {
+      "name": "Ohne Leitfähigkeit",
+      "arrivalSeconds": 0.3540935794347784,
+      "freeArrivalSeconds": 0.3540935794347899,
+      "peakCurrentA": 0,
+      "jouleHeatJ": 0,
+      "maxAbsoluteEnergyErrorJ": 1.6264767310758543e-14,
+      "maxRelativeEnergyError": 1.0783598823671576e-13
+    },
+    {
+      "name": "Geschlitzt",
+      "arrivalSeconds": 0.3540935794347784,
+      "freeArrivalSeconds": 0.3540935794347899,
+      "peakCurrentA": 0,
+      "jouleHeatJ": 0,
+      "maxAbsoluteEnergyErrorJ": 1.6264767310758543e-14,
+      "maxRelativeEnergyError": 1.0783598823671576e-13
+    },
+    {
+      "name": "Polarität umgekehrt",
+      "arrivalSeconds": 0.8982175769725379,
+      "freeArrivalSeconds": 0.3540935794347899,
+      "peakCurrentA": 100.32972596614096,
+      "jouleHeatJ": 0.11866920344976756,
+      "maxAbsoluteEnergyErrorJ": 3.3306690738754696e-16,
+      "maxRelativeEnergyError": 2.208245492902029e-15
+    },
+    {
+      "name": "Kleiner Widerstand, starker Magnet",
+      "arrivalSeconds": 1.6230034793514008,
+      "freeArrivalSeconds": 0.3540935794347899,
+      "peakCurrentA": 175.71241855422375,
+      "jouleHeatJ": 0.12256831920120093,
+      "maxAbsoluteEnergyErrorJ": 2.220446049250313e-16,
+      "maxRelativeEnergyError": 1.472163661934686e-15
+    },
+    {
+      "name": "Doppeltes g",
+      "arrivalSeconds": 0.46763268403477365,
+      "freeArrivalSeconds": 0.2503819711929574,
+      "peakCurrentA": 142.9166750653653,
+      "jouleHeatJ": 0.22780252323936195,
+      "maxAbsoluteEnergyErrorJ": 8.326672684688674e-16,
+      "maxRelativeEnergyError": 2.7603068661275365e-15
+    },
+    {
+      "name": "Ohne Induktivität",
+      "arrivalSeconds": 0.9148762522980539,
+      "freeArrivalSeconds": 0.3540935794347899,
+      "peakCurrentA": 103.41586385632411,
+      "jouleHeatJ": 0.11865766646042923,
+      "maxAbsoluteEnergyErrorJ": 1.5543122344752192e-15,
+      "maxRelativeEnergyError": 1.0305145633542803e-14
+    }
+  ],
+  "convergence": {
+    "halfStepArrivalSeconds": 0.8982317557194118,
+    "relativeArrivalDifference": 0.00001578517658014813
+  }
+}

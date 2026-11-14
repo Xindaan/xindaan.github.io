@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2eb">
+  <meta name="description" content="Ein lokales Schall-Experiment: Zwei Quellen, ein Hörpunkt, echte Interferenz. Grafik, Messwerte und Audio aus demselben Modell.">
+  <title>Wellenatelier – Zwei Lautsprecher, und plötzlich wird es leiser</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231b3441'/%3E%3Cpath d='M5 17q3-14 6 0t6 0t6 0t6 0' fill='none' stroke='%23edb879' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="atelier">
+    <header class="masthead">
+      <a href="./" class="brand" aria-label="Wellenatelier Start"><svg viewBox="0 0 42 30" aria-hidden="true"><path d="M1 15c5-22 9 22 14 0s9 22 14 0 8 0 12 0"/></svg><span>Wellenatelier<small>PHYSIK ZUM ANFASSEN</small></span></a>
+      <span class="exhibition">EXPERIMENT 01 <span>/</span> AKUSTIK</span>
+      <div class="top-actions"><button id="projection-button" class="text-button" aria-pressed="false">Beameransicht <span>⛶</span></button><button id="model-button" class="text-button">Das Modell <span>↗</span></button><button id="audio-button" class="sound-button" aria-pressed="false"><span aria-hidden="true">♫</span><span id="audio-label">Ton einschalten</span></button></div>
+    </header>
+    <main>
+      <section class="introduction">
+        <div><div class="eyebrow"><span class="tiny-line"></span> INTERFERENZ ENTDECKEN</div><h1>Zwei Lautsprecher.<br>Und plötzlich wird es <em>leiser.</em></h1></div>
+        <div class="intro-aside"><p>Mehr Schall bedeutet nicht immer mehr Lautstärke.<br>Verschiebe die Quellen. Finde die Stille.</p><span><i></i> Ein Modell. Sichtbar, messbar, hörbar.</span></div>
+      </section>
+      <nav class="discoveries" aria-label="Experimente"><span class="discovery-label">AUSPROBIEREN</span><button data-preset="reinforce" aria-pressed="true"><span>01</span> Gemeinsam lauter <i>↗</i></button><button data-preset="cancel" aria-pressed="false"><span>02</span> Die Stille dazwischen <i>↗</i></button><button data-preset="explore" aria-pressed="false"><span>03</span> Auf Entdeckungsreise <i>↗</i></button></nav>
+      <section class="experiment" aria-label="Interaktives Schall-Experiment">
+        <div class="scene-column">
+          <div id="field" class="field">
+            <canvas id="field-canvas" aria-label="Momentanes Druckfeld. Plus und durchgezogene Konturen zeigen Überdruck; Minus und gestrichelte Konturen Unterdruck."></canvas>
+            <div class="field-top"><span><i></i> FREIES SCHALLFELD <b>12 × 8 m</b></span><span id="wavelength">λ = 1,56 m</span></div>
+            <div id="markers">
+              <button id="source-a" class="marker source a" aria-label="Quelle A verschieben. Pfeiltasten bewegen um 10 Zentimeter." title="Quelle A ziehen · Pfeiltasten bewegen"><span class="speaker">◖</span><strong>A</strong><span class="marker-caption">QUELLE A</span></button>
+              <button id="source-b" class="marker source b" aria-label="Quelle B verschieben. Pfeiltasten bewegen um 10 Zentimeter." title="Quelle B ziehen · Pfeiltasten bewegen"><span class="speaker">◖</span><strong>B</strong><span class="marker-caption">QUELLE B</span></button>
+              <button id="listener" class="marker listener" aria-label="Hörpunkt verschieben. Pfeiltasten bewegen um 10 Zentimeter." title="Hörpunkt ziehen · Pfeiltasten bewegen"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M6 17v-4a8 8 0 0 1 16 0v4M6 14H4v8h5v-8H6Zm16 0h2v8h-5v-8h3Z"/></svg><span class="marker-caption">DEIN HÖRPUNKT</span></button>
+            </div>
+            <div id="why-annotation" class="why-annotation" hidden><strong id="why-title"></strong><span id="why-detail"></span></div>
+            <div class="field-bottom"><span class="drag-hint">↔ Quellen & Hörpunkt ziehen</span><span class="field-legend"><b class="positive">＋</b> Überdruck <b class="negative">−</b> Unterdruck</span></div>
+          </div>
+          <div class="transport"><div class="transport-left"><button id="play-button" aria-pressed="false"><span id="play-icon">Ⅱ</span><span id="play-label">Pause</span></button><span class="divider"></span><label for="speed">Bildtempo</label><select id="speed"><option value="1">Zeitlupe · 1×</option><option value="0.25">Zeitlupe · ¼×</option><option value="0.1">Zeitlupe · ¹⁄₁₀×</option></select></div><span id="time-scale" class="time-scale">Bildzeit 1 : 440 · Ton in Echtzeit</span><button id="reset-button" class="reset-button"><span>↺</span> Reset</button></div>
+          <section class="listening" aria-label="Messung am Hörpunkt">
+            <div class="listening-heading"><span class="eyebrow">AM HÖRPUNKT <span id="listener-position"></span></span><span id="interference-label" class="interference-label"></span></div>
+            <div class="measurement-layout"><div class="local-waves"><div class="contributions"><div class="a"><span>Quelle A</span><strong id="pressure-a"></strong></div><span class="operator">+</span><div class="b"><span>Quelle B</span><strong id="pressure-b"></strong></div><span class="operator">=</span><div class="sum"><span>Summe</span><strong id="pressure-sum"></strong></div></div><canvas id="trace-canvas" aria-label="Eine Periode der Beiträge A und B und ihrer Summe. Die senkrechte Linie zeigt den aktuellen Moment."></canvas><span class="trace-caption"><span>Momentaner Druck · relative Einheiten</span><span id="snapshot-label">Eine Periode · laufend</span></span></div><div class="local-level"><span class="small-label">RELATIVER LOKALER PEGEL</span><div class="db-reading"><strong id="level-db"></strong><span>dB rel.</span></div><div class="level-track"><div id="level-fill"></div></div><span id="amplitude-value" class="level-reference"></span></div></div>
+            <div class="path-metrics"><div><span>Laufwegunterschied Δr</span><strong id="path-difference"></strong></div><div><span>Phasendifferenz am Hörpunkt</span><strong id="phase-difference"></strong></div><div><span>Wege A / B</span><strong id="distances"></strong></div></div>
+          </section>
+        </div>
+        <aside class="controls" aria-label="Experiment einstellen">
+          <div class="controls-title"><h2>Dein Experiment</h2><span>↙</span></div>
+          <div class="control-group frequency-group"><label for="frequency">Frequenz <output id="frequency-value" for="frequency">220 <small>Hz</small></output></label><input id="frequency" type="range" min="80" max="800" step="1" value="220"><div class="range-labels"><span>Tiefer · 80 Hz</span><span>Höher · 800 Hz</span></div></div>
+          <div class="control-group"><label for="phase">Phase von B zu A <output id="phase-value" for="phase">0°</output></label><input id="phase" type="range" min="-180" max="180" step="1" value="0"><div class="phase-shortcuts"><button id="same-phase">Gleichphase <span>0°</span></button><button id="opposite-phase">Gegenphase <span>180°</span></button></div></div>
+          <div class="source-control a"><div class="source-control-title"><span class="source-badge">A</span><label for="amplitude-a">Quelle A</label><button id="mute-a" class="toggle" aria-label="Quelle A aktiv" aria-pressed="true"><span></span></button></div><div class="amplitude-label"><span>Amplitude</span><output id="amplitude-a-value">100 %</output></div><input id="amplitude-a" aria-label="Amplitude Quelle A" type="range" min="0" max="100" step="1" value="100"></div>
+          <div class="source-control b"><div class="source-control-title"><span class="source-badge">B</span><label for="amplitude-b">Quelle B</label><button id="mute-b" class="toggle" aria-label="Quelle B aktiv" aria-pressed="true"><span></span></button></div><div class="amplitude-label"><span>Amplitude</span><output id="amplitude-b-value">100 %</output></div><input id="amplitude-b" aria-label="Amplitude Quelle B" type="range" min="0" max="100" step="1" value="100"></div>
+          <div class="why-control"><div><span class="why-symbol">?</span><h3>Warum?</h3><button id="why-button" class="toggle" aria-label="Warum-Modus" aria-pressed="false"><span></span></button></div><p>Wege und Phasen direkt<br>im Schallfeld entdecken.</p></div>
+          <div class="small-note"><span>↳</span><p>Halte das Bild an.<br>Die drei Kurven verraten,<br>was sich gerade addiert.</p></div>
+        </aside>
+      </section>
+      <footer><span>WELLENATELIER <i>·</i> Die Schönheit der Überlagerung.</span><span>Freies Feld. Kein Hall. Alles lokal.</span><a class="portfolio-link" href="../">Alle Projekte</a></footer>
+    </main>
+  </div>
+  <div id="status" class="status" role="status" hidden></div>
+  <dialog id="model-dialog" aria-labelledby="model-title"><button id="close-model" class="close-model" aria-label="Modell schließen">×</button><span class="eyebrow">DAS GEMEINSAME MODELL</span><h2 id="model-title">Zwei Wege. Eine Summe.</h2><p class="formula">p(x, t) = Σ aᵢ / rᵢ · cos(2πft − 2πfrᵢ/c + φᵢ)</p><p>Eine Ebene durch ein dreidimensionales freies Schallfeld. Zwei kohärente Punktquellen, Schallgeschwindigkeit <b>343 m/s</b>, kugelförmiger Amplitudenabfall <b>1/r</b>. Die Wege bestimmen die Ankunftsphasen.</p><p><b>Feste Referenz:</b> 0 dB rel. entspricht einer Quelle mit Amplitude 1 in 1 m Abstand. Gemessen wird der Effektivwert, keine absolute dB-SPL-Kalibrierung. Die Druckkurven und Zahlen verwenden dieselben relativen Einheiten.</p><p><b>Lesbares Bild:</b> Die Bildzeit läuft stark verlangsamt; der Ton hat die eingestellte echte Frequenz. Plus und durchgezogene Linien sind Überdruck, Minus und gestrichelte Linien Unterdruck. Der Farbkontrast ist fest und komprimiert große Werte.</p><p><b>Grenzen:</b> Keine Wände, kein Hall, keine Richtwirkung, keine Luftabsorption. Innerhalb von 25 cm wird der 1/r-Faktor begrenzt; schraffierte Quellkerne sind keine gültige Nahfeldsimulation. Verschieben setzt einen neuen stationären Zustand, ohne Dopplereffekt oder Ausbreitung des Umschaltvorgangs.</p><p><b>Audio:</b> Dieselbe Summe am Hörpunkt, mono, mit festem leisem Faktor 0,025. Keine automatische Normalisierung. Änderungen werden 20 ms überblendet. Pause hält das Bild an und blendet den Ton aus.</p><button id="understood" class="primary-button">Zurück ins Experiment ↗</button></dialog>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

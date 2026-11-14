@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./src/style.css">
+  <meta name="theme-color" content="#f4f2ec">
+  <meta name="description" content="Ein lokales Experiment zu Induktion, Bewegung und Energie. Gekoppeltes Ringmodell mit überprüfbarer Energiebilanz.">
+  <title>Magnetbremse – Wohin verschwindet die Bewegung?</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='16' y='4' width='16' height='40' rx='5' fill='%23274349'/%3E%3Cpath d='M16 24h16v15a5 5 0 0 1-5 5h-6a5 5 0 0 1-5-5' fill='%23bf704d'/%3E%3C/svg%3E">
+</head>
+<body>
+  <div class="app-shell">
+    <header>
+      <div class="eyebrow"><span class="lab-mark">◉</span> FELDNOTIZEN <span class="header-divider">/</span> EIN INTERAKTIVES EXPERIMENT <a href="#modell">Modell &amp; Nachweis <span aria-hidden="true">↗</span></a></div>
+      <div class="title-row"><div><h1>Magnetbremse<span>.</span></h1><p class="subtitle">Wohin verschwindet die Bewegung?</p></div><p class="intro">Ein Magnet. Zwei Wege nach unten.<br>Warum bremst ein elektrischer Leiter,<br>ohne den Magneten einfach festzuhalten?</p></div>
+    </header>
+
+    <main>
+      <div class="experiment-bar"><div><span class="live-dot"></span><span id="run-status" role="status">Bereit für den gemeinsamen Fall</span></div><div class="clock">SIMULATIONSZEIT <strong id="time">0,000</strong> s</div></div>
+      <div class="experiment">
+        <aside class="controls" aria-label="Versuchsparameter">
+          <h2><span>01</span> Das Experiment</h2>
+          <div class="control-block"><label>Stromkreis</label><div class="segmented" id="circuit"><button type="button" id="closed" aria-pressed="true">Geschlossen</button><button type="button" id="slit" aria-pressed="false">Geschlitzt</button></div><p id="circuit-note">20 Ringe. Jeder ein eigener Stromkreis.</p></div>
+          <div class="control-block"><div class="label-row"><label for="resistance">Ringwiderstand</label><output id="resistance-value" for="resistance">0,040 mΩ</output></div><input id="resistance" type="range" min="0" max="100" step="1" value="19"><div class="range-captions"><span>stärker leitend</span><span>schwächer</span></div><label class="check-row"><input id="insulator" type="checkbox"> Ohne Leitfähigkeit</label></div>
+          <div class="control-block"><div class="label-row"><label for="strength">Magnetstärke</label><output id="strength-value" for="strength">3,0 A·m²</output></div><input id="strength" type="range" min="0" max="4" step="0.1" value="3"><button type="button" class="polarity-button" id="polarity" aria-pressed="false"><span class="pole-pair"><i>S</i><i>N</i></span><span>Polarität umkehren</span><span aria-hidden="true">⇅</span></button></div>
+          <div class="control-block"><div class="label-row"><label for="gravity">Gravitation</label><output id="gravity-value" for="gravity">9,81 m/s²</output></div><input id="gravity" type="range" min="0" max="20" step="0.01" value="9.81"><div class="gravity-presets"><button type="button" data-gravity="0">0 g</button><button type="button" data-gravity="1.62">Mond</button><button type="button" data-gravity="9.81" class="active">Erde</button></div></div>
+          <p class="reset-note">Parameteränderungen setzen den Versuch zurück. So bleibt die Energiebilanz eindeutig.</p>
+        </aside>
+
+        <section class="stage" aria-label="Vergleich von freiem Fall und Fall durch Ringe">
+          <div class="scene-head"><div><span class="scene-number">A</span><h2>Freier Fall</h2><p id="free-speed">0,00 <small>m/s</small></p></div><div><span class="scene-number copper">B</span><h2>Durch die Ringe</h2><p id="coupled-speed">0,00 <small>m/s</small></p></div></div>
+          <svg id="scene" viewBox="0 0 700 440" role="group" aria-label="Schnittansicht: Ring anklicken, um Strom und Kraft zu untersuchen"></svg>
+          <div class="scene-foot"><span id="arrival-info">Beide Magnete starten aus derselben Höhe.</span><span class="click-hint">Ring anklicken ↗</span></div>
+          <div class="transport"><button type="button" id="play" class="primary"><span aria-hidden="true">▶</span> Gemeinsam starten</button><button type="button" id="reset" class="reset-button" aria-label="Versuch zurücksetzen" title="Zurücksetzen">↺</button><div class="time-controls"><label for="speed">Zeitlupe</label><select id="speed"><option value="1">1 ×</option><option value="0.25" selected>¼ ×</option><option value="0.1">⅒ ×</option></select></div><button type="button" id="step" class="step-button" title="10 ms Simulationszeit weiter">+10 ms</button></div>
+        </section>
+
+        <aside class="inspector" aria-label="Erklärung des ausgewählten Rings">
+          <div class="inspector-title"><h2><span>02</span> Im Ring</h2><span class="ring-pill" id="selected-ring">01 / 20</span></div>
+          <div class="ring-view"><svg id="ring-detail" viewBox="0 0 250 105" aria-label="Stromrichtung in Draufsicht"></svg><span>DRAUFSICHT · +z ZEIGT NACH UNTEN</span></div>
+          <p id="ring-context" class="ring-context">Der Magnet ruht oberhalb des Rings.</p>
+          <div class="causal-step"><span class="step-index">1</span><div><div class="equation-label">Flussänderung <b>dΦ/dt</b></div><strong id="flux-rate">0,000 mWb/s</strong><p id="flux-explain"></p></div></div>
+          <div class="causal-step"><span class="step-index">2</span><div><div class="equation-label">Induktionsspannung <b>U = −dΦ/dt</b></div><strong id="voltage">0,000 mV</strong><p id="voltage-explain"></p></div></div>
+          <div class="causal-step"><span class="step-index">3</span><div><div class="equation-label">Strom → Kraft <b>F = I · ∂Φ/∂z</b></div><strong id="ring-force">0,0 A → 0,00 mN</strong><p id="force-explain"></p></div></div>
+          <div class="local-heat"><span>Lokale Erwärmung <small>ΔT = Q / C</small></span><strong id="ring-heat">0,000 mK</strong></div>
+        </aside>
+      </div>
+
+      <section class="energy-section" aria-label="Energieverlauf des Magneten in der Ringstruktur">
+        <div class="energy-intro"><h2><span>03</span> Bewegung wird Wärme.</h2><p>Die Energie bleibt im System.<br>Verfolge, wohin sie fließt.</p><div class="balance" id="balance"><span class="balance-dot"></span><span>Bilanz stimmt <strong id="balance-error">ΔE = 0,000 µJ</strong></span></div><p class="energy-scope">Versuch B · vor einem Aufprall<br>Referenzhöhe: untere Messlinie</p></div>
+        <div class="energy-plot"><div id="energy-legend" class="energy-legend"></div><svg id="energy-chart" viewBox="0 0 820 170" role="img" aria-label="Zeitverläufe von Lageenergie, Bewegung, induktiver Energie, Wärme und Gesamtsumme"></svg><div class="plot-footer"><span id="energy-transfer">Noch keine Energie übertragen.</span><span id="energy-total">Σ 150,83 mJ</span></div></div>
+      </section>
+
+      <details id="modell" class="model-notes"><summary><span>Unter der Oberfläche</span> Modell, Annahmen &amp; numerische Nachweise <span class="plus">+</span></summary><div class="model-content"><div><h3>Ein gekoppeltes Ringmodell</h3><p>Der Magnet ist ein axialer Punktdipol. Jeder Ring ist ein eigener RL-Stromkreis mit endlichem Widerstand. Der Strom erzeugt eine Kraft auf den Magneten. Es gibt keinen zusätzlichen Bremsfaktor.</p><div class="model-equations">Φᵢ(z) = μ₀ μ a² / [2(a² + (z − zᵢ)²)³ᐟ²]<br>Uᵢ = −(∂Φᵢ/∂z) v<br>L dIᵢ/dt + R Iᵢ = Uᵢ<br>M dv/dt = M g + Σ Iᵢ ∂Φᵢ/∂z<br>dQᵢ/dt = R Iᵢ²</div><p>+z zeigt nach unten. Positiver Fluss und positives Magnetmoment zeigen nach unten. Positiver Strom fließt in der Draufsicht im Uhrzeigersinn. Magnetmoment μ und Masse M sind verschiedene Größen.</p></div><div><h3>Energie als Gegenprobe</h3><p>E = Mg(z<sub>Ziel</sub> − z) + ½Mv² + Σ½LIᵢ² + ΣQᵢ. Die Kopplungsterme heben sich auf: dE/dt = 0. Der Solver verwendet diskrete Flussgradienten und implizite Mittelpunktströme. Die Wärme wird aus genau diesen Strömen integriert.</p><p>Fester Schritt: 0,25 ms. Toleranz: relativer Bilanzfehler ≤ 10⁻⁷, normiert auf max(|E₀|, 1 nJ). Die momentanen Anzeigen verwenden den gemeinsamen Endzustand; der Solver bilanziert die Schrittmittelwerte.</p><p id="test-evidence">Numerische Nachweise werden geladen.</p><a href="./docs/numerical-results.json" download>Vollständige Messwerte als JSON ↓</a></div><div><h3>Bewusste Grenzen</h3><p>20 koaxiale Ringe; Radius 22 mm; Abstand 20 mm; Magnetmasse 25 g; L = 0,10 µH je Ring; effektive Wärmekapazität C = 3,45 J/K. Die Grafik vergrößert Radien und Magnet für die Lesbarkeit. Die Höhenachse ist linear.</p><p>Keine gegenseitige Induktivität, 3D-Feldlösung, ferromagnetische Anziehung, Luftreibung, Wärmeabgabe oder Temperaturabhängigkeit von R. Vollständige Schlitze unterbrechen hier sämtliche Ringströme; kleine lokale Wirbelströme eines realen geschlitzten Rohrs fehlen.</p><p>R, L und C sind effektive Modellparameter, keine kalibrierte Kupferprobe. Einzelne Ringe können induktiv gespeicherte Energie kurz an den Magneten zurückgeben. Die Gesamtdissipation bleibt positiv. Die Messung endet an der Ziellinie vor einem Aufprall.</p></div></div></details>
+      <footer><span>MAGNETBREMSE <span class="footer-dot">·</span> LOKALES PHYSIKLABOR</span><span>Ein Zustand. Bewegung, Strom, Kraft und Energie.</span><a class="portfolio-link" href="../">Alle Projekte</a></footer>
+    </main>
+  </div>
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
