@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projekte · xindaan.github.io</title>
-  <meta name="description" content="Interaktive Erklärseiten, Labore und Lagebilder: Himmel, Licht, Holografie, Rezepte und Risiken von Frontier-KI.">
+  <meta name="description" content="KI-Risikoradar, interaktive Physiklabore, Deutschlandatlas, Rezept-Grid und Orbit.">
   <style>
     :root {
       color-scheme: light dark;
@@ -46,7 +46,9 @@
     .title { font: 600 1.35rem/1.25 var(--serif); }
     .kind { color: var(--muted); font-size: 0.875rem; align-self: baseline; text-align: right; }
     .desc { grid-column: 1 / -1; color: var(--muted); max-width: 38rem; }
-    .path { grid-column: 1 / -1; font-size: 0.875rem; color: var(--accent); }
+    .repo { display: inline-block; margin: 0 0.25rem 1.1rem; font-size: 0.875rem; }
+    li:has(.repo) a.project { padding-bottom: 0.4rem; }
+    a { color: var(--accent); text-underline-offset: 0.2em; }
     a.project:hover .title, a.project:focus-visible .title { text-decoration: underline; text-underline-offset: 0.2em; }
     a.project:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
     footer { margin-top: 3rem; color: var(--muted); font-size: 0.875rem; }
@@ -64,55 +66,62 @@
     <p class="lead">Interaktive Erklärseiten, kleine Labore und Lagebilder – zum Nachvollziehen, Ausprobieren und Nachrechnen.</p>
     <ol>
       <li>
+        <a class="project" href="/risk-observatory/de/">
+          <span class="title">KI-Risikoradar</span>
+          <span class="kind">Lagebild</span>
+          <span class="desc">Dokumentierte Fälle und Forschung zu Risiken fortgeschrittener KI-Systeme und KI-Agenten, mit Originalquellen und ausgewiesenen Unsicherheiten.</span>
+        </a>
+      </li>
+      <li>
         <a class="project" href="/alle-wege/">
           <span class="title">Alle Wege · Deutschland</span>
           <span class="kind">Verkehrsatlas</span>
           <span class="desc">Wohin komme ich in zwei Stunden? Erreichbarkeit, faire Treffpunkte und Einzugsgebiete mit Auto, Bahn und Bus.</span>
-          <span class="path">/alle-wege/</span>
         </a>
+        <a class="repo" href="https://github.com/Xindaan/alle-wege" aria-label="Quellcode zu Alle Wege · Deutschland auf GitHub">Quellcode auf GitHub ↗</a>
+      </li>
+      <li>
+        <a class="project" href="/orbit/">
+          <span class="title">Orbit</span>
+          <span class="kind">Klangexperiment</span>
+          <span class="desc">Vier Ringe laufen im selben Takt. Verändere Impulse und Phasen und höre, wie daraus unterschiedliche Rhythmen entstehen.</span>
+        </a>
+        <a class="repo" href="https://github.com/Xindaan/xindaan.github.io/tree/main/orbit" aria-label="Quellcode zu Orbit auf GitHub">Quellcode auf GitHub ↗</a>
       </li>
       <li>
         <a class="project" href="/himmel/">
           <span class="title">Ein Himmel, viele Welten</span>
           <span class="kind">Erklärseite</span>
           <span class="desc">Eine interaktive Reise durch die Tiefe des Himmels: Entfernungen, Leuchtmechanismen und die Geometrie der Finsternisse.</span>
-          <span class="path">/himmel/</span>
         </a>
-      </li>
-      <li>
-        <a class="project" href="/risk-observatory/">
-          <span class="title">Frontier AI Risk Observatory</span>
-          <span class="kind">Lagebild</span>
-          <span class="desc">Evidenzbasiertes Lagebild zu Risiken von Frontier-KI und agentischen Kontrollproblemen – mit Quellen, Unsicherheiten und Korrekturhistorie. Derzeit mit fiktiven Demo-Daten.</span>
-          <span class="path">/risk-observatory/</span>
-        </a>
-      </li>
-      <li>
-        <a class="project" href="/rezept-grid/">
-          <span class="title">Rezept-Grid</span>
-          <span class="kind">Rezepte</span>
-          <span class="desc">Rezepte in der Tabellen-Notation von „Cooking for Engineers“: Zutaten als Zeilen, Arbeitsschritte als verbundene Zellen – was wann womit kombiniert wird und wie lange es dauert.</span>
-          <span class="path">/rezept-grid/</span>
-        </a>
-      </li>
-      <li>
-        <a class="project" href="/streulicht/">
-          <span class="title">Streulicht</span>
-          <span class="kind">Vorhersage</span>
-          <span class="desc">Sagt außergewöhnliche Sonnenuntergänge zwei bis zehn Tage im Voraus vorher – aus Strahlengeometrie, Vorwärtsstreuung und Ensemble-Wetterdaten, abgeglichen mit Satelliten-Wolkenmasken.</span>
-          <span class="path">/streulicht/</span>
-        </a>
+        <a class="repo" href="https://github.com/Xindaan/himmel" aria-label="Quellcode zu Ein Himmel, viele Welten auf GitHub">Quellcode auf GitHub ↗</a>
       </li>
       <li>
         <a class="project" href="/volumenhologramm-labor/">
           <span class="title">Volumenhologramm-Labor</span>
           <span class="kind">Physiklabor</span>
-          <span class="desc">Ein interaktives Physiklabor für Interferenz, Volumengitter und Bragg-Selektivität – Licht schreibt Licht in Materie.</span>
-          <span class="path">/volumenhologramm-labor/</span>
+          <span class="desc">Erzeuge ein Interferenzgitter im Material und rekonstruiere damit ein Bild.</span>
         </a>
+        <a class="repo" href="https://github.com/Xindaan/volumenhologramm-labor" aria-label="Quellcode zu Volumenhologramm-Labor auf GitHub">Quellcode auf GitHub ↗</a>
+      </li>
+      <li>
+        <a class="project" href="/streulicht/">
+          <span class="title">Streulicht</span>
+          <span class="kind">Vorhersage</span>
+          <span class="desc">Wie stehen die Chancen auf einen außergewöhnlichen Sonnenuntergang in Berlin? Mit Wettermodell, Strahlengeometrie und einer Bilanz bisheriger Vorhersagen.</span>
+        </a>
+        <a class="repo" href="https://github.com/Xindaan/streulicht" aria-label="Quellcode zu Streulicht auf GitHub">Quellcode auf GitHub ↗</a>
+      </li>
+      <li>
+        <a class="project" href="/rezept-grid/">
+          <span class="title">Rezept-Grid</span>
+          <span class="kind">Rezepte</span>
+          <span class="desc">Zutaten als Zeilen, Arbeitsschritte als verbundene Zellen. So siehst du, was wann zusammenkommt und wie lange es dauert.</span>
+        </a>
+        <a class="repo" href="https://github.com/Xindaan/rezept-grid" aria-label="Quellcode zu Rezept-Grid auf GitHub">Quellcode auf GitHub ↗</a>
       </li>
     </ol>
-    <footer>xindaan.github.io</footer>
+    <footer><a href="https://github.com/Xindaan">Xindaan auf GitHub ↗</a></footer>
   </main>
 </body>
 </html>
