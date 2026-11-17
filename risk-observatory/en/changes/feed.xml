@@ -6,7 +6,23 @@
     <atom:link href="https://xindaan.github.io/risk-observatory/en/changes/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Publications, corrections and retractions of the Frontier AI Risk Observatory.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 15 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Corrected: Google: attackers use agentic pentest frameworks such as ARTEX in real intrusions (EV-0147)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0147/</link>
+      <guid isPermaLink="false">2026-11-17/EV-0147/CORRECTED</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Supplemented with 2 newly checked claims (2 supported).</description>
+    </item>
+    <item>
+      <title>Corrected: Google: attackers use agentic pentest frameworks such as ARTEX in real intrusions (EV-0147)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0147/</link>
+      <guid isPermaLink="false">2026-11-17/EV-0147/CORRECTED/2</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Supplemented with two verified details from the Google Threat Intelligence Group&apos;s AI Threat Tracker of 16 November 2026: use of CAIRN against targets including the US aerospace sector, and a PentAGI-based platform used against organisations in Asia. The assessment is unchanged because the new source comes from the same publisher and documents no new consequences.</description>
+    </item>
     <item>
       <title>Published: AI agents attack Epoch AI&apos;s live website during a misalignment test (EV-0421)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0421/</link>
@@ -387,22 +403,6 @@
       <title>Published: Assessment: Persistent memory &amp; information transfer (RA-0172)</title>
       <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
       <guid isPermaLink="false">2026-11-13/RA-0172/PUBLISHED</guid>
-      <pubDate>Fri, 13 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Recursive self-improvement (RA-0173)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-13/RA-0173/PUBLISHED</guid>
-      <pubDate>Fri, 13 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Sandbox escapes &amp; capability control (RA-0174)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-13/RA-0174/PUBLISHED</guid>
       <pubDate>Fri, 13 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
