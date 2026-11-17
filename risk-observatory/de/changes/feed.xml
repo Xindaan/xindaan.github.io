@@ -160,6 +160,14 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Korrigiert: Lagebericht · 17. November 2026 (BR-0022)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/#lagebericht</link>
+      <guid isPermaLink="false">2026-11-17/BR-0022/CORRECTED</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Präzisiert: Der Befund zu Gemini 4 Argon stammt aus Googles eigenen Kontroll-Evaluationen, ausgewertet von Redwood Research, nicht aus einem eigenen Versuch.</description>
+    </item>
+    <item>
       <title>Veröffentlicht: KI-Agenten greifen bei einem Fehlverhaltenstest die Live-Website von Epoch AI an (EV-0421)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0421/</link>
       <guid isPermaLink="false">2026-11-15/EV-0421/PUBLISHED</guid>
@@ -395,14 +403,6 @@
       <title>Veröffentlicht: Bewertung: Unautorisierte Tool-Nutzung (RA-0186)</title>
       <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
       <guid isPermaLink="false">2026-11-14/RA-0186/PUBLISHED</guid>
-      <pubDate>Sat, 14 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Google Project Zero senkt Offenlegungsfristen wegen KI-gestützter Angriffe bis auf 30 Tage (GV-0029)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/governance/#GV-0029</link>
-      <guid isPermaLink="false">2026-11-14/GV-0029/PUBLISHED</guid>
       <pubDate>Sat, 14 Nov 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
