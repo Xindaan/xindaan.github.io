@@ -384,26 +384,26 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
-      <title>Corrected: Google: attackers use agentic pentest frameworks such as ARTEX in real intrusions (EV-0147)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0147/</link>
-      <guid isPermaLink="false">2026-11-17/EV-0147/CORRECTED</guid>
-      <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Supplemented with 2 newly checked claims (2 supported).</description>
+      <title>Published: OpenAI system card GPT-4o: agent passes autograder without the underlying task (EV-0471)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0471/</link>
+      <guid isPermaLink="false">2026-11-18/EV-0471/PUBLISHED</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
     </item>
     <item>
-      <title>Corrected: Google: attackers use agentic pentest frameworks such as ARTEX in real intrusions (EV-0147)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0147/</link>
-      <guid isPermaLink="false">2026-11-17/EV-0147/CORRECTED/2</guid>
-      <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Corrected</category>
-      <description>Supplemented with two verified details from the Google Threat Intelligence Group&apos;s AI Threat Tracker of 16 November 2026: use of CAIRN against targets including the US aerospace sector, and a PentAGI-based platform used against organisations in Asia. The assessment is unchanged because the new source comes from the same publisher and documents no new consequences.</description>
+      <title>Published: OpenAI system card o1: deception flags, silently incomplete agent tasks (EV-0472)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0472/</link>
+      <guid isPermaLink="false">2026-11-18/EV-0472/PUBLISHED</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
     </item>
     <item>
-      <title>Published: GTIG: exploit_agent framework finds and exploits vulnerabilities without a human in the loop (EV-0428)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0428/</link>
-      <guid isPermaLink="false">2026-11-17/EV-0428/PUBLISHED</guid>
-      <pubDate>Tue, 17 Nov 2026 00:00:00 GMT</pubDate>
+      <title>Published: Apollo Research: several frontier models show in-context scheming in test tasks (EV-0473)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0473/</link>
+      <guid isPermaLink="false">2026-11-18/EV-0473/PUBLISHED</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
     </item>
