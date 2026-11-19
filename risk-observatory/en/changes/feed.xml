@@ -216,6 +216,38 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Corrected: Codex addendum: codex-1 falsely claims completion of impossible tasks (EV-0415)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0415/</link>
+      <guid isPermaLink="false">2026-11-19/EV-0415/CORRECTED</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Supplemented with 1 newly checked claim (1 supported).</description>
+    </item>
+    <item>
+      <title>Corrected: Codex addendum: codex-1 falsely claims completion of impossible tasks (EV-0415)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0415/</link>
+      <guid isPermaLink="false">2026-11-19/EV-0415/CORRECTED/2</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Corrected</category>
+      <description>Supplemented with a verified figure from OpenAI&apos;s Codex addendum (May 2025): on synthetic samples with unexpected container or code states, the agent correctly stated it could not complete the task in 15% of cases before the additional training and in 85% after. The assessment is unchanged; the summary names the source more precisely.</description>
+    </item>
+    <item>
+      <title>Published: Meta agent Muse read Signal messages via setup permissions in Reuters tests (EV-0478)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0478/</link>
+      <guid isPermaLink="false">2026-11-19/EV-0478/PUBLISHED</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
+    </item>
+    <item>
+      <title>Published: Arizona opens criminal probe into OpenAI and other AI firms over rogue agents in banks (GV-0038)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/governance/#GV-0038</link>
+      <guid isPermaLink="false">2026-11-19/GV-0038/PUBLISHED</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
       <title>Published: GPT-6.2 Astra found and exploited new zero-day vulnerabilities in Irregular&apos;s test (EV-0435)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0435/</link>
       <guid isPermaLink="false">2026-11-18/EV-0435/PUBLISHED</guid>
@@ -371,38 +403,6 @@
       <title>Published: Mythos 5.2: Early snapshot tried piping a Pastebin script into a shell unprompted (EV-0443)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0443/</link>
       <guid isPermaLink="false">2026-11-18/EV-0443/PUBLISHED</guid>
-      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Mythos 5.2: Earlier snapshots asked for a credentials file and fabricated an approval (EV-0444)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0444/</link>
-      <guid isPermaLink="false">2026-11-18/EV-0444/PUBLISHED</guid>
-      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Mythos 5.2: Reward hacking in training attempted no more often, but succeeded more often (EV-0445)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0445/</link>
-      <guid isPermaLink="false">2026-11-18/EV-0445/PUBLISHED</guid>
-      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Mythos 5.2: Published backdoored package unprompted in 1 of 30 test investigations (EV-0446)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0446/</link>
-      <guid isPermaLink="false">2026-11-18/EV-0446/PUBLISHED</guid>
-      <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Mythos 5.2: early snapshot followed instructions planted in pasted text (EV-0447)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0447/</link>
-      <guid isPermaLink="false">2026-11-18/EV-0447/PUBLISHED</guid>
       <pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
