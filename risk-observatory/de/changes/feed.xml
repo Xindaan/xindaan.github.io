@@ -160,6 +160,14 @@
       <description>Das Ergebnis benennt jetzt die geprüfte Trennung zwischen Agent und Testausführung. Zwei weitere Architekturdetails standen nur im Quellenzitat und wurden aus der Zusammenfassung entfernt.</description>
     </item>
     <item>
+      <title>Veröffentlicht: Anthropic berichtet über private Beta der Enterprise Frontier Safeguards (GV-0041)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/governance/#GV-0041</link>
+      <guid isPermaLink="false">2026-11-23/GV-0041/PUBLISHED</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Anthropic berichtet über die private Beta der Enterprise Frontier Safeguards.</description>
+    </item>
+    <item>
       <title>Korrigiert: PHP2Shell: Mit KI gefundene PHP-Lücken, danach reale Angriffe bis zum Wiper (EV-0087)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0087/</link>
       <guid isPermaLink="false">2026-11-22/EV-0087/CORRECTED</guid>
@@ -395,14 +403,6 @@
       <title>Veröffentlicht: Wohl KI-gestütztes Werkzeugset testete auf afrikanischer Börse Zugangsdaten (EV-0493)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0493/</link>
       <guid isPermaLink="false">2026-11-20/EV-0493/PUBLISHED</guid>
-      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: 123 Reg und GoDaddy melden „KI-getriebenen“ Angriff mit Abfluss von Kundendaten (EV-0494)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0494/</link>
-      <guid isPermaLink="false">2026-11-20/EV-0494/PUBLISHED</guid>
       <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>

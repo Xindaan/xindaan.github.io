@@ -160,6 +160,14 @@
       <description>The result now describes the verified separation between the agent and test execution. Two additional architectural details appeared only in the source quotation and were removed from the summary.</description>
     </item>
     <item>
+      <title>Published: Anthropic reports private beta of Enterprise Frontier Safeguards (GV-0041)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/governance/#GV-0041</link>
+      <guid isPermaLink="false">2026-11-23/GV-0041/PUBLISHED</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Anthropic reports a private beta of its Enterprise Frontier Safeguards.</description>
+    </item>
+    <item>
       <title>Corrected: PHP2Shell: AI-assisted discovery of PHP flaws, followed by real attacks up to a wiper (EV-0087)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0087/</link>
       <guid isPermaLink="false">2026-11-22/EV-0087/CORRECTED</guid>
@@ -395,14 +403,6 @@
       <title>Published: Likely AI-assisted toolkit tested credentials on an African stock exchange (EV-0493)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0493/</link>
       <guid isPermaLink="false">2026-11-20/EV-0493/PUBLISHED</guid>
-      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: 123 Reg and GoDaddy report “AI-driven” attack with customer data exposure (EV-0494)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0494/</link>
-      <guid isPermaLink="false">2026-11-20/EV-0494/PUBLISHED</guid>
       <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
