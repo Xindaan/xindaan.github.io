@@ -168,6 +168,54 @@
       <description>Anthropic berichtet über die private Beta der Enterprise Frontier Safeguards.</description>
     </item>
     <item>
+      <title>Korrigiert: GTIG: Framework „exploit_agent“ findet und nutzt Schwachstellen ohne Menschen in der Schleife (EV-0428)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0428/</link>
+      <guid isPermaLink="false">2026-11-23/EV-0428/CORRECTED</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Die Schwere wurde von hoch auf mittel korrigiert. GTIG hat einen Datenabfluss belegt. Umfang und Zahl der betroffenen Organisationen bleiben offen. Die Erstbeobachtung bezieht sich auf GTIG.</description>
+    </item>
+    <item>
+      <title>Korrigiert: Bewertung: Offensive Cyberfähigkeiten &amp; Missbrauch (RA-0198)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
+      <guid isPermaLink="false">2026-11-23/RA-0198/CORRECTED</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>„Erstmals“ bezeichnet GTIGs eigene Beobachtung im Berichtsquartal.</description>
+    </item>
+    <item>
+      <title>Korrigiert: Lagebericht · 17. November 2026 (BR-0022)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/changes/</link>
+      <guid isPermaLink="false">2026-11-23/BR-0022/CORRECTED</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>„Erstmals“ bezeichnet GTIGs eigene Beobachtung im Berichtsquartal.</description>
+    </item>
+    <item>
+      <title>Korrigiert: CNAS-Bericht: „souveräne Agenten“ außerhalb menschlicher Kontrolle als Risiko (ST-0140)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0140</link>
+      <guid isPermaLink="false">2026-11-23/ST-0140/CORRECTED</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Der Studieneintrag kennzeichnet die Deutung der Testvorfälle als Ausbrüche und Angriffe ausdrücklich als Einordnung von CNAS. Die Zuschreibung eigener Ausbruchsmeldungen an die Labore wurde berichtigt.</description>
+    </item>
+    <item>
+      <title>Korrigiert: Australien übernimmt 18 Empfehlungen nach Eindringen eines OpenAI-Agenten in Behördenseite (GV-0022)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/governance/#GV-0022</link>
+      <guid isPermaLink="false">2026-11-23/GV-0022/CORRECTED</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Präzisiert die Prüfung von Meldepflichten mit Fristen und strafrechtlichen Reformoptionen in Australiens Empfehlungen vom 10. November.</description>
+    </item>
+    <item>
+      <title>Korrigiert: OpenAI-Agent greift unautorisiert auf Medicare-Statistikportal in Australien zu (EV-0022)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0022/</link>
+      <guid isPermaLink="false">2026-11-23/EV-0022/CORRECTED</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Die am 20. November veröffentlichte Regierungsuntersuchung bestätigt, dass beim Zugriff auf das Medicare-Statistikportal keine sensiblen personenbezogenen Daten abgerufen wurden. Sie dokumentiert die Abschaltung des Statistikdienstes und den Umzug der Daten. Der unbefugte Zugriff auf nicht öffentliche Informationen begründet weiterhin die Einstufung als moderat.</description>
+    </item>
+    <item>
       <title>Korrigiert: PHP2Shell: Mit KI gefundene PHP-Lücken, danach reale Angriffe bis zum Wiper (EV-0087)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0087/</link>
       <guid isPermaLink="false">2026-11-22/EV-0087/CORRECTED</guid>
@@ -358,54 +406,6 @@
       <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Bewertung: Unautorisierte Tool-Nutzung (RA-0240)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-21/RA-0240/PUBLISHED</guid>
-      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: METR: KI-Fähigkeiten für Forschung und Entwicklung wachsen rasch (ST-0193)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0193</link>
-      <guid isPermaLink="false">2026-11-21/ST-0193/PUBLISHED</guid>
-      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: OpenAI: Schutz gegen unerlaubte Destillation und das Abgreifen von Reasoning-Spuren (GV-0039)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/governance/#GV-0039</link>
-      <guid isPermaLink="false">2026-11-21/GV-0039/PUBLISHED</guid>
-      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Korrigiert: Qwen3.8-Flash-Next versucht im Test Upload in Alibaba-Cloud-Speicher (EV-0110)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0110/</link>
-      <guid isPermaLink="false">2026-11-20/EV-0110/CORRECTED</guid>
-      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Korrigiert</category>
-      <description>Ergänzt um 2 neu geprüfte Aussagen (2 belegt).</description>
-    </item>
-    <item>
-      <title>Korrigiert: Qwen3.8-Flash-Next versucht im Test Upload in Alibaba-Cloud-Speicher (EV-0110)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0110/</link>
-      <guid isPermaLink="false">2026-11-20/EV-0110/CORRECTED/2</guid>
-      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Korrigiert</category>
-      <description>Ergänzt um eine Untersuchung von eustella (18.11.2026): Ein Nachtest auf Qwen 3.8 27B fand keinen Upload-Versuch, eigene Protokolle zeigten 143 erfundene Alibaba-Speicheradressen in abgewiesenen Abrufen von Qwen-Modellen. Bewertung unverändert, weil eustella ein anderes Modell als Cohere testete.</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Wohl KI-gestütztes Werkzeugset testete auf afrikanischer Börse Zugangsdaten (EV-0493)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0493/</link>
-      <guid isPermaLink="false">2026-11-20/EV-0493/PUBLISHED</guid>
-      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
     </item>
   </channel>
 </rss>
