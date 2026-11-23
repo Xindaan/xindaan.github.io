@@ -112,6 +112,54 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Korrigiert: OpenAI: selbstreplizierende Prompt-Injections im Experiment (EV-0030)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0030/</link>
+      <guid isPermaLink="false">2026-11-23/EV-0030/CORRECTED</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Die Zitate unterscheiden nun die im Slack-Versuch beobachteten Aktionen von der Reichweite des Befunds. OpenAI berichtet ausschließlich über Auswirkungen innerhalb simulierter Werkzeugaufrufe.</description>
+    </item>
+    <item>
+      <title>Korrigiert: Claroty: Claude Sonnet 4.6 reproduziert Lücken in Danfoss-Steuerung bis Root-Zugriff im Labor (EV-0107)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0107/</link>
+      <guid isPermaLink="false">2026-11-23/EV-0107/CORRECTED</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Die Zitate dokumentieren Modell, Editor und öffentlichen Zugang zur Firmware von Kältesteuerungen. Der Nachweis für die genaue Typbezeichnung, die Ghidra-Anbindung und die Größe des Hauptprogramms bleibt offen. Die Aussage ist jetzt als teilweise belegt gekennzeichnet.</description>
+    </item>
+    <item>
+      <title>Korrigiert: Trend Micro: KI-Pentest-Plattform CyberStrikeAI zielt auf mindestens 19 Organisationen, meist in Japan (EV-0106)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0106/</link>
+      <guid isPermaLink="false">2026-11-23/EV-0106/CORRECTED</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Die Zitate dokumentieren die Rolle des Sprachmodells, die Zahl gescannter Adressen, den berichteten Datendiebstahl und die Grenze der Aussagen zur Autonomie. Die Zahl ist eine inklusive Untergrenze. Die Zuordnung zu einem anderen Akteur und die Zitatabdeckung des vorgetäuschten Prüfauftrags bleiben offen.</description>
+    </item>
+    <item>
+      <title>Korrigiert: Laut Unit 42 nutzte ein Akteur Hermes Agent mit DeepSeek V4 für Cyberkriminalität (EV-0090)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0090/</link>
+      <guid isPermaLink="false">2026-11-23/EV-0090/CORRECTED</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Eine Tabellenzelle und zwei Sätze aus dem Bericht dokumentieren Modellkonfiguration und deaktivierte Schutzkontrollen. Unit 42 leitet die Verwendung von Cursor zur Codeerzeugung aus Indizien ab. Welches Modell dabei tatsächlich lief, bleibt offen.</description>
+    </item>
+    <item>
+      <title>Korrigiert: UK AISI: Modelle setzen vorgegebene Sabotage von Sicherheitsforschung teils fort (EV-0396)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0396/</link>
+      <guid isPermaLink="false">2026-11-23/EV-0396/CORRECTED</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Die Zitate definieren jetzt die Messgröße, auf die sich die Prozentwerte im Modellvergleich beziehen. UK AISI verglich die interne Gedankenkette mit der Arbeit, die das Modell den Nutzenden präsentierte.</description>
+    </item>
+    <item>
+      <title>Korrigiert: SplitBench: Rechtetrennung soll Bewertung von Coding-Agenten manipulationsfest machen (ST-0195)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0195</link>
+      <guid isPermaLink="false">2026-11-23/ST-0195/CORRECTED</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Korrigiert</category>
+      <description>Das Ergebnis benennt jetzt die geprüfte Trennung zwischen Agent und Testausführung. Zwei weitere Architekturdetails standen nur im Quellenzitat und wurden aus der Zusammenfassung entfernt.</description>
+    </item>
+    <item>
       <title>Korrigiert: PHP2Shell: Mit KI gefundene PHP-Lücken, danach reale Angriffe bis zum Wiper (EV-0087)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0087/</link>
       <guid isPermaLink="false">2026-11-22/EV-0087/CORRECTED</guid>
@@ -358,54 +406,6 @@
       <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Xint meldet fünf nginx-Lücken, vier davon laut Xint durch automatisierten Scan gefunden (EV-0495)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0495/</link>
-      <guid isPermaLink="false">2026-11-20/EV-0495/PUBLISHED</guid>
-      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: depthfirst: KI-Modelle fanden mit Forscher:innen kritische PHP-Sitzungslücke (EV-0496)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0496/</link>
-      <guid isPermaLink="false">2026-11-20/EV-0496/PUBLISHED</guid>
-      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Check Point: PuzzleMask-Prompt umging LLM-Vorprüfung und gelang gegen GPT-5.2 (EV-0497)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0497/</link>
-      <guid isPermaLink="false">2026-11-20/EV-0497/PUBLISHED</guid>
-      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Bewertung: Unerlaubte Agentenkoordination (RA-0223)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-20/RA-0223/PUBLISHED</guid>
-      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Bewertung: Evaluator-, Grader- &amp; Monitoring-Umgehung (RA-0224)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-20/RA-0224/PUBLISHED</guid>
-      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Bewertung: Offensive Cyberfähigkeiten &amp; Missbrauch (RA-0225)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-20/RA-0225/PUBLISHED</guid>
-      <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
   </channel>
 </rss>
