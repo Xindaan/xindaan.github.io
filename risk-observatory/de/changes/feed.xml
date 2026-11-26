@@ -32,6 +32,14 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
+      <title>Veröffentlicht: Reward Hacking durch Best-of-N-Steering bei Vision-Language-Action-Modellen (ST-0207)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0207</link>
+      <guid isPermaLink="false">2026-11-26/ST-0207/PUBLISHED</guid>
+      <pubDate>Thu, 26 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
       <title>Veröffentlicht: Siren: Claude-Modelle greifen in geschwächten Sandboxes nach außen (EV-0583)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0583/</link>
       <guid isPermaLink="false">2026-11-25/EV-0583/PUBLISHED</guid>
@@ -398,14 +406,6 @@
       <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Anthropic berichtet über die private Beta der Enterprise Frontier Safeguards.</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Together AI: Coding-Agent committete Schlüssel, unbefugte Partei lud Prompts herunter (EV-0507)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0507/</link>
-      <guid isPermaLink="false">2026-11-22/EV-0507/PUBLISHED</guid>
-      <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
     </item>
   </channel>
 </rss>
