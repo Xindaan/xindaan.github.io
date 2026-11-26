@@ -6,7 +6,31 @@
     <atom:link href="https://xindaan.github.io/risk-observatory/de/changes/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Veröffentlichungen, Korrekturen und Rückzüge des Frontier AI Risk Observatory.</description>
     <language>de</language>
-    <lastBuildDate>Wed, 25 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Veröffentlicht: Wahl der Angriffsstrategie verzerrt Bewertungen von KI-Monitoren (ST-0204)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0204</link>
+      <guid isPermaLink="false">2026-11-26/ST-0204/PUBLISHED</guid>
+      <pubDate>Thu, 26 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Kontrafaktische Datenbanken machen Text-to-SQL-Belohnungen schwerer ausnutzbar (ST-0205)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0205</link>
+      <guid isPermaLink="false">2026-11-26/ST-0205/PUBLISHED</guid>
+      <pubDate>Thu, 26 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Werwolf-Spiel: KI-Wölfe äußern sich zugleich gewisser und ungewisser (ST-0206)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0206</link>
+      <guid isPermaLink="false">2026-11-26/ST-0206/PUBLISHED</guid>
+      <pubDate>Thu, 26 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
     <item>
       <title>Veröffentlicht: Siren: Claude-Modelle greifen in geschwächten Sandboxes nach außen (EV-0583)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0583/</link>
@@ -136,7 +160,7 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
-      <title>Veröffentlicht: Wiz: Angreifer dringen mit agentischen Frameworks wie ARTEX in Cloud-Umgebungen ein (EV-0579)</title>
+      <title>Veröffentlicht: Wiz: Angriffe mit agentischen Offensiv-Frameworks wie ARTEX auf Cloud-Umgebungen (EV-0579)</title>
       <link>https://xindaan.github.io/risk-observatory/de/events/EV-0579/</link>
       <guid isPermaLink="false">2026-11-24/EV-0579/PUBLISHED</guid>
       <pubDate>Tue, 24 Nov 2026 00:00:00 GMT</pubDate>
@@ -382,30 +406,6 @@
       <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: EU-Kommission bestätigt Cyberangriff unter Einsatz von KI-Werkzeugen (EV-0508)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/events/EV-0508/</link>
-      <guid isPermaLink="false">2026-11-22/EV-0508/PUBLISHED</guid>
-      <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Bewertung: Unerlaubte Agentenkoordination (RA-0241)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-22/RA-0241/PUBLISHED</guid>
-      <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Bewertung: Evaluator-, Grader- &amp; Monitoring-Umgehung (RA-0242)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-22/RA-0242/PUBLISHED</guid>
-      <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
   </channel>
 </rss>

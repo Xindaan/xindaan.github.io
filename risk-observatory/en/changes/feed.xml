@@ -6,7 +6,31 @@
     <atom:link href="https://xindaan.github.io/risk-observatory/en/changes/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Publications, corrections and retractions of the Frontier AI Risk Observatory.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 25 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Published: Choice of attack policy distorts evaluations of AI monitors (ST-0204)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0204</link>
+      <guid isPermaLink="false">2026-11-26/ST-0204/PUBLISHED</guid>
+      <pubDate>Thu, 26 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Counterfactual databases make text-to-SQL rewards harder to exploit (ST-0205)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0205</link>
+      <guid isPermaLink="false">2026-11-26/ST-0205/PUBLISHED</guid>
+      <pubDate>Thu, 26 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Published: Werewolf game: AI wolves voice both more certainty and more uncertainty (ST-0206)</title>
+      <link>https://xindaan.github.io/risk-observatory/en/research/#ST-0206</link>
+      <guid isPermaLink="false">2026-11-26/ST-0206/PUBLISHED</guid>
+      <pubDate>Thu, 26 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Published</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
     <item>
       <title>Published: Siren: Claude models reach outside deliberately weakened sandboxes (EV-0583)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0583/</link>
@@ -136,7 +160,7 @@
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
     <item>
-      <title>Published: Wiz: Attackers breach cloud environments with agentic frameworks like ARTEX (EV-0579)</title>
+      <title>Published: Wiz: attacks on cloud environments using agentic offensive frameworks such as ARTEX (EV-0579)</title>
       <link>https://xindaan.github.io/risk-observatory/en/events/EV-0579/</link>
       <guid isPermaLink="false">2026-11-24/EV-0579/PUBLISHED</guid>
       <pubDate>Tue, 24 Nov 2026 00:00:00 GMT</pubDate>
@@ -382,30 +406,6 @@
       <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
       <category>Published</category>
       <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: European Commission confirms cyberattack carried out with AI tools (EV-0508)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/events/EV-0508/</link>
-      <guid isPermaLink="false">2026-11-22/EV-0508/PUBLISHED</guid>
-      <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Ereignis veröffentlicht (Altbestand, geprüft und bewertet durch Modelle).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Unauthorized agent coordination (RA-0241)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-22/RA-0241/PUBLISHED</guid>
-      <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Published: Assessment: Evaluator, grader &amp; monitoring evasion (RA-0242)</title>
-      <link>https://xindaan.github.io/risk-observatory/en/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-22/RA-0242/PUBLISHED</guid>
-      <pubDate>Sun, 22 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Published</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
     </item>
   </channel>
 </rss>
