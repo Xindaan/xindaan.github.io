@@ -6,7 +6,47 @@
     <atom:link href="https://xindaan.github.io/risk-observatory/de/changes/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Veröffentlichungen, Korrekturen und Rückzüge des Frontier AI Risk Observatory.</description>
     <language>de</language>
-    <lastBuildDate>Thu, 26 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Veröffentlicht: Übertragene Caches zwischen Modellen verstärken Jailbreak-Angriffe (ST-0208)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0208</link>
+      <guid isPermaLink="false">2026-11-27/ST-0208/PUBLISHED</guid>
+      <pubDate>Fri, 27 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: LLM-Agenten lassen nach Fehlern Schutzmaßnahmen bei sensiblen Schritten weg (ST-0209)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0209</link>
+      <guid isPermaLink="false">2026-11-27/ST-0209/PUBLISHED</guid>
+      <pubDate>Fri, 27 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Vergiftete Regeln lassen selbstlernende Agenten-Abwehr legitime Aufgaben ablehnen (ST-0210)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0210</link>
+      <guid isPermaLink="false">2026-11-27/ST-0210/PUBLISHED</guid>
+      <pubDate>Fri, 27 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: BSI: Agenten-Baukästen automatisieren Cyberangriffe auch mit Open-Weight-Modellen (ST-0211)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0211</link>
+      <guid isPermaLink="false">2026-11-27/ST-0211/PUBLISHED</guid>
+      <pubDate>Fri, 27 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
+    <item>
+      <title>Veröffentlicht: Bank of England: Frontier-KI-Szenario im Cyber-Stresstest 2027 und Behördenübung (GV-0044)</title>
+      <link>https://xindaan.github.io/risk-observatory/de/governance/#GV-0044</link>
+      <guid isPermaLink="false">2026-11-27/GV-0044/PUBLISHED</guid>
+      <pubDate>Fri, 27 Nov 2026 00:00:00 GMT</pubDate>
+      <category>Veröffentlicht</category>
+      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
+    </item>
     <item>
       <title>Veröffentlicht: Wahl der Angriffsstrategie verzerrt Bewertungen von KI-Monitoren (ST-0204)</title>
       <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0204</link>
@@ -366,46 +406,6 @@
       <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
       <category>Veröffentlicht</category>
       <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Bewertung: Shutdown-Evasion &amp; Selbsterhaltung (RA-0257)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-23/RA-0257/PUBLISHED</guid>
-      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Bewertung: Unautorisierte Tool-Nutzung (RA-0258)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/risk-matrix/</link>
-      <guid isPermaLink="false">2026-11-23/RA-0258/PUBLISHED</guid>
-      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Neuronen-Eingriff dämpft ausgesprochenes Testbewusstsein von Reasoning-Modellen (ST-0194)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0194</link>
-      <guid isPermaLink="false">2026-11-23/ST-0194/PUBLISHED</guid>
-      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: SplitBench: Rechtetrennung soll Bewertung von Coding-Agenten manipulationsfest machen (ST-0195)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/research/#ST-0195</link>
-      <guid isPermaLink="false">2026-11-23/ST-0195/PUBLISHED</guid>
-      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Veröffentlicht (Altbestand, durch Modelle bewertet).</description>
-    </item>
-    <item>
-      <title>Veröffentlicht: Anthropic berichtet über private Beta der Enterprise Frontier Safeguards (GV-0041)</title>
-      <link>https://xindaan.github.io/risk-observatory/de/governance/#GV-0041</link>
-      <guid isPermaLink="false">2026-11-23/GV-0041/PUBLISHED</guid>
-      <pubDate>Mon, 23 Nov 2026 00:00:00 GMT</pubDate>
-      <category>Veröffentlicht</category>
-      <description>Anthropic berichtet über die private Beta der Enterprise Frontier Safeguards.</description>
     </item>
   </channel>
 </rss>
